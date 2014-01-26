@@ -1,0 +1,23 @@
+.inqueue {
+	text-decoration: none;
+	border-bottom: 1px black dotted;
+	color: black;
+}
+
+.inreview {
+	text-decoration: none;
+	border-bottom: 1px blue dotted;
+	color: blue;
+}
+
+.accepted {
+	text-decoration: none;
+	border-bottom: 1px green dotted;
+	color: green;
+}
+
+.rejected {
+	text-decoration: none;
+	border-bottom: 1px red dotted;
+	color: red;
+}

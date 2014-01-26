@@ -1,0 +1,29 @@
+{
+    "name": "fbf/laravel-blog",
+    "description": "A Laravel 4 package to add a simple blog to a site",
+    "keywords": ["laravel","blog"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Neil Crookes",
+            "email": "neil.crookes@fivebyfiveuk.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.*",
+        "thujohn/rss": "dev-master",
+        "cviebrock/eloquent-sluggable": "1.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/controllers",
+            "src/migrations",
+            "src/models"
+        ],
+        "psr-0": {
+            "Fbf\\LaravelBlog": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

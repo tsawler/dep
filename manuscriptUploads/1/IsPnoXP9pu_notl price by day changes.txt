@@ -1,0 +1,11 @@
+Changes for NOTL (price by day)
+
+1) Add cols to PRICE (p_0 -> p_6)
+2) Add cols to SPECIAL (s_0 -> s_6)
+3) Run this sql:
+
+update price set p_0 = Price, p_1 = Price, p_2 = Price, p_3 = Price, p_4 = Price, p_5 = Price, p_6 = Price;
+
+update special set s_0 = Special_Price, s_1 = Special_Price, s_2 = Special_Price, s_3 = Special_Price, s_4 = Special_Price, s_5 = Special_Price, s_6 = Special_Price;
+
+4) 

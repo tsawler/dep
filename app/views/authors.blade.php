@@ -15,7 +15,7 @@ Authors: The Dog Eared Press
 	<table class='responsive table table-striped table-bordered'>
 		<thead>
 			<tr>
-				<th>Author</th>
+				<th>Author Name</th>
 				<th>City</th>
 			</tr>
 		</thead>

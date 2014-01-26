@@ -76,3 +76,5 @@ Route::post('/savepostdate', array('before' => 'auth', function()
 		return "Post date updated successfully";
 	}
 }));
+
+Route::controller('post/create', 'BlogController');

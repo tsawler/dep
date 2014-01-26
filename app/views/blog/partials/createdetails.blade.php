@@ -1,23 +1,22 @@
 <article class="entry-post">    
 	
-	{{ Form::open(array('url' => '/savenewpost',  'name' => 'bookform', 'id' => 'bookform')) }}
+	{{ Form::open(array('url' => '/savenewpost',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
 	<header class="entry-header">
-	
+		
 		<div id="editmsg" class='alert alert-success hidden'>
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<span id="theeditmsg">&nbsp;</span>
 		</div>
-
+		
 		<div class="control-group">
 		{{ Form::label('post_title', 'Title', array('class' => 'control-label')); }}
 		<div class="controls">
 		<div class="input-prepend"> <span class="add-on"><i class="icon-font"></i></span>
 	    {{ Form::text('post_title', null, array('class' => 'required', 'autofocus'=>'autofocus')); }}
-	    <span class='help-block'></span>
 	    </div>
 	    </div>
 	    </div>
-		
+
 		<div class="control-group">
 		{{ Form::label('post_date', 'Date', array('class' => 'control-label')); }}
 		<div class="controls">
@@ -87,7 +86,21 @@
 @section('bottom-js')
 <script>
 $(document).ready(function () {	
-	$("#bookform").validate();
+	$("#bookform").validate({highlight: function(element) {
+	        $(element).closest('.control-group').addClass('error');
+	    },
+	    unhighlight: function(element) {
+	        $(element).closest('.control-group').removeClass('error');
+	        $(element).closest('.control-group').addClass('success');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'help-block',
+	    errorPlacement: function(error, element) {
+	        error.insertAfter(element.parent());
+	    }
+	});
+	
+	
 	$("#post_date").datepicker({format: 'yyyy-mm-dd'});
 	CKEDITOR.replace( 'post_content',
 	{

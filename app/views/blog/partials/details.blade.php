@@ -138,22 +138,19 @@ $(document).ready(function () {
 	$("#post_date").datepicker({format: 'yyyy-mm-dd'});
 });
 function savePostChanges(){
-	var changed = editor.checkDirty();
-    if (changed == true){
-        // get the changed content data;
-        var data = editor.getData();
-        // save the changed data
-        $("#thedata").val(data);
-        $("#old").val('');
-        
-        // get the changed data;
-	    var titledata = $('#editablecontenttitle').html();
-	    $("#thetitledata").val(titledata);
-	    var options = { target: '#theeditmsg', success: showResponse };
-	    $("#savetitledata").unbind('submit').ajaxSubmit(options);
-	    $("#oldtitle").val('');
-        return false;
-     }
+    // get the changed content data;
+    var data = editor.getData();
+    // save the changed data
+    $("#thedata").val(data);
+    $("#old").val('');
+    
+    // get the changed data;
+    var titledata = $('#editablecontenttitle').html();
+    $("#thetitledata").val(titledata);
+    var options = { target: '#theeditmsg', success: showResponse };
+    $("#savetitledata").unbind('submit').ajaxSubmit(options);
+    $("#oldtitle").val('');
+    return false;
 }
 </script>
 @stop

@@ -44,36 +44,17 @@ Route::get('/authors', 'AuthorController@listAuthors');
 Route::controller('/submit', 'SubmitController');
 
 // Blog routes
-Route::post('/savepost', array('before' => 'auth', function()
-{
-	// make sure we are admin
-	if (Auth::user()->access_level == 3){
-		$post = Post::find(Input::get('post_id'));
-		$post->content = Input::get('thedata');
-		$post->save();
-		return "Post updated successfully";
-	}
-}));
-
-Route::post('/saveposttitle', array('before' => 'auth', function()
+Route::post('/saveeditedpost', array('before' => 'auth', function()
 {
 	// make sure we are admin
 	if (Auth::user()->access_level == 3){
 		$post = Post::find(Input::get('post_id'));
 		$post->title = Input::get('thetitledata');
-		$post->save();
-		return "Post title updated successfully";
-	}
-}));
-
-Route::post('/savepostdate', array('before' => 'auth', function()
-{
-	// make sure we are admin
-	if (Auth::user()->access_level == 3){
-		$post = Post::find(Input::get('new_post_date_id'));
+		$post->status = Input::get('status');
 		$post->published_date = Input::get('post_date'). " 00:00:01";
+		$post->content = Input::get('thedata');
 		$post->save();
-		return "Post date updated successfully";
+		return "Post updated successfully";
 	}
 }));
 

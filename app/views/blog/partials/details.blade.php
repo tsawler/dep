@@ -1,34 +1,46 @@
 <article class="entry-post">
     		    
 	<header class="entry-header">
-	
+		
 		@if(Auth::check())
 		@if(Auth::user()->access_level == 3)
 			<div id="editmsg" class='alert alert-success hidden'>
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<span id="theeditmsg">&nbsp;</span>
 			</div>
-		@endif
-		@endif
-			
-		@if(Auth::check())
-		@if(Auth::user()->access_level ==3)
-			<div class="hidden" id="savetitlebar" style='margin-bottom: 5px;'>
-			<div class='pull-right'>
-			<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffTitleEditing()"></i></a>&nbsp;
-			<a href='#!' onclick='saveTitleChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveTitleChanges()"></i></a>
-			</div>
-			</div>
-			<div style="clear: both; margin-bottom: 5px;"></div>
-			<form action="/saveposttitle" method="post" id="savetitledata" name="savetitledata">
-			<h3 class="entry-title">
-			<article id="editablecontenttitle" style='width: 100%'>
-			{{ $post->title }}
-			</article>
-			</h3>
-			<input type="hidden" name="post_id" value="{{ $post->id }}">
-			<input type="hidden" name="thetitledata" id="thetitledata">
-			</form>
+			<form action="/saveeditedpost" method="post" id="savetitledata" name="savetitledata">
+				<div class="hidden" id="savebar" style='margin-bottom: 5px;'>
+					<div class='pull-right'>
+						<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
+						<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="savePostChanges()"></i></a>
+					</div>
+				</div>
+				<div style="clear: both; margin-bottom: 5px;"></div>
+				<div id="approved" class="hidden pull-right">
+				<select name="status" id="status">
+					<option value="DRAFT"
+						@if($post->status == 'DRAFT')
+							selected
+						@endif
+						>Draft</option>
+					<option value="APPROVED"
+						@if($post->status == 'APPROVED')
+							selected
+						@endif
+						>Approved</option>
+				</select>
+
+				</div>
+				<div style="clear: both; margin-bottom: 5px;"></div>
+		
+					<h3 class="entry-title">
+						<article id="editablecontenttitle" style='width: 100%'>
+							{{ $post->title }}
+							</article>
+					</h3>
+				<input type="hidden" name="post_id" value="{{ $post->id }}">
+				<input type="hidden" name="thetitledata" id="thetitledata">
+
 		@endif
 		@endif
 		
@@ -47,25 +59,20 @@
 			<div class="byline" id="postdate"><i class="icon-time"></i>
 				{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
 			</div>
-				<div class='hidden input-append date' id='datetimepicker'>
-				<form class='form-inline' id='dateform' method="post" name='dateform' action="/savepostdate">
+			<div class='hidden input-append date' id='datetimepicker'>
 				<input  type='text' id="post_date" name='post_date' value="{{ date('Y-m-d', strtotime($post->published_date)) }}">
-				 &nbsp; 
-				<input type="hidden" name="new_post_date_id" id="new_post_date_id" value="{{ $post->id }}">
-				&nbsp;<a class='btn' onclick="saveDate()">Save Date</a>
-				</form>
-				</div>
+			</div>
 		@else
-		<div class="byline"><i class="icon-time"></i>
-		{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
-		</div>
+			<div class="byline"><i class="icon-time"></i>
+				{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
+			</div>
 		@endif
 		@endif
 		
 		@if(!Auth::check())
-		<div class="byline"><i class="icon-time"></i>
-		{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
-		</div>
+			<div class="byline"><i class="icon-time"></i>
+			{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
+			</div>
 		@endif
 	</header>
 
@@ -80,20 +87,10 @@
 		
 		@if(Auth::check())
 		@if(Auth::user()->access_level ==3)
-			<div class="hidden" id="savebar" style='margin-bottom: 5px;'>
-			<div class='pull-right'>
-			<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffContentEditing()"></i></a>&nbsp;
-			<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveChanges()"></i></a>
-			</div>
-			</div>
-			<div style="clear: both; margin-bottom: 5px;"></div>
-			<form action="/savepost" method="post" id="savedata" name="savedata">
 			<article id="editablecontent" itemprop="description" style='width: 100%'>
-			{{ $post->content }}
+				{{ $post->content }}
 			</article>
-			<input type="hidden" name="post_id" value="{{ $post->id }}">
 			<input type="hidden" name="thedata" id="thedata">
-			</form>
 		@endif
 		@endif
 		
@@ -106,7 +103,12 @@
 		@if(!Auth::check())
 			{{ $post->content }}
 		@endif
-
+		
+		@if(Auth::check())
+		@if(Auth::user()->access_level == 1)
+			</form>
+		@endif
+		@endif
 		
 		@if (Config::get('laravel-blog::show_share_partial_on_view'))
 			@include('blog.partials.share')
@@ -134,13 +136,24 @@
 <script>
 $(document).ready(function () {	
 	$("#post_date").datepicker({format: 'yyyy-mm-dd'});
-	$("#new_post_date_id").val({{ $post->id }});
 });
-
-function saveDate(){
-    var options = { target: '#theeditmsg', success: showResponse };
-    $("#dateform").unbind('submit').ajaxSubmit(options);
-    return false;
+function savePostChanges(){
+	var changed = editor.checkDirty();
+    if (changed == true){
+        // get the changed content data;
+        var data = editor.getData();
+        // save the changed data
+        $("#thedata").val(data);
+        $("#old").val('');
+        
+        // get the changed data;
+	    var titledata = $('#editablecontenttitle').html();
+	    $("#thetitledata").val(titledata);
+	    var options = { target: '#theeditmsg', success: showResponse };
+	    $("#savetitledata").unbind('submit').ajaxSubmit(options);
+	    $("#oldtitle").val('');
+        return false;
+     }
 }
 </script>
 @stop

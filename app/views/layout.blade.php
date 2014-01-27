@@ -29,7 +29,6 @@
 </style>
 @endif
 @endif
-
 @yield('css')
 
 <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
@@ -59,6 +58,7 @@
 	
 	<div class="container clearfix" id="main-content" >
 	@yield('content')
+	
 	</div>
 	<!--close .container role="main-content" --> 
 	<!--begin footer -->
@@ -177,6 +177,7 @@ function makePageEditable(item){
     	$("#editablecontenttitle").addClass("outlined");
     	$("#old").val($("#editablecontent").html());
     	$("#oldtitle").val($("#editablecontenttitle").html());
+    	$("#approved").removeClass("hidden");
     	
     	var editoroptions = { 
     		toolbar: 'MiniToolbar', 
@@ -223,6 +224,7 @@ function turnOffEditing(item) {
     	CKEDITOR.instances[name].destroy()
 	}
 	$("#postdate").removeClass("hidden");
+	$("#approved").addClass("hidden");
 	$("#datetimepicker").addClass("hidden");
 	$(".menu-item").attr("onclick","makePageEditable(this)");
 	$(".menu-item").html("Edit content");

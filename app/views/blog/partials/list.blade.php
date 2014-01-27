@@ -26,7 +26,7 @@
 					@if($post->status == 'DRAFT')
 						<span class="label label-warning">Draft</span>
 					@endif
-					@if(strtotime($post->published_date) < strtotime('today'))
+					@if(strtotime($post->published_date) > strtotime('today'))
 						<span class="label label-warning">Pending</span>
 					@endif
 				</header>

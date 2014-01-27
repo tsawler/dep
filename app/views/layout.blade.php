@@ -209,16 +209,6 @@ function saveChanges(){
      }
 }
 
-function saveTitleChanges(){
-    // get the changed data;
-    var data = $('#editablecontenttitle').html();
-    $("#thetitledata").val(data);
-    var options = { target: '#theeditmsg', success: showResponse };
-    $("#savetitledata").unbind('submit').ajaxSubmit(options);
-    $("#oldtitle").val('');
-    return false;
-}
-
 function saveEditedPage(){
 	// get the changed data;
     var data = $('#editablecontenttitle').html();
@@ -259,23 +249,9 @@ function turnOffEditing(item) {
 	}
 }
 
-function turnOffTitleEditing() {
-	$("#editabletitlecontent").attr("contenteditable","false");
-	$("#editablecontenttitle").removeClass("outlined");
-	$("#savetitlebar").addClass("hidden");
-	if ($('#oldtitle').val() != ''){
-		$("#editablecontenttitle").html($("#oldtitle").val());
-	}
-}
 
-function turnOffContentEditing() {
-	$("#editablecontent").attr("contenteditable","false");
-	$("#editablecontent").removeClass("outlined");
-	$("#savebar").addClass("hidden");
-	if ($('#old').val() != ''){
-		$("#editablecontent").html($("#oldt").val());
-	}
-}
+
+
 function stub() {
 	alert("This functionality is not yet implemented!");
 }

@@ -29,7 +29,7 @@
 					</ul>
 				</li>
 				<li><a href="/blog">Blog</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="/page/10/Contact">Contact</a></li>
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
 				<li class="parent"><a href="!#">Admin<i></i></a>

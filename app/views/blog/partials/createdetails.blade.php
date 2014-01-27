@@ -1,6 +1,6 @@
 <article class="entry-post">    
 	
-	{{ Form::open(array('url' => '',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
+	{{ Form::open(array('url' => '/post/save',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
 	<header class="entry-header">
 		
 		<div id="editmsg" class='alert alert-success hidden'>

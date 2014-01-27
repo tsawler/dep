@@ -41,13 +41,33 @@ Route::post('/saveeditedpost', array('before' => 'auth', function()
 	// make sure we are admin
 	if (Auth::user()->access_level == 3){
 		$post = Post::find(Input::get('post_id'));
-		$post->title = Input::get('thetitledata');
+		$post->title = trim(Input::get('thetitledata'));
 		$post->status = Input::get('status');
 		$post->published_date = Input::get('post_date'). " 00:00:01";
 		$post->content = Input::get('thedata');
+		$post->status = Input::get('status');
 		$post->save();
 		return "Post updated successfully";
 	}
 }));
 
 Route::controller('post/create', 'BlogController');
+
+Route::post('/post/save', array('before' => 'auth', function()
+{
+	// make sure we are admin
+	if (Auth::user()->access_level == 3){
+		$post = new Post;
+		$post->title = trim(Input::get('post_title'));
+		$post->status = Input::get('status');
+		$post->published_date = Input::get('post_date'). " 00:00:01";
+		$post->content = Input::get('post_content');
+		$post->summary = Input::get('post_summary');
+		$post->meta_description = Input::get('meta_description');
+		$post->meta_keywords = Input::get('meta_keywords');
+		$post->in_rss = 1;
+		$post->slug = trim(Input::get('post_title'));
+		$post->save();
+		return Redirect::to('/blog')->with('message', 'Post saved successfully');
+	}
+}));

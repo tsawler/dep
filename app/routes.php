@@ -26,6 +26,12 @@ Route::post('/saveeditedpage', array('before' => 'auth', function()
 	}
 }));
 
+Route::get('/page/create', array('before' => 'auth', function()
+{
+	return View::make('createpage');
+}));
+
+// routes for account/user
 
 Route::get('/verifyaccount','UsersPendingController@validateUser');
 

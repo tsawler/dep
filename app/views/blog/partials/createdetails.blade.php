@@ -114,7 +114,7 @@ $(document).ready(function () {
 	});
 	
 	
-	$("#post_date").datepicker({format: 'yyyy-mm-dd'});
+	$("#post_date").datepicker({format: 'yyyy-mm-dd', autoclose: true});
 	CKEDITOR.replace( 'post_content',
 	{
 		toolbar : 'MyToolbar',

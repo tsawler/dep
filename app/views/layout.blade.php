@@ -151,7 +151,7 @@
 <script type="text/javascript" src="/ck/ckeditor.js"></script>
 <script type="text/javascript" src="/ck/adapters/jquery.js"></script>
 <script type="text/javascript" src="/js/jquery.form.js"></script>
-<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
 

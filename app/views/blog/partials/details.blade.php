@@ -135,7 +135,7 @@
 @section('bottom-js')
 <script>
 $(document).ready(function () {	
-	$("#post_date").datepicker({format: 'yyyy-mm-dd'});
+	$("#post_date").datepicker({format: 'yyyy-mm-dd', autoclose: true});
 });
 function savePostChanges(){
     // get the changed content data;

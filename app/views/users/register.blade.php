@@ -5,11 +5,15 @@
 {{ Form::open(array('url' => 'users/create', 'class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
 <h3 class="short_headline" style="text-transform: none;"><span>Create an Account</span></h3>
 
-<ul>
-  @foreach($errors->all() as $error)
-     <li>{{ $error }}</li>
-  @endforeach
-</ul>
+@if(count($errors) > 0)
+<div class="alert alert-error">
+	<ul>
+	@foreach($errors->all() as $error)
+		<li>{{ $error }}</li>
+	@endforeach
+	</ul>
+</div>
+@endif
 
 <p>To create a free account, just fill out the form below. You will need an account in order to purchase books, or to submit a manuscript for consideration.</p>
 

@@ -2,6 +2,16 @@
 	
 	{{ Form::open(array('url' => '/post/save',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
 	<header class="entry-header">
+	
+		@if(count($errors) > 0)
+		<div class="alert alert-error">
+			<ul>
+			@foreach($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		</div>
+		@endif
 		
 		<div id="editmsg" class='alert alert-success hidden'>
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -9,10 +19,10 @@
 		</div>
 		
 		<div class="control-group">
-		{{ Form::label('post_title', 'Title', array('class' => 'control-label')); }}
+		{{ Form::label('title', 'Title', array('class' => 'control-label')); }}
 		<div class="controls">
 		<div class="input-prepend"> <span class="add-on"><i class="icon-font"></i></span>
-	    {{ Form::text('post_title', null, array('class' => 'required', 'autofocus'=>'autofocus')); }}
+	    {{ Form::text('title', null, array('class' => 'required', 'autofocus'=>'autofocus')); }}
 	    </div>
 	    </div>
 	    </div>
@@ -44,16 +54,16 @@
 	<div class="entry-content">
 		
 		<div class="control-group">
-		{{ Form::label('post_summary', 'Post Summary', array('class' => 'control-label')); }}
+		{{ Form::label('summary', 'Post Summary', array('class' => 'control-label')); }}
 		<div class="controls">
-	    {{ Form::textarea('post_summary', null ); }}
+	    {{ Form::textarea('summary', null ); }}
 	    </div>
 	    </div>
 	    
 	    <div class="control-group">
-		{{ Form::label('post_content', 'Full Post', array('class' => 'control-label')); }}
+		{{ Form::label('content', 'Full Post', array('class' => 'control-label')); }}
 		<div class="controls">
-	    {{ Form::textarea('post_content', null ); }}
+	    {{ Form::textarea('content', null ); }}
 	    </div>
 	    </div>
 	    
@@ -115,7 +125,7 @@ $(document).ready(function () {
 	
 	
 	$("#post_date").datepicker({format: 'yyyy-mm-dd', autoclose: true});
-	CKEDITOR.replace( 'post_content',
+	CKEDITOR.replace( 'content',
 	{
 		toolbar : 'MyToolbar',
 		forcePasteAsPlainText: true,
@@ -124,7 +134,7 @@ $(document).ready(function () {
 		filebrowserFlashBrowseUrl : '/filemgmt/browse.php?type=flash',
 		enterMode : '1'
 	});
-	CKEDITOR.replace( 'post_summary',
+	CKEDITOR.replace( 'summary',
 	{
 		toolbar : 'MyToolbar',
 		forcePasteAsPlainText: true,

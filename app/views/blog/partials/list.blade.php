@@ -53,8 +53,7 @@
 				<!--close date--> 
 				</footer>
 				<!--end entry-footer--> 
-
-
+				
     		</article>
 
     	@endforeach

@@ -112,6 +112,20 @@
 			@include('laravel-blog::partials.share')
 		@endif
 		<br><br>
+
+		@if (Config::get('laravel-blog::show_adjacent_posts_on_view') && ($newer || $older))
+			<ul class="pager">
+				@if ($newer)
+					<li><a href="{{ $newer->getUrl() }}">&larr; Previous</a></li>
+				@endif
+				
+				@if ($older)
+					<li><a href="{{ $older->getUrl() }}">Next &rarr;</a></li>
+				@endif
+			</ul>
+		@endif
+
+
 		<a href="{{ action('Fbf\LaravelBlog\PostsController@index') }}">
         			{{ trans('laravel-blog::messages.details.back_link_text') }}
         </a>

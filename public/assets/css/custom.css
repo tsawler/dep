@@ -21,3 +21,10 @@
 	border-bottom: 1px red dotted;
 	color: red;
 }
+
+.admin-hidden {
+	display: none;
+}
+.admin-display{
+	display: block;
+}

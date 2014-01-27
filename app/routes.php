@@ -71,3 +71,14 @@ Route::post('/post/save', array('before' => 'auth', function()
 		return Redirect::to('/blog')->with('message', 'Post saved successfully');
 	}
 }));
+
+Route::post('/post/delete', array('before' => 'auth', function()
+{
+	// make sure we are admin
+	if (Auth::user()->access_level == 3){
+		$post = Post::find(Input::get('post_id'));
+		$post->delete();
+		return "Post deleted successfully";
+		return Redirect::to('/blog')->with('message', 'Post deleted successfully');
+	}
+}));

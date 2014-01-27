@@ -166,18 +166,15 @@ function makePageEditable(item){
 	
 	if ($('#editablecontent').length != 0) {
 		$("#postdate").addClass("hidden");
-		$("#datetimepicker").removeClass("hidden");
+		$(".admin-hidden").addClass('admin-display').removeClass('admin-hidden');
 		$(item).attr("onclick","turnOffEditing(this)");
 		$(item).html("Turn off editing");
-		$("#savebar").removeClass("hidden");
-		$("#savetitlebar").removeClass("hidden");
     	$("#editablecontent").attr("contenteditable","true");
     	$("#editablecontenttitle").attr("contenteditable","true");
     	$("#editablecontent").addClass("outlined");
     	$("#editablecontenttitle").addClass("outlined");
     	$("#old").val($("#editablecontent").html());
     	$("#oldtitle").val($("#editablecontenttitle").html());
-    	$("#approved").removeClass("hidden");
     	
     	var editoroptions = { 
     		toolbar: 'MiniToolbar', 
@@ -230,17 +227,14 @@ function turnOffEditing(item) {
 	for (name in CKEDITOR.instances) {
     	CKEDITOR.instances[name].destroy()
 	}
+	$(".admin-display").addClass('admin-hidden').removeClass('admin-display');
 	$("#postdate").removeClass("hidden");
-	$("#approved").addClass("hidden");
-	$("#datetimepicker").addClass("hidden");
 	$(".menu-item").attr("onclick","makePageEditable(this)");
 	$(".menu-item").html("Edit content");
 	$("#editablecontent").attr("contenteditable","false");
 	$("#editabletitlecontent").attr("contenteditable","false");
 	$("#editablecontenttitle").removeClass("outlined");
 	$("#editablecontent").removeClass("outlined");
-	$("#savetitlebar").addClass("hidden");
-	$("#savebar").addClass("hidden");
 	if ($('#oldtitle').val() != ''){
 		$("#editablecontenttitle").html($("#oldtitle").val());
 	}

@@ -9,14 +9,14 @@
 			<span id="theeditmsg">&nbsp;</span>
 			</div>
 			<form action="/saveeditedpost" method="post" id="savetitledata" name="savetitledata">
-				<div class="hidden" id="savebar" style='margin-bottom: 5px;'>
+				<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
 					<div class='pull-right'>
 						<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
 						<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="savePostChanges()"></i></a>
 					</div>
 				</div>
 				<div style="clear: both; margin-bottom: 5px;"></div>
-				<div id="approved" class="hidden pull-right">
+				<div id="approved" class="admin-hidden pull-right">
 				<select name="status" id="status">
 					<option value="DRAFT"
 						@if($post->status == 'DRAFT')
@@ -59,7 +59,7 @@
 			<div class="byline" id="postdate"><i class="icon-time"></i>
 				{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
 			</div>
-			<div class='hidden input-append date' id='datetimepicker'>
+			<div class='admin-hidden input-append date' id='datetimepicker'>
 				<input  type='text' id="post_date" name='post_date' value="{{ date('Y-m-d', strtotime($post->published_date)) }}">
 			</div>
 		@else
@@ -107,6 +107,17 @@
 		@if(Auth::check())
 		@if(Auth::user()->access_level == 1)
 			</form>
+		@endif
+		@endif
+		
+		@if(Auth::check())
+		@if(Auth::user()->access_level == 3)
+			<div class="admin-hidden">
+			<form method="post" action="/blog/delete" name="deleteform" id="deleteform">
+			<input type="hidden" name="post_id" value="{{ $post->id }}">
+			<a href="#!" onclick="deletePost()" class="btn btn-danger">Delete this post</a>
+			</form>
+			</div>
 		@endif
 		@endif
 		
@@ -167,6 +178,17 @@ function savePostChanges(){
     $("#savetitledata").unbind('submit').ajaxSubmit(options);
     $("#oldtitle").val('');
     return false;
+}
+function deletePost(){
+	var r=confirm("Are you sure you want to delete this post?");
+if (r==true)
+  {
+  	$("#deleteform").submit();
+  }
+else
+  {
+
+  }
 }
 </script>
 @stop

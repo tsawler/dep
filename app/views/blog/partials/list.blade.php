@@ -1,4 +1,13 @@
 <div class="span9 blog-summary primary-column"> 
+	
+	<div class="container">
+      @if(Session::has('message'))
+         <div class="alert alert-success">
+         	<button type="button" class="close" data-dismiss="alert">&times;</button>
+		 	{{ Session::get('message') }}
+         </div>
+      @endif
+    </div>
 
     @if (!$posts->isEmpty())
 
@@ -10,9 +19,16 @@
 					<h3 class="entry-title">
 						<a href="{{ $post->getUrl() }}" title="{{ $post->title }}">{{ $post->title }}</a>
 					</h3>
+					
 					<div class="byline"><i class="icon-time"></i> 
 						{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
 					</div>
+					@if($post->status == 'DRAFT')
+						<span class="label label-warning">Draft</span>
+					@endif
+					@if(strtotime($post->published_date) < strtotime(date("Y-m-d")))
+						<span class="label label-warning">Pending</span>
+					@endif
 				</header>
 
 				<div class="entry-content">

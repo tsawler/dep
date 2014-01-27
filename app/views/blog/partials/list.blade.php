@@ -58,7 +58,9 @@
     		</article>
 
     	@endforeach
-
+    	<div class='pagination'>
+    	{{ $posts->links() }}
+    	</div>
     @else
 
     	<p class="blog--empty">

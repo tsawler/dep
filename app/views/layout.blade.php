@@ -243,9 +243,6 @@ function turnOffEditing(item) {
 	}
 }
 
-
-
-
 function stub() {
 	alert("This functionality is not yet implemented!");
 }

@@ -74,7 +74,7 @@ if (Auth::check()) {
 } ?>
 @if(Auth::check())
 @if(Auth::user()->access_level ==3)
-	<div class="hidden" id="savebar" style='margin-bottom: 5px;'>
+	<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
 	<div class='pull-right'>
 	<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
 	<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveChanges()"></i></a>

@@ -78,7 +78,6 @@ Route::post('/post/delete', array('before' => 'auth', function()
 	if (Auth::user()->access_level == 3){
 		$post = Post::find(Input::get('post_id'));
 		$post->delete();
-		return "Post deleted successfully";
 		return Redirect::to('/blog')->with('message', 'Post deleted successfully');
 	}
 }));

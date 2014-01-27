@@ -34,9 +34,9 @@
 				@if(Auth::user()->access_level == 3)
 				<li class="parent"><a href="!#">Admin<i></i></a>
 					<ul>
-						<li><a id='editmenu' class='menu-item' href='#!' onclick="makePageEditable(this)">Edit content</a></li>
-						<li><a id='editmenu' class='' href='#!' onclick="stub()">New page</a></li>
-						<li><a id='editmenu' class='' href="/post/create" >New blog post</a></li>
+						<li><a class='menu-item' href='#!' onclick="makePageEditable(this)">Edit content</a></li>
+						<li><a class='' href='#!' onclick="stub()">New page</a></li>
+						<li><a class='' href="/post/create" >New blog post</a></li>
 					</ul>
 				</li>
 				@endif

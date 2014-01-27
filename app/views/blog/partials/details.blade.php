@@ -34,9 +34,9 @@
 				<div style="clear: both; margin-bottom: 5px;"></div>
 		
 					<h3 class="entry-title">
-						<article id="editablecontenttitle" style='width: 100%'>
+						<span id="editablecontenttitle" style='width: 100%'>
 							{{ $post->title }}
-							</article>
+							</span>
 					</h3>
 				<input type="hidden" name="post_id" value="{{ $post->id }}">
 				<input type="hidden" name="thetitledata" id="thetitledata">
@@ -74,23 +74,26 @@
 			{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
 			</div>
 		@endif
+		
+		@if(Auth::check())
+		@if(Auth::user()->access_level == 3)
+		</form>
+		@endif
+		@endif
 	</header>
 
 	<div class="entry-content">
-		@if (!empty($post->image))
-		<figure>
-			<a href="{{ $post->getUrl() }}" class="hover">
-				<img src="{{ $post->getThumbnailImage() }}" alt=""><span class="plus"></span>
-				</a>
-		</figure>
-		@endif
 		
 		@if(Auth::check())
 		@if(Auth::user()->access_level ==3)
-			<article id="editablecontent" itemprop="description" style='width: 100%'>
+			<article id="editablecontent" style='width: 100%'>
 				{{ $post->content }}
 			</article>
 			<input type="hidden" name="thedata" id="thedata">
+			
+			<div class="admin-hidden">
+				<button onclick="deletePost()" class="btn btn-danger">Delete this post</button>
+			</div>
 		@endif
 		@endif
 		
@@ -103,23 +106,7 @@
 		@if(!Auth::check())
 			{{ $post->content }}
 		@endif
-		
-		@if(Auth::check())
-		@if(Auth::user()->access_level == 1)
-			</form>
-		@endif
-		@endif
-		
-		@if(Auth::check())
-		@if(Auth::user()->access_level == 3)
-			<div class="admin-hidden">
-			<form method="post" action="/blog/delete" name="deleteform" id="deleteform">
-			<input type="hidden" name="post_id" value="{{ $post->id }}">
-			<a href="#!" onclick="deletePost()" class="btn btn-danger">Delete this post</a>
-			</form>
-			</div>
-		@endif
-		@endif
+
 		
 		@if (Config::get('laravel-blog::show_share_partial_on_view'))
 			@include('blog.partials.share')
@@ -146,6 +133,8 @@
 		@endif
 		
 	</div>
+	
+	
 
 	<footer class="entry-footer"> 
 		<span class="blog date"> 
@@ -158,6 +147,14 @@
 	<!--end entry-footer--> 
 	
 </article>
+
+@if(Auth::check())
+@if(Auth::user()->access_level == 3)
+<form method="post" action="/post/delete" name="deleteform" id="deleteform">
+	<input type="hidden" name="post_id" value="{{ $post->id }}">
+</form>
+@endif
+@endif
 
 @section('bottom-js')
 <script>
@@ -181,14 +178,12 @@ function savePostChanges(){
 }
 function deletePost(){
 	var r=confirm("Are you sure you want to delete this post?");
-if (r==true)
-  {
-  	$("#deleteform").submit();
-  }
-else
-  {
-
-  }
+	if (r) {
+		$("#deleteform").submit();
+	} else {
+		
+		return false;
+	}
 }
 </script>
 @stop

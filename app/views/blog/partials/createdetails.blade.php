@@ -1,6 +1,6 @@
 <article class="entry-post">    
 	
-	{{ Form::open(array('url' => '/savenewpost',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
+	{{ Form::open(array('url' => '',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
 	<header class="entry-header">
 		
 		<div id="editmsg" class='alert alert-success hidden'>
@@ -22,6 +22,19 @@
 		<div class="controls">
 		<div class="input-prepend"> <span class="add-on"><i class=" icon-calendar"></i></span>
 	    {{ Form::text('post_date', date("Y-m-d"), array('class' => 'required dateISO')); }}
+	    </div>
+	    </div>
+	    </div>
+	    
+	    <div class="control-group">
+		{{ Form::label('status', 'Status', array('class' => 'control-label')); }}
+		<div class="controls">
+		<div class="input-prepend"> <span class="add-on"><i class="icon-check-sign"></i></span>
+	    {{ Form::select('status', array(
+	    	'DRAFT' => 'Draft',
+	    	'APPROVED' => 'Approved'
+	    	)); 
+		}}
 	    </div>
 	    </div>
 	    </div>

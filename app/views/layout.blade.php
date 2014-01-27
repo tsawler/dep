@@ -219,6 +219,23 @@ function saveTitleChanges(){
     return false;
 }
 
+function saveEditedPage(){
+	// get the changed data;
+    var data = $('#editablecontenttitle').html();
+    $("#thetitledata").val(data);
+    
+    // get the changed data;
+    var pagedata = editor.getData();
+    // save the changed data
+    $("#thedata").val(pagedata);
+    
+    var options = { target: '#theeditmsg', success: showResponse };
+    $("#savetitledata").unbind('submit').ajaxSubmit(options);
+    $("#oldtitle").val('');
+    $("#old").val('');
+    return false;
+}
+
 function turnOffEditing(item) {
 	for (name in CKEDITOR.instances) {
     	CKEDITOR.instances[name].destroy()

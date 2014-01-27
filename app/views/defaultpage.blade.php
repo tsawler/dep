@@ -50,12 +50,13 @@ if(Auth::check()){
 @endif
 @endif
 	
-	@if(Auth::check())
-	@if(Auth::user()->access_level ==3)
+@if(Auth::check())
+@if(Auth::user()->access_level ==3)
+	<form action="/saveeditedpage" method="post" id="savetitledata" name="savetitledata">
 	<div class="hidden" id="savetitlebar" style='margin-bottom: 5px;'>
 	<div class='pull-right'>
-	<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffTitleEditing()"></i></a>&nbsp;
-	<a href='#!' onclick='saveTitleChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveTitleChanges()"></i></a>
+	<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
+	<a href='#!' onclick='savePageChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveEditedPage()"></i></a>
 	</div>
 	</div>
 	<div style="clear: both; margin-bottom: 5px;"></div>
@@ -67,43 +68,9 @@ if(Auth::check()){
 	</h3>
 	<input type="hidden" name="page_id" value="{{ $page_id }}">
 	<input type="hidden" name="thetitledata" id="thetitledata">
-	</form>
-@endif
-@endif
-
-@if(Auth::check())
-@if(Auth::user()->access_level == 1)
-	<h3 class="short_headline" style="text-transform: none;"><span>{{ $page_title}}</span></h3>
-@endif
-@endif
-
-@if(!Auth::check())
-	<h3 class="short_headline" style="text-transform: none;"><span>{{ $page_title }}</span></h3>
-@endif
-		
-@if(Auth::check())
-@if(Auth::user()->access_level == 3)
-	<div id="editmsg" class='alert alert-success hidden'>
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<span id="theeditmsg"></span>
-	</div>
-@endif
-@endif
-		
-@if(Auth::check())
-@if(Auth::user()->access_level ==3)
-	<div class="hidden" id="savebar" style='margin-bottom: 5px;'>
-	<div class='pull-right'>
-	<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffContentEditing()"></i></a>&nbsp;
-	<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveChanges()"></i></a>
-	</div>
-	</div>
-	<div style="clear: both; margin-bottom: 5px;"></div>
-	<form action="/savepage" method="post" id="savedata" name="savedata">
 	<article id="editablecontent" itemprop="description" style='width: 100%'>
 	{{ $page_content }}
 	</article>
-	<input type="hidden" name="page_id" value="{{ $page_id }}">
 	<input type="hidden" name="thedata" id="thedata">
 	</form>
 @endif
@@ -111,17 +78,17 @@ if(Auth::check()){
 
 @if(Auth::check())
 @if(Auth::user()->access_level == 1)
+	<h3 class="short_headline" style="text-transform: none;"><span>{{ $page_title}}</span></h3>
 	{{ $page_content }}
 @endif
 @endif
 
 @if(!Auth::check())
+	<h3 class="short_headline" style="text-transform: none;"><span>{{ $page_title }}</span></h3>
 	{{ $page_content }}
 @endif
 
-
-	<p>&nbsp;</p>
-	
+<p>&nbsp;</p>	
 	
 </div>
 <!-- end row-fluid-->

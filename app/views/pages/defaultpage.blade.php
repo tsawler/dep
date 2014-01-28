@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-{{ $page_title }}: The Dog Eared Press
+{{ strip_tags($page_title) }}: The Dog Eared Press
 @stop
 
 @section('meta')
@@ -39,7 +39,7 @@
 	<form action="/savepagetitle" method="post" id="savetitledata" name="savetitledata">
 	<h3 class="short_headline" style="text-transform: none;">
 	<article id="editablecontenttitle" style='width: 100%'>
-	<span>{{ $page_title }}</span>
+	{{ $page_title }}
 	</article>
 	</h3>
 	<input type="hidden" name="page_id" value="{{ $page_id }}">

@@ -8,10 +8,10 @@
 				<li><a href="/">Home</a></li>
 				<li class="parent"><a href="javascript:void(0)">About<i></i></a>
 					<ul>
-						<li><a href="/page/4/About">About our press</a></li>
-						<li><a href="/page/3/Editorial+Team">Our editorial team</a></li>
-						<li><a href="/page/5/About">Our philosophy</a></li>
-						<li><a href="">Sneak peeks</a></li>
+						<li><a href="/about">About our press</a></li>
+						<li><a href="/team">Our editorial team</a></li>
+						<li><a href="/our+philosophy">Our Philosophy</a></li>
+						<li><a href="/sneak+peeks">Sneak peeks</a></li>
 					</ul>
 				</li>
 				<li class="parent"><a href="javascript:void(0)">Catalogue<i></i></a>
@@ -23,19 +23,19 @@
 				</li>
 				<li class="parent"><a href="javascript:void(0)">Submissions<i></i></a>
 					<ul>
-						<li><a href="/page/1/guidelines">Our guidelines</a></li>
-						<li><a href="/page/2/process">The process</a></li>
+						<li><a href="/guidelines">Our guidelines</a></li>
+						<li><a href="/the+process">The process</a></li>
 						<li><a href="/submit/index">Submit a manuscript</a></li>
 					</ul>
 				</li>
 				<li><a href="/blog">Blog</a></li>
-				<li><a href="/page/10/Contact">Contact</a></li>
+				<li><a href="/contact">Contact</a></li>
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
 				<li class="parent"><a href="!#">Admin<i></i></a>
 					<ul>
 						<li><a class='menu-item' href='#!' onclick="makePageEditable(this)">Edit content</a></li>
-						<li><a class='' href='/page/create'>New page</a></li>
+						<li><a class='' href="/page/create">New page</a></li>
 						<li><a class='' href="/post/create" >New blog post</a></li>
 					</ul>
 				</li>

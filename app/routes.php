@@ -19,22 +19,9 @@ Route::any('/', function()
 |
 |------------------------------------------------------------------------------------
 */
-Route::get('page/{pageid}/{pagename?}', function($pageid,$pagename)
-	{
-		return View::make('defaultpage');
-	})->where('pageid', '[0-9]+');
+Route::get('{pagename?}','PageController@showPage');
 
-Route::post('/saveeditedpage', array('before' => 'auth', function()
-	{
-		// make sure we are admin
-		if (Auth::user()->access_level == 3){
-			$page = Page::find(Input::get('page_id'));
-			$page->page_content = Input::get('thedata');
-			$page->page_title = Input::get('thetitledata');
-			$page->save();
-			return "Page updated successfully";
-		}
-	}));
+Route::post('/page/edit','PageController@editPage');
 
 Route::get('/page/create', array('before' => 'auth', function()
 	{

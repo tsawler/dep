@@ -9,7 +9,12 @@
 			<span id="theeditmsg">&nbsp;</span>
 			</div>
 			<form action="/post/edit" method="post" id="savetitledata" name="savetitledata">
+				<!--
 				<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
+					<!--
+					<div class="pull-left">
+						<a href="#!" style='text-decoration: none;'><i class="icon-trash" onclick="deletePost()"></i></a>
+					</div>
 					<div class='pull-right'>
 						<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
 						<a href='#!' onclick='saveChanges()'
@@ -17,6 +22,7 @@
 					</div>
 				</div>
 				<div style="clear: both; margin-bottom: 5px;"></div>
+				-->
 				<div id="approved" class="admin-hidden pull-right">
 				<select name="status" id="status">
 					<option value="DRAFT"
@@ -82,8 +88,8 @@
 
 		@if(Auth::check())
 		@if(Auth::user()->access_level == 3)
-		<input type="hidden" name="content" id="content">
-		</form>
+			<input type="hidden" name="content" id="content">
+			</form>
 		@endif
 		@endif
 
@@ -96,10 +102,13 @@
 			<article id="editablecontent" style='width: 100%'>
 				{{ $post->content }}
 			</article>
-
-			<div class="admin-hidden">
-				<button onclick="deletePost()" class="btn btn-danger">Delete this post</button>
-			</div>
+			<hr>
+			<article class="admin-hidden">
+				<a class="btn btn-primary" href="#!" onclick="savePostChanges()">Save</a>
+				<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
+				&nbsp;&nbsp;&nbsp;
+				<a class="btn btn-danger" href="#!" onclick="deletePost()">Delete</a>
+			</article>
 		@endif
 		@endif
 

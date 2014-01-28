@@ -232,7 +232,7 @@ function turnOffEditing(item) {
 	$(".menu-item").attr("onclick","makePageEditable(this)");
 	$(".menu-item").html("Edit content");
 	$("#editablecontent").attr("contenteditable","false");
-	$("#editabletitlecontent").attr("contenteditable","false");
+	$("#editablecontenttitle").attr("contenteditable","false");
 	$("#editablecontenttitle").removeClass("outlined");
 	$("#editablecontent").removeClass("outlined");
 	if ($('#oldtitle').val() != ''){

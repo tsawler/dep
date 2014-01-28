@@ -53,6 +53,7 @@ if(Auth::check()){
 @if(Auth::check())
 @if(Auth::user()->access_level ==3)
 	<form action="/saveeditedpage" method="post" id="savetitledata" name="savetitledata">
+	<!--
 	<div class="admin-hidden" id="savetitlebar" style='margin-bottom: 5px;'>
 	<div class='pull-right'>
 	<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
@@ -60,6 +61,7 @@ if(Auth::check()){
 	</div>
 	</div>
 	<div style="clear: both; margin-bottom: 5px;"></div>
+	-->
 	<form action="/savepagetitle" method="post" id="savetitledata" name="savetitledata">
 	<h3 class="short_headline" style="text-transform: none;">
 	<article id="editablecontenttitle" style='width: 100%'>
@@ -70,6 +72,12 @@ if(Auth::check()){
 	<input type="hidden" name="thetitledata" id="thetitledata">
 	<article id="editablecontent" itemprop="description" style='width: 100%'>
 	{{ $page_content }}
+	</article>
+	<article class="admin-hidden">
+		<a class="btn btn-primary" href="#!" onclick="saveEditedPage()">Save</a>
+		<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
+		&nbsp;&nbsp;&nbsp;
+		<!-- <a class="btn btn-danger" href="#!" onclick="deletePaget()">Delete</a> -->
 	</article>
 	<input type="hidden" name="thedata" id="thedata">
 	</form>

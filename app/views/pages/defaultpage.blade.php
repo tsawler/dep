@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-{{ strip_tags($page_title) }}: The Dog Eared Press
+{{ $page_title }}: The Dog Eared Press
 @stop
 
 @section('meta')
@@ -38,8 +38,8 @@
 	-->
 	<form action="/savepagetitle" method="post" id="savetitledata" name="savetitledata">
 	<h3 class="short_headline" style="text-transform: none;">
-	<article id="editablecontenttitle" style='width: 100%'>
-	{{ $page_title }}
+	<article style='width: 100%'>
+	<span id="editablecontenttitle">{{ $page_title }}</span>
 	</article>
 	</h3>
 	<input type="hidden" name="page_id" value="{{ $page_id }}">
@@ -60,13 +60,13 @@
 
 @if(Auth::check())
 @if(Auth::user()->access_level == 1)
-	<h3 class="short_headline" style="text-transform: none;"><span>{{ $page_title}}</span></h3>
+	<h3 class="short_headline" style="text-transform: none;"><span id="editablecontenttitle">{{ $page_title}}</span></h3>
 	{{ $page_content }}
 @endif
 @endif
 
 @if(!Auth::check())
-	<h3 class="short_headline" style="text-transform: none;"><span>{{ $page_title }}</span></h3>
+	<h3 class="short_headline" style="text-transform: none;"><span id="editablecontenttitle">{{ $page_title }}</span></h3>
 	{{ $page_content }}
 @endif
 

@@ -35,6 +35,40 @@ class PageController extends BaseController {
 		}
 	}
 
+
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  showHome: Show the home page
+	|
+	|------------------------------------------------------------------------------------
+	*/
+	public function showHome(){
+	
+
+		$page_title = "";
+		$page_content = "";
+		$page_id = 0;
+		$meta = "";
+
+		$results = DB::select('select * from pages where slug = ?', array("home"));
+
+		foreach ($results as $result)
+		{
+		    $page_title = $result->page_title;
+		    $page_content = $result->page_content;
+		    $meta = $result->meta;
+		    $page_id = $result->id;
+		}
+
+		return View::make('pages.home')
+			->with('page_title', $page_title)
+			->with('page_content', $page_content)
+			->with('meta', $meta)
+			->with('page_id', $page_id);
+	}
+	
+	
 	/*
 	|------------------------------------------------------------------------------------
 	|
@@ -66,10 +100,10 @@ class PageController extends BaseController {
 		}
 
 		return View::make('pages.defaultpage')
-		->with('page_title', $page_title)
-		->with('page_content', $page_content)
-		->with('meta', $meta)
-		->with('page_id', $page_id);
+			->with('page_title', $page_title)
+			->with('page_content', $page_content)
+			->with('meta', $meta)
+			->with('page_id', $page_id);
 	}
 
 

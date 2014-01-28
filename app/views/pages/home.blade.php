@@ -1,28 +1,5 @@
 @extends('layout')
 
-<?php
-$page_id = 8;
-
-$my_id = 0;
-$my_access_level = 0;
-$page_title = "";
-$page_content = "";
-$meta = "";
-
-$results = DB::select('select * from pages where id = ?', array($page_id));
-
-foreach ($results as $result)
-{
-    $page_title = $result->page_title;
-    $page_content = $result->page_content;
-    $meta = $result->meta;
-}
-if(Auth::check()){
-	$my_id = Auth::user()->id;
-	$my_access_level = Auth::user()->access_level;
-}
-?>
-
 @section('browser-title')
 The Dog Eared Press
 @stop

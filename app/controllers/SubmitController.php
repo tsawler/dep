@@ -2,11 +2,12 @@
 
 class SubmitController extends BaseController {
 
-	protected $layout = "layout";
-	
 	public function __construct() {
 		$this->beforeFilter('csrf', array('on'=>'post'));
+		$this->beforeFilter('auth', array('only'=>array('postCreate')));
 	}
+
+	protected $layout = "layout";
 	
 	public function getIndex()
 	{

@@ -81,13 +81,14 @@ if (Auth::check()) {
 	</div>
 	</div>
 	<div style="clear: both; margin-bottom: 5px;"></div>
-	<form action="/savepage" method="post" id="savedata" name="savedata">
+
+	{{ Form::open(array('url' => 'page/edit', 'id' => 'savedata', 'name' => 'savedata')) }}
 	<article id="editablecontent" itemprop="description" style='width: 100%'>
 	{{ $page_content }}
 	</article>
 	<input type="hidden" name="page_id" value="<?php echo $page_id;?>">
 	<input type="hidden" name="thedata" id="thedata">
-	</form>
+	{{ Form::close() }}
 @endif
 @endif
 

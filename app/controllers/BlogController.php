@@ -10,6 +10,13 @@
 |---------------------------------------------------------------------------------------
 */
 class BlogController extends BaseController {
+
+	public function __construct() {
+		$this->beforeFilter('csrf', array('on'=>'post'));
+		$this->beforeFilter('auth', array('only'=>array('postSave')));
+		$this->beforeFilter('auth', array('only'=>array('postDelete')));
+		$this->beforeFilter('auth', array('only'=>array('postEdit')));
+	}
 	
 	/*
 	|------------------------------------------------------------------------------------

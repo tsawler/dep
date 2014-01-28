@@ -16,7 +16,7 @@
        <nav class="user clearfix"> <a href="/users/register"><i class="icon-pencil"></i> Register</a> </nav>   
      @else
        <nav class="user clearfix"> <a href="/users/logout"><i class="icon-remove-sign"></i> Logout</a> </nav>
-       <nav class="user clearfix"> <a href="/users/dashboard"><i class="icon-dashboard"></i> Account Dashboard</a> </nav>
+       <nav class="user clearfix"> <a href="/users/dashboard"><i class="icon-dashboard"></i> Dashboard</a> </nav>
      @endif
 	
 	<!--close user nav-->

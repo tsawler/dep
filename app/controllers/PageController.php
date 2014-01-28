@@ -28,8 +28,8 @@ class PageController extends BaseController {
 	public function editPage(){
 		if (Auth::user()->access_level == 3){
 			$page = Page::find(Input::get('page_id'));
-			$page->page_content = Input::get('thedata');
-			$page->page_title = Input::get('thetitledata');
+			$page->page_content = trim(Input::get('thedata'));
+			$page->page_title = trim(Input::get('thetitledata'));
 			$page->save();
 			return "Page updated successfully";
 		}

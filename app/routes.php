@@ -41,8 +41,6 @@ Route::get('/verifyaccount','UsersPendingController@validateUser');
 
 Route::controller('password', 'RemindersController');
 
-Route::get('/authors', 'AuthorController@listAuthors');
-
 Route::controller('/submit', 'SubmitController');
 
 /*

@@ -1,5 +1,14 @@
 <?php
-
+/*
+|---------------------------------------------------------------------------------------
+| SubmitController
+|---------------------------------------------------------------------------------------
+|
+| Handles all functions for submitting manuscript
+| Note that some functions are still in the fbf vendor package
+|
+|---------------------------------------------------------------------------------------
+*/
 class SubmitController extends BaseController {
 
 	public function __construct() {
@@ -9,6 +18,13 @@ class SubmitController extends BaseController {
 
 	protected $layout = "layout";
 	
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getIndex: Display form to submit manuscript, or redirect to login
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getIndex()
 	{
 		if (Auth::check()){
@@ -20,6 +36,14 @@ class SubmitController extends BaseController {
 		}
 	}
 	
+	
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  postCreate: handle posted form data for manuscript submission
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function postCreate() {
 	
 		$validator = Validator::make(Input::all(), Submission::$rules);

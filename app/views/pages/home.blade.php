@@ -44,51 +44,48 @@ The Dog Eared Press
 @section('content')
 
 <div class="container">
-	@if(Session::has('message'))
-		<div class="alert alert-info">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			{{ Session::get('message') }}
-		</div>
-	@endif
-	@if (Session::has('error'))
-		<div class="alert alert-error">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			{{ Session::get('error') }}
-		</div>
-	@elseif (Session::has('status'))
-		<div class="alert alert-success">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			{{ Session::get('status') }}
-		</div>
-	@endif
 
-<?php 
-if (Auth::check()) {
-	if (Auth::user()->access_level == 3) { ?>
-		<div id="editmsg" class='alert alert-success hidden'>
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<span id="theeditmsg"></span>
-		</div>
-		<?php 
-	}
-} ?>
+@if(Session::has('message'))
+	<div class="alert alert-info">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		{{ Session::get('message') }}
+	</div>
+@endif
+@if (Session::has('error'))
+	<div class="alert alert-error">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		{{ Session::get('error') }}
+	</div>
+@elseif (Session::has('status'))
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		{{ Session::get('status') }}
+	</div>
+@endif
+
 @if(Auth::check())
 @if(Auth::user()->access_level ==3)
-	<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
-	<div class='pull-right'>
-	<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
-	<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveChanges()"></i></a>
+	<div id="editmsg" class='alert alert-success hidden'>
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<span id="theeditmsg"></span>
 	</div>
+
+	<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
+		<div class='pull-right'>
+			<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
+			<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveChanges()"></i></a>
+		</div>
 	</div>
 	<div style="clear: both; margin-bottom: 5px;"></div>
 
 	{{ Form::open(array('url' => 'page/edit', 'id' => 'savedata', 'name' => 'savedata')) }}
-	<article id="editablecontent" itemprop="description" style='width: 100%'>
+		<article id="editablecontent" itemprop="description" style='width: 100%'>
 	{{ $page_content }}
 	</article>
 	<input type="hidden" name="page_id" value="<?php echo $page_id;?>">
 	<input type="hidden" name="thedata" id="thedata">
 	{{ Form::close() }}
+	
 @endif
 @endif
 

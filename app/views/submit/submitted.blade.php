@@ -11,8 +11,8 @@ Manuscript Recieved: The Dog Eared Press
 
 @section('content')
 
-<div class="row-fluid reverse-order"> 
-	<div class="span12">
+<div class="container">
+<div class="span12">
 		<h3 class="short_headline" style="text-transform: none;"><span>Submit a Manuscript</span></h3>
 		
 		<p>Thanks, {{ Auth::user()->first_name; }}. We have received your manuscript, and you should receive a notification email at 

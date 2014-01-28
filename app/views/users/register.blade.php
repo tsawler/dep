@@ -2,6 +2,9 @@
 
 @section('content')
 
+<div class="container">
+<div class="span12">
+
 {{ Form::open(array('url' => 'users/create', 'class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
 <h3 class="short_headline" style="text-transform: none;"><span>Create an Account</span></h3>
 
@@ -86,7 +89,8 @@
 </div>
 
 {{ Form::close() }}
-
+</div>
+</div>
 @stop
 
 @section('bottom-js')

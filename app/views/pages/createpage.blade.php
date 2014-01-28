@@ -2,7 +2,7 @@
 
 @section('content')	
 
-<div class="row-fluid reverse-order">
+<div class="container">
 
 	<div id="editmsg" class='alert alert-success hidden'>
 	<button type="button" class="close" data-dismiss="alert">&times;</button>

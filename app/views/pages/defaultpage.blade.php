@@ -11,7 +11,8 @@
 
 @section('content')
 
-<div class="row-fluid reverse-order"> 
+<div class="container">
+<div class="span12">
 
 	
 @if(Auth::check())
@@ -71,7 +72,7 @@
 @endif
 
 <p>&nbsp;</p>	
-	
+
 </div>
-<!-- end row-fluid-->
+</div>
 @stop

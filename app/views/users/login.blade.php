@@ -11,7 +11,7 @@ Log in to your account: The Dog Eared Press
 
 @section('content')
 
-<div class="row-fluid reverse-order"> 
+<div class="container">
 	<div class="span12">
 		<h3 class="short_headline" style="text-transform: none;"><span>Login</span></h3>
 		<p>You'll need an account to buy books, or to submit a manuscript for consideration. If you have one, just log in below.

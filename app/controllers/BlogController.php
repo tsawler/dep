@@ -14,13 +14,12 @@ class BlogController extends BaseController {
 	/*
 	|------------------------------------------------------------------------------------
 	|
-	|  getCreate: Show create blog post form
+	|  getCreate: Show create blog post form (views in app)
 	|
 	|------------------------------------------------------------------------------------
 	*/
 	public function getCreate()
 	{
-
 		return View::make('blog.posts.create');
 	}
 	
@@ -119,5 +118,4 @@ class BlogController extends BaseController {
 			}
 		}
 	}
-
 }

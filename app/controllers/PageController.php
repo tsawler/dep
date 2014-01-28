@@ -18,7 +18,14 @@ class PageController extends BaseController {
 	protected $layout = "layout";
 
 	
-	function editPage(){
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  editPage: Save edits to page (called via Ajax)
+	|
+	|------------------------------------------------------------------------------------
+	*/
+	public function editPage(){
 		if (Auth::user()->access_level == 3){
 			$page = Page::find(Input::get('page_id'));
 			$page->page_content = Input::get('thedata');
@@ -28,7 +35,14 @@ class PageController extends BaseController {
 		}
 	}
 
-	function showPage(){
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  showPage: Show a page, or not active message if not active (or found)
+	|
+	|------------------------------------------------------------------------------------
+	*/
+	public function showPage(){
 
 		$slug = Request::segment(1);
 		$page_title = "Not active";

@@ -26,7 +26,7 @@ Submit a Manuscript: The Dog Eared Press
 		@endif
 		
 		<p>Thanks for considering the Dog Eared Press as a home for your manuscript. We'll need to collect some
-		basic information about you and your manuscript in order to proceed. Please ensure that you have <a href='/page/1/guidelines'>reviewed our 
+		basic information about you and your manuscript in order to proceed. Please ensure that you have <a href='/guidelines'>reviewed our 
 		submission guidelines</a> first.</p>
 		
 		{{ Form::open(array(

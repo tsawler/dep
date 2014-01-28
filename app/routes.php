@@ -9,7 +9,7 @@
 
 Route::any('/', function()
 	{
-		return View::make('home');
+		return View::make('pages.home');
 	});
 
 /*

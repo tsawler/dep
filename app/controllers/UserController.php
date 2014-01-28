@@ -1,4 +1,13 @@
 <?php
+/*
+|---------------------------------------------------------------------------------------
+| UserController
+|---------------------------------------------------------------------------------------
+|
+| Handles all functions for Users
+|
+|---------------------------------------------------------------------------------------
+*/
 class UserController extends BaseController {
 
 	protected $layout = "layout";
@@ -12,6 +21,14 @@ class UserController extends BaseController {
 		$this->beforeFilter('auth', array('only'=>array('postDashboard')));
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getRegister: show page to permit users to register, or redirect to dashboard
+	|             if already has account
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getRegister() {
 		if (Auth::check())
 		{
@@ -21,14 +38,36 @@ class UserController extends BaseController {
 		}
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getConfirmation: Show confirmation screen telling user 
+	| 			  to check his/her email (part of user validation process)
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getConfirmation() {
 		$this->layout->content = View::make('users.confirmation');
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getLogin: Show user login scree
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getLogin() {
 		$this->layout->content = View::make('users.login');
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  postSignin: Try to log the user in
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function postSignin() {
 		if (Auth::attempt(array('email'=>Input::get('username'), 'password'=>Input::get('password')))) {
 			if (strlen(Input::get('targetUrl')) > 0) {
@@ -43,6 +82,13 @@ class UserController extends BaseController {
 		}
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  postCreate: Create (but do not make active) a new user
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function postCreate() {
 		$validator = Validator::make(Input::all(), User::$rules);
 
@@ -89,6 +135,13 @@ class UserController extends BaseController {
 		}
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getDashboard: Show user dashboard
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getDashboard() {
 		$purchased = UserBook::where('user_id', '=', Auth::user()->id)->get();
 		$submissions = Submission::where('user_id', '=', Auth::user()->id)->get();
@@ -98,11 +151,25 @@ class UserController extends BaseController {
 		->with('submissions',$submissions);
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getLogout: Log the user out
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getLogout() {
 		Auth::logout();
 		return Redirect::to('users/login')->with('message', 'Your are now logged out!');
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getAuthor: get Author Account Details for for create/edit
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getAuthor() {
 		$publisher = new PublisherInfo;
 		$user_id = Auth::user()->id;
@@ -111,6 +178,13 @@ class UserController extends BaseController {
 		$this->layout->content = View::make('users.dashboard.publisher')->with('publisher', $publisher);
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  postAuthor: Save/Update Author account information
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function postAuthor(){
 		$publisher = new PublisherInfo;
 		//$publisher = PublisherInfo::find(Auth::user()->id);
@@ -140,6 +214,13 @@ class UserController extends BaseController {
 		return Redirect::to('users/dashboard')->with('message', 'Changes saved.');
 	}
 	
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getAccount: Show user account details
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getAccount() {
 		$user = new User;
 		$user = User::find(Auth::user()->id);
@@ -147,6 +228,13 @@ class UserController extends BaseController {
 
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  postAccount: Update user account details
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function postAccount(){
 		$user = new User;
 		$user = User::find(Auth::user()->id);
@@ -157,10 +245,24 @@ class UserController extends BaseController {
 		return Redirect::to('users/dashboard')->with('message', 'Changes saved.');
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  getPassword: Show form to update password
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function getPassword() {
 		$this->layout->content = View::make('users.dashboard.password');
 	}
 
+	/*
+	|------------------------------------------------------------------------------------
+	|
+	|  postPassword: try to update user password
+	|
+	|------------------------------------------------------------------------------------
+	*/
 	public function postPassword() {
 		$credentials = array('email' => Auth::user()->email, 'password' => Input::get('password'));
 		if (Auth::validate($credentials)) 

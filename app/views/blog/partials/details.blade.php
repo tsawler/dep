@@ -12,7 +12,8 @@
 				<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
 					<div class='pull-right'>
 						<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
-						<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="savePostChanges()"></i></a>
+						<a href='#!' onclick='saveChanges()' 
+							style='text-decoration: none;'><i class="icon-save" onclick="savePostChanges()"></i></a>
 					</div>
 				</div>
 				<div style="clear: both; margin-bottom: 5px;"></div>
@@ -39,8 +40,8 @@
 							</span>
 					</h3>
 				<input type="hidden" name="post_id" value="{{ $post->id }}">
-				<input type="hidden" name="thetitledata" id="thetitledata">
-
+				<input type="hidden" name="title" id="title">
+			
 		@endif
 		@endif
 		
@@ -59,8 +60,12 @@
 			<div class="byline" id="postdate"><i class="icon-time"></i>
 				{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
 			</div>
-			<div class='admin-hidden input-append date' id='datetimepicker'>
-				<input  type='text' id="post_date" name='post_date' value="{{ date('Y-m-d', strtotime($post->published_date)) }}">
+			<div class='admin-hidden'>
+				<input  id='datetimepicker' 
+					type='text' 
+					id="published_date" 
+					name='published_date' 
+					value="{{ date('Y-m-d', strtotime($post->published_date)) }}">
 			</div>
 		@else
 			<div class="byline"><i class="icon-time"></i>
@@ -77,9 +82,11 @@
 		
 		@if(Auth::check())
 		@if(Auth::user()->access_level == 3)
+		<input type="hidden" name="content" id="content">
 		</form>
 		@endif
 		@endif
+		
 	</header>
 
 	<div class="entry-content">
@@ -89,8 +96,14 @@
 			<article id="editablecontent" style='width: 100%'>
 				{{ $post->content }}
 			</article>
-			<input type="hidden" name="thedata" id="thedata">
 			
+		
+		
+		
+		
+		
+		
+		
 			<div class="admin-hidden">
 				<button onclick="deletePost()" class="btn btn-danger">Delete this post</button>
 			</div>
@@ -159,18 +172,17 @@
 @section('bottom-js')
 <script>
 $(document).ready(function () {	
-	$("#post_date").datepicker({format: 'yyyy-mm-dd', autoclose: true});
+	$("#published_date").datepicker({format: 'yyyy-mm-dd', autoclose: true});
 });
 function savePostChanges(){
-    // get the changed content data;
-    var data = editor.getData();
     // save the changed data
-    $("#thedata").val(data);
+    var data = $('#editablecontent').html();
+    $("#content").val(data);
     $("#old").val('');
     
     // get the changed data;
     var titledata = $('#editablecontenttitle').html();
-    $("#thetitledata").val(titledata);
+    $("#title").val(titledata);
     var options = { target: '#theeditmsg', success: showResponse };
     $("#savetitledata").unbind('submit').ajaxSubmit(options);
     $("#oldtitle").val('');

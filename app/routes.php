@@ -25,7 +25,7 @@ Route::post('/page/edit','PageController@editPage');
 
 Route::get('/page/create', array('before' => 'auth', function()
 	{
-		return View::make('createpage');
+		return View::make('pages.createpage');
 	}));
 
 /*

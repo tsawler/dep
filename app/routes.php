@@ -1,14 +1,20 @@
 <?php
-// Routes
+/*
+|--------------------------------------------------------------------------
+| General Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::any('/', function()
 	{
 		return View::make('home');
 	});
 
-Route::controller('/users', 'UserController');
-
-// Routes for Page display and edit
+/*
+|--------------------------------------------------------------------------
+| Display/Edit/Create pages
+|--------------------------------------------------------------------------
+*/
 Route::get('page/{pageid}/{pagename?}', function($pageid,$pagename)
 	{
 		return View::make('defaultpage');
@@ -31,7 +37,13 @@ Route::get('/page/create', array('before' => 'auth', function()
 		return View::make('createpage');
 	}));
 
-// routes for account/user
+/*
+|--------------------------------------------------------------------------
+| Account/User Routes
+|--------------------------------------------------------------------------
+*/
+Route::controller('/users', 'UserController');
+
 Route::get('/verifyaccount','UsersPendingController@validateUser');
 
 Route::controller('password', 'RemindersController');
@@ -40,8 +52,12 @@ Route::get('/authors', 'AuthorController@listAuthors');
 
 Route::controller('/submit', 'SubmitController');
 
-// Routes for Blog display and edit (other routes in fbf vendor package)
-Route::post('/saveeditedpost', array('before' => 'auth', function()
+/*
+|--------------------------------------------------------------------------
+| Blog routes (others in vendor fbf package)
+|--------------------------------------------------------------------------
+*/
+Route::post('/post/edit', array('before' => 'auth', function()
 	{
 		// make sure we are admin
 		if (Auth::user()->access_level == 3)

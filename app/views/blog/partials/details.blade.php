@@ -8,7 +8,7 @@
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<span id="theeditmsg">&nbsp;</span>
 			</div>
-			<form action="/saveeditedpost" method="post" id="savetitledata" name="savetitledata">
+			<form action="/post/edit" method="post" id="savetitledata" name="savetitledata">
 				<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
 					<div class='pull-right'>
 						<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;

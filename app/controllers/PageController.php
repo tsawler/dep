@@ -35,7 +35,8 @@ class PageController extends BaseController {
 		$page_content = "The page you have requested is not active.";
 		$meta = "";
 		$active = 0;
-
+		$page_id = 0;
+		
 		$results = DB::select('select * from pages where slug = ?', array($slug));
 		$page_title = urldecode($page_title);
 

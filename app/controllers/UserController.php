@@ -1,13 +1,5 @@
 <?php
-/*
-|---------------------------------------------------------------------------------------
-| UserController
-|---------------------------------------------------------------------------------------
-|
-| Handles all functions for Users
-|
-|---------------------------------------------------------------------------------------
-*/
+
 class UserController extends BaseController {
 
 	protected $layout = "layout";
@@ -23,14 +15,11 @@ class UserController extends BaseController {
 		$this->beforeFilter('auth', array('only'=>array('postAuthor')));
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getRegister: show page to permit users to register, or redirect to dashboard
-	|             if already has account
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Display user registration form
+	 *
+	 * @return null
+	 */
 	public function getRegister() {
 		if (Auth::check())
 		{
@@ -40,36 +29,29 @@ class UserController extends BaseController {
 		}
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getConfirmation: Show confirmation screen telling user 
-	| 			  to check his/her email (part of user validation process)
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Show registration confirmation screen
+	 *
+	 * @return null
+	 */
 	public function getConfirmation() {
 		$this->layout->content = View::make('users.confirmation');
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getLogin: Show user login scree
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Display user login form
+	 *
+	 * @return null
+	 */
 	public function getLogin() {
 		$this->layout->content = View::make('users.login');
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postSignin: Try to log the user in
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Try to log the user in
+	 *
+	 * @return redirect
+	 */
 	public function postSignin() {
 		if (Auth::attempt(array('email'=>Input::get('username'), 'password'=>Input::get('password')))) {
 			if (strlen(Input::get('targetUrl')) > 0) {
@@ -79,18 +61,16 @@ class UserController extends BaseController {
 			}
 		} else {
 			return Redirect::to('users/login')
-			->with('error', 'Your username/password combination is incorrect')
-			->withInput();
+				->with('error', 'Your username/password combination is incorrect')
+				->withInput();
 		}
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postCreate: Create (but do not make active) a new user
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Create a new, inactive user
+	 *
+	 * @return redirect
+	 */
 	public function postCreate() {
 		$validator = Validator::make(Input::all(), User::$rules);
 
@@ -133,60 +113,57 @@ class UserController extends BaseController {
 			return Redirect::to('users/confirmation');
 
 		} else {
-			return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
+			return Redirect::to('users/register')
+				->with('error', 'The following errors occurred')
+				->withErrors($validator)
+				->withInput();
 		}
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getDashboard: Show user dashboard
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Show user dashboard
+	 *
+	 * @return null
+	 */
 	public function getDashboard() {
 		$purchased = UserBook::where('user_id', '=', Auth::user()->id)->get();
 		$submissions = Submission::where('user_id', '=', Auth::user()->id)->get();
 
 		$this->layout->content = View::make('users.dashboard.dashboard')
-		->with('purchased',$purchased)
-		->with('submissions',$submissions);
+			->with('purchased',$purchased)
+			->with('submissions',$submissions);
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getLogout: Log the user out
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Log the user out
+	 *
+	 * @return redirect
+	 */
 	public function getLogout() {
 		Auth::logout();
-		return Redirect::to('users/login')->with('message', 'Your are now logged out!');
+		return Redirect::to('users/login')
+			->with('message', 'Your are now logged out!');
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getAuthor: get Author Account Details for for create/edit
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Display author account details
+	 *
+	 * @return null
+	 */
 	public function getAuthor() {
 		$publisher = new PublisherInfo;
 		$user_id = Auth::user()->id;
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
 	
-		$this->layout->content = View::make('users.dashboard.publisher')->with('publisher', $publisher);
+		$this->layout->content = View::make('users.dashboard.publisher')
+			->with('publisher', $publisher);
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postAuthor: Save/Update Author account information
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Save/update author account details
+	 *
+	 * @return redirect
+	 */
 	public function postAuthor(){
 		$publisher = new PublisherInfo;
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
@@ -215,33 +192,33 @@ class UserController extends BaseController {
 				$publisher->phone = Input::get('phone');
 				$publisher->save();
 			}
-			return Redirect::to('users/dashboard')->with('message', 'Changes saved.');
+			return Redirect::to('users/dashboard')
+				->with('message', 'Changes saved.');
 		} else {
-			return Redirect::to('users/author')->withErrors($validator)->withInput();
+			return Redirect::to('users/author')
+				->withErrors($validator)
+				->withInput();
 		}
 	}
 	
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getAccount: Show user account details
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Display user account details
+	 *
+	 * @return null
+	 */
 	public function getAccount() {
 		$user = new User;
 		$user = User::find(Auth::user()->id);
-		$this->layout->content = View::make('users.dashboard.account')->with('user', $user);
+		$this->layout->content = View::make('users.dashboard.account')
+			->with('user', $user);
 
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postAccount: Update user account details
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Save/update upser account details
+	 *
+	 * @return redirect
+	 */
 	public function postAccount(){
 		$user = new User;
 		$user = User::find(Auth::user()->id);
@@ -249,27 +226,24 @@ class UserController extends BaseController {
 		$user->last_name = Input::get('last_name');
 		$user->email = Input::get('email');
 		$user->save();
-		return Redirect::to('users/dashboard')->with('message', 'Changes saved.');
+		return Redirect::to('users/dashboard')
+			->with('message', 'Changes saved.');
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getPassword: Show form to update password
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Display password update form
+	 *
+	 * @return null
+	 */
 	public function getPassword() {
 		$this->layout->content = View::make('users.dashboard.password');
 	}
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postPassword: try to update user password
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Try to update user password
+	 *
+	 * @return null or redirect
+	 */
 	public function postPassword() {
 		$credentials = array('email' => Auth::user()->email, 'password' => Input::get('password'));
 		if (Auth::validate($credentials)) 
@@ -280,7 +254,8 @@ class UserController extends BaseController {
 			$user->save();
 			$this->layout->content = View::make('users.dashboard.passwordchanged');
 		}else {
-			return Redirect::to('users/password')->with('message', 'Existing password is wrong, or new passwords do not match.');
+			return Redirect::to('users/password')
+				->with('error', 'Existing password is wrong, or new passwords do not match.');
 		}
 	}
 }

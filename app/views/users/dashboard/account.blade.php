@@ -5,19 +5,7 @@ Dashboard: Account Details: The Dog Eared Press
 @stop
 
 @section('content')
-<div class="row-fluid reverse-order"> 
-	<div class="span12">
-	 	@if(Session::has('message'))
-			<div id="editmsg" class='alert alert-success'>
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				{{ Session::get('message') }}
-			</div>
-		@endif
-	</div>
-</div>
-
-
-
+<div class="container clearfix" id="main-content"> 
 	<div class="row-fluid sidebar-right">
 
 		<div class="span9 primary-column"> 
@@ -109,6 +97,5 @@ Dashboard: Account Details: The Dog Eared Press
 				<!--close aside widget-->
 		</section>
 	</div>
-
-
+</div>
 @stop

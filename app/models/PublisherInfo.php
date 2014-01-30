@@ -2,6 +2,15 @@
 
 class PublisherInfo extends Eloquent  {
 
+	public static $rules = array(
+	   'address'=>'required|min:2',
+	   'city'=>'required|min:2',
+	   'phone'=>'required|min:10',
+	   'province'=>'required',
+	   'country'=>'required',
+	   'zip'=>'required|min:5'
+	);
+
 
 	/**
 	 * The database table used by the model.
@@ -24,15 +33,4 @@ class PublisherInfo extends Eloquent  {
     {
         return $this->belongsTo('User');
     }
-    
-    public function address()
-    {
-	    return $this->address;
-    }
-    
-    public function user_id()
-    {
-	    return $this->user_id;
-    }
-
 }

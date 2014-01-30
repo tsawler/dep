@@ -22,24 +22,6 @@ The Dog Eared Press
 
 <div class="container">
 
-@if(Session::has('message'))
-	<div class="alert alert-info">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		{{ Session::get('message') }}
-	</div>
-@endif
-@if (Session::has('error'))
-	<div class="alert alert-error">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		{{ Session::get('error') }}
-	</div>
-@elseif (Session::has('status'))
-	<div class="alert alert-success">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		{{ Session::get('status') }}
-	</div>
-@endif
-
 @if(Auth::check())
 @if(Auth::user()->access_level ==3)
 	<div id="editmsg" class='alert alert-success hidden'>

@@ -5,18 +5,6 @@ Dashboard: Author Account Details: The Dog Eared Press
 @stop
 
 @section('content')
-<div class="row-fluid reverse-order"> 
-	<div class="span12">
-	 	@if(Session::has('message'))
-			<div id="editmsg" class='alert alert-success'>
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				{{ Session::get('message') }}
-			</div>
-		@endif
-	</div>
-</div>
-
-
 
 	<div class="row-fluid sidebar-right">
 
@@ -36,12 +24,6 @@ Dashboard: Author Account Details: The Dog Eared Press
 			@else
 			{{ Form::open(array('url' => 'users/author', 'class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
 			@endif
-			
-			<ul>
-			  @foreach($errors->all() as $error)
-			     <li>{{ $error }}</li>
-			  @endforeach
-			</ul>
 			
 			<p>This information is only required if you are publishing with us,
 			or if you intend to publish with us.</p>
@@ -456,6 +438,25 @@ Dashboard: Author Account Details: The Dog Eared Press
 				<!--close aside widget-->
 		</section>
 	</div>
+@stop
 
-
+@section('bottom-js')
+<script>
+$(document).ready(function () {	
+	$("#bookform").validate({
+		highlight: function(element) {
+	        $(element).closest('.control-group').addClass('error');
+	    },
+	    unhighlight: function(element) {
+	        $(element).closest('.control-group').removeClass('error');
+	        $(element).closest('.control-group').addClass('success');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'help-inline',
+	    errorPlacement: function(error, element) {
+	        error.insertAfter(element.parent());
+	    }
+	});
+});
+</script>
 @stop

@@ -11,22 +11,13 @@ Log in to your account: The Dog Eared Press
 
 @section('content')
 
-<div class="container">
-	<div class="span12">
+	<div class="container">
 		<h3 class="short_headline" style="text-transform: none;"><span>Login</span></h3>
 		<p>You'll need an account to buy books, or to submit a manuscript for consideration. If you have one, just log in below.
 		<br>
 		Don't have an account? <strong><a href="/users/register">Create an account</a></strong>, and rest assured that your personal information is safe with us.
-	</p>
-	
-	<div class="container">
-      @if(Session::has('message'))
-         <div class="alert alert-error">
-		 		{{ Session::get('message') }}
-         </div>
-      @endif
-    </div>
-   
+		</p>
+
 	{{ Form::open(array('url' => 'users/signin', 'class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
 
 		<div class="control-group">
@@ -57,20 +48,12 @@ Log in to your account: The Dog Eared Press
 
 
 	{{ Form::close() }}
-	
-	@if ($error = $errors->first("password"))
-	<div class="container">
-	      @if(Session::has('message'))
-	         <p class="alert">{{ Session::get('message') }}</p>
-	      @endif
-	</div>
-	@endif
 
 	</div>
 	
 	
 	
-</div>
+
 <!-- end row-fluid-->
 @stop
 

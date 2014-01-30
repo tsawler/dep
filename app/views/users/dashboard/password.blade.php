@@ -5,18 +5,6 @@ Password Change: The Dog Eared Press
 @stop
 
 @section('content')
-<div class="row-fluid reverse-order"> 
-	<div class="span12">
-	 	@if(Session::has('message'))
-			<div id="editmsg" class='alert alert-success'>
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				{{ Session::get('message') }}
-			</div>
-		@endif
-	</div>
-</div>
-
-
 
 	<div class="row-fluid sidebar-right">
 

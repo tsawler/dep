@@ -12,8 +12,6 @@
 @section('content')
 
 <div class="container">
-
-
 	
 @if(Auth::check())
 @if(Auth::user()->access_level == 3)
@@ -63,7 +61,6 @@
 @endif
 
 <p>&nbsp;</p>	
-
 
 </div>
 @stop

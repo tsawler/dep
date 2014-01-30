@@ -19,6 +19,8 @@ class UserController extends BaseController {
 		$this->beforeFilter('auth', array('only'=>array('postDashboard')));
 		$this->beforeFilter('auth', array('only'=>array('getAccount')));
 		$this->beforeFilter('auth', array('only'=>array('postDashboard')));
+		$this->beforeFilter('auth', array('only'=>array('getAuthor')));
+		$this->beforeFilter('auth', array('only'=>array('postAuthor')));
 	}
 
 	/*
@@ -77,7 +79,7 @@ class UserController extends BaseController {
 			}
 		} else {
 			return Redirect::to('users/login')
-			->with('message', 'Your username/password combination was incorrect')
+			->with('error', 'Your username/password combination was incorrect')
 			->withInput();
 		}
 	}
@@ -187,31 +189,36 @@ class UserController extends BaseController {
 	*/
 	public function postAuthor(){
 		$publisher = new PublisherInfo;
-		//$publisher = PublisherInfo::find(Auth::user()->id);
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
 		
-		if ($publisher === null){
-			$publisher = new PublisherInfo;
-			$publisher->address = Input::get('address');
-			$publisher->city = Input::get('city');
-			$publisher->province = Input::get('province');
-			$publisher->province_other = Input::get('province_other');
-			$publisher->country = Input::get('country');
-			$publisher->zip = Input::get('zip');
-			$publisher->phone = Input::get('phone');
-			$publisher->user_id = Auth::user()->id;
-			$publisher->save();
+		$validator = Validator::make(Input::all(), PublisherInfo::$rules);
+
+		if ($validator->passes()) {
+			if ($publisher === null){
+				$publisher = new PublisherInfo;
+				$publisher->address = Input::get('address');
+				$publisher->city = Input::get('city');
+				$publisher->province = Input::get('province');
+				$publisher->province_other = Input::get('province_other');
+				$publisher->country = Input::get('country');
+				$publisher->zip = Input::get('zip');
+				$publisher->phone = Input::get('phone');
+				$publisher->user_id = Auth::user()->id;
+				$publisher->save();
+			} else {
+				$publisher->address = Input::get('address');
+				$publisher->city = Input::get('city');
+				$publisher->province = Input::get('province');
+				$publisher->province_other = Input::get('province_other');
+				$publisher->country = Input::get('country');
+				$publisher->zip = Input::get('zip');
+				$publisher->phone = Input::get('phone');
+				$publisher->save();
+			}
+			return Redirect::to('users/dashboard')->with('message', 'Changes saved.');
 		} else {
-			$publisher->address = Input::get('address');
-			$publisher->city = Input::get('city');
-			$publisher->province = Input::get('province');
-			$publisher->province_other = Input::get('province_other');
-			$publisher->country = Input::get('country');
-			$publisher->zip = Input::get('zip');
-			$publisher->phone = Input::get('phone');
-			$publisher->save();
+			return Redirect::to('users/author')->withErrors($validator)->withInput();
 		}
-		return Redirect::to('users/dashboard')->with('message', 'Changes saved.');
 	}
 	
 	/*

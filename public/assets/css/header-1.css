@@ -731,7 +731,8 @@ body.tall-logo nav.user {
  	only screen and (min--moz-device-pixel-ratio: 2),
 	only screen and (min-device-pixel-ratio: 2) {
 	#logo {
-		background-image: url(../images/retina/dep_logo_@2x.png);
+		/*background-image: url(../images/retina/dep_logo_@2x.png);*/
+		background-image: url(../images/dep-logo-sm.png);
 		-moz-background-size: 140px 59px;
 		/*w & h of total ORIGINAL 72dpi image*/
 		-ie-background-size: 140px 59px;
@@ -741,7 +742,8 @@ body.tall-logo nav.user {
 	}
 	
 	.tall-logo #logo {
-		background-image: url(../images/retina/tall-logo-mobile_@2x.png);
+		/*background-image: url(../images/retina/tall-logo-mobile_@2x.png);*/
+		background-image: url(../images/dep-logo-sm.png);
 		-moz-background-size: 170px 185px;
 		/*w & h of total image 72dpi image*/
 		-ie-background-size: 170px 185px;
@@ -784,7 +786,7 @@ body.tall-logo nav.user {
  	only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2),
 	only screen and (max-width: 767px) and (min-device-pixel-ratio: 2) {
 	.tall-logo #logo {
-		/* background-image: url(../images/retina/tall-logo-mobile_@2x.png);*/
+		/* background-image: url(../images/retina/tall-logo-mobile_@2x.png); */
 		background-image: url(../images/dep-logo-sm.png);
 		-moz-background-size: 78px 85px;
 		/*w & h of total image 72dpi image*/

@@ -784,7 +784,8 @@ body.tall-logo nav.user {
  	only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2),
 	only screen and (max-width: 767px) and (min-device-pixel-ratio: 2) {
 	.tall-logo #logo {
-		background-image: url(../images/retina/tall-logo-mobile_@2x.png);
+		/* background-image: url(../images/retina/tall-logo-mobile_@2x.png);*/
+		background-image: url(../images/dep-logo-sm.png);
 		-moz-background-size: 78px 85px;
 		/*w & h of total image 72dpi image*/
 		-ie-background-size: 78px 85px;

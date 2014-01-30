@@ -26,7 +26,7 @@ CKEDITOR.editorConfig = function( config ) {
     [
     	['Source'],
         ['Bold','Italic'],
-        ['Format'],
+        ['Format','Styles'],
         ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','Image','Video','Link','Unlink','Maximize']
 
     ];

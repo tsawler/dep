@@ -1,14 +1,5 @@
 <?php
-/*
-|---------------------------------------------------------------------------------------
-| BlogController
-|---------------------------------------------------------------------------------------
-|
-| Handles all functions for Blog CRUD
-| Note that some functions are still in the fbf vendor package
-|
-|---------------------------------------------------------------------------------------
-*/
+
 class BlogController extends BaseController {
 
 	public function __construct() {
@@ -18,25 +9,21 @@ class BlogController extends BaseController {
 		$this->beforeFilter('auth', array('only'=>array('postEdit')));
 	}
 	
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  getCreate: Show create blog post form (views in app)
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Show form to create blog post
+	 *
+	 * @return null
+	 */
 	public function getCreate()
 	{
 		return View::make('blog.posts.create');
 	}
 	
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postSave: Save posted form (new entry)
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Save blog post
+	 *
+	 * @return null
+	 */
 	public function postSave()
 	{
 		if (Auth::user()->access_level == 3)
@@ -68,13 +55,11 @@ class BlogController extends BaseController {
 		}
 	}
 	
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postDelete: Delete blog post
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Delete blog post
+	 *
+	 * @return null
+	 */
 	public function postDelete()
 	{
 		if (Auth::user()->access_level == 3)
@@ -86,13 +71,11 @@ class BlogController extends BaseController {
 		}
 	}
 	
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  postEdit: Save edited blog post (called via ajax)
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Save edit post (called via ajax)
+	 *
+	 * @return String
+	 */
 	public function postEdit()
 	{
 		{

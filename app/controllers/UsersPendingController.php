@@ -1,6 +1,11 @@
 <?php
 class UsersPendingController extends BaseController {
 
+	/**
+	 * validate user using token sent through email
+	 *
+	 * @return null
+	 */
 	function validateUser(){
 		$user_id = 0;
 		$email = "";

@@ -4,6 +4,11 @@ use Illuminate\Support\MessageBag;
 
 class LoginController extends BaseController {
 
+	/**
+	 * Try to log user in
+	 *
+	 * @return null
+	 */
 	public function processLogin() {
 		
 		$errors = new MessageBag();
@@ -28,8 +33,6 @@ class LoginController extends BaseController {
                     "password" => Input::get("password")
                 ];
                 if (Auth::attempt($credentials)) {
-                	session_start();
-					$_SESSION['KCFINDER']['disabled'] = false;
                     return Redirect::route("/");
                 }
             } else {
@@ -45,7 +48,5 @@ class LoginController extends BaseController {
             }
         }
         return View::make('users.login');
-        //Route::post('/login', 'LoginController@processLogin');
 	}
-
 }

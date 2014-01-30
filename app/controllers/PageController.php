@@ -1,13 +1,5 @@
 <?php
-/*
-|---------------------------------------------------------------------------------------
-| PageController
-|---------------------------------------------------------------------------------------
-|
-| Handles all functions for Page CRUD
-|
-|---------------------------------------------------------------------------------------
-*/
+
 class PageController extends BaseController {
 
 	public function __construct() {
@@ -18,14 +10,12 @@ class PageController extends BaseController {
 	protected $layout = "layout";
 
 	
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  editPage: Save edits to page (called via Ajax)
-	|
-	|------------------------------------------------------------------------------------
-	*/
-	public function editPage(){
+	/**
+	 * Save edits to page (in place, called via ajax)
+	 *
+	 * @return text
+	 */
+	 public function editPage(){
 		if (Auth::user()->access_level == 3){
 			$page = Page::find(Input::get('page_id'));
 			$page->page_content = trim(Input::get('thedata'));
@@ -36,13 +26,11 @@ class PageController extends BaseController {
 	}
 
 
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  showHome: Show the home page
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Display home page
+	 *
+	 * @return null
+	 */
 	public function showHome(){
 	
 
@@ -69,13 +57,11 @@ class PageController extends BaseController {
 	}
 	
 	
-	/*
-	|------------------------------------------------------------------------------------
-	|
-	|  showPage: Show a page, or not active message if not active (or found)
-	|
-	|------------------------------------------------------------------------------------
-	*/
+	/**
+	 * Show generic page
+	 *
+	 * @return null
+	 */
 	public function showPage(){
 
 		$slug = Request::segment(1);

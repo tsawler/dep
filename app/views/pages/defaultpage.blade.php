@@ -12,7 +12,7 @@
 @section('content')
 
 <div class="container">
-<div class="span12">
+
 
 	
 @if(Auth::check())
@@ -28,15 +28,6 @@
 @if(Auth::user()->access_level ==3)
 
 	{{ Form::open(array('url' => 'page/edit', 'id' => 'savetitledata', 'name' => 'savetitledata')) }}
-	<!--
-	<div class="admin-hidden" id="savetitlebar" style='margin-bottom: 5px;'>
-	<div class='pull-right'>
-	<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
-	<a href='#!' onclick='savePageChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveEditedPage()"></i></a>
-	</div>
-	</div>
-	<div style="clear: both; margin-bottom: 5px;"></div>
-	-->
 	<form action="/savepagetitle" method="post" id="savetitledata" name="savetitledata">
 	<h3 class="short_headline" style="text-transform: none;">
 	<article style='width: 100%'>
@@ -73,6 +64,6 @@
 
 <p>&nbsp;</p>	
 
-</div>
+
 </div>
 @stop

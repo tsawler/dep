@@ -79,7 +79,7 @@ class UserController extends BaseController {
 			}
 		} else {
 			return Redirect::to('users/login')
-			->with('error', 'Your username/password combination was incorrect')
+			->with('error', 'Your username/password combination is incorrect')
 			->withInput();
 		}
 	}

@@ -733,23 +733,23 @@ body.tall-logo nav.user {
 	#logo {
 		/*background-image: url(../images/retina/dep_logo_@2x.png);*/
 		background-image: url(../images/dep-logo-sm.png);
-		-moz-background-size: 140px 59px;
+		-moz-background-size: 173px 55px;
 		/*w & h of total ORIGINAL 72dpi image*/
-		-ie-background-size: 140px 59px;
-		-o-background-size: 140px 59px;
-		-webkit-background-size: 140px 59px;
-		background-size: 140px 59px;
+		-ie-background-size: 173px 55px;
+		-o-background-size: 173px 55px;
+		-webkit-background-size: 173px 55px;;
+		background-size: 173px 55px;
 	}
 	
 	.tall-logo #logo {
 		/*background-image: url(../images/retina/tall-logo-mobile_@2x.png);*/
 		background-image: url(../images/dep-logo-sm.png);
-		-moz-background-size: 170px 185px;
+		-moz-background-size: 173px 55px;
 		/*w & h of total image 72dpi image*/
-		-ie-background-size: 170px 185px;
-		-o-background-size: 170px 185px;
-		-webkit-background-size: 170px 185px;
-		background-size: 170px 185px;
+		-ie-background-size: 173px 55px;
+		-o-background-size: 173px 55px;
+		-webkit-background-size: 173px 55px;
+		background-size: 173px 55px;
 	}
 	
 	.search #search-trigger {

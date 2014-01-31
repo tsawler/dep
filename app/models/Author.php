@@ -2,27 +2,20 @@
 
 class Author extends Eloquent {
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'authors';
 
-	protected $hidden = array();
-
-	public function getId() {
+	/**
+	 * Get the unique identifier for the user.
+	 *
+	 * @return mixed
+	 */
+	public function getAuthIdentifier()
+	{
 		return $this->getKey();
-	}
-
-	public function getPen_name() {
-		return $this->pen_name;
-	}
-	
-	public function getActive() {
-		return $this->active;
-	}
-	
-	public function getPhone() {
-		return $this->phone;
-	}
-	
-	public function getAddress() {
-		return $this->address;
 	}
 }

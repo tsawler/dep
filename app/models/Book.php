@@ -2,28 +2,21 @@
 
 class Book extends Eloquent {
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'books';
 
-	protected $hidden = array();
-
-	public function getId() {
+	/**
+	 * Get the unique identifier for the user.
+	 *
+	 * @return mixed
+	 */
+	public function getAuthIdentifier()
+	{
 		return $this->getKey();
-	}
-
-	public function getBook_title() {
-		return $this->book_title;
-	}
-	
-	public function getAuthor_id() {
-		return $this->author_id;
-	}
-	
-	public function getPublication_date() {
-		return $this->publication_date;
-	}
-	
-	public function getActive() {
-		return $this->active;
 	}
 	
 }

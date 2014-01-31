@@ -2,38 +2,21 @@
 
 class Page extends Eloquent {
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'pages';
 
-	protected $hidden = array();
-
-	public function getId()
+	/**
+	 * Get the unique identifier for the user.
+	 *
+	 * @return mixed
+	 */
+	public function getAuthIdentifier()
 	{
 		return $this->getKey();
-	}
-
-	public function getPage_name()
-	{
-		return $this->page_name;
-	}
-	
-	public function getPage_title()
-	{
-		return $this->page_title;
-	}
-
-	public function getPage_content()
-	{
-		return $this->page_content;
-	}
-	
-	public function getActive()
-	{
-		return $this->active;
-	}
-	
-	public function getMeta()
-	{
-		return $this->meta;
 	}
 
 }

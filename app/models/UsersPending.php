@@ -2,22 +2,20 @@
 
 class UsersPending extends Eloquent {
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'users_pending';
 
-	protected $hidden = array();
-
-	public function getId()
+	/**
+	 * Get the unique identifier for the user.
+	 *
+	 * @return mixed
+	 */
+	public function getAuthIdentifier()
 	{
 		return $this->getKey();
-	}
-
-	public function getJoin_key()
-	{
-		return $this->join_key;
-	}
-	
-	public function getEmail()
-	{
-		return $this->email;
 	}
 }

@@ -12,6 +12,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	   'password'=>'required|alpha_num|between:6,32|confirmed',
 	   'password_confirmation'=>'required|alpha_num|between:6,32'
 	);
+	
+	protected $guarded = array('*');
 
 	/**
 	 * The database table used by the model.

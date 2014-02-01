@@ -32,9 +32,9 @@
 				<li><a href="/contact">Contact</a></li>
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
-				<li class="parent"><a href="!#">Admin<i></i></a>
+				<li class="parent"><a href="javascript:void(0)">Admin<i></i></a>
 					<ul>
-						<li><a class='menu-item' href='#!' onclick="makePageEditable(this)">Edit content</a></li>
+						<li><a class='menu-item' href="javascript:void(0)" onclick="makePageEditable(this)">Edit content</a></li>
 						<li><a class='' href="/page/create">New page</a></li>
 						<li><a class='' href="/post/create" >New blog post</a></li>
 					</ul>

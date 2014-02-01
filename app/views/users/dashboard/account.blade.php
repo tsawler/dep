@@ -99,3 +99,31 @@ Dashboard: Account Details: The Dog Eared Press
 	</div>
 </div>
 @stop
+
+@section('bottom-js')
+<script>
+$(document).ready(function () {	
+	$("#bookform").validate({
+		rules: {
+			verify_email: {
+				required: true,
+				equalTo: "#email",
+				email: true
+			}
+		},
+		highlight: function(element) {
+	        $(element).closest('.control-group').addClass('error');
+	    },
+	    unhighlight: function(element) {
+	        $(element).closest('.control-group').removeClass('error');
+	        $(element).closest('.control-group').addClass('success');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'help-inline',
+	    errorPlacement: function(error, element) {
+	        error.insertAfter(element.parent());
+	    }
+	});
+});
+</script>
+@stop

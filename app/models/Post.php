@@ -9,6 +9,8 @@ class Post extends Eloquent  {
 	   'meta_keywords'=>'required',
 	   'meta_description'=>'required',
 	);
+	
+	protected $guarded = array('*');
 
 	/**
 	 * The database table used by the model.

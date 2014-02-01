@@ -7,7 +7,9 @@ class Submission extends Eloquent  {
 	   'manuscript'=>'required',
 	   'manuscript_title'=>'required|min:2'
 	);
-
+	
+	protected $guarded = array('*');
+	
 	/**
 	 * The database table used by the model.
 	 *

@@ -2,6 +2,8 @@
 
 class Page extends Eloquent {
 
+	protected $guarded = array('*');
+
 	/**
 	 * The database table used by the model.
 	 *

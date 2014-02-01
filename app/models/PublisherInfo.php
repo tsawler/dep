@@ -10,6 +10,8 @@ class PublisherInfo extends Eloquent  {
 	   'country'=>'required',
 	   'zip'=>'required|min:5'
 	);
+	
+	protected $guarded = array('*');
 
 
 	/**

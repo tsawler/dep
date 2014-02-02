@@ -25,7 +25,7 @@ Password Change: The Dog-Eared Press
 		    <li><a href="http://support.google.com/accounts/bin/answer.py?hl=en&answer=1066447" target="_blank">Google Authenticator</a> (Android/iPhone/BlackBerry)</li>
 		    <li><a href="http://guide.duosecurity.com/third-party-accounts" target="_blank">Duo Mobile</a> (Android/iPhone)</li>
 		    <li><a href="http://www.amazon.com/gp/product/B0061MU68M" target="_blank">Amazon AWS MFA</a> (Android)</li>
-		    <li><a href="http://www.windowsphone.com/en-US/apps/021dd79f-0598-e011-986b-78e7d1fa76f8">Authenticator</a> (Windows Phone)</li>
+		    <li><a href="http://www.windowsphone.com/en-US/apps/021dd79f-0598-e011-986b-78e7d1fa76f8" target="_blank">Authenticator</a> (Windows Phone)</li>
 		    </ul>
 		    
 		    <p>

@@ -53,11 +53,38 @@ class UserController extends BaseController {
 	 * @return redirect
 	 */
 	public function postSignin() {
-		if (Auth::attempt(array('email'=>Input::get('username'), 'password'=>Input::get('password')))) {
+		// get the supplied login credentials
+		$credentials = array('email'=>Input::get('username'), 'password'=>Input::get('password'));
+		
+		// try logging in
+		if (Auth::attempt($credentials)) 
+		{
 			if (strlen(Input::get('targetUrl')) > 0) {
-				return Redirect::to(Input::get('targetUrl'))->with('message', 'You are now logged in!');
+				$tfa = Auth::user()->use_tfa;
+				if ($tfa == 1)
+				{
+					Auth::logout();
+					Session::put('credentials', $credentials);
+					return Redirect::to('users/tfa');
+				} 
+				else 
+				{
+					return Redirect::to(Input::get('targetUrl'))->with('message', 'You are now logged in!');
+				}
+				
 			} else {
-				return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
+				
+				$tfa = Auth::user()->use_tfa;
+				if ($tfa == 1)
+				{
+					Auth::logout();
+					Session::put('credentials', $credentials);
+					return Redirect::to('users/tfa');
+				} 
+				else 
+				{
+					return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
+				}
 			}
 		} else {
 			return Redirect::to('users/login')
@@ -257,5 +284,38 @@ class UserController extends BaseController {
 			return Redirect::to('users/password')
 				->with('error', 'Existing password is wrong, or new passwords do not match.');
 		}
+	}
+	
+	/**
+	 * Display password update form
+	 *
+	 * @return null
+	 */
+	public function getTfa() {
+		$this->layout->content = View::make('users.dashboard.tfa');
+	}
+	
+	public function postChecktfa() {
+		$credentials = array();
+		$credentials = Session::get('credentials');
+		$tfa = Input::get('tfa');
+		
+		// try logging in
+		if (Auth::once($credentials)) 
+		{
+			$tfa_secret = Auth::user()->tfa_secret;
+			$ga = new GoogleAuthenticator();
+			$checkResult = $ga->verifyCode($tfa_secret, $tfa, 10);
+			if ($checkResult) {
+				Auth::attempt($credentials);
+				Session::forget('credentials');
+			    return Redirect::to(Input::get('targetUrl'))
+			    	->with('message', 'You are now logged in!');
+			} else {
+				return Redirect::to('users/tfa')
+					->with('error','Invalid code');
+			}
+		}
+		
 	}
 }

@@ -12,7 +12,7 @@ Submit a Manuscript: The Dog-Eared Press
 @section('content')
 
 <div class="container">
-<div class="span12">
+
 		<h3 class="short_headline" style="text-transform: none;"><span>Submit a Manuscript</span></h3>
 		
 		<p>Thanks for considering the Dog-Eared Press as a home for your manuscript. We'll need to collect some

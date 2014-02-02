@@ -14,7 +14,7 @@ Password Change: The Dog Eared Press
 			 <h3>Two-Step Authentication</h3>
 		    <p>
 		    Two-step Authentication is an optional but highly recommended security feature that adds an extra layer of protection to your account. 
-		    Once you enable two-step, Authentication, you will be asked to enter a six-digit security code in addition to your password 
+		    Once you enable two-step Authentication, you will be asked to enter a six-digit security code in addition to your password 
 		    whenever you sign in.</p>
 		    
 		    <p>You will get the six digit code using an application installed on your mobile phone. The numeric code is 

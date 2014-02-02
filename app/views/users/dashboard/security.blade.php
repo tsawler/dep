@@ -45,7 +45,7 @@ Password Change: The Dog-Eared Press
 			    <div class="control-group">
 				{{  Form::label('use_tfa', 'Use 2-Step Auth', array('class' => 'control-label')); }}
 				<div class="controls">
-				<div class="input-prepend"> <span class="add-on">?</span>
+				<div class="input-prepend"> <span class="add-on"><i class="icon-lock"></i></span>
 				{{ Form::select('use_tfa', array(
 					'1' => 'Yes',
 					'0' => 'No')) }}

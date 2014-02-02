@@ -35,6 +35,8 @@ return array(
     'Fitztrev\\LaravelHtmlMinify' => array($vendorDir . '/fitztrev/laravel-html-minify/src'),
     'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Fbf\\LaravelBlog' => array($vendorDir . '/fbf/laravel-blog/src'),
+    'Faker\\PHPUnit' => array($vendorDir . '/fzaninotto/faker/test'),
+    'Faker' => array($vendorDir . '/fzaninotto/faker/src'),
     'Cviebrock\\EloquentSluggable' => array($vendorDir . '/cviebrock/eloquent-sluggable/src'),
     'Crypt' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'ClassPreloader' => array($vendorDir . '/classpreloader/classpreloader/src'),

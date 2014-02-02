@@ -338,7 +338,7 @@ class UserController extends BaseController {
 		$ga = new GoogleAuthenticator();
 		$user = new User;
 		$user = User::find(Auth::user()->id);
-		$qrCodeUrl = $ga->getQRCodeGoogleUrl("www.dogearedpress.ca", Auth::user()->tfa_secret);
+		$qrCodeUrl = $ga->getQRCodeGoogleUrl(Config::get('app.url'), Auth::user()->tfa_secret);
 		$this->layout->content = View::make('users.dashboard.security')
 			->with('qrCodeUrl', $qrCodeUrl)
 			->with('user',$user);

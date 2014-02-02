@@ -89,18 +89,16 @@ return array(
 	 * The view to use for the posts index page. You can change this to a view in your
 	 * app, and inside your own view you can @include the various elements in the package
 	 * or you can use this one provided, but there's no layout or anything.
-	 
-	'index_view' => 'laravel-blog::posts.index',*/
-	'index_view' => 'blog.index',
+	 */
+	'index_view' => 'laravel-blog::posts.index',
 
 	/**
 	 * The view to use for the post detail page. You can change this to a view in your
 	 * app, and inside your own view you can @include the various elements in the package
 	 * or you can use this one provided, but there's no layout or anything.
-	 
-	'view_view' => 'laravel-blog::posts.view',*/
-	'view_view' => 'blog.posts.view',
-	
+	 */
+	'view_view' => 'laravel-blog::posts.view',
+
 	/**
 	 * The path, relative to the public_path() directory, where the original images are stored.
 	 */
@@ -151,5 +149,31 @@ return array(
 	 * replaced with the You Tube Video ID in the database for this page.
 	 */
 	'you_tube_thumbnail_code' => '<img src="//img.youtube.com/vi/%YOU_TUBE_VIDEO_ID%/mqdefault.jpg" width="200" height="150" />',
+
+	'seed' => array(
+
+		/**
+		 * Should the seeder append (replace = false) or replace (true)
+		 */
+		'replace' => true,
+
+		/**
+		 * List of the you tube video ids that could be used
+		 */
+		'you_tube_video_ids' => array(
+			'dQw4w9WgXcQ'
+		),
+
+		/**
+		 * One in every X posts is a YouTube Video (use 0 for no YouTube Videos)
+		 */
+		'you_tube_video_freq' => 5,
+
+		/**
+		 * One in every X posts that is not a YouTube Video, has an image (use 0 for no images)
+		 */
+		'image_freq' => 2,
+
+	),
 
 );

@@ -143,16 +143,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FbF/Laravel-Blog.git",
-                "reference": "a45610c7abc5f4f6f7f377480fc308ea3d5f051e"
+                "reference": "209e3bc5449d22cafc1c401ba904db967038465f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FbF/Laravel-Blog/zipball/a45610c7abc5f4f6f7f377480fc308ea3d5f051e",
-                "reference": "a45610c7abc5f4f6f7f377480fc308ea3d5f051e",
+                "url": "https://api.github.com/repos/FbF/Laravel-Blog/zipball/209e3bc5449d22cafc1c401ba904db967038465f",
+                "reference": "209e3bc5449d22cafc1c401ba904db967038465f",
                 "shasum": ""
             },
             "require": {
                 "cviebrock/eloquent-sluggable": "1.0.*",
+                "fzaninotto/faker": "1.3.*",
                 "illuminate/support": "4.*",
                 "php": ">=5.3.0",
                 "thujohn/rss": "dev-master"
@@ -162,7 +163,8 @@
                 "classmap": [
                     "src/controllers",
                     "src/migrations",
-                    "src/models"
+                    "src/models",
+                    "src/seeds"
                 ],
                 "psr-0": {
                     "Fbf\\LaravelBlog": "src/"
@@ -183,7 +185,7 @@
                 "blog",
                 "laravel"
             ],
-            "time": "2014-01-23 11:11:20"
+            "time": "2014-01-31 12:02:02"
         },
         {
             "name": "filp/whoops",
@@ -290,6 +292,52 @@
             "time": "2014-01-24 15:24:00"
         },
         {
+            "name": "fzaninotto/faker",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "1d143fd8caf4d264602450bc01d7484af788706b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1d143fd8caf4d264602450bc01d7484af788706b",
+                "reference": "1d143fd8caf4d264602450bc01d7484af788706b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Faker": "src/",
+                    "Faker\\PHPUnit": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2013-12-16 21:56:48"
+        },
+        {
             "name": "ircmaxell/password-compat",
             "version": "1.0.x-dev",
             "source": {
@@ -382,12 +430,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "408cbdfeb4a9d900699aaac602bc9828a7578ea6"
+                "reference": "c9eaecb03832603fee8bca3cbae500501e55c9bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/408cbdfeb4a9d900699aaac602bc9828a7578ea6",
-                "reference": "408cbdfeb4a9d900699aaac602bc9828a7578ea6",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c9eaecb03832603fee8bca3cbae500501e55c9bd",
+                "reference": "c9eaecb03832603fee8bca3cbae500501e55c9bd",
                 "shasum": ""
             },
             "require": {
@@ -491,7 +539,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-01-24 14:42:15"
+            "time": "2014-01-31 21:38:47"
         },
         {
             "name": "monolog/monolog",
@@ -653,20 +701,20 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.17",
+            "version": "v1.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-                "reference": "1396fedf134f71d479236fce0833dc4c88079391"
+                "reference": "66a936cc633fe13378c91f81030d5193be968480"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/1396fedf134f71d479236fce0833dc4c88079391",
-                "reference": "1396fedf134f71d479236fce0833dc4c88079391",
+                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/66a936cc633fe13378c91f81030d5193be968480",
+                "reference": "66a936cc633fe13378c91f81030d5193be968480",
                 "shasum": ""
             },
             "require": {
-                "lib-pcre": ">=7.9",
+                "lib-pcre": ">=7.3",
                 "php": ">=5.3.0"
             },
             "suggest": {
@@ -700,7 +748,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-01-02 10:19:36"
+            "time": "2014-02-02 17:09:49"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -708,12 +756,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "8876c820c3b31eb3f435ab6419f75aecef4b5412"
+                "reference": "8664b69e105a43fc707e0ee94d650c11a32a12b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8876c820c3b31eb3f435ab6419f75aecef4b5412",
-                "reference": "8876c820c3b31eb3f435ab6419f75aecef4b5412",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8664b69e105a43fc707e0ee94d650c11a32a12b2",
+                "reference": "8664b69e105a43fc707e0ee94d650c11a32a12b2",
                 "shasum": ""
             },
             "require": {
@@ -725,7 +773,7 @@
             "suggest": {
                 "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
                 "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
-                "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP >= 4.3.3."
+                "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 4.3.3."
             },
             "type": "library",
             "extra": {
@@ -794,7 +842,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-01-22 03:16:33"
+            "time": "2014-01-30 14:21:47"
         },
         {
             "name": "predis/predis",
@@ -892,12 +940,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackphp/builder.git",
-                "reference": "f98a5eb77b212a77b67a70f74d856ae859dd74b3"
+                "reference": "b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackphp/builder/zipball/f98a5eb77b212a77b67a70f74d856ae859dd74b3",
-                "reference": "f98a5eb77b212a77b67a70f74d856ae859dd74b3",
+                "url": "https://api.github.com/repos/stackphp/builder/zipball/b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7",
+                "reference": "b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7",
                 "shasum": ""
             },
             "require": {
@@ -934,7 +982,7 @@
             "keywords": [
                 "stack"
             ],
-            "time": "2014-01-18 16:33:58"
+            "time": "2014-01-28 19:42:24"
         },
         {
             "name": "swiftmailer/swiftmailer",

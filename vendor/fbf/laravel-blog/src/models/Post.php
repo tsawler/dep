@@ -47,30 +47,30 @@ class Post extends \Eloquent {
 		parent::boot();
 
 		static::created(function($post)
+		{
+			// If the record is being created and there is an "image" supplied, set it's width and height
+			if (!empty($post->image))
 			{
-				// If the record is being created and there is an "image" supplied, set it's width and height
-				if (!empty($post->image))
-				{
-					$post->updateImageSize();
-				}
-			});
+				$post->updateImageSize();
+			}
+		});
 
 		static::updating(function($post)
-			{
-				// If the record is about to be updated and there is a "image" supplied, get the current image
-				// value so we can compare it to the new one
-				$post->oldImage = self::where('id','=',$post->id)->first()->pluck('image');
-				return true;
-			});
+		{
+			// If the record is about to be updated and there is a "image" supplied, get the current image
+			// value so we can compare it to the new one
+			$post->oldImage = self::where('id','=',$post->id)->first()->pluck('image');
+			return true;
+		});
 
 		static::updated(function($post)
+		{
+			// If the main image has changed, and the save was successful, update the database with the new width and height
+			if (isset($post->oldImage) && $post->oldImage <> $post->image)
 			{
-				// If the main image has changed, and the save was successful, update the database with the new width and height
-				if (isset($post->oldImage) && $post->oldImage <> $post->image)
-				{
-					$post->updateImageSize();
-				}
-			});
+				$post->updateImageSize();
+			}
+		});
 
 	}
 
@@ -92,8 +92,8 @@ class Post extends \Eloquent {
 		}
 		// Update the database, use DB::table()->update approach so as not to trigger the Eloquent save() event again.
 		\DB::table($this->getTable())
-		->where('id', $this->id)
-		->update(array(
+			->where('id', $this->id)
+			->update(array(
 				'image_width' => $width,
 				'image_height' => $height,
 			));
@@ -101,27 +101,22 @@ class Post extends \Eloquent {
 
 	public function scopeLive($query)
 	{
-		if (\Auth::check())
-		{
-			return $query;
-		} else {
-			return $query->where('status', '=', Post::APPROVED)
+		return $query->where('status', '=', Post::APPROVED)
 			->where('published_date', '<=', \Carbon\Carbon::now());
-		}
 	}
 
 	public static function archives()
 	{
 		$archives = self::live()
-		->select(\DB::raw('
+			->select(\DB::raw('
 				YEAR(`published_date`) AS `year`,
 				DATE_FORMAT(`published_date`, "%m") AS `month`,
 				MONTHNAME(`published_date`) AS `monthname`,
 				COUNT(*) AS `count`
 			'))
-		->groupBy(\DB::raw('DATE_FORMAT(`published_date`, "%Y%m")'))
-		->orderBy('published_date', 'desc')
-		->get();
+			->groupBy(\DB::raw('DATE_FORMAT(`published_date`, "%Y%m")'))
+			->orderBy('published_date', 'desc')
+			->get();
 		$results = array();
 		foreach ($archives as $archive)
 		{
@@ -139,7 +134,7 @@ class Post extends \Eloquent {
 	 */
 	public function getUrl()
 	{
-		return \URL::action('Fbf\LaravelBlog\PostsController@view', array('slug' => urlencode($this->slug)));
+		return \URL::action('Fbf\LaravelBlog\PostsController@view', array('slug' => $this->slug));
 	}
 
 	/**

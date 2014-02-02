@@ -292,7 +292,7 @@ class UserController extends BaseController {
 	 * @return null
 	 */
 	public function getTfa() {
-		$this->layout->content = View::make('users.dashboard.tfa');
+		$this->layout->content = View::make('users.tfa');
 	}
 	
 	public function postChecktfa() {
@@ -309,7 +309,7 @@ class UserController extends BaseController {
 			if ($checkResult) {
 				Auth::attempt($credentials);
 				Session::forget('credentials');
-			    return Redirect::to(Input::get('targetUrl'))
+			    return Redirect::to('/users/dashboard')
 			    	->with('message', 'You are now logged in!');
 			} else {
 				return Redirect::to('users/tfa')
@@ -317,5 +317,17 @@ class UserController extends BaseController {
 			}
 		}
 		
+	}
+	
+	/**
+	 * Display security  form
+	 *
+	 * @return null
+	 */
+	public function getSecurity() {
+		$ga = new GoogleAuthenticator();
+		$qrCodeUrl = $ga->getQRCodeGoogleUrl("www.dogearedpress.ca", Auth::user()->tfa_secret);
+		$this->layout->content = View::make('users.dashboard.security')
+			->with('qrCodeUrl', $qrCodeUrl);
 	}
 }

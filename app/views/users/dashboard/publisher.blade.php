@@ -5,7 +5,7 @@ Dashboard: Author Account Details: The Dog Eared Press
 @stop
 
 @section('content')
-
+<div class="container clearfix" id="main-content"> 
 	<div class="row-fluid sidebar-right">
 
 		<div class="span9 primary-column"> 
@@ -431,13 +431,15 @@ Dashboard: Author Account Details: The Dog Eared Press
 					<ul class="navigation">
 						<li><a href='/users/dashboard'>Dashboard</a></li>
 						<li><a href='/users/account'>Your Account</a></li>
-						<li><a href='/users/password'>Change Password</a></li>
 						<li><a href="/users/author"><strong>Author Details</strong></a></li>
+						<li><a href='/users/password'>Change Password</a></li>
+						<li><a href="/users/security">Security</a></li>
 					</ul>
 				</aside>
 				<!--close aside widget-->
 		</section>
 	</div>
+</div>
 @stop
 
 @section('bottom-js')

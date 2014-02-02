@@ -9,43 +9,18 @@ Password Change: The Dog Eared Press
 	<div class="row-fluid sidebar-right">
 
 		<div class="span9 primary-column"> 
-			<h3 class="short_headline" style="text-transform: none;"><span>Update Password</span></h3>
+			<h3 class="short_headline" style="text-transform: none;"><span>Security</span></h3>
 			
 			
-			{{ Form::open(array('class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
+			{{ Form::open(array('url' => 'users/security', 'class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
 			    
-			    <div class="control-group">
-				{{ Form::label('password', 'Old Password', array('class' => 'control-label')); }}
-				<div class="controls">
-				<div class="input-prepend"> <span class="add-on"><i class='icon icon-lock'></i></span>
-			    {{ Form::password('password', null, array('class'=>'required')) }}
-			    </div>
-			    </div>
-			    </div>
-			    
-			    <div class="control-group">
-				{{ Form::label('new_password', 'New Password', array('class' => 'control-label')); }}
-				<div class="controls">
-				<div class="input-prepend"> <span class="add-on"><i class='icon icon-lock'></i></span>
-			    {{ Form::password('new_password', null, array('class'=>'required')) }}
-			    </div>
-			    </div>
-			    </div>
-			    
-			    <div class="control-group">
-				{{ Form::label('new_password_confirmation', 'Confirm New Password', array('class' => 'control-label')); }}
-				<div class="controls">
-				<div class="input-prepend"> <span class="add-on"><i class='icon icon-lock'></i></span>
-			    {{ Form::password('new_password_confirmation', null, array('class'=>'required')) }}
-			    </div>
-			    </div>
-			    </div>
+			    <img src="{{ $qrCodeUrl }}"><br><br>
 			    
 			    <hr>
 			    
 			    <div class="control-group">
 			    <div class="controls">
-			    {{ Form::submit('Update Password', array('class' => 'btn btn-primary'));}}
+			    {{ Form::submit('Update', array('class' => 'btn btn-primary'));}}
 			    </div>
 			    </div>
 			    
@@ -60,8 +35,8 @@ Password Change: The Dog Eared Press
 						<li><a href='/users/dashboard'>Dashboard</a></li>
 						<li><a href='/users/account'>Your Account</a></li>
 						<li><a href="/users/author">Author Details</a></li>
-						<li><a href='/users/password'><strong>Change Password</strong></a></li>
-						<li><a href="/users/security">Security</a></li>
+						<li><a href='/users/password'>Change Password</a></li>
+						<li><a href="/users/security"><strong>Security</strong></a></li>
 					</ul>
 				</aside>
 				<!--close aside widget-->

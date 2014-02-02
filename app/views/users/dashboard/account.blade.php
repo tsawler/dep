@@ -90,8 +90,9 @@ Dashboard: Account Details: The Dog Eared Press
 					<ul class="navigation">
 						<li><a href='/users/dashboard'>Dashboard</a></li>
 						<li><a href='/users/account'><strong>Your Account</strong></a></li>
-						<li><a href='/users/password'>Change Password</a></li>
 						<li><a href="/users/author">Author Details</a></li>
+						<li><a href='/users/password'>Change Password</a></li>
+						<li><a href="/users/security">Security</a></li>
 					</ul>
 				</aside>
 				<!--close aside widget-->

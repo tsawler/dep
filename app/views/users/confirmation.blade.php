@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-One more step: The Dog Eared Press
+One more step: The Dog-Eared Press
 @stop
 
 
@@ -12,7 +12,7 @@ One more step: The Dog Eared Press
 
 	<h3 class="short_headline" style="text-transform: none;"><span>Account Created</span></h3>
 	
-	<p>Welcome to the Dog Eared Press.</p>
+	<p>Welcome to the Dog-Eared Press.</p>
 	
 	<p>Thanks for creating an account. We have sent you an email message to the address you provided
 	to confirm this account. Please check your email and follow the instructions found there.

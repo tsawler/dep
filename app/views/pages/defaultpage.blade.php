@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-{{ $page_title }}: The Dog Eared Press
+{{ $page_title }}: The Dog-Eared Press
 @stop
 
 @section('meta')

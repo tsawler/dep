@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-Dashboard: Account Details: The Dog Eared Press
+Dashboard: Account Details: The Dog-Eared Press
 @stop
 
 @section('content')

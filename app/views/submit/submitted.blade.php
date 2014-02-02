@@ -1,11 +1,11 @@
 @extends('layout')
 
 @section('browser-title')
-Manuscript Recieved: The Dog Eared Press
+Manuscript Recieved: The Dog-Eared Press
 @stop
 
 @section('meta')
-<meta name="description" content="Submit a manuscript to the Dog Eared Press, an independent publisher of fantasy eBooks." />
+<meta name="description" content="Submit a manuscript to the Dog-Eared Press, an independent publisher of fantasy eBooks." />
 @stop
 
 
@@ -20,7 +20,7 @@ Manuscript Recieved: The Dog Eared Press
 			
 		<p>Once we have reviewed your submission, we'll be in touch.</p>
 		
-		<p>Thanks for considering the Dog Eared Press!</p>
+		<p>Thanks for considering the Dog-Eared Press!</p>
 		
 		
 	</div>

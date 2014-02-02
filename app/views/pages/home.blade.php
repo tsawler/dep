@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-The Dog Eared Press
+The Dog-Eared Press
 @stop
 
 @section('meta')
@@ -11,7 +11,7 @@ The Dog Eared Press
 @section('hero-unit')
 <div class="hero-unit center no-border no-padding-bottom">
 		<div class="container"> 
-			<h1>Welcome to the Dog Eared Press</h1>
+			<h1>Welcome to the Dog-Eared Press</h1>
 		</div>
 		<!--close container--> 
 	</div>

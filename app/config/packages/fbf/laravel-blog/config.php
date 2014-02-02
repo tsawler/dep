@@ -12,35 +12,35 @@ return array(
 	 *
 	 * @type string
 	 */
-	'index_page_title' => 'The Dog Eared Press',
+	'index_page_title' => 'The Dog-Eared Press',
 
 	/**
 	 * Meta description of the blog index page
 	 *
 	 * @type string
 	 */
-	'index_page_meta_description' => 'Blog for the Dog Eared Press, an independent publisher of fantasy eBooks.',
+	'index_page_meta_description' => 'Blog for the Dog-Eared Press, an independent publisher of fantasy eBooks.',
 
 	/**
 	 * Meta keywords of the blog index page
 	 *
 	 * @type string
 	 */
-	'index_page_meta_keywords' => 'blog, dog eared press, fantasy, ebooks',
+	'index_page_meta_keywords' => 'blog, dog-eared press, fantasy, ebooks',
 
 	/**
 	 * RSS feed title
 	 *
 	 * @type string
 	 */
-	'rss_feed_title' => 'The Dog Eared Press',
+	'rss_feed_title' => 'The Dog-Eared Press',
 
 	/**
 	 * RSS feed description
 	 *
 	 * @type string
 	 */
-	'rss_feed_description' => 'Blog for the Dog Eared Press, an independent publisher of fantasy eBooks',
+	'rss_feed_description' => 'Blog for the Dog-Eared Press, an independent publisher of fantasy eBooks',
 
 	/**
 	 * Determines whether to show adjacent (i.e. previous and next) post links on the post view page

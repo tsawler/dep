@@ -15,7 +15,7 @@
 @section('hero-unit')
 <div class="hero-unit">
 	<div class="container">
-		<h2>The Dog Eared Blog</h2>
+		<h2>The Dog-Eared Blog</h2>
 	</div>
 	<!--close container--> 
 </div>

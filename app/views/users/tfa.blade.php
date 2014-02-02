@@ -1,11 +1,11 @@
 @extends('layout')
 
 @section('browser-title')
-Log in to your account: The Dog Eared Press
+Log in to your account: The Dog-Eared Press
 @stop
 
 @section('meta')
-<meta name="description" content="Submit a manuscript to the Dog Eared Press, an independent publisher of fantasy eBooks." />
+<meta name="description" content="Submit a manuscript to the Dog-Eared Press, an independent publisher of fantasy eBooks." />
 @stop
 
 

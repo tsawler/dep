@@ -106,7 +106,7 @@
 				<div class="span4">
 					<section>
 						<h4>Contact Us</h4>
-						<p>The Dog Eared Press<br>
+						<p>The Dog-Eared Press<br>
 							PO Box 1234<br>
 							Fredericton NB Canada<br>
 							E3B 1B1<br>
@@ -165,7 +165,7 @@
 		<section class="footerCredits">
 			<div class="container">
 				<ul class="clearfix">
-					<li>Copyright &copy; <?php echo date("Y");?> Dog Eared Press</li>
+					<li>Copyright &copy; <?php echo date("Y");?> Dog-Eared Press</li>
 					<li><a href="#">Site Map</a></li>
 					<li><a href="#">Privacy</a></li>
 				</ul>

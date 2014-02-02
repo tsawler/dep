@@ -1,11 +1,11 @@
 @extends('layout')
 
 @section('browser-title')
-Submit a Manuscript: The Dog Eared Press
+Submit a Manuscript: The Dog-Eared Press
 @stop
 
 @section('meta')
-<meta name="description" content="Submit a manuscript to the Dog Eared Press, an independent publisher of fantasy eBooks." />
+<meta name="description" content="Submit a manuscript to the Dog-Eared Press, an independent publisher of fantasy eBooks." />
 @stop
 
 
@@ -15,7 +15,7 @@ Submit a Manuscript: The Dog Eared Press
 <div class="span12">
 		<h3 class="short_headline" style="text-transform: none;"><span>Submit a Manuscript</span></h3>
 		
-		<p>Thanks for considering the Dog Eared Press as a home for your manuscript. We'll need to collect some
+		<p>Thanks for considering the Dog-Eared Press as a home for your manuscript. We'll need to collect some
 		basic information about you and your manuscript in order to proceed. Please ensure that you have <a href='/guidelines'>reviewed our 
 		submission guidelines</a> first.</p>
 		

@@ -1,5 +1,5 @@
 <!-- begin .header-->
-<header class="header  clearfix"> <img src="/assets/images/dep-logo-sm.png" class="print logo" alt="Dog Eared Press" />
+<header class="header  clearfix"> <img src="/assets/images/dep-logo-sm.png" class="print logo" alt="Dog-Eared Press" />
 	<div class="container"> 
 		<div class="mobile-menu-holder"><!--clone menu here for mobile--></div>
 		<!-- begin #main_menu -->

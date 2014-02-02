@@ -374,4 +374,24 @@ class UserController extends BaseController {
 		return Redirect::to('users/security')
 			->with('message', 'Changes saved.');
 	}
+	
+	/**
+	 * Test a tfa code and return valid/invalid message
+	 *
+	 * @return String
+	 */
+	public function postTestcode() {
+		$tfa_secret = Auth::user()->tfa_secret;
+		$ga = new GoogleAuthenticator();
+		$tfa = Input::get('testval');
+		$checkResult = $ga->verifyCode($tfa_secret, $tfa, 10);
+		if ($checkResult)
+		{
+			return "<span style='color: green'>Valid code!</span>";	
+		}
+		else
+		{
+			return "<span style='color: red'>Invalid code!</span>";
+		}
+	}
 }

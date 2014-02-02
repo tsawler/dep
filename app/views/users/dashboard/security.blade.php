@@ -55,14 +55,14 @@ Password Change: The Dog-Eared Press
 
 @if(Auth::user()->use_tfa == 1)
 			    <div id="qr" class="control-group">
-@else
-				<div id="qr" class="control-group hidden">
-@endif
 			    <div class="controls">
-			    <img src="{{ $qrCodeUrl }}"><br><br>
+			    <img src="{{ $qrCodeUrl }}"><br>
+			    <input type="text" name="testcode" id="testcode" placeholder="enter test code">
+			    <a href="#!" onclick="testCode()" class="btn btn-info">Test Code</a>&nbsp;
+			    <span id="result"></span>
 			    </div>
 			    </div>
-			    
+@endif
 			    <hr>
 			    
 			    <div class="control-group">
@@ -72,7 +72,10 @@ Password Change: The Dog-Eared Press
 			    </div>
 			    
 		    {{ Form::close() }}
-		   
+			
+			{{ Form::open(array('url' => 'users/testcode', 'name' => 'testCodeForm', 'id' => 'testCodeForm')) }}
+		    	<input type="hidden" name="testval" id="testval">
+		    {{ Form::close() }}
 		    
 		</div> <!-- /span9 primary column -->
 	
@@ -91,4 +94,16 @@ Password Change: The Dog-Eared Press
 		</section>
 	</div>
 </div>
+@stop
+
+@section('bottom-js')
+<script>
+function testCode(){
+	//alert("code is " + $("#testcode").val());
+	$("#testval").val($("#testcode").val());
+	 var options = { target: '#result' };
+    $("#testCodeForm").unbind('submit').ajaxSubmit(options);;
+    return false;
+}
+</script>
 @stop

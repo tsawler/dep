@@ -13,6 +13,8 @@ class UserController extends BaseController {
 		$this->beforeFilter('auth', array('only'=>array('postDashboard')));
 		$this->beforeFilter('auth', array('only'=>array('getAuthor')));
 		$this->beforeFilter('auth', array('only'=>array('postAuthor')));
+		$this->beforeFilter('auth', array('only'=>array('getSecurity')));
+		$this->beforeFilter('auth', array('only'=>array('postSecurity')));
 	}
 
 	/**
@@ -55,9 +57,14 @@ class UserController extends BaseController {
 	public function postSignin() {
 		// get the supplied login credentials
 		$credentials = array('email'=>Input::get('username'), 'password'=>Input::get('password'));
+		$remember = false;
+		if (Input::get('remember') == 1)
+		{
+			$remember = true;
+		}
 		
 		// try logging in
-		if (Auth::attempt($credentials)) 
+		if (Auth::attempt($credentials, $remember)) 
 		{
 			if (strlen(Input::get('targetUrl')) > 0) {
 				$tfa = Auth::user()->use_tfa;
@@ -65,6 +72,7 @@ class UserController extends BaseController {
 				{
 					Auth::logout();
 					Session::put('credentials', $credentials);
+					Session::put('remember',$remember);
 					return Redirect::to('users/tfa');
 				} 
 				else 
@@ -79,6 +87,7 @@ class UserController extends BaseController {
 				{
 					Auth::logout();
 					Session::put('credentials', $credentials);
+					Session::put('remember',$remember);
 					return Redirect::to('users/tfa');
 				} 
 				else 
@@ -298,6 +307,7 @@ class UserController extends BaseController {
 	public function postChecktfa() {
 		$credentials = array();
 		$credentials = Session::get('credentials');
+		$remember = Session::get('remember');
 		$tfa = Input::get('tfa');
 		
 		// try logging in
@@ -307,7 +317,7 @@ class UserController extends BaseController {
 			$ga = new GoogleAuthenticator();
 			$checkResult = $ga->verifyCode($tfa_secret, $tfa, 10);
 			if ($checkResult) {
-				Auth::attempt($credentials);
+				Auth::attempt($credentials, $remember);
 				Session::forget('credentials');
 			    return Redirect::to('/users/dashboard')
 			    	->with('message', 'You are now logged in!');
@@ -320,14 +330,48 @@ class UserController extends BaseController {
 	}
 	
 	/**
-	 * Display security  form
+	 * Display security form
 	 *
 	 * @return null
 	 */
 	public function getSecurity() {
 		$ga = new GoogleAuthenticator();
+		$user = new User;
+		$user = User::find(Auth::user()->id);
 		$qrCodeUrl = $ga->getQRCodeGoogleUrl("www.dogearedpress.ca", Auth::user()->tfa_secret);
 		$this->layout->content = View::make('users.dashboard.security')
-			->with('qrCodeUrl', $qrCodeUrl);
+			->with('qrCodeUrl', $qrCodeUrl)
+			->with('user',$user);
+	}
+	
+	/**
+	 * Process security form
+	 *
+	 * @return null
+	 */
+	public function postSecurity() {
+	
+		$use_tfa = Input::get('use_tfa');
+		$secret = Auth::user()->tfa_secret;
+		
+		if ($use_tfa == 1)
+		{
+			if (Auth::user()->use_tfa == 1)
+			{
+				// do nothing. This is already set
+			} else {
+				$ga = new GoogleAuthenticator();
+				$secret = $ga->createSecret();
+			}
+		}
+		
+		// save new info
+		$user = new User;
+		$user = User::find(Auth::user()->id);
+		$user->use_tfa = $use_tfa;
+		$user->tfa_secret = $secret;
+		$user->save();
+		return Redirect::to('users/security')
+			->with('message', 'Changes saved.');
 	}
 }

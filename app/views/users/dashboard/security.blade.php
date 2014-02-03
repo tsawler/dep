@@ -67,7 +67,7 @@ Password Change: The Dog-Eared Press
 			    
 			    <div class="control-group">
 			    <div class="controls">
-			    {{ Form::submit('Update', array('class' => 'btn btn-primary'));}}
+			    {{ Form::submit('Enter test code first', array('class' => 'btn btn-primary', 'disabled' => 'disabled', 'id' => 'processform')) }}
 			    </div>
 			    </div>
 			    
@@ -101,9 +101,17 @@ Password Change: The Dog-Eared Press
 function testCode(){
 	//alert("code is " + $("#testcode").val());
 	$("#testval").val($("#testcode").val());
-	 var options = { target: '#result' };
+	 var options = { target: '#result', success: showResponse };
     $("#testCodeForm").unbind('submit').ajaxSubmit(options);;
     return false;
+}
+
+function showResponse(responseText, statusText, xhr, $form)  { 
+	if (responseText == "<span style='color: green'>Valid code!</span>")
+	{
+		$("#processform").val('Update');
+		$("#processform").removeAttr("disabled");
+	} 
 }
 </script>
 @stop

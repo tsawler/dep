@@ -43,12 +43,14 @@ Password Change: The Dog-Eared Press
 						   )
 			}}
 			    <div class="control-group">
-				{{  Form::label('use_tfa', 'Use 2-Step Auth', array('class' => 'control-label')); }}
+				{{  Form::label('use_tfa', 'Use 2-Step Auth', array('class' => 'control-label')) }}
 				<div class="controls">
 				<div class="input-prepend"> <span class="add-on"><i class="icon-lock"></i></span>
 				{{ Form::select('use_tfa', array(
 					'1' => 'Yes',
-					'0' => 'No')) }}
+					'0' => 'No'),
+					null,
+					array('id' => 'checkTFA')) }}
 				</div>
 				</div>
 			    </div>
@@ -112,5 +114,16 @@ function showResponse(responseText, statusText, xhr, $form)  {
 		$("#processform").removeAttr("disabled");
 	} 
 }
+
+$("#checkTFA").change(function() {
+	var val = $("#checkTFA").val();
+	if (val == 1){
+		$("#processform").val('Enter test code first');
+		$("#processform").attr("disabled", "disabled");
+	} else {
+		$("#processform").val('Update');
+		$("#processform").removeAttr("disabled");
+	}
+});
 </script>
 @stop

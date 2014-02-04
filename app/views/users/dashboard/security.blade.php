@@ -67,7 +67,7 @@ Password Change: The Dog-Eared Press
 			    
 			    <div class="control-group">
 			    <div class="controls">
-			    {{ Form::submit('Enter test code first', array('class' => 'btn btn-primary', 'disabled' => 'disabled', 'autofocus' => 'autofocus' id' => 'processform')) }}
+			    {{ Form::submit('Enter test code first', array('class' => 'btn btn-primary', 'disabled' => 'disabled', 'autofocus' => 'autofocus',  'id' => 'processform')) }}
 			    </div>
 			    </div>
 			    

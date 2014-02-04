@@ -57,7 +57,7 @@ Password Change: The Dog-Eared Press
 			    <div id="qr" class="control-group">
 			    <div class="controls">
 			    <img src="{{ $qrCodeUrl }}"><br>
-			    <input type="text" name="testcode" id="testcode" placeholder="enter test code">
+			    <input type="text" name="testcode" id="testcode" autofocus placeholder="enter test code">
 			    <a href="#!" onclick="testCode()" class="btn btn-info">Test Code</a>&nbsp;
 			    <span id="result"></span>
 			    </div>
@@ -67,7 +67,7 @@ Password Change: The Dog-Eared Press
 			    
 			    <div class="control-group">
 			    <div class="controls">
-			    {{ Form::submit('Enter test code first', array('class' => 'btn btn-primary', 'disabled' => 'disabled', 'autofocus' => 'autofocus',  'id' => 'processform')) }}
+			    {{ Form::submit('Enter test code first', array('class' => 'btn btn-primary', 'disabled' => 'disabled', 'id' => 'processform')) }}
 			    </div>
 			    </div>
 			    

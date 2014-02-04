@@ -99,9 +99,8 @@ Password Change: The Dog-Eared Press
 @section('bottom-js')
 <script>
 function testCode(){
-	//alert("code is " + $("#testcode").val());
 	$("#testval").val($("#testcode").val());
-	 var options = { target: '#result', success: showResponse };
+	var options = { target: '#result', success: showResponse };
     $("#testCodeForm").unbind('submit').ajaxSubmit(options);;
     return false;
 }

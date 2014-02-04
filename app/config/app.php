@@ -107,7 +107,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
-		'Fbf\LaravelBlog\LaravelBlogServiceProvider'
+		'Fbf\LaravelBlog\LaravelBlogServiceProvider',
 
 	),
 

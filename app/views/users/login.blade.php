@@ -42,7 +42,7 @@ Log in to your account: The Dog-Eared Press
 			<label class="control-label" for="optionsCheckbox">Remember me</label>
 			<div class="controls">
 				<label class="checkbox">
-					<input type="checkbox" id="remember" value="1">
+					<input type="checkbox" name="remember" id="remember" value="1">
 				</label>
 			</div>
 		</div>

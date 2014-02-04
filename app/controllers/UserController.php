@@ -68,6 +68,11 @@ class UserController extends BaseController {
 		{
 			if (strlen(Input::get('targetUrl')) > 0) {
 				$tfa = Auth::user()->use_tfa;
+				// check for cookie to see if we need to use tfa
+				if (Cookie::has('deptfa'))
+				{
+					$tfa = 0;
+				}
 				if ($tfa == 1)
 				{
 					Auth::logout();
@@ -83,6 +88,10 @@ class UserController extends BaseController {
 			} else {
 				
 				$tfa = Auth::user()->use_tfa;
+				if (Cookie::has('deptfa'))
+				{
+					$tfa = 0;
+				}
 				if ($tfa == 1)
 				{
 					Auth::logout();
@@ -319,8 +328,18 @@ class UserController extends BaseController {
 			if ($checkResult) {
 				Auth::attempt($credentials, $remember);
 				Session::forget('credentials');
-			    return Redirect::to('/users/dashboard')
-			    	->with('message', 'You are now logged in!');
+				if (Input::get('remember') == 1)
+				{
+					return Redirect::to('/users/dashboard')
+						->withCookie(Cookie::make('deptfa', 'true', 43200))
+			    		->with('message', 'You are now logged in!');
+				} 
+				else 
+				{
+			    	return Redirect::to('/users/dashboard')
+			    		->with('message', 'You are now logged in!');
+			    }
+			    
 			} else {
 				return Redirect::to('users/tfa')
 					->with('error','Invalid code');

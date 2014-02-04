@@ -26,6 +26,15 @@ Log in to your account: The Dog-Eared Press
 	    </div>
 	    
 	    <div class="control-group">
+			<label class="control-label" for="optionsCheckbox">Remember this computer for 30 days</label>
+			<div class="controls">
+				<label class="checkbox">
+					<input type="checkbox" name="remember" id="remember" value="1">
+				</label>
+			</div>
+		</div>
+	    
+	    <div class="control-group">
 	    <div class="controls">
 	    {{ Form::submit('Submit', array('class' => 'btn btn-primary'));}}
 	    </div>

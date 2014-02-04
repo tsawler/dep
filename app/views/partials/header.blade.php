@@ -5,31 +5,51 @@
 		<!-- begin #main_menu -->
 		<nav id="main_menu">
 			<ul class="primary_menu">
-				<li><a href="/">Home</a></li>
-				<li class="parent"><a href="javascript:void(0)">About<i></i></a>
-					<ul>
-						<li><a href="/about">About our press</a></li>
-						<li><a href="/team">Our editorial team</a></li>
-						<li><a href="/our+philosophy">Our Philosophy</a></li>
-						<li><a href="/sneak+peeks">Sneak peeks</a></li>
-					</ul>
-				</li>
-				<li class="parent"><a href="javascript:void(0)">Catalogue<i></i></a>
-					<ul>
-						<li><a href="">Epic Fantasy</a></li>
-						<li><a href="">Urban Fantasy</a></li>
-						<li><a href="">Young Adult Fantasy</a></li>
-					</ul>
-				</li>
-				<li class="parent"><a href="javascript:void(0)">Submissions<i></i></a>
-					<ul>
-						<li><a href="/guidelines">Our guidelines</a></li>
-						<li><a href="/the+process">The process</a></li>
-						<li><a href="/submit/index">Submit a manuscript</a></li>
-					</ul>
-				</li>
-				<li><a href="/blog">Blog</a></li>
-				<li><a href="/contact">Contact</a></li>
+			
+				@if((Auth::check()) && (Auth::user()->access_level == 3))
+
+					@foreach((MenuItem::where('menu_id','=','1')->get()) as $item)
+						@if ($item->has_children == 0)
+							@if ($item->active == 1)
+								<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>
+							@else
+								<li><a href='{{ $item->url }}'><em class='text-warning'>{{ $item->menu_text }}</em></a></li>
+							@endif
+						@else
+							@if ($item->active == 1)
+								<li class="parent"><a href="javascript:void(0)">{{ $item->menu_text }}<i></i></a>
+							@else
+								<li class="parent"><a href="javascript:void(0)"><em class='text-warning'>{{ $item->menu_text }}</em><i></i></a>
+							@endif
+							<ul>
+							@foreach ($item->dropdownItems as $dd)
+								@if ($dd->active == 1)
+									<li><a href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
+								@else
+									<li><a href="{{ $dd->url }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
+								@endif
+							@endforeach
+							</ul>
+						@endif
+					@endforeach
+				@else
+					@foreach((MenuItem::where('menu_id','=','1')->where('active','=','1')->get()) as $item)
+						@if ($item->has_children == 0)
+							<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>
+						@else
+							<li class="parent"><a href="javascript:void(0)">{{ $item->menu_text }}<i></i></a>
+							<ul>
+							@foreach ($item->dropdownItems as $dd)
+								@if ($dd->active == 1)
+								<li><a href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
+								@endif
+							@endforeach
+							</ul>
+						@endif
+					@endforeach
+				@endif
+
+			
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
 				<li class="parent"><a href="javascript:void(0)">Admin<i></i></a>

@@ -48,7 +48,7 @@ class PageController extends BaseController {
 		    $meta = $result->meta;
 		    $page_id = $result->id;
 		}
-
+		
 		return View::make('pages.home')
 			->with('page_title', $page_title)
 			->with('page_content', $page_content)
@@ -84,7 +84,7 @@ class PageController extends BaseController {
 				$page_id = $result->id;
 			}
 		}
-
+		
 		return View::make('pages.defaultpage')
 			->with('page_title', $page_title)
 			->with('page_content', $page_content)

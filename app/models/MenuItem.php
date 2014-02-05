@@ -10,7 +10,7 @@ class MenuItem extends Eloquent {
 	protected $table = 'menu_items';
 
 	/**
-	 * Get the unique identifier for the user.
+	 * Get the unique identifier for the menu item.
 	 *
 	 * @return mixed
 	 */
@@ -24,6 +24,11 @@ class MenuItem extends Eloquent {
         return $this->hasMany('MenuDropdownItem')->orderBy('sort_order');;
     }
     
+    /**
+	 * Get info from pages table for the record.
+	 *
+	 * @return mixed
+	 */
     public function targetPage()
     {
 	    return $this->hasOne('Page', 'id', 'page_id');

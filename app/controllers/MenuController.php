@@ -43,6 +43,38 @@ class MenuController extends BaseController {
 	}
 	
 	/**
+	 * Get dd menu for edit (in place, called via ajax)
+	 *
+	 * @return text
+	 */
+	 public function getDdmenujson(){
+		if (Auth::user()->access_level == 3){
+			$menu_item_id = Input::get('id');
+			$menu_item = MenuDropdownItem::find($menu_item_id);
+			if ($menu_item->page_id == 0) 
+			{
+				$theResponse = array(
+					'menu_text' => $menu_item->menu_text,
+					'page_id' => $menu_item->page_id,
+					'active' => $menu_item->active,
+					'url' => $menu_item->url
+				);
+			}
+			else
+			{
+				$theResponse = array(
+					'menu_text' => $menu_item->menu_text,
+					'page_id' => $menu_item->page_id,
+					'active' => $menu_item->active,
+					'url' =>''
+				);
+			}
+			
+			return Response::json($theResponse);
+		}
+	}
+	
+	/**
 	 * Save or create menu item
 	 *
 	 * @return void

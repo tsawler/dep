@@ -19,6 +19,11 @@ class MenuDropdownItem extends Eloquent {
 		return $this->getKey();
 	}
 	
+	/**
+	 * Get info from pages table for a record.
+	 *
+	 * @return mixed
+	 */
 	public function targetPage()
     {
 	    return $this->hasOne('Page', 'id', 'page_id');

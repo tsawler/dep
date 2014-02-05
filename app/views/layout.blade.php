@@ -295,8 +295,8 @@ $(function(){
            // get the id of the menu item
            var id = $(this).data('mitem-id');
            // call ajax to get menu item details;
-           
-            $('#menuItemModal').modal();
+           getDataForMenuItem(id);
+           $('#menuItemModal').modal();
         },
         items: {
             "edit": {name: " Edit", icon: "edit"}
@@ -310,17 +310,18 @@ $(function(){
 
 function getDataForMenuItem(menu_item_id) {
 	var theHtml = "";
-	$("#action").val(0);
-    $("#notelineid").val(line_id);
-    $("#user_note_id").val(note_id);
+	$("#menu_item_id").val(menu_item_id);
     $.ajax({
 		type: 'GET',
-		url: '/page/getusernote',
-		data: {id: line_id},
-		dataType: 'html',
+		url: '/menu/menujson',
+		data: {id: menu_item_id},
+		dataType: 'json',
 		success: function(_data) {
-			theHtml = _data;
-			$("#note").val(_data);
+			var json = $.parseJSON(JSON.stringify(_data));
+			$("#menu_text").val(json.menu_text);
+			$("#menu_active").val(json.active);
+			$("#menu_page_id").val(json.page_id);
+			$("#menu_url").val(json.url);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
 			alert("Status: " + textStatus); 
@@ -357,11 +358,11 @@ function getDataForMenuItem(menu_item_id) {
 				    </div>
 				    
 				    <div class="control-group">
-						<label for="active" class="control-label">Active?</label>
+						<label for="menu_active" class="control-label">Active?</label>
 						<div class="controls">
 							<div class="input-prepend"> 
 								<span class="add-on"><i class="icon-check-sign"></i></span>
-								<select name="active" id="active">
+								<select name="menu_active" id="menu_active">
 									<option value="1">Yes</option>
 									<option value="0">No</option>
 								</select>
@@ -370,14 +371,14 @@ function getDataForMenuItem(menu_item_id) {
 				    </div>
 				    
 				    <div class="control-group">
-						<label for="link" class="control-label">Links to</label>
+						<label for="menu_page_id" class="control-label">Links to</label>
 						<div class="controls">
 							<div class="input-prepend"> 
 								<span class="add-on"><i class="icon-link"></i></span>
-								<select name="link" id="link">
+								<select name="menu_page_id" id="menu_page_id">
 									<option value="0">Does not link to page</option>
 									@foreach(Page::all() as $item)
-									<option value="{{ $item->slug }}">{{ $item->page_title }}</option>
+									<option value="{{ $item->id }}">{{ $item->page_title }}</option>
 									@endforeach
 								</select>
 							</div>
@@ -385,15 +386,15 @@ function getDataForMenuItem(menu_item_id) {
 				    </div>
 				    
 				    <div class="control-group">
-						<label for="url" class="control-label">URL</label>
+						<label for="menu_url" class="control-label">URL</label>
 						<div class="controls">
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-external-link-sign"></i></span>
-								<input type="text" name="url" id="url" class="" autofocus>
+								<input type="text" name="menu_url" id="menu_url" class="" autofocus>
 							</div>
 						</div>
 				    </div>
-				    
+				    <input type="hidden" name="menu_item_id" id="menu_item_id" value="0">
 				</form>
 			
 			</div>

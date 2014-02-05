@@ -21,6 +21,6 @@ class MenuItem extends Eloquent {
 	
 	public function dropdownItems()
     {
-        return $this->hasMany('MenuDropdownItem');
+        return $this->hasMany('MenuDropdownItem')->orderBy('sort_order');;
     }
 }

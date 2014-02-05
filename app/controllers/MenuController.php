@@ -11,7 +11,7 @@ class MenuController extends BaseController {
 
 	
 	/**
-	 * Save edits to page (in place, called via ajax)
+	 * Get menu for edit (in place, called via ajax)
 	 *
 	 * @return text
 	 */
@@ -39,6 +39,46 @@ class MenuController extends BaseController {
 			}
 			
 			return Response::json($theResponse);
+		}
+	}
+	
+	/**
+	 * Save or create menu item
+	 *
+	 * @return void
+	 */
+	 public function postSavemenuitem(){
+
+		if (Auth::user()->access_level == 3){
+			$menu_item_id = Input::get('menu_item_id');
+			$menu_text = Input::get('menu_text');
+			$menu_page_id = Input::get('menu_page_id');
+			$menu_active = Input::get('menu_active');
+			$menu_url = Input::get('menu_url');
+			$lastpage = Input::get('lastpage');
+			
+			$menuItem = MenuItem::find($menu_item_id);
+			
+			if ($menuItem === null)
+			{
+				$menuItem = new MenuItem;
+				$menuItem->menu_text = $menu_text;
+				$menuItem->page_id = $menu_page_id;
+				$menuItem->active = $menu_active;
+				$menuItem->url = $menu_url;
+				$menuItem->save();
+			}
+			else
+			{
+				$menuItem->menu_text = $menu_text;
+				$menuItem->page_id = $menu_page_id;
+				$menuItem->active = $menu_active;
+				$menuItem->url = $menu_url;
+				$menuItem->save();
+			}
+			
+			return Redirect::to(URL::previous())
+				->with('message', 'Changes saved.');
 		}
 	}
 

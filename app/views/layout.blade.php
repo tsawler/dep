@@ -346,7 +346,7 @@ function getDataForMenuItem(menu_item_id) {
 			</div>
 			<div class="modal-body" id="modalbody">
 			
-				<form id="menuItemForm" class="form-horizontal" name="menuItemForm" method="post" action="menu/saveMenuItem">
+				<form id="menuItemForm" class="form-horizontal" name="menuItemForm" method="post" action="/menu/savemenuitem">
 					<div class="control-group">
 						<label for="menu_text" class="control-label">Menu text</label>
 						<div class="controls">
@@ -400,7 +400,7 @@ function getDataForMenuItem(menu_item_id) {
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary">Save</button>
+				<button type="button" class="btn btn-primary" onclick="$('#menuItemForm').submit()">Save</button>
 			</div>
 		</div>
 	</div>

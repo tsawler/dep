@@ -23,4 +23,9 @@ class MenuItem extends Eloquent {
     {
         return $this->hasMany('MenuDropdownItem')->orderBy('sort_order');;
     }
+    
+    public function targetPage()
+    {
+	    return $this->hasOne('Page', 'id', 'page_id');
+    }
 }

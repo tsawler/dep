@@ -11,6 +11,7 @@ return array(
     'AddColsToUsers' => $baseDir . '/app/database/migrations/2014_02_01_233314_add_cols_to_users.php',
     'AddLastNameToUsers' => $baseDir . '/app/database/migrations/2014_01_22_163310_add_last_name_to_users.php',
     'AddMetaToPages' => $baseDir . '/app/database/migrations/2014_01_21_155212_add_meta_to_pages.php',
+    'AddPageIdToMenuDropdownItems' => $baseDir . '/app/database/migrations/2014_02_05_204130_add_page_id_to_menu_dropdown_items.php',
     'AddPageIdToMenuItem' => $baseDir . '/app/database/migrations/2014_02_05_180224_add_page_id_to_menu_item.php',
     'AddSlugToPages' => $baseDir . '/app/database/migrations/2014_01_28_123433_add_slug_to_pages.php',
     'AddStatusToSubmissions' => $baseDir . '/app/database/migrations/2014_01_25_002354_add_status_to_submissions.php',

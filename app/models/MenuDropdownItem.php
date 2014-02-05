@@ -18,4 +18,9 @@ class MenuDropdownItem extends Eloquent {
 	{
 		return $this->getKey();
 	}
+	
+	public function targetPage()
+    {
+	    return $this->hasOne('Page', 'id', 'page_id');
+    }
 }

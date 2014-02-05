@@ -119,8 +119,6 @@ class MenuController extends BaseController {
 	 * @return void
 	 */
 	 public function postSaveddmenuitem(){
-	 
-	 	Log::info('This is some useful information.');
 
 		if (Auth::user()->access_level == 3){
 			$menu_item_id = Input::get('ddmenu_item_id');
@@ -130,25 +128,23 @@ class MenuController extends BaseController {
 			$menu_url = Input::get('ddmenu_url');
 			$menu_id = Input::get('dd_parent_menu_item_id');
 			
-			Log::info('menu item id is ' . $menu_item_id);
-			
-			//$menuItem = MenuDropdownItem::find($menu_item_id);
 			$menuItem = MenuDropdownItem::where('id', '=', $menu_item_id)->first();
 			
 			if ($menuItem === null)
-			{
-				Log::info('Saving new one.');
+			{	
+				Log::info("menu id is $menu_id");
+				$so = MenuDropdownItem::where('menu_item_id', '=', $menu_id)->max('sort_order');
 				$menuItem = new MenuDropdownItem;
 				$menuItem->menu_text = $menu_text;
 				$menuItem->page_id = $menu_page_id;
 				$menuItem->active = $menu_active;
 				$menuItem->menu_item_id = $menu_id;
 				$menuItem->url = $menu_url;
+				$menuItem->sort_order = $so + 1;
 				$menuItem->save();
 			}
 			else
 			{
-				Log::info('updating menu item ' . $menuItem->id);
 				$menuItem->menu_text = $menu_text;
 				$menuItem->page_id = $menu_page_id;
 				$menuItem->active = $menu_active;

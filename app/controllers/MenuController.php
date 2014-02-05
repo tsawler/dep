@@ -87,7 +87,6 @@ class MenuController extends BaseController {
 			$menu_page_id = Input::get('menu_page_id');
 			$menu_active = Input::get('menu_active');
 			$menu_url = Input::get('menu_url');
-			$lastpage = Input::get('lastpage');
 			
 			$menuItem = MenuItem::find($menu_item_id);
 			
@@ -113,5 +112,52 @@ class MenuController extends BaseController {
 				->with('message', 'Changes saved.');
 		}
 	}
+	
+	/**
+	 * Save or create dd menu item
+	 *
+	 * @return void
+	 */
+	 public function postSaveddmenuitem(){
+	 
+	 	Log::info('This is some useful information.');
 
+		if (Auth::user()->access_level == 3){
+			$menu_item_id = Input::get('ddmenu_item_id');
+			$menu_text = Input::get('ddmenu_text');
+			$menu_page_id = Input::get('ddmenu_page_id');
+			$menu_active = Input::get('ddmenu_active');
+			$menu_url = Input::get('ddmenu_url');
+			$menu_id = Input::get('dd_parent_menu_item_id');
+			
+			Log::info('menu item id is ' . $menu_item_id);
+			
+			//$menuItem = MenuDropdownItem::find($menu_item_id);
+			$menuItem = MenuDropdownItem::where('id', '=', $menu_item_id)->first();
+			
+			if ($menuItem === null)
+			{
+				Log::info('Saving new one.');
+				$menuItem = new MenuDropdownItem;
+				$menuItem->menu_text = $menu_text;
+				$menuItem->page_id = $menu_page_id;
+				$menuItem->active = $menu_active;
+				$menuItem->menu_item_id = $menu_id;
+				$menuItem->url = $menu_url;
+				$menuItem->save();
+			}
+			else
+			{
+				Log::info('updating menu item ' . $menuItem->id);
+				$menuItem->menu_text = $menu_text;
+				$menuItem->page_id = $menu_page_id;
+				$menuItem->active = $menu_active;
+				$menuItem->url = $menu_url;
+				$menuItem->save();
+			}
+			
+			return Redirect::to(URL::previous())
+				->with('message', 'Changes saved.');
+		}
+	}
 }

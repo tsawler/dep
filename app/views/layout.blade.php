@@ -181,6 +181,152 @@
 </div>
 <!-- close #page--> 
 
+@if((Auth::check()) && (Auth::user()->access_level == 3))
+<input type="hidden" name="old" id="old">
+<input type="hidden" name="oldtitle" id="oldtitle">
+
+
+<div class="modal hide fade" id="ddmenuItemModal" tabindex="-1" role="dialog" aria-labelledby="ddmyModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="ddmyModalLabel">DD Menu Item</h4>
+			</div>
+			<div class="modal-body" id="ddmodalbody">
+			
+				<form id="ddmenuItemForm" class="form-horizontal" name="ddmenuItemForm" method="post" action="/menu/saveddmenuitem">
+					<div class="control-group">
+						<label for="ddmenu_text" class="control-label">Menu text</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on">A</span>
+								<input type="text" name="ddmenu_text" id="ddmenu_text" class="required" autofocus>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="ddmenu_active" class="control-label">Active?</label>
+						<div class="controls">
+							<div class="input-prepend"> 
+								<span class="add-on"><i class="icon-check-sign"></i></span>
+								<select name="ddmenu_active" id="ddmenu_active">
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="ddmenu_page_id" class="control-label">Links to</label>
+						<div class="controls">
+							<div class="input-prepend"> 
+								<span class="add-on"><i class="icon-link"></i></span>
+								<select name="ddmenu_page_id" id="ddmenu_page_id">
+									<option value="0">Does not link to page</option>
+									@foreach(Page::all() as $item)
+									<option value="{{ $item->id }}">{{ $item->page_title }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="ddmenu_url" class="control-label">URL</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-external-link-sign"></i></span>
+								<input type="text" name="ddmenu_url" id="ddmenu_url" class="" autofocus>
+							</div>
+						</div>
+				    </div>
+				    <input type="hidden" name="ddmenu_item_id" id="ddmenu_item_id" value="0">
+				    <input type="hidden" name="dd_parent_menu_item_id" id="dd_parent_menu_item_id" value="0">
+				</form>
+			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" onclick="$('#ddmenuItemForm').submit()">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal hide fade" id="menuItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Menu Item</h4>
+			</div>
+			<div class="modal-body" id="modalbody">
+			
+				<form id="menuItemForm" class="form-horizontal" name="menuItemForm" method="post" action="/menu/savemenuitem">
+					<div class="control-group">
+						<label for="menu_text" class="control-label">Menu text</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on">A</span>
+								<input type="text" name="menu_text" id="menu_text" class="required" autofocus>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="menu_active" class="control-label">Active?</label>
+						<div class="controls">
+							<div class="input-prepend"> 
+								<span class="add-on"><i class="icon-check-sign"></i></span>
+								<select name="menu_active" id="menu_active">
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="menu_page_id" class="control-label">Links to</label>
+						<div class="controls">
+							<div class="input-prepend"> 
+								<span class="add-on"><i class="icon-link"></i></span>
+								<select name="menu_page_id" id="menu_page_id">
+									<option value="0">Does not link to page</option>
+									@foreach(Page::all() as $item)
+									<option value="{{ $item->id }}">{{ $item->page_title }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="menu_url" class="control-label">URL</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-external-link-sign"></i></span>
+								<input type="text" name="menu_url" id="menu_url" class="" autofocus>
+							</div>
+						</div>
+				    </div>
+				    <input type="hidden" name="menu_item_id" id="menu_item_id" value="0">
+				</form>
+			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" onclick="$('#menuItemForm').submit()">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+@endif
+
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/lemmon-slider.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
@@ -195,7 +341,6 @@
 <script type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
-
 
 function showResponse(responseText, statusText, xhr, $form)  {
 	$("#editmsg").removeClass("hidden");
@@ -295,8 +440,9 @@ $(function(){
         callback: function(key, options) {
            // get the id of the menu item
            var id = $(this).data('ddmitem-id');
+           var mid = $(this).data('mitem-id')
            // call ajax to get menu item details;
-           getDataForDDMenuItem(id);
+           getDataForDDMenuItem(id, mid);
            $('#ddmenuItemModal').modal();
         },
         items: {
@@ -305,9 +451,10 @@ $(function(){
     });
 });
 
-function getDataForDDMenuItem(menu_item_id) {
+function getDataForDDMenuItem(menu_item_id, parent_item_id) {
 	var theHtml = "";
-	$("#menu_item_id").val(menu_item_id);
+	$("#ddmenu_item_id").val(menu_item_id);
+	$("#dd_parent_menu_item_id").val(parent_item_id);
     $.ajax({
 		type: 'GET',
 		url: '/menu/ddmenujson',
@@ -365,153 +512,54 @@ function getDataForMenuItem(menu_item_id) {
 		}
     });
 }
+
+$(document).ready(function () {	
+	$("#menuItemForm").validate({
+		rules: {
+			verify_email: {
+				required: true,
+				equalTo: "#email",
+				email: true
+			}
+		},
+		highlight: function(element) {
+	        $(element).closest('.control-group').addClass('error');
+	    },
+	    unhighlight: function(element) {
+	        $(element).closest('.control-group').removeClass('error');
+	        $(element).closest('.control-group').addClass('success');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'help-inline',
+	    errorPlacement: function(error, element) {
+	        error.insertAfter(element.parent());
+	    }
+	});
+	$("#ddmenuItemForm").validate({
+		rules: {
+			verify_email: {
+				required: true,
+				equalTo: "#email",
+				email: true
+			}
+		},
+		highlight: function(element) {
+	        $(element).closest('.control-group').addClass('error');
+	    },
+	    unhighlight: function(element) {
+	        $(element).closest('.control-group').removeClass('error');
+	        $(element).closest('.control-group').addClass('success');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'help-inline',
+	    errorPlacement: function(error, element) {
+	        error.insertAfter(element.parent());
+	    }
+	});
+});
 </script>
 @endif
 @endif
 @yield('bottom-js')
-@if((Auth::check()) && (Auth::user()->access_level == 3))
-<input type="hidden" name="old" id="old">
-<input type="hidden" name="oldtitle" id="oldtitle">
-
-
-<div class="modal hide fade" id="ddmenuItemModal" tabindex="-1" role="dialog" aria-labelledby="ddmyModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="ddmyModalLabel">Menu Item</h4>
-			</div>
-			<div class="modal-body" id="ddmodalbody">
-			
-				<form id="ddmenuItemForm" class="form-horizontal" name="ddmenuItemForm" method="post" action="/menu/saveddmenuitem">
-					<div class="control-group">
-						<label for="ddmenu_text" class="control-label">Menu text</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on">A</span>
-								<input type="text" name="ddmenu_text" id="ddmenu_text" class="required" autofocus>
-							</div>
-						</div>
-				    </div>
-				    
-				    <div class="control-group">
-						<label for="ddmenu_active" class="control-label">Active?</label>
-						<div class="controls">
-							<div class="input-prepend"> 
-								<span class="add-on"><i class="icon-check-sign"></i></span>
-								<select name="ddmenu_active" id="ddmenu_active">
-									<option value="1">Yes</option>
-									<option value="0">No</option>
-								</select>
-							</div>
-						</div>
-				    </div>
-				    
-				    <div class="control-group">
-						<label for="ddmenu_page_id" class="control-label">Links to</label>
-						<div class="controls">
-							<div class="input-prepend"> 
-								<span class="add-on"><i class="icon-link"></i></span>
-								<select name="ddmenu_page_id" id="ddmenu_page_id">
-									<option value="0">Does not link to page</option>
-									@foreach(Page::all() as $item)
-									<option value="{{ $item->id }}">{{ $item->page_title }}</option>
-									@endforeach
-								</select>
-							</div>
-						</div>
-				    </div>
-				    
-				    <div class="control-group">
-						<label for="ddmenu_url" class="control-label">URL</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-external-link-sign"></i></span>
-								<input type="text" name="ddmenu_url" id="ddmenu_url" class="" autofocus>
-							</div>
-						</div>
-				    </div>
-				    <input type="hidden" name="ddmenu_item_id" id=dd"menu_item_id" value="0">
-				</form>
-			
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" onclick="$('#ddmenuItemForm').submit()">Save</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div class="modal hide fade" id="menuItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Menu Item</h4>
-			</div>
-			<div class="modal-body" id="modalbody">
-			
-				<form id="menuItemForm" class="form-horizontal" name="menuItemForm" method="post" action="/menu/savemenuitem">
-					<div class="control-group">
-						<label for="menu_text" class="control-label">Menu text</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on">A</span>
-								<input type="text" name="menu_text" id="menu_text" class="required" autofocus>
-							</div>
-						</div>
-				    </div>
-				    
-				    <div class="control-group">
-						<label for="menu_active" class="control-label">Active?</label>
-						<div class="controls">
-							<div class="input-prepend"> 
-								<span class="add-on"><i class="icon-check-sign"></i></span>
-								<select name="menu_active" id="menu_active">
-									<option value="1">Yes</option>
-									<option value="0">No</option>
-								</select>
-							</div>
-						</div>
-				    </div>
-				    
-				    <div class="control-group">
-						<label for="menu_page_id" class="control-label">Links to</label>
-						<div class="controls">
-							<div class="input-prepend"> 
-								<span class="add-on"><i class="icon-link"></i></span>
-								<select name="menu_page_id" id="menu_page_id">
-									<option value="0">Does not link to page</option>
-									@foreach(Page::all() as $item)
-									<option value="{{ $item->id }}">{{ $item->page_title }}</option>
-									@endforeach
-								</select>
-							</div>
-						</div>
-				    </div>
-				    
-				    <div class="control-group">
-						<label for="menu_url" class="control-label">URL</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-external-link-sign"></i></span>
-								<input type="text" name="menu_url" id="menu_url" class="" autofocus>
-							</div>
-						</div>
-				    </div>
-				    <input type="hidden" name="menu_item_id" id="menu_item_id" value="0">
-				</form>
-			
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" onclick="$('#menuItemForm').submit()">Save</button>
-			</div>
-		</div>
-	</div>
-</div>
-@endif
 </body>
 </html>

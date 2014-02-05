@@ -19,11 +19,6 @@
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	<span id="theeditmsg">&nbsp;</span>
 	</div>
-@endif
-@endif
-	
-@if(Auth::check())
-@if(Auth::user()->access_level ==3)
 
 	{{ Form::open(array('url' => 'page/edit', 'id' => 'savetitledata', 'name' => 'savetitledata')) }}
 	<form action="/savepagetitle" method="post" id="savetitledata" name="savetitledata">

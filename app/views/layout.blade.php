@@ -332,6 +332,7 @@ function getDataForMenuItem(menu_item_id) {
 @endif
 @endif
 @yield('bottom-js')
+@if((Auth::check()) && (Auth::user()->access_level == 3))
 <input type="hidden" name="old" id="old">
 <input type="hidden" name="oldtitle" id="oldtitle">
 
@@ -403,6 +404,6 @@ function getDataForMenuItem(menu_item_id) {
 		</div>
 	</div>
 </div>
-
+@endif
 </body>
 </html>

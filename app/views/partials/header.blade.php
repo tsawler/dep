@@ -48,12 +48,18 @@
 							@foreach ($item->dropdownItems as $dd)
 								@if ($dd->active == 1)
 									@if ($dd->page_id == 0)
-										<li><a href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
+										<li><a class='ddmitem' data-ddmitem-id="{{ $dd->id }}" data-mitem-id="{{ $item->id }}" 
+											href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
 									@else
-										<li><a href="{{ $dd->targetPage->slug }}">{{ $dd->menu_text }}</a></li>
+										<li><a class='ddmitem' data-ddmitem-id="{{ $dd->id }}" data-mitem-id="{{ $item->id }}"
+											href="{{ $dd->targetPage->slug }}">{{ $dd->menu_text }}</a></li>
 									@endif
 								@else
-									<li><a href="{{ $dd->url }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
+									@if ($dd->page_id == 0)
+										<li><a href="{{ $dd->url }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
+									@else
+										<li><a href="{{ $dd->targetPage->slug }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
+									@endif
 								@endif
 							@endforeach
 							</ul>
@@ -62,13 +68,21 @@
 				@else
 					@foreach((MenuItem::where('menu_id','=','1')->where('active','=','1')->orderBy('sort_order')->get()) as $item)
 						@if ($item->has_children == 0)
-							<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>
+							@if ($item->page_id == 0)
+								<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>
+							@else
+								<li><a href="{{ $item->targetPage->slug }}">{{ $item->menu_text }}</a></li>
+							@endif
 						@else
 							<li class="parent"><a href="javascript:void(0)">{{ $item->menu_text }}<i></i></a>
 							<ul>
 							@foreach ($item->dropdownItems as $dd)
 								@if ($dd->active == 1)
-								<li><a href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
+									@if ($dd->page_id == 0)
+										<li><a href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
+									@else
+										<li><a href="{{ $dd->targetPage->slug }}">{{ $dd->menu_text }}</a></li>
+									@endif
 								@endif
 							@endforeach
 							</ul>

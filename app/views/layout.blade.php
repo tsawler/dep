@@ -288,18 +288,15 @@ function stub() {
 	alert("This functionality is not yet implemented!");
 }
 
-/*$('.mitem').mousedown(function(event) {
-    if (event.which == 3) {
-    	alert('Right mouse button pressed on ' + $( this ).data("mitem-id"));
-    	$(this).preventDefault();
-		return false;
-    }
-});*/
 $(function(){
     $.contextMenu({
         selector: '.mitem', 
         callback: function(key, options) {
-            alert('clicked ' + $(this).data('mitem-id')); 
+           // get the id of the menu item
+           var id = $(this).data('mitem-id');
+           // call ajax to get menu item details;
+           
+            $('#menuItemModal').modal();
         },
         items: {
             "edit": {name: " Edit", icon: "edit"}
@@ -310,11 +307,102 @@ $(function(){
         console.log('clicked', this);
     })
 });
+
+function getDataForMenuItem(menu_item_id) {
+	var theHtml = "";
+	$("#action").val(0);
+    $("#notelineid").val(line_id);
+    $("#user_note_id").val(note_id);
+    $.ajax({
+		type: 'GET',
+		url: '/page/getusernote',
+		data: {id: line_id},
+		dataType: 'html',
+		success: function(_data) {
+			theHtml = _data;
+			$("#note").val(_data);
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) { 
+			alert("Status: " + textStatus); 
+			alert("Error: " + errorThrown);
+		}
+    });
+}
 </script>
 @endif
 @endif
 @yield('bottom-js')
 <input type="hidden" name="old" id="old">
 <input type="hidden" name="oldtitle" id="oldtitle">
+
+<div class="modal hide fade" id="menuItemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Menu Item</h4>
+			</div>
+			<div class="modal-body" id="modalbody">
+			
+				<form id="menuItemForm" class="form-horizontal" name="menuItemForm" method="post" action="menu/saveMenuItem">
+					<div class="control-group">
+						<label for="menu_text" class="control-label">Menu text</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on">A</span>
+								<input type="text" name="menu_text" id="menu_text" class="required" autofocus>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="active" class="control-label">Active?</label>
+						<div class="controls">
+							<div class="input-prepend"> 
+								<span class="add-on"><i class="icon-check-sign"></i></span>
+								<select name="active" id="active">
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="link" class="control-label">Links to</label>
+						<div class="controls">
+							<div class="input-prepend"> 
+								<span class="add-on"><i class="icon-link"></i></span>
+								<select name="link" id="link">
+									<option value="0">Does not link to page</option>
+									@foreach(Page::all() as $item)
+									<option value="{{ $item->slug }}">{{ $item->page_title }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label for="url" class="control-label">URL</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-external-link-sign"></i></span>
+								<input type="text" name="url" id="url" class="" autofocus>
+							</div>
+						</div>
+				    </div>
+				    
+				</form>
+			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

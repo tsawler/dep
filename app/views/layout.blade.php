@@ -513,6 +513,25 @@ function getDataForMenuItem(menu_item_id) {
     });
 }
 
+function addMenuItem(){
+	$("#menu_text").val('');
+	$("#menu_active").val(0);
+	$("#menu_page_id").val(0);
+	$("#menu_url").val('');
+	$("#menu_item_id").val(0);
+	$('#menuItemModal').modal();
+}
+
+function addDDMenuItem(x){
+	$("#ddmenu_text").val('');
+	$("#ddmenu_active").val(0);
+	$("#ddmenu_page_id").val(0);
+	$("#ddmenu_url").val('');
+	$("#ddmenu_item_id").val(0);
+	$('#ddmenuItemModal').modal();
+	$("#dd_parent_menu_item_id").val(x);
+}
+
 $(document).ready(function () {	
 	$("#menuItemForm").validate({
 		rules: {

@@ -62,6 +62,7 @@
 									@endif
 								@endif
 							@endforeach
+							<li><a href="javascript:void()" onclick="addDDMenuItem({{ $item->id }})">[Add item]</a></li>
 							</ul>
 						@endif
 					@endforeach
@@ -90,9 +91,10 @@
 					@endforeach
 				@endif
 
-			
+				
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
+				<li><a href="javascript:void()" onclick="addMenuItem()">[Add item]</a></li>
 				<li class="parent"><a href="javascript:void(0)">Admin<i></i></a>
 					<ul>
 						<li><a class='menu-item' href="javascript:void(0)" onclick="makePageEditable(this)">Edit content</a></li>
@@ -102,6 +104,7 @@
 				</li>
 				@endif
 				@endif
+				
 			</ul>
 		</nav>
 		<!-- close / #main_menu --> 

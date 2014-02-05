@@ -11,15 +11,22 @@
 					@foreach((MenuItem::where('menu_id','=','1')->get()) as $item)
 						@if ($item->has_children == 0)
 							@if ($item->active == 1)
-								<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>
+								<li>
+									<a class='mitem' data-mitem-id="{{ $item->id }}" href='{{ $item->url }}'>{{ $item->menu_text }}</a>
+								</li>
 							@else
-								<li><a href='{{ $item->url }}'><em class='text-warning'>{{ $item->menu_text }}</em></a></li>
+								<li>
+									<a class='mitem' data-mitem-id="{{ $item->id }}" href='{{ $item->url }}'><em class='text-warning'>{{ $item->menu_text }}</em></a>
+								</li>
 							@endif
 						@else
 							@if ($item->active == 1)
-								<li class="parent"><a href="javascript:void(0)">{{ $item->menu_text }}<i></i></a>
+								<li class="parent">
+									<a class='mitem' data-mitem-id="{{ $item->id }}" href="javascript:void(0)">{{ $item->menu_text }}<i></i></a>
 							@else
-								<li class="parent"><a href="javascript:void(0)"><em class='text-warning'>{{ $item->menu_text }}</em><i></i></a>
+								<li class="parent">
+									<a class='mitem' data-mitem-id="{{ $item->id }}" href="javascript:void(0)"><em class='text-warning'>{{ $item->menu_text }}</em><i></i></a>
+								
 							@endif
 							<ul>
 							@foreach ($item->dropdownItems as $dd)

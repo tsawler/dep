@@ -67,11 +67,16 @@
 				{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
 			</div>
 			<div class='admin-hidden'>
-				<input  id='datetimepicker'
+				<!-- <input  id='datetimepicker'
 					type='text'
 					id="published_date"
 					name='published_date'
-					value="{{ date('Y-m-d', strtotime($post->published_date)) }}">
+					value="{{ date('Y-m-d', strtotime($post->published_date)) }}"> -->
+			<div class="input-prepend"> <span class="add-on"><i class=" icon-calendar"></i></span>
+				{{ Form::text('published_date', date('Y-m-d', strtotime($post->published_date)), array(
+																	'class' => 'dateISO',
+																	'id' => 'published_date')); }}
+				</div>
 			</div>
 		@else
 			<div class="byline"><i class="icon-time"></i>

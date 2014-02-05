@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="/assets/css/custom.css" type="text/css" media="screen" />
 @if(Auth::check())
 @if(Auth::user()->access_level == 3)
+<link rel="stylesheet" href="/js/contextmenu/jquery.contextMenu.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/css/datepicker.css" type="text/css" media="screen">
 <style>
 .outlined{
@@ -190,6 +191,8 @@
 <script type="text/javascript" src="/ck/adapters/jquery.js"></script>
 <script type="text/javascript" src="/js/jquery.form.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/js/contextmenu/jquery.contextMenu.js"></script>
+<script type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
 
@@ -284,6 +287,29 @@ function turnOffEditing(item) {
 function stub() {
 	alert("This functionality is not yet implemented!");
 }
+
+/*$('.mitem').mousedown(function(event) {
+    if (event.which == 3) {
+    	alert('Right mouse button pressed on ' + $( this ).data("mitem-id"));
+    	$(this).preventDefault();
+		return false;
+    }
+});*/
+$(function(){
+    $.contextMenu({
+        selector: '.mitem', 
+        callback: function(key, options) {
+            alert('clicked ' + $(this).data('mitem-id')); 
+        },
+        items: {
+            "edit": {name: " Edit", icon: "edit"}
+        }
+    });
+    
+    $('.context-menu-one').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
 </script>
 @endif
 @endif

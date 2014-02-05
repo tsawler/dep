@@ -8,7 +8,7 @@
 			
 				@if((Auth::check()) && (Auth::user()->access_level == 3))
 
-					@foreach((MenuItem::where('menu_id','=','1')->get()) as $item)
+					@foreach((MenuItem::where('menu_id','=','1')->orderBy('sort_order')->get()) as $item)
 						@if ($item->has_children == 0)
 							@if ($item->active == 1)
 								<li>
@@ -40,7 +40,7 @@
 						@endif
 					@endforeach
 				@else
-					@foreach((MenuItem::where('menu_id','=','1')->where('active','=','1')->get()) as $item)
+					@foreach((MenuItem::where('menu_id','=','1')->where('active','=','1')->orderBy('sort_order')->get()) as $item)
 						@if ($item->has_children == 0)
 							<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>
 						@else

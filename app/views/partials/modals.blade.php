@@ -153,16 +153,21 @@
 								</div>
 						    </div>
 						    <input type="hidden" name="menu_item_id" id="menu_item_id" value="0">
+						    
 						</div>
 						
 						<div class="tab-pane" id="placement">
-							<ol id="sortable" class="menusort">
-							@foreach((MenuItem::where('menu_id','=','1')->orderBy('sort_order')->get()) as $item)
-							<li id="i{{ $item->id }}">
-								{{ $item->menu_text}}
-							</li>
-							@endforeach
-							</ul>
+							
+							<div class="dd" id="nestable">
+									<ol class="dd-list">
+										@foreach((MenuItem::where('menu_id','=','1')->orderBy('sort_order')->get()) as $item)
+										<li class="dd-item" data-id="{{ $item->id }}">
+											<div class="dd-handle">{{ $item->menu_text}}</div>
+										</li>
+										@endforeach
+									</ol>
+							</div>
+							<textarea id="nestable-output"></textarea>
 						</div>
 					</div>
 				

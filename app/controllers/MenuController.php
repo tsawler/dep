@@ -169,7 +169,7 @@ class MenuController extends BaseController {
 				->with('message', 'Changes saved.');
 	}
 	
-	public function postDeletemeddnuitem(){
+	public function postDeleteddmenuitem(){
 		
 		$menuItem = MenuDropdownItem::find(Input::get('dddeleteid'));
 		$menuItem->delete();

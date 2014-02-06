@@ -425,7 +425,7 @@ function deleteDDMenuItem(){
 	var r=confirm("Are you sure you want to delete this item?");
 	if (r==true)
 	{
-		$("#dddeleteid").val($("#menu_item_id").val());
+		$("#dddeleteid").val($("#ddmenu_item_id").val());
 		$("#deleteddmenuitemform").submit();
 	}
 }

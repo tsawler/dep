@@ -56,9 +56,11 @@
 									@endif
 								@else
 									@if ($dd->page_id == 0)
-										<li><a href="{{ $dd->url }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
+										<li><a class="ddmitem" data-ddmitem-id="{{ $dd->id }}" data-mitem-id="{{ $item->id }}"
+											href="{{ $dd->url }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
 									@else
-										<li><a href="{{ $dd->targetPage->slug }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
+										<li><a class="ddmitem" data-ddmitem-id="{{ $dd->id }}" data-mitem-id="{{ $item->id }}"
+											href="{{ $dd->targetPage->slug }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
 									@endif
 								@endif
 							@endforeach

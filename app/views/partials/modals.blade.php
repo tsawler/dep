@@ -167,7 +167,7 @@
 										@endforeach
 									</ol>
 							</div>
-							<textarea id="nestable-output"></textarea>
+							<hidden id="nestable-output" name="sortorder">
 						</div>
 					</div>
 				

@@ -25,7 +25,8 @@ class MenuController extends BaseController {
 					'menu_text' => $menu_item->menu_text,
 					'page_id' => $menu_item->page_id,
 					'active' => $menu_item->active,
-					'url' => $menu_item->url
+					'url' => $menu_item->url,
+					'has_children' => $menu_item->has_children
 				);
 			}
 			else
@@ -34,7 +35,8 @@ class MenuController extends BaseController {
 					'menu_text' => $menu_item->menu_text,
 					'page_id' => $menu_item->page_id,
 					'active' => $menu_item->active,
-					'url' =>''
+					'url' =>'',
+					'has_children' => $menu_item->has_children
 				);
 			}
 			
@@ -69,7 +71,7 @@ class MenuController extends BaseController {
 					'url' =>''
 				);
 			}
-			
+				
 			return Response::json($theResponse);
 		}
 	}
@@ -87,6 +89,7 @@ class MenuController extends BaseController {
 			$menu_page_id = Input::get('menu_page_id');
 			$menu_active = Input::get('menu_active');
 			$menu_url = Input::get('menu_url');
+			$has_children = Input::get('has_children');
 			
 			$menuItem = MenuItem::find($menu_item_id);
 			
@@ -99,6 +102,7 @@ class MenuController extends BaseController {
 				$menuItem->page_id = $menu_page_id;
 				$menuItem->active = $menu_active;
 				$menuItem->url = $menu_url;
+				$menuItem->has_children = $has_children;
 				$menuItem->menu_id = 1;
 				$menuItem->save();
 			}
@@ -107,6 +111,7 @@ class MenuController extends BaseController {
 				$menuItem->menu_text = $menu_text;
 				$menuItem->page_id = $menu_page_id;
 				$menuItem->active = $menu_active;
+				$menuItem->has_children = $has_children;
 				$menuItem->url = $menu_url;
 				$menuItem->save();
 			}

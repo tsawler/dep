@@ -99,7 +99,7 @@
 					
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#details">Details</a></li>
-						<li><a data-toggle="tab" href="#placement">Placement</a></li>
+						<li id="sortmenuitems"><a data-toggle="tab" href="#placement">Placement</a></li>
 					</ul>
  
 					<div class="tab-content">
@@ -121,6 +121,19 @@
 									<div class="input-prepend"> 
 										<span class="add-on"><i class="icon-check-sign"></i></span>
 										<select name="menu_active" id="menu_active">
+											<option value="1">Yes</option>
+											<option value="0">No</option>
+										</select>
+									</div>
+								</div>
+						    </div>
+						    
+						    <div class="control-group">
+								<label for="has_children" class="control-label">Drop down list?</label>
+								<div class="controls">
+									<div class="input-prepend"> 
+										<span class="add-on"><i class="icon-link"></i></span>
+										<select name="has_children" id="has_children">
 											<option value="1">Yes</option>
 											<option value="0">No</option>
 										</select>

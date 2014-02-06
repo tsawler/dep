@@ -412,6 +412,7 @@ function getDataForMenuItem(menu_item_id) {
 			$("#menu_active").val(json.active);
 			$("#menu_page_id").val(json.page_id);
 			$("#menu_url").val(json.url);
+			$("#has_children").val(json.has_children);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
 			alert("Status: " + textStatus); 
@@ -428,6 +429,8 @@ function addMenuItem(){
 	$("#menu_url").val('');
 	$("#menu_item_id").val(0);
 	$('#menuItemModal').modal();
+	$("#sortmenuitems").addClass("hidden");
+	$("#placement").addClass("hidden");
 }
 
 function addDDMenuItem(x){

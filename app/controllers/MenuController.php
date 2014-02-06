@@ -3,8 +3,13 @@
 class MenuController extends BaseController {
 
 	public function __construct() {
-		//$this->beforeFilter('csrf', array('on'=>'post'));
 		$this->beforeFilter('auth', array('only'=>array('getMenujson')));
+		$this->beforeFilter('auth', array('only'=>array('getDdmenujson')));
+		$this->beforeFilter('auth', array('only'=>array('postSavemenuitem')));
+		$this->beforeFilter('auth', array('only'=>array('postSaveddmenuitem')));
+		$this->beforeFilter('auth', array('only'=>array('postDeleteddmenuitem')));
+		$this->beforeFilter('auth', array('only'=>array('postDeletemenuitem')));
+		$this->beforeFilter('auth', array('only'=>array('getDdsortitems')));
 	}
 
 	protected $layout = "layout";
@@ -116,8 +121,7 @@ class MenuController extends BaseController {
 				$menuItem->save();
 				
 				// handle sorting
-				$sort = json_decode(Input::get('sortorder'));
-				//Log::info("sort is " . array_values($sort));
+				$sort = json_decode(Input::get('sortorder'));;
 				
 				$i = 1;
 				foreach($sort as $name => $value){
@@ -127,7 +131,6 @@ class MenuController extends BaseController {
 					$i++;
 				}
 			}
-			
 			
 			return Redirect::to(URL::previous())
 				->with('message', 'Changes saved.');
@@ -178,8 +181,13 @@ class MenuController extends BaseController {
 		}
 	}
 	
+	/**
+	 * Delete menu item
+	 *
+	 * @return mixed
+	 */
 	public function postDeletemenuitem(){
-		
+		if (Auth::user()->access_level == 3){
 		// check to see if it has any children
 		$children = MenuDropdownItem::where('menu_item_id', '=', Input::get('deleteid'))->count();
 		
@@ -196,15 +204,46 @@ class MenuController extends BaseController {
 			return Redirect::to(URL::previous())
 					->with('error', 'You cannot delete a menu that still has items under it! Delete the items first.');
 		}
+		}
 	}
 	
+	/**
+	 * Delete submenu item
+	 *
+	 * @return mixed
+	 */
 	public function postDeleteddmenuitem(){
-		
+		if (Auth::user()->access_level == 3){
 		$menuItem = MenuDropdownItem::find(Input::get('dddeleteid'));
 		$menuItem->delete();
 		
 		return Redirect::to(URL::previous())
 				->with('message', 'Changes saved.');
+		}
+	}
+	
+	/**
+	 * Return html for sortable menu list
+	 *
+	 * @return string
+	 */
+	public function getDdsortitems() {
+		// create list of sortable top level menu items
+		$menu_items = MenuDropdownItem::where('menu_item_id','=', Input::get('id'))->orderBy('sort_order', 'ASC')->get();
 		
+		$theHtml = '<div class="dd" id="nestable">'
+			. '<ol class="dd-list">';
+		
+		foreach($menu_items as $item){
+			$theHtml .= '<li class="dd-item" data-id="'
+				. $item->id
+				. '">'
+				. '<div class="dd-handle">'
+				. $item->menu_text
+				. '</div>'
+				. '</li>';
+		}
+		$theHtml .= '</ol></div>';
+		return $theHtml;
 	}
 }

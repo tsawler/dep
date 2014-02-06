@@ -47,7 +47,7 @@
 										<span class="add-on"><i class="icon-link"></i></span>
 										<select name="ddmenu_page_id" id="ddmenu_page_id">
 											<option value="0">Does not link to page</option>
-											@foreach(Page::all() as $item)
+											@foreach(Page::orderBy('page_title', 'ASC')->get() as $item)
 											<option value="{{ $item->id }}">{{ $item->page_title }}</option>
 											@endforeach
 										</select>
@@ -70,7 +70,7 @@
 						</div>
 						
 						<div class="tab-pane" id="ddplacement">
-							More content.
+							
 						</div>
 					</div>
 				</form>

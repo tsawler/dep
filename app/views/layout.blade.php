@@ -373,6 +373,7 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
 			$("#ddmenu_active").val(json.active);
 			$("#ddmenu_page_id").val(json.page_id);
 			$("#ddmenu_url").val(json.url);
+			getDDSortableList(menu_item_id);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
 			alert("Status: " + textStatus); 
@@ -381,6 +382,21 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
     });
 }
 
+function getDDSortableList(x){
+	$.ajax({
+		type: 'GET',
+		url: '/menu/ddsortitems',
+		data: {id: menu_item_id},
+		dataType: 'html',
+		success: function(_data) {
+			$("#placement").html(data);
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) { 
+			alert("Status: " + textStatus); 
+			alert("Error: " + errorThrown);
+		}
+    });
+}
 
 $(function(){
     $.contextMenu({

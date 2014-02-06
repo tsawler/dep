@@ -249,6 +249,7 @@
 			
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="btn btn-danger pull-left" onclick="deleteDDMenuItem()">Delete</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 				<button type="button" class="btn btn-primary" onclick="$('#ddmenuItemForm').submit()">Save</button>
 			</div>
@@ -319,6 +320,8 @@
 			
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="btn btn-danger pull-left" onclick="deleteMenuItem()">Delete</button>
+				&nbsp;&nbsp;
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 				<button type="button" class="btn btn-primary" onclick="$('#menuItemForm').submit()">Save</button>
 			</div>

@@ -92,11 +92,14 @@ class MenuController extends BaseController {
 			
 			if ($menuItem === null)
 			{
+				$so = MenuItem::where('menu_id', '=', '1')->max('sort_order');
 				$menuItem = new MenuItem;
+				$menuItem->sort_order = $so;
 				$menuItem->menu_text = $menu_text;
 				$menuItem->page_id = $menu_page_id;
 				$menuItem->active = $menu_active;
 				$menuItem->url = $menu_url;
+				$menuItem->menu_id = 1;
 				$menuItem->save();
 			}
 			else
@@ -155,5 +158,24 @@ class MenuController extends BaseController {
 			return Redirect::to(URL::previous())
 				->with('message', 'Changes saved.');
 		}
+	}
+	
+	public function postDeletemenuitem(){
+	
+		$menuItem = MenuItem::find(Input::get('deleteid'));
+		$menuItem->delete();
+		
+		return Redirect::to(URL::previous())
+				->with('message', 'Changes saved.');
+	}
+	
+	public function postDeletemeddnuitem(){
+		
+		$menuItem = MenuDropdownItem::find(Input::get('dddeleteid'));
+		$menuItem->delete();
+		
+		return Redirect::to(URL::previous())
+				->with('message', 'Changes saved.');
+		
 	}
 }

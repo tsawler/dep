@@ -25,7 +25,25 @@
 <link rel="stylesheet" href="/css/datepicker.css" type="text/css" media="screen">
 <style>
 .outlined{
-	outline: 1px dotted red;
+	outline: 1px dotted red;	
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.menusort li.placeholder {
+  position: relative;
+}
+ol.menusort li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
 }
 </style>
 @endif
@@ -199,6 +217,7 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="/js/contextmenu/jquery.contextMenu.js"></script>
 <script type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
+<script type="text/javascript" src="/js/jquery-sortable-min.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
 
@@ -371,6 +390,7 @@ function getDataForMenuItem(menu_item_id) {
 			alert("Error: " + errorThrown);
 		}
     });
+    
 }
 
 function addMenuItem(){
@@ -392,7 +412,27 @@ function addDDMenuItem(x){
 	$("#dd_parent_menu_item_id").val(x);
 }
 
-$(document).ready(function () {	
+function deleteMenuItem() {
+	var r=confirm("Are you sure you want to delete this item?");
+	if (r==true)
+	{
+		$("#deleteid").val($("#menu_item_id").val())
+		$("#deletemenuitemform").submit();
+	}
+}
+
+function deleteDDMenuItem(){
+	var r=confirm("Are you sure you want to delete this item?");
+	if (r==true)
+	{
+		$("#dddeleteid").val($("#menu_item_id").val());
+		$("#deleteddmenuitemform").submit();
+	}
+}
+
+$(document).ready(function () {
+	 $("ol.menusort").sortable();
+		
 	$("#menuItemForm").validate({
 		rules: {
 			verify_email: {

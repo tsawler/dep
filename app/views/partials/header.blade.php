@@ -41,8 +41,8 @@
 										href="javascript:void(0)">{{ $item->menu_text }}<i></i></a>
 							@else
 								<li class="parent">
-									<a class='mitem' data-mitem-id="{{ $item->id }}" h
-										ref="javascript:void(0)"><em class='text-warning'>{{ $item->menu_text }}</em><i></i></a>
+									<a class='mitem' data-mitem-id="{{ $item->id }}" 
+										href="javascript:void(0)"><em class='text-warning'>{{ $item->menu_text }}</em><i></i></a>
 							@endif
 							<ul>
 							@foreach ($item->dropdownItems as $dd)
@@ -62,7 +62,7 @@
 									@endif
 								@endif
 							@endforeach
-							<li><a href="javascript:void()" onclick="addDDMenuItem({{ $item->id }})">[Add item]</a></li>
+							<li><a href="javascript:void(0)" onclick="addDDMenuItem({{ $item->id }})">[Add item]</a></li>
 							</ul>
 						@endif
 					@endforeach
@@ -94,7 +94,7 @@
 				
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
-				<li><a href="javascript:void()" onclick="addMenuItem()">[Add item]</a></li>
+				<li><a href="javascript:void(0)" onclick="addMenuItem()">[Add item]</a></li>
 				<li class="parent"><a href="javascript:void(0)">Admin<i></i></a>
 					<ul>
 						<li><a class='menu-item' href="javascript:void(0)" onclick="makePageEditable(this)">Edit content</a></li>

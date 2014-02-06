@@ -38,7 +38,7 @@ The Dog-Eared Press
 	<div style="clear: both; margin-bottom: 5px;"></div>
 
 	{{ Form::open(array('url' => 'page/edit', 'id' => 'savedata', 'name' => 'savedata')) }}
-		<article id="editablecontent" itemprop="description" style='width: 100%'>
+		<article id="editablecontent" style='width: 100%'>
 	{{ $page_content }}
 	</article>
 	<input type="hidden" name="page_id" value="<?php echo $page_id;?>">

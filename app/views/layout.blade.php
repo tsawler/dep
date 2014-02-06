@@ -362,6 +362,7 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
 	var theHtml = "";
 	$("#ddmenu_item_id").val(menu_item_id);
 	$("#dd_parent_menu_item_id").val(parent_item_id);
+	getDDSortableList(parent_item_id);
     $.ajax({
 		type: 'GET',
 		url: '/menu/ddmenujson',
@@ -373,7 +374,6 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
 			$("#ddmenu_active").val(json.active);
 			$("#ddmenu_page_id").val(json.page_id);
 			$("#ddmenu_url").val(json.url);
-			getDDSortableList(menu_item_id);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
 			alert("Status: " + textStatus); 
@@ -382,14 +382,28 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
     });
 }
 
+var updateDDOutput;
+
 function getDDSortableList(x){
-	$.ajax({
+    $.ajax({
 		type: 'GET',
 		url: '/menu/ddsortitems',
-		data: {id: menu_item_id},
+		data: {id: x},
 		dataType: 'html',
 		success: function(_data) {
-			$("#placement").html(data);
+			$("#ddplacement").html(_data);
+			$('#nestabledd').nestable().on('change', updateDDOutput);
+			updateDDOutput = function(e)
+			{
+			    var list   = e.length ? e : $(e.target),
+			        output = list.data('output');
+			    if (window.JSON) {
+			        output.val(window.JSON.stringify(list.nestable('serialize')));
+			        //alert("out is " + $("#nestable-output").val());
+			    } else {
+			        output.val('JSON browser support required.');
+			    }
+			};
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
 			alert("Status: " + textStatus); 
@@ -487,7 +501,7 @@ $(document).ready(function () {
             output.val(window.JSON.stringify(list.nestable('serialize')));
             //alert("out is " + $("#nestable-output").val());
         } else {
-            output.val('JSON browser support required for this demo.');
+            output.val('JSON browser support required.');
         }
     };
     

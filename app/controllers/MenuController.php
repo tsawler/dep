@@ -223,13 +223,39 @@ class MenuController extends BaseController {
 	}
 	
 	/**
-	 * Return html for sortable menu list
+	 * Return html for sortable dd menu list
 	 *
 	 * @return string
 	 */
 	public function getDdsortitems() {
 		// create list of sortable top level menu items
 		$menu_items = MenuDropdownItem::where('menu_item_id','=', Input::get('id'))->orderBy('sort_order', 'ASC')->get();
+		
+		$theHtml = '<div class="dd" id="nestabledd">'
+			. '<ol class="dd-list">';
+		
+		foreach($menu_items as $item){
+			$theHtml .= '<li class="dd-item" data-id="'
+				. $item->id
+				. '">'
+				. '<div class="dd-handle">'
+				. $item->menu_text
+				. '</div>'
+				. '</li>';
+		}
+		$theHtml .= '</ol></div>';
+		Log::info($theHtml);
+		return $theHtml;
+	}
+	
+	/**
+	 * Return html for sortable menu list
+	 *
+	 * @return string
+	 */
+	public function getSortitems() {
+		// create list of sortable top level menu items
+		$menu_items = MenuItem::where('menu_id','=', Input::get('id'))->orderBy('sort_order', 'ASC')->get();
 		
 		$theHtml = '<div class="dd" id="nestable">'
 			. '<ol class="dd-list">';
@@ -244,6 +270,7 @@ class MenuController extends BaseController {
 				. '</li>';
 		}
 		$theHtml .= '</ol></div>';
+		Log::info($theHtml);
 		return $theHtml;
 	}
 }

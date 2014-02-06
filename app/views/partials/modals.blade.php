@@ -73,6 +73,7 @@
 							
 						</div>
 					</div>
+					<input type='hidden' id="nestabledd-output" name="sortorder">
 				</form>
 			
 			</div>

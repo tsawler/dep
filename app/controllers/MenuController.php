@@ -114,7 +114,20 @@ class MenuController extends BaseController {
 				$menuItem->has_children = $has_children;
 				$menuItem->url = $menu_url;
 				$menuItem->save();
+				
+				// handle sorting
+				$sort = json_decode(Input::get('sortorder'));
+				//Log::info("sort is " . array_values($sort));
+				
+				$i = 1;
+				foreach($sort as $name => $value){
+					$menu = MenuItem::find($value->id);
+					$menu->sort_order = $i;
+					$menu->save();
+					$i++;
+				}
 			}
+			
 			
 			return Redirect::to(URL::previous())
 				->with('message', 'Changes saved.');
@@ -166,12 +179,23 @@ class MenuController extends BaseController {
 	}
 	
 	public function postDeletemenuitem(){
-	
-		$menuItem = MenuItem::find(Input::get('deleteid'));
-		$menuItem->delete();
 		
-		return Redirect::to(URL::previous())
-				->with('message', 'Changes saved.');
+		// check to see if it has any children
+		$children = MenuDropdownItem::where('menu_item_id', '=', Input::get('deleteid'))->count();
+		
+		if ($children == 0)
+		{
+			$menuItem = MenuItem::find(Input::get('deleteid'));
+			$menuItem->delete();
+			
+			return Redirect::to(URL::previous())
+					->with('message', 'Changes saved.');
+		}
+		else
+		{
+			return Redirect::to(URL::previous())
+					->with('error', 'You cannot delete a menu that still has items under it! Delete the items first.');
+		}
 	}
 	
 	public function postDeleteddmenuitem(){

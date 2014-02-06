@@ -180,7 +180,7 @@
 										@endforeach
 									</ol>
 							</div>
-							<hidden id="nestable-output" name="sortorder">
+							<input type='hidden' id="nestable-output" name="sortorder">
 						</div>
 					</div>
 				

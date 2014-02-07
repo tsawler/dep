@@ -17,6 +17,7 @@ return array(
     'AddPageIdToMenuItem' => $baseDir . '/app/database/migrations/2014_02_05_180224_add_page_id_to_menu_item.php',
     'AddSlugToPages' => $baseDir . '/app/database/migrations/2014_01_28_123433_add_slug_to_pages.php',
     'AddStatusToSubmissions' => $baseDir . '/app/database/migrations/2014_01_25_002354_add_status_to_submissions.php',
+    'AddStriptagsFunction' => $baseDir . '/app/database/migrations/2014_02_07_212134_add_striptags_function.php',
     'AddUniqueToBlog' => $baseDir . '/app/database/migrations/2014_01_27_223237_add_unique_to_blog.php',
     'Author' => $baseDir . '/app/models/Author.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',

@@ -32,12 +32,12 @@ class SearchController extends BaseController {
 		/* $results = DB::select("select * from pages WHERE MATCH (page_title,page_content) "
 								. "AGAINST (?)", array($searchterm));*/
 		$results = DB::select("(select id as the_id, page_title as the_title, "
-								. "concat(substring(page_content,1,150),'...') as the_content,  "
+								. "concat(substring(strip_tags(page_content),1,500),'...') as the_content,  "
 								. "concat('/',slug) as target "
 								. "from pages WHERE MATCH (page_title,page_content) AGAINST (?))"
 								. " union "
 								. "(select id as the_id, `title` as the_title, "
-								. "concat(substring(`content`,1,150),'...') as the_content, "
+								. "concat(substring(strip_tags(content),1,500),'...') as the_content, "
 								. "concat('/blog/',slug) as target " 
 								. "from fbf_blog_posts WHERE MATCH (title,content) AGAINST (?))"
 								, array($searchterm, $searchterm));

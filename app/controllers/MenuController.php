@@ -162,7 +162,7 @@ class MenuController extends BaseController {
 					$menu_page_id = Input::get('menu_page_id');
 					$menu_active = Input::get('menu_active');
 					$menu_url = Input::get('menu_url');
-					$menu_id = Input::get('_parent_menu_item_id');
+					$menu_id = Input::get('parent_menu_item_id');
 					
 					$menuItem = MenuDropdownItem::where('id', '=', $menu_item_id)->first();
 					

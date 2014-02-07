@@ -11,7 +11,7 @@
 				
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#dddetails">Details</a></li>
-						<li><a data-toggle="tab" href="#ddplacement">Placement</a></li>
+						<li id="ddsortmenuitems"><a data-toggle="tab" href="#ddplacement">Placement</a></li>
 					</ul>
 					
 					<div class="tab-content">
@@ -64,8 +64,8 @@
 									</div>
 								</div>
 						    </div>
-						    <input type="hidden" name="ddmenu_item_id" id="ddmenu_item_id" value="0">
-						    <input type="hidden" name="_parent_menu_item_id" id="dd_parent_menu_item_id" value="0">
+						    <input type="hidden" name="menu_item_id" id="ddmenu_item_id" value="0">
+						    <input type="hidden" name="parent_menu_item_id" id="dd_parent_menu_item_id" value="0">
 						   
 						</div>
 						

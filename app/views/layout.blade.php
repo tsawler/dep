@@ -527,6 +527,8 @@ function addDDMenuItem(x){
 	$("#ddmenu_page_id").val(0);
 	$("#ddmenu_url").val('');
 	$("#ddmenu_item_id").val(0);
+	$("#ddsortmenuitems").addClass("hidden");
+	$("#ddplacement").addClass("hidden");
 	$('#ddmenuItemModal').modal();
 	$("#dd_parent_menu_item_id").val(x);
 }

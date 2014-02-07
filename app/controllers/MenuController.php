@@ -123,12 +123,12 @@ class MenuController extends BaseController {
 				// handle sorting
 				$sort = json_decode(Input::get('sortorder'));;
 				
-				$i = 1;
 				foreach($sort as $name => $value){
-					$menu = MenuItem::find($value);
-					$menu->sort_order = $i;
+					Log::info("name is $name and value is $value");
+					Log::info('*************************** trying to find menu item with id of ' . $name);
+					$menu = MenuItem::find($name);
+					$menu->sort_order = $value;
 					$menu->save();
-					$i++;
 				}
 			}
 			

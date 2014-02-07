@@ -22,7 +22,7 @@
 								<div class="controls">
 									<div class="input-prepend">
 										<span class="add-on">A</span>
-										<input type="text" name="ddmenu_text" id="ddmenu_text" class="required" autofocus>
+										<input type="text" name="menu_text" id="ddmenu_text" class="required" autofocus>
 									</div>
 								</div>
 						    </div>
@@ -32,7 +32,7 @@
 								<div class="controls">
 									<div class="input-prepend"> 
 										<span class="add-on"><i class="icon-check-sign"></i></span>
-										<select name="ddmenu_active" id="ddmenu_active">
+										<select name="menu_active" id="ddmenu_active">
 											<option value="1">Yes</option>
 											<option value="0">No</option>
 										</select>
@@ -45,7 +45,7 @@
 								<div class="controls">
 									<div class="input-prepend"> 
 										<span class="add-on"><i class="icon-link"></i></span>
-										<select name="ddmenu_page_id" id="ddmenu_page_id">
+										<select name="menu_page_id" id="ddmenu_page_id">
 											<option value="0">Does not link to page</option>
 											@foreach(Page::orderBy('page_title', 'ASC')->get() as $item)
 											<option value="{{ $item->id }}">{{ $item->page_title }}</option>
@@ -60,12 +60,12 @@
 								<div class="controls">
 									<div class="input-prepend">
 										<span class="add-on"><i class="icon-external-link-sign"></i></span>
-										<input type="text" name="ddmenu_url" id="ddmenu_url" class="" autofocus>
+										<input type="text" name="menu_url" id="ddmenu_url" class="" autofocus>
 									</div>
 								</div>
 						    </div>
 						    <input type="hidden" name="ddmenu_item_id" id="ddmenu_item_id" value="0">
-						    <input type="hidden" name="dd_parent_menu_item_id" id="dd_parent_menu_item_id" value="0">
+						    <input type="hidden" name="_parent_menu_item_id" id="dd_parent_menu_item_id" value="0">
 						   
 						</div>
 						

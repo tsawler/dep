@@ -87,52 +87,62 @@ class MenuController extends BaseController {
 	 * @return void
 	 */
 	 public function postSavemenuitem(){
-
-		if (Auth::user()->access_level == 3){
-			$menu_item_id = Input::get('menu_item_id');
-			$menu_text = Input::get('menu_text');
-			$menu_page_id = Input::get('menu_page_id');
-			$menu_active = Input::get('menu_active');
-			$menu_url = Input::get('menu_url');
-			$has_children = Input::get('has_children');
-			
-			$menuItem = MenuItem::find($menu_item_id);
-			
-			if ($menuItem === null)
+	 
+	 	$validator = Validator::make(Input::all(), MenuItem::$rules);
+			if ($validator->passes())
 			{
-				$so = MenuItem::where('menu_id', '=', '1')->max('sort_order');
-				$menuItem = new MenuItem;
-				$menuItem->sort_order = ($so + 1);
-				$menuItem->menu_text = $menu_text;
-				$menuItem->page_id = $menu_page_id;
-				$menuItem->active = $menu_active;
-				$menuItem->url = $menu_url;
-				$menuItem->has_children = $has_children;
-				$menuItem->menu_id = 1;
-				$menuItem->save();
+				if (Auth::user()->access_level == 3){
+					$menu_item_id = Input::get('menu_item_id');
+					$menu_text = Input::get('menu_text');
+					$menu_page_id = Input::get('menu_page_id');
+					$menu_active = Input::get('menu_active');
+					$menu_url = Input::get('menu_url');
+					$has_children = Input::get('has_children');
+					
+					$menuItem = MenuItem::find($menu_item_id);
+					
+					if ($menuItem === null)
+					{
+						$so = MenuItem::where('menu_id', '=', '1')->max('sort_order');
+						$menuItem = new MenuItem;
+						$menuItem->sort_order = ($so + 1);
+						$menuItem->menu_text = $menu_text;
+						$menuItem->page_id = $menu_page_id;
+						$menuItem->active = $menu_active;
+						$menuItem->url = $menu_url;
+						$menuItem->has_children = $has_children;
+						$menuItem->menu_id = 1;
+						$menuItem->save();
+					}
+					else
+					{
+						$menuItem->menu_text = $menu_text;
+						$menuItem->page_id = $menu_page_id;
+						$menuItem->active = $menu_active;
+						$menuItem->has_children = $has_children;
+						$menuItem->url = $menu_url;
+						$menuItem->save();
+						
+						// handle sorting
+						$sort = json_decode(Input::get('sortorder'));;
+						
+						foreach($sort as $name => $value){
+							$menu = MenuItem::find($name);
+							$menu->sort_order = $value;
+							$menu->save();
+						}
+					}
+					
+					return Redirect::to(URL::previous())
+						->with('message', 'Changes saved.');
+				}
 			}
 			else
 			{
-				$menuItem->menu_text = $menu_text;
-				$menuItem->page_id = $menu_page_id;
-				$menuItem->active = $menu_active;
-				$menuItem->has_children = $has_children;
-				$menuItem->url = $menu_url;
-				$menuItem->save();
-				
-				// handle sorting
-				$sort = json_decode(Input::get('sortorder'));;
-				
-				foreach($sort as $name => $value){
-					$menu = MenuItem::find($name);
-					$menu->sort_order = $value;
-					$menu->save();
-				}
+				return Redirect::to(URL::previous())
+						->with('message', 'The following errors occurred')
+						->withErrors($validator);
 			}
-			
-			return Redirect::to(URL::previous())
-				->with('message', 'Changes saved.');
-		}
 	}
 	
 	/**
@@ -141,51 +151,62 @@ class MenuController extends BaseController {
 	 * @return void
 	 */
 	 public function postSaveddmenuitem(){
+	 	
+	 	$validator = Validator::make(Input::all(), MenuDropdownItem::$rules);
+			if ($validator->passes())
+			{
 
-		if (Auth::user()->access_level == 3){
-			$menu_item_id = Input::get('ddmenu_item_id');
-			$menu_text = Input::get('ddmenu_text');
-			$menu_page_id = Input::get('ddmenu_page_id');
-			$menu_active = Input::get('ddmenu_active');
-			$menu_url = Input::get('ddmenu_url');
-			$menu_id = Input::get('dd_parent_menu_item_id');
-			
-			$menuItem = MenuDropdownItem::where('id', '=', $menu_item_id)->first();
-			
-			if ($menuItem === null)
-			{	
-				Log::info("menu id is $menu_id");
-				$so = MenuDropdownItem::where('menu_item_id', '=', $menu_id)->max('sort_order');
-				$menuItem = new MenuDropdownItem;
-				$menuItem->menu_text = $menu_text;
-				$menuItem->page_id = $menu_page_id;
-				$menuItem->active = $menu_active;
-				$menuItem->menu_item_id = $menu_id;
-				$menuItem->url = $menu_url;
-				$menuItem->sort_order = $so + 1;
-				$menuItem->save();
+				if (Auth::user()->access_level == 3){
+					$menu_item_id = Input::get('menu_item_id');
+					$menu_text = Input::get('menu_text');
+					$menu_page_id = Input::get('menu_page_id');
+					$menu_active = Input::get('menu_active');
+					$menu_url = Input::get('menu_url');
+					$menu_id = Input::get('_parent_menu_item_id');
+					
+					$menuItem = MenuDropdownItem::where('id', '=', $menu_item_id)->first();
+					
+					if ($menuItem === null)
+					{	
+						Log::info("menu id is $menu_id");
+						$so = MenuDropdownItem::where('menu_item_id', '=', $menu_id)->max('sort_order');
+						$menuItem = new MenuDropdownItem;
+						$menuItem->menu_text = $menu_text;
+						$menuItem->page_id = $menu_page_id;
+						$menuItem->active = $menu_active;
+						$menuItem->menu_item_id = $menu_id;
+						$menuItem->url = $menu_url;
+						$menuItem->sort_order = $so + 1;
+						$menuItem->save();
+					}
+					else
+					{
+						$menuItem->menu_text = $menu_text;
+						$menuItem->page_id = $menu_page_id;
+						$menuItem->active = $menu_active;
+						$menuItem->url = $menu_url;
+						$menuItem->save();
+						
+						// handle sorting
+						$sort = json_decode(Input::get('sortorder'));;
+		
+						foreach($sort as $name => $value){
+							$menu = MenuDropdownItem::find($name);
+							$menu->sort_order = $value;
+							$menu->save();
+						}
+					}
+					
+					return Redirect::to(URL::previous())
+						->with('message', 'Changes saved.');
+				}
 			}
 			else
 			{
-				$menuItem->menu_text = $menu_text;
-				$menuItem->page_id = $menu_page_id;
-				$menuItem->active = $menu_active;
-				$menuItem->url = $menu_url;
-				$menuItem->save();
-				
-				// handle sorting
-				$sort = json_decode(Input::get('sortorder'));;
-
-				foreach($sort as $name => $value){
-					$menu = MenuDropdownItem::find($name);
-					$menu->sort_order = $value;
-					$menu->save();
-				}
+				return Redirect::to(URL::previous())
+					->with('message', 'The following errors occurred')
+					->withErrors($validator);
 			}
-			
-			return Redirect::to(URL::previous())
-				->with('message', 'Changes saved.');
-		}
 	}
 	
 	/**

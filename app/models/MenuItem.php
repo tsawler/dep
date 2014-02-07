@@ -1,6 +1,10 @@
 <?php
 
 class MenuItem extends Eloquent {
+	
+	public static $rules = array(
+	   'menu_text'=>'required|min:2'
+	);
 
 	/**
 	 * The database table used by the model.

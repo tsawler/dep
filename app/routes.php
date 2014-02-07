@@ -4,6 +4,7 @@
  * Home Page
  */
 Route::any('/','PageController@showHome');
+Route::any('/home','PageController@showHome');
 
 /**
  * Search site

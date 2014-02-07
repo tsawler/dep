@@ -24,6 +24,12 @@ Search: The Dog-Eared Press
 	
 	{{ Form::close() }}
 	
+	<dl>
+	@foreach ($results as $result)
+		<dt><a href="{{ $result->target }}">{{ $result->the_title }}</a></dt>
+		<dd>{{ strip_tags($result->the_content) }} </dd>
+	@endforeach
+	</dl>
 <p>&nbsp;</p>	
 
 </div>

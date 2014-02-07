@@ -8,7 +8,8 @@
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<span id="theeditmsg">&nbsp;</span>
 			</div>
-			<form action="/post/edit" method="post" id="savetitledata" name="savetitledata">
+
+			{{ Form::open(array('url' => '/post/edit',  'name' => 'savetitledata', 'id' => 'savetitledata')) }}
 				<!--
 				<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
 					<!--
@@ -94,7 +95,7 @@
 		@if(Auth::check())
 		@if(Auth::user()->access_level == 3)
 			<input type="hidden" name="content" id="content">
-			</form>
+			{{ Form::close() }}
 		@endif
 		@endif
 
@@ -168,9 +169,10 @@
 
 @if(Auth::check())
 @if(Auth::user()->access_level == 3)
-<form method="post" action="/post/delete" name="deleteform" id="deleteform">
+
+{{ Form::open(array('url' => '/post/delete',  'name' => 'deleteform', 'id' => 'deleteform')) }}
 	<input type="hidden" name="post_id" value="{{ $post->id }}">
-</form>
+{{ Form::close() }}
 @endif
 @endif
 

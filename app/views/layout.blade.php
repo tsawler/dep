@@ -28,49 +28,61 @@
 	outline: 1px dotted red;	
 }
 
-.dd { position: relative; display: block; margin: 0; padding: 0; max-width: 600px; list-style: none; font-size: 13px; line-height: 20px; }
-
-.dd-list { display: block; position: relative; margin: 0; padding: 0; list-style: none; }
-.dd-list .dd-list { padding-left: 30px; }
-.dd-collapsed .dd-list { display: none; }
-
-.dd-item,
-.dd-empty,
-.dd-placeholder { display: block; position: relative; margin: 0; padding: 0; min-height: 20px; font-size: 13px; line-height: 20px; }
-
-.dd-handle { display: block; height: 30px; margin: 5px 0; padding: 5px 10px; color: #333; text-decoration: none; font-weight: bold; border: 1px solid #ccc;
-    background: #fafafa;
-    background: -webkit-linear-gradient(top, #fafafa 0%, #eee 100%);
-    background:    -moz-linear-gradient(top, #fafafa 0%, #eee 100%);
-    background:         linear-gradient(top, #fafafa 0%, #eee 100%);
-    -webkit-border-radius: 3px;
-            border-radius: 3px;
-    box-sizing: border-box; -moz-box-sizing: border-box;
+.connected, .sortable, .exclude, .handles {
+	margin: auto;
+	padding: 0;
+	width: 100%;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
-.dd-handle:hover { color: #2ea8e5; background: #fff; }
-
-.dd-item > button { display: block; position: relative; cursor: pointer; float: left; width: 25px; height: 20px; margin: 5px 0; padding: 0; text-indent: 100%; white-space: nowrap; overflow: hidden; border: 0; background: transparent; font-size: 12px; line-height: 1; text-align: center; font-weight: bold; }
-.dd-item > button:before { content: '+'; display: block; position: absolute; width: 100%; text-align: center; text-indent: 0; }
-.dd-item > button[data-action="collapse"]:before { content: '-'; }
-
-.dd-placeholder,
-.dd-empty { margin: 5px 0; padding: 0; min-height: 30px; background: #f2fbff; border: 1px dashed #b6bcbf; box-sizing: border-box; -moz-box-sizing: border-box; }
-.dd-empty { border: 1px dashed #bbb; min-height: 100px; background-color: #e5e5e5;
-    background-image: -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), 
-                      -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
-    background-image:    -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), 
-                         -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
-    background-image:         linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), 
-                              linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
-    background-size: 60px 60px;
-    background-position: 0 0, 30px 30px;
+.sortable.grid {
+	overflow: hidden;
 }
-
-.dd-dragel { position: absolute; pointer-events: none; z-index: 9999; }
-.dd-dragel > .dd-item .dd-handle { margin-top: 0; }
-.dd-dragel .dd-handle {
-    -webkit-box-shadow: 2px 4px 6px 0 rgba(0,0,0,.1);
-            box-shadow: 2px 4px 6px 0 rgba(0,0,0,.1);
+.connected li, .sortable li, .exclude li, .handles li {
+	list-style: none;
+	border: 1px solid #CCC;
+	background: #F6F6F6;
+	font-family: "Tahoma";
+	color: #1C94C4;
+	margin: 5px;
+	padding: 5px;
+	height: 22px;
+}
+.handles span {
+	cursor: move;
+}
+li.disabled {
+	opacity: 0.5;
+}
+.sortable.grid li {
+	line-height: 80px;
+	float: left;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+li.highlight {
+	background: #FEE25F;
+}
+#connected {
+	width: 440px;
+	overflow: hidden;
+	margin: auto;
+}
+.connected {
+	float: left;
+	width: 200px;
+}
+.connected.no2 {
+	float: right;
+}
+li.sortable-placeholder {
+	border: 1px dashed #CCC;
+	background: none;
 }
 </style>
 @endif
@@ -244,8 +256,7 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="/js/contextmenu/jquery.contextMenu.js"></script>
 <script type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
-<!-- <script type="text/javascript" src="/js/jquery-sortable-min.js"></script> -->
-<script type="text/javascript" src="/js/jquery.nestable.js"></script>
+<script type="text/javascript" src="/js/jquery.sortable.min.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
 
@@ -341,6 +352,8 @@ function stub() {
 }
 
 
+// start of ddmenu
+
 $(function(){
     $.contextMenu({
         selector: '.ddmitem', 
@@ -382,7 +395,6 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
     });
 }
 
-var updateDDOutput;
 
 function getDDSortableList(x){
     $.ajax({
@@ -392,18 +404,8 @@ function getDDSortableList(x){
 		dataType: 'html',
 		success: function(_data) {
 			$("#ddplacement").html(_data);
-			$('#nestabledd').nestable().on('change', updateDDOutput);
-			updateDDOutput = function(e)
-			{
-			    var list   = e.length ? e : $(e.target),
-			        output = list.data('output');
-			    if (window.JSON) {
-			        output.val(window.JSON.stringify(list.nestable('serialize')));
-			        //alert("out is " + $("#nestable-output").val());
-			    } else {
-			        output.val('JSON browser support required.');
-			    }
-			};
+			
+			
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
 			alert("Status: " + textStatus); 
@@ -411,6 +413,10 @@ function getDDSortableList(x){
 		}
     });
 }
+
+// end of ddmenu
+
+// start of menu
 
 $(function(){
     $.contextMenu({
@@ -420,7 +426,6 @@ $(function(){
            var id = $(this).data('mitem-id');
            // call ajax to get menu item details;
            getDataForMenuItem(id);
-           $('#menuItemModal').modal();
         },
         items: {
             "edit": {name: " Edit", icon: "edit"}
@@ -431,6 +436,7 @@ $(function(){
 function getDataForMenuItem(menu_item_id) {
 	var theHtml = "";
 	$("#menu_item_id").val(menu_item_id);
+	getSortableList();
     $.ajax({
 		type: 'GET',
 		url: '/menu/menujson',
@@ -443,14 +449,52 @@ function getDataForMenuItem(menu_item_id) {
 			$("#menu_page_id").val(json.page_id);
 			$("#menu_url").val(json.url);
 			$("#has_children").val(json.has_children);
+			$('#menuItemModal').modal();
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
 			alert("Status: " + textStatus); 
 			alert("Error: " + errorThrown);
 		}
     });
-    
 }
+
+	
+	
+function getSortableList(){
+
+    $.ajax({
+		type: 'GET',
+		url: '/menu/sortitems',
+		dataType: 'html',
+		success: function(_data) {
+			var theHtml = _data;
+			$("#placement").html(theHtml);
+			var a = {};
+			$("#sortable li").each(function(i, el){
+	            a[$(el).data('id')] = $(el).index() + 1;
+	        });
+	        sorteda = JSON.stringify(a);
+	        $("#output").val(sorteda);
+	        
+			$('#sortable').sortable().bind('sortupdate', function() {
+				var a = {};
+				$("#sortable li").each(function(i, el){
+		            a[$(el).data('id')] = $(el).index() + 1;
+		        });
+		        sorteda = JSON.stringify(a);
+		        //alert(sorteda);
+		        $("#output").val(sorteda);
+			});
+			
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) { 
+			alert("Status: " + textStatus); 
+			alert("Error: " + errorThrown);
+		}
+    });
+}
+
+// end of menu
 
 function addMenuItem(){
 	$("#menu_text").val('');
@@ -492,22 +536,14 @@ function deleteDDMenuItem(){
 }
 
 $(document).ready(function () {
-	
-	var updateOutput = function(e)
-    {
-        var list   = e.length ? e : $(e.target),
-            output = list.data('output');
-        if (window.JSON) {
-            output.val(window.JSON.stringify(list.nestable('serialize')));
-            //alert("out is " + $("#nestable-output").val());
-        } else {
-            output.val('JSON browser support required.');
-        }
-    };
-    
-    $('#nestable').nestable().on('change', updateOutput);
-    
-    updateOutput($('#nestable').data('output', $('#nestable-output')));
+
+	$('#ddmenuItemModal').on('hidden', function () {
+		$("#ddplacement").html('');
+  	});
+  	
+  	$('#menuItemModal').on('hidden', function () {
+		$("#placement").html('');
+  	});
 	
 	$("#menuItemForm").validate({
 		rules: {

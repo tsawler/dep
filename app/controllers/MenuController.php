@@ -102,7 +102,7 @@ class MenuController extends BaseController {
 			{
 				$so = MenuItem::where('menu_id', '=', '1')->max('sort_order');
 				$menuItem = new MenuItem;
-				$menuItem->sort_order = $so;
+				$menuItem->sort_order = ($so + 1);
 				$menuItem->menu_text = $menu_text;
 				$menuItem->page_id = $menu_page_id;
 				$menuItem->active = $menu_active;
@@ -125,7 +125,7 @@ class MenuController extends BaseController {
 				
 				$i = 1;
 				foreach($sort as $name => $value){
-					$menu = MenuItem::find($value->id);
+					$menu = MenuItem::find($value);
 					$menu->sort_order = $i;
 					$menu->save();
 					$i++;
@@ -255,21 +255,18 @@ class MenuController extends BaseController {
 	 */
 	public function getSortitems() {
 		// create list of sortable top level menu items
-		$menu_items = MenuItem::where('menu_id','=', Input::get('id'))->orderBy('sort_order', 'ASC')->get();
+		$menu_items = MenuItem::where('menu_id','=', '1')->orderBy('sort_order', 'ASC')->get();
 		
-		$theHtml = '<div class="dd" id="nestable">'
-			. '<ol class="dd-list">';
+		$theHtml = '<ul class="sortable list" id="sortable">';
 		
 		foreach($menu_items as $item){
-			$theHtml .= '<li class="dd-item" data-id="'
+			$theHtml .= '<li data-id="'
 				. $item->id
 				. '">'
-				. '<div class="dd-handle">'
 				. $item->menu_text
-				. '</div>'
 				. '</li>';
 		}
-		$theHtml .= '</ol></div>';
+		$theHtml .= '</ul>';
 		Log::info($theHtml);
 		return $theHtml;
 	}

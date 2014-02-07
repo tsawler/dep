@@ -72,8 +72,9 @@
 						<div class="tab-pane" id="ddplacement">
 							
 						</div>
+						
 					</div>
-					<input type='hidden' id="nestabledd-output" name="sortorder">
+					<input type='hidden' id="ddoutput" name="sortorder">
 				</form>
 			
 			</div>
@@ -172,19 +173,10 @@
 						
 						<div class="tab-pane" id="placement">
 							
-							<div class="dd" id="nestable">
-									<ol class="dd-list">
-										@foreach((MenuItem::where('menu_id','=','1')->orderBy('sort_order')->get()) as $item)
-										<li class="dd-item" data-id="{{ $item->id }}">
-											<div class="dd-handle">{{ $item->menu_text}}</div>
-										</li>
-										@endforeach
-									</ol>
-							</div>
-							<input type='hidden' id="nestable-output" name="sortorder">
-						</div>
+							
+						</div> <!-- close tab pane -->
 					</div>
-				
+					<input type='hidden' id="output" name="sortorder">
 				</form>
 			
 			</div>

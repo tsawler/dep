@@ -59,7 +59,7 @@ Password Change: The Dog-Eared Press
 			    <div id="qr" class="control-group">
 			    <div class="controls">
 			    <img src="{{ $qrCodeUrl }}"><br>
-			    <input type="text" name="testcode" id="testcode" autofocus placeholder="enter test code">
+			    <input type="text" name="testcode" id="testcode" placeholder="enter test code">
 			    <a href="#!" onclick="testCode()" class="btn btn-info">Test Code</a>&nbsp;
 			    <span id="result"></span>
 			    </div>
@@ -81,19 +81,7 @@ Password Change: The Dog-Eared Press
 		    
 		</div> <!-- /span9 primary column -->
 	
-		<section class="span3 sidebar secondary-column" id="secondary-nav">
-			<aside class="widget">
-					<h5 class="short_headline"><span>Menu</span></h5>
-					<ul class="navigation">
-						<li><a href='/users/dashboard'>Dashboard</a></li>
-						<li><a href='/users/account'>Your Account</a></li>
-						<li><a href="/users/author">Author Details</a></li>
-						<li><a href='/users/password'>Change Password</a></li>
-						<li><a href="/users/security"><strong>Security</strong></a></li>
-					</ul>
-				</aside>
-				<!--close aside widget-->
-		</section>
+		@include('users/dashboard/partials/sidemenu')
 	</div>
 </div>
 @stop

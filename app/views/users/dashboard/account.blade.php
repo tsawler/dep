@@ -84,19 +84,7 @@ Dashboard: Account Details: The Dog-Eared Press
 			{{ Form::close() }}
 		</div> <!-- /span9 primary column -->
 	
-		<section class="span3 sidebar secondary-column" id="secondary-nav">
-			<aside class="widget">
-					<h5 class="short_headline"><span>Menu</span></h5>
-					<ul class="navigation">
-						<li><a href='/users/dashboard'>Dashboard</a></li>
-						<li><a href='/users/account'><strong>Your Account</strong></a></li>
-						<li><a href="/users/author">Author Details</a></li>
-						<li><a href='/users/password'>Change Password</a></li>
-						<li><a href="/users/security">Security</a></li>
-					</ul>
-				</aside>
-				<!--close aside widget-->
-		</section>
+		@include('users/dashboard/partials/sidemenu')
 	</div>
 </div>
 @stop

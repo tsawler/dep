@@ -176,7 +176,7 @@
 							
 						</div> <!-- close tab pane -->
 					</div>
-					<input type='text' id="output" style="width: 100%" name="sortorder">
+					<input type='hidden' id="output" name="sortorder">
 				</form>
 			
 			</div>

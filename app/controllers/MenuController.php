@@ -124,8 +124,6 @@ class MenuController extends BaseController {
 				$sort = json_decode(Input::get('sortorder'));;
 				
 				foreach($sort as $name => $value){
-					Log::info("name is $name and value is $value");
-					Log::info('*************************** trying to find menu item with id of ' . $name);
 					$menu = MenuItem::find($name);
 					$menu->sort_order = $value;
 					$menu->save();
@@ -174,6 +172,15 @@ class MenuController extends BaseController {
 				$menuItem->active = $menu_active;
 				$menuItem->url = $menu_url;
 				$menuItem->save();
+				
+				// handle sorting
+				$sort = json_decode(Input::get('sortorder'));;
+
+				foreach($sort as $name => $value){
+					$menu = MenuDropdownItem::find($name);
+					$menu->sort_order = $value;
+					$menu->save();
+				}
 			}
 			
 			return Redirect::to(URL::previous())
@@ -231,19 +238,16 @@ class MenuController extends BaseController {
 		// create list of sortable top level menu items
 		$menu_items = MenuDropdownItem::where('menu_item_id','=', Input::get('id'))->orderBy('sort_order', 'ASC')->get();
 		
-		$theHtml = '<div class="dd" id="nestabledd">'
-			. '<ol class="dd-list">';
+		$theHtml = '<ul class="sortable list" id="ddsortable">';
 		
 		foreach($menu_items as $item){
-			$theHtml .= '<li class="dd-item" data-id="'
+			$theHtml .= '<li data-id="'
 				. $item->id
 				. '">'
-				. '<div class="dd-handle">'
 				. $item->menu_text
-				. '</div>'
 				. '</li>';
 		}
-		$theHtml .= '</ol></div>';
+		$theHtml .= '</ul>';
 		Log::info($theHtml);
 		return $theHtml;
 	}
@@ -267,7 +271,6 @@ class MenuController extends BaseController {
 				. '</li>';
 		}
 		$theHtml .= '</ul>';
-		Log::info($theHtml);
 		return $theHtml;
 	}
 }

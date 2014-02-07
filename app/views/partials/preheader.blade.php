@@ -23,9 +23,10 @@
 	
 	<div class="search-wrapper">
 		<form class="search" method="post" action="someaction.php">
+		{{ Form::open(array('url' => 'search', 'class' => 'search', 'method' => 'post')) }}
 			<div id="search-trigger">Search:</div>
-			<input id="search-box" type="text" placeholder="search + enter">
-		</form>
+			{{ Form::text('searchterm', null, array('id' => 'search-box', 'placeholder' => 'search + enter')); }}
+		{{ Form::close() }}
 	</div>
 	<div class="phone"><a href="tel:15064742804" class="tele">+1.506.474.2804</a></div>
 	<ul class="social">

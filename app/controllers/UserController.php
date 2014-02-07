@@ -15,6 +15,7 @@ class UserController extends BaseController {
 		$this->beforeFilter('auth', array('only'=>array('postAuthor')));
 		$this->beforeFilter('auth', array('only'=>array('getSecurity')));
 		$this->beforeFilter('auth', array('only'=>array('postSecurity')));
+		$this->beforeFilter('auth', array('only'=>array('getAdminusers')));
 	}
 
 	/**
@@ -411,6 +412,25 @@ class UserController extends BaseController {
 		else
 		{
 			return "<span style='color: red'>Invalid code!</span>";
+		}
+	}
+	
+	public function getAdminusers() {
+		if (Auth::user()->access_level == 3)
+		{
+			$adminusers = User::where('access_level', '=', '3')->get();
+			$this->layout->content = View::make('users.dashboard.adminusers')
+				->with('adminusers',$adminusers);
+		}
+		else
+		{
+			$purchased = UserBook::where('user_id', '=', Auth::user()->id)->get();
+			$submissions = Submission::where('user_id', '=', Auth::user()->id)->get();
+	
+			$this->layout->content = View::make('users.dashboard.dashboard')
+				->with('purchased',$purchased)
+				->with('submissions',$submissions)
+				->with('error','You do not have access to the requested page');
 		}
 	}
 }

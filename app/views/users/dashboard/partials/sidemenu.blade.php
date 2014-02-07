@@ -57,6 +57,19 @@
 							@endif
 							</a>
 						</li>
+						@if((Auth::check()) && (Auth::user()->access_level == 3))
+							<li>
+								<a href="/users/adminusers">
+								@if (Request::path() == "users/adminusers")
+									<strong>
+								@endif
+									Admin users
+								@if (Request::path() == "users/adminusers")
+									</strong>
+								@endif
+								</a>
+							</li>
+						@endif
 					</ul>
 				</aside>
 				<!--close aside widget-->

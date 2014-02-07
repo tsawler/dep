@@ -22,7 +22,6 @@
 	<!--close user nav-->
 	
 	<div class="search-wrapper">
-		<form class="search" method="post" action="someaction.php">
 		{{ Form::open(array('url' => 'search', 'class' => 'search', 'method' => 'post')) }}
 			<div id="search-trigger">Search:</div>
 			{{ Form::text('searchterm', null, array('id' => 'search-box', 'placeholder' => 'search + enter')); }}

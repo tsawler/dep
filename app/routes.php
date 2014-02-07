@@ -5,11 +5,16 @@
  */
 Route::any('/','PageController@showHome');
 
+/**
+ * Search site
+ */
+Route::get('/search','SearchController@showSearchPage');
+Route::post('/search','SearchController@performSearch');
 
 /**
  * Page Routes
  */
- Route::get('{pagename?}','PageController@showPage');
+Route::get('{pagename?}','PageController@showPage');
 
 Route::post('/page/edit','PageController@editPage');
 

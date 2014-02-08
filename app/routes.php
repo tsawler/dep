@@ -8,6 +8,13 @@ Route::any('/home','PageController@showHome');
 
 
 /**
+ *
+ * Mailing list routes
+ */
+Route::post('/joinlist','MailRecipientController@joinList');
+
+
+/**
  * Search site
  */
 Route::get('/search','SearchController@showSearchPage');
@@ -26,6 +33,7 @@ Route::get('/page/create', array('before' => 'auth', function()
 {
 	return View::make('pages.createpage');
 }));
+
 
 /**
  *

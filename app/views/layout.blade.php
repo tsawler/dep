@@ -142,13 +142,13 @@
 					<section>
 						<h4>Stay Updated</h4>
 						<p>Sign up for our newsletter. We won't share your email address.</p>
-						<form action="#" method="post">
+						{{ Form::open(array('url' => '/joinlist', 'class' => 'form-horizontal', 'method' => 'post')) }}
 							<div class="input-append row-fluid">
-								<input type="email" placeholder="Email Address" class="span6" name="email" />
-								<button class="btn btn-primary">Sign Up</button>
+								{{ Form::text('email', null, array('id' => 'span6', 'placeholder' => 'you@example.com')); }}
+								{{ Form::submit('Sign up', array('class' => 'btn btn-primary')); }}
 							</div>
 							<!--close input-append-->
-						</form>
+						{{ Form::close() }
 					</section>
 					<!--close section-->
 

@@ -41,9 +41,18 @@ Route::controller('/submit', 'SubmitController');
  * Blog Routes
  */
 Route::controller('/post', 'BlogController');
+Route::post('/searchblog','SearchController@performBlogSearch');
 
 
 /**
  * Menu Routes
  */
 Route::controller('/menu', 'MenuController');
+
+/**
+ * Admin Routes
+ */
+Route::get('/admin/edituser/{userid}','AdminController@showAdminUser');
+Route::get('/admin/adminusers','AdminController@getAdminUsers');
+Route::get('/admin/allusers','AdminController@getAllUsers');
+Route::post('/admin/allusers','AdminController@postAllUsers');

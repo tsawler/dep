@@ -59,12 +59,24 @@
 						</li>
 						@if((Auth::check()) && (Auth::user()->access_level == 3))
 							<li>
-								<a href="/users/adminusers">
-								@if (Request::path() == "users/adminusers")
+								<a href="/admin/allusers">
+								@if (Request::path() == "admin/allusers")
+									<strong>
+								@endif
+									All users
+								@if (Request::path() == "admin/allusers")
+									</strong>
+								@endif
+								</a>
+							</li>
+							
+							<li>
+								<a href="/admin/adminusers">
+								@if (Request::path() == "admin/adminusers")
 									<strong>
 								@endif
 									Admin users
-								@if (Request::path() == "users/adminusers")
+								@if (Request::path() == "admin/adminusers")
 									</strong>
 								@endif
 								</a>

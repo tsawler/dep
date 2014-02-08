@@ -9,8 +9,17 @@ Password Change: The Dog-Eared Press
 	<div class="row-fluid sidebar-right">
 
 		<div class="span9 primary-column"> 
-			<h3 class="short_headline" style="text-transform: none;"><span>Admin Users</span></h3>
+			<h3 class="short_headline" style="text-transform: none;"><span>All Users</span></h3>
 			
+			{{ Form::open(array('url' => 'admin/allusers', 'class' => 'form-inline', 'name' => 'bookform', 'id' => 'bookform')) }}
+			
+			{{  Form::text('last_name', $last_name, array('placeholder'=>'Last name'));}}
+			
+			{{ Form::email('email', $email, array('placeholder'=>'Email')); }}
+			
+			{{ Form::submit('Filter', array('class' => 'btn btn-primary')); }}
+			
+			{{ Form::close() }}
 			
 			<table class="responsive table table-striped table-bordered">
 					<thead>
@@ -23,7 +32,7 @@ Password Change: The Dog-Eared Press
 					</thead>
 					
 					<tbody>
-					@foreach ($adminusers as $user)
+					@foreach ($allusers as $user)
 						<tr>
 							<td><a href="/admin/edituser/{{$user->id }}">{{ $user->last_name }}</a></td>
 							<td>{{ $user->first_name }}</td>
@@ -37,11 +46,9 @@ Password Change: The Dog-Eared Press
 					@endforeach
 					</tbody>
 			</table>
-			
 			<div class="pagination">
-			{{ $adminusers->links(); }}
+			
 			</div>
-		    
 		</div> <!-- /span9 primary column -->
 	
 		@include('users/dashboard/partials/sidemenu')

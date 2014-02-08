@@ -57,7 +57,11 @@
 							@endif
 							</a>
 						</li>
+					</ul>
 						@if((Auth::check()) && (Auth::user()->access_level == 3))
+						<p>&nbsp;</p>
+						<h5 class="short_headline"><span>Admin Menu</span></h5>
+						<ul class="navigation">
 							<li>
 								<a href="/admin/allusers">
 								@if (Request::path() == "admin/allusers")
@@ -81,6 +85,7 @@
 								@endif
 								</a>
 							</li>
+						</ul>
 						@endif
 					</ul>
 				</aside>

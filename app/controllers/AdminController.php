@@ -52,6 +52,31 @@ class AdminController extends BaseController {
 			$user->access_level = Input::get('access_level');
 			$user->user_active = Input::get('user_active');
 			$user->save();
+			
+			return Redirect::to('admin/edituser/'.$user_id)
+				->with('message', 'Changes saved.');
+		} else {
+			$this->layout->content = View::make('users.dashboard.dashboard');
+		}
+	}
+	
+	public function saveUserRoles(){
+		if (Auth::user()->access_level == 3)
+		{
+			$user_id = Request::segment(3);
+			$user = User::find($user_id);			
+			$roles = array();
+			
+			foreach(Input::all() as $name => $value){
+				Log::info('checking ' . $name . " => " . $value);
+				if ($this->startsWith($name, "r_")) {
+					$roles[] = $value;
+					Log::info('Would save role of ' . $value);
+				}
+			}
+			
+			$user->roles()->sync($roles);
+			
 			return Redirect::to('admin/edituser/'.$user_id)
 				->with('message', 'Changes saved.');
 		} else {
@@ -139,6 +164,11 @@ class AdminController extends BaseController {
 				->with('submissions',$submissions)
 				->with('error','You do not have access to the requested page');
 		}
+	}
+	
+	private function startsWith($haystack, $needle)
+	{
+	    return $needle === "" || strpos($haystack, $needle) === 0;
 	}
 
 }

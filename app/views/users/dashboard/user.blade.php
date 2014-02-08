@@ -96,7 +96,7 @@ User: The Dog-Eared Press
 				{{ Form::model($user->roles, array(
 											'class' => 'form-horizontal', 
 											'name' => 'roleform', 'id' => 'roleform',
-											'url' => array('admin/edituserroles', $user->id )
+											'url' => array('/admin/edituserroles', $user->id )
 											) 
 							   )
 				}}
@@ -112,7 +112,7 @@ User: The Dog-Eared Press
 						<label class="control-label" for="{{ 'r_'.$role->id }}">{{ $role->role_name }}</label>
 						<div class="controls">
 							<label class="checkbox">
-								{{ Form::checkbox('r_'.$role->id, '1', $hasRole); }}
+								{{ Form::checkbox('r_'.$role->id, $role->id, $hasRole); }}
 							</label>
 						</div>
 					</div>

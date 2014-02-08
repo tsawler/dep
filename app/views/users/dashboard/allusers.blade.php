@@ -13,7 +13,8 @@ Password Change: The Dog-Eared Press
 			
 			{{ Form::open(array('url' => 'admin/allusers', 'class' => 'form-inline', 'name' => 'bookform', 'id' => 'bookform')) }}
 			
-			{{  Form::text('last_name', $last_name, array('placeholder'=>'Last name'));}}
+			{{  Form::text('last_name', $last_name, array('placeholder'=>'Last name', 
+				'id' => 'last_name', 'autocomplete' => 'off'));}}
 			
 			{{ Form::email('email', $email, array('placeholder'=>'Email')); }}
 			

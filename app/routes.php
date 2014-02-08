@@ -24,6 +24,12 @@ Route::get('/page/create', array('before' => 'auth', function()
 		return View::make('pages.createpage');
 	}));
 
+/**
+ *
+ * Ajax routes
+ */
+Route::controller('/ajax','AjaxController');
+
 
 /**
  * User/account routes

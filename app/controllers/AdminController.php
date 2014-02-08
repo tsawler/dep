@@ -60,6 +60,12 @@ class AdminController extends BaseController {
 		}
 	}
 	
+	
+	/**
+	 * Save a user's rolse
+	 *
+	 * @return mixed
+	 */
 	public function saveUserRoles(){
 		if (Auth::user()->access_level == 3)
 		{
@@ -68,13 +74,11 @@ class AdminController extends BaseController {
 			$roles = array();
 			
 			foreach(Input::all() as $name => $value){
-				Log::info('checking ' . $name . " => " . $value);
 				if ($this->startsWith($name, "r_")) {
 					$roles[] = $value;
-					Log::info('Would save role of ' . $value);
 				}
 			}
-			
+
 			$user->roles()->sync($roles);
 			
 			return Redirect::to('admin/edituser/'.$user_id)

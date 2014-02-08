@@ -18,7 +18,7 @@
 								@else
 									<li>
 										<a class='mitem' data-mitem-id="{{ $item->id }}" 
-											href='{{ $item->targetPage->slug }}'>{{ $item->menu_text }}</a>
+											href='/{{ $item->targetPage->slug }}'>{{ $item->menu_text }}</a>
 									</li>
 								@endif
 							@else
@@ -30,7 +30,7 @@
 								@else
 									<li>
 										<a class='mitem' data-mitem-id="{{ $item->id }}" 
-											href='{{ $item->targetPage->slug }}'><em class='text-warning'>{{ $item->menu_text }}</em></a>
+											href='/{{ $item->targetPage->slug }}'><em class='text-warning'>{{ $item->menu_text }}</em></a>
 									</li>
 								@endif
 							@endif
@@ -74,7 +74,7 @@
 							@if ($item->page_id == 0)
 								<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>
 							@else
-								<li><a href="{{ $item->targetPage->slug }}">{{ $item->menu_text }}</a></li>
+								<li><a href="/{{ $item->targetPage->slug }}">{{ $item->menu_text }}</a></li>
 							@endif
 						@else
 							<li class="parent"><a href="javascript:void(0)">{{ $item->menu_text }}<i></i></a>
@@ -84,7 +84,7 @@
 									@if ($dd->page_id == 0)
 										<li><a href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
 									@else
-										<li><a href="{{ $dd->targetPage->slug }}">{{ $dd->menu_text }}</a></li>
+										<li><a href="/{{ $dd->targetPage->slug }}">{{ $dd->menu_text }}</a></li>
 									@endif
 								@endif
 							@endforeach

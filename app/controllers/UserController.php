@@ -63,9 +63,9 @@ class UserController extends BaseController {
 		{
 			$remember = true;
 		}
-		
+
 		// try logging in
-		if (Auth::attempt($credentials, $remember)) 
+		if (Auth::attempt($credentials, $remember))
 		{
 			if (strlen(Input::get('targetUrl')) > 0) {
 				$tfa = Auth::user()->use_tfa;
@@ -80,14 +80,14 @@ class UserController extends BaseController {
 					Session::put('credentials', $credentials);
 					Session::put('remember',$remember);
 					return Redirect::to('users/tfa');
-				} 
-				else 
+				}
+				else
 				{
 					return Redirect::to(Input::get('targetUrl'))->with('message', 'You are now logged in!');
 				}
-				
+
 			} else {
-				
+
 				$tfa = Auth::user()->use_tfa;
 				if (Cookie::has('deptfa'))
 				{
@@ -99,8 +99,8 @@ class UserController extends BaseController {
 					Session::put('credentials', $credentials);
 					Session::put('remember',$remember);
 					return Redirect::to('users/tfa');
-				} 
-				else 
+				}
+				else
 				{
 					return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
 				}
@@ -200,7 +200,7 @@ class UserController extends BaseController {
 		$publisher = new PublisherInfo;
 		$user_id = Auth::user()->id;
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
-	
+
 		$this->layout->content = View::make('users.dashboard.publisher')
 			->with('publisher', $publisher);
 	}
@@ -213,7 +213,7 @@ class UserController extends BaseController {
 	public function postAuthor(){
 		$publisher = new PublisherInfo;
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
-		
+
 		$validator = Validator::make(Input::all(), PublisherInfo::$rules);
 
 		if ($validator->passes()) {
@@ -246,7 +246,7 @@ class UserController extends BaseController {
 				->withInput();
 		}
 	}
-	
+
 	/**
 	 * Display user account details
 	 *
@@ -292,7 +292,7 @@ class UserController extends BaseController {
 	 */
 	public function postPassword() {
 		$credentials = array('email' => Auth::user()->email, 'password' => Input::get('password'));
-		if (Auth::validate($credentials)) 
+		if (Auth::validate($credentials))
 		{
 			$user = new User;
 			$user = User::find(Auth::user()->id);
@@ -304,7 +304,7 @@ class UserController extends BaseController {
 				->with('error', 'Existing password is wrong, or new passwords do not match.');
 		}
 	}
-	
+
 	/**
 	 * Display password update form
 	 *
@@ -313,15 +313,15 @@ class UserController extends BaseController {
 	public function getTfa() {
 		$this->layout->content = View::make('users.tfa');
 	}
-	
+
 	public function postChecktfa() {
 		$credentials = array();
 		$credentials = Session::get('credentials');
 		$remember = Session::get('remember');
 		$tfa = Input::get('tfa');
-		
+
 		// try logging in
-		if (Auth::once($credentials)) 
+		if (Auth::once($credentials))
 		{
 			$tfa_secret = Auth::user()->tfa_secret;
 			$ga = new GoogleAuthenticator();
@@ -333,22 +333,22 @@ class UserController extends BaseController {
 				{
 					return Redirect::to('/users/dashboard')
 						->withCookie(Cookie::make('deptfa', 'true', 43200))
-			    		->with('message', 'You are now logged in!');
-				} 
-				else 
+						->with('message', 'You are now logged in!');
+				}
+				else
 				{
-			    	return Redirect::to('/users/dashboard')
-			    		->with('message', 'You are now logged in!');
-			    }
-			    
+					return Redirect::to('/users/dashboard')
+						->with('message', 'You are now logged in!');
+				}
+
 			} else {
 				return Redirect::to('users/tfa')
 					->with('error','Invalid code');
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * Display security form
 	 *
@@ -363,17 +363,17 @@ class UserController extends BaseController {
 			->with('qrCodeUrl', $qrCodeUrl)
 			->with('user',$user);
 	}
-	
+
 	/**
 	 * Process security form
 	 *
 	 * @return null
 	 */
 	public function postSecurity() {
-	
+
 		$use_tfa = Input::get('use_tfa');
 		$secret = Auth::user()->tfa_secret;
-		
+
 		if ($use_tfa == 1)
 		{
 			if (Auth::user()->use_tfa == 1)
@@ -384,7 +384,7 @@ class UserController extends BaseController {
 				$secret = $ga->createSecret();
 			}
 		}
-		
+
 		// save new info
 		$user = new User;
 		$user = User::find(Auth::user()->id);
@@ -394,7 +394,7 @@ class UserController extends BaseController {
 		return Redirect::to('users/security')
 			->with('message', 'Changes saved.');
 	}
-	
+
 	/**
 	 * Test a tfa code and return valid/invalid message
 	 *
@@ -407,7 +407,7 @@ class UserController extends BaseController {
 		$checkResult = $ga->verifyCode($tfa_secret, $tfa, 10);
 		if ($checkResult)
 		{
-			return "<span style='color: green'>Valid code!</span>";	
+			return "<span style='color: green'>Valid code!</span>";
 		}
 		else
 		{

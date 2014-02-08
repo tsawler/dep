@@ -6,7 +6,7 @@
 		<nav id="main_menu">
 			<ul class="primary_menu">
 			
-				@if((Auth::check()) && (Auth::user()->access_level == 3))
+				@if((Auth::check()) && (Auth::user()->access_level == 3) && (Auth::user()->roles->contains(3)))
 
 					@foreach((MenuItem::where('menu_id','=','1')->orderBy('sort_order')->get()) as $item)
 						@if ($item->has_children == 0)
@@ -96,12 +96,21 @@
 				
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
-				<li><a href="javascript:void(0)" onclick="addMenuItem()">[Add item]</a></li>
-				<li class="parent"><a href="javascript:void(0)">Admin<i></i></a>
+					@if (Auth::user()->roles->contains(3))
+						<li><a href="javascript:void(0)" onclick="addMenuItem()">[Add item]</a></li>
+					@endif
+					
+					@if ((Auth::user()->roles->contains(1)) || (Auth::user()->roles->contains(2)))
+						<li class="parent"><a href="javascript:void(0)">Admin<i></i></a>
+					@endif
 					<ul>
-						<li><a class='menu-item' href="javascript:void(0)" onclick="makePageEditable(this)">Edit content</a></li>
-						<li><a class='' href="/page/create">New page</a></li>
-						<li><a class='' href="/post/create" >New blog post</a></li>
+						@if (Auth::user()->roles->contains(1))
+							<li><a class='menu-item' href="javascript:void(0)" onclick="makePageEditable(this)">Edit content</a></li>
+							<li><a class='' href="/page/create">New page</a></li>
+						@endif
+						@if (Auth::user()->roles->contains(2))
+							<li><a class='' href="/post/create" >New blog post</a></li>
+						@endif
 					</ul>
 				</li>
 				@endif

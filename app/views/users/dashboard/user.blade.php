@@ -80,13 +80,56 @@ User: The Dog-Eared Press
 			<div class="control-group">
 			<div class="controls">
 			{{ Form::submit('Save', array('class' => 'btn btn-primary')); }}
-			<button type="reset" class="btn">Cancel</button>
+			<button type="reset" class="btn">Reset</button>
 			</div>
 			</div>
 			
 			{{ Form::close() }}
 			
+			
+			
+			@if ($user->access_level == 3)
+				
+				<p>&nbsp;</p>
+				<h3 class="short_headline"><span>Roles</span></h3>
+				
+				{{ Form::model($user->roles, array(
+											'class' => 'form-horizontal', 
+											'name' => 'roleform', 'id' => 'roleform',
+											'url' => array('admin/edituserroles', $user->id )
+											) 
+							   )
+				}}
+				
+				@foreach (Role::all() as $role)
+					
+					<?php
+					$hasRole = false;
+					if ($user->roles->contains($role->id))
+						$hasRole = true;
+					?>
+					<div class="control-group">
+						<label class="control-label" for="{{ 'r_'.$role->id }}">{{ $role->role_name }}</label>
+						<div class="controls">
+							<label class="checkbox">
+								{{ Form::checkbox('r_'.$role->id, '1', $hasRole); }}
+							</label>
+						</div>
+					</div>
+				@endforeach
+				
+				<div class="control-group">
+				<div class="controls">
+				{{ Form::submit('Save', array('class' => 'btn btn-primary')); }}
+				<button type="reset" class="btn">Reset</button>
+				</div>
+				</div>
+				
+				{{ Form::close() }}
+			@endif
+			
 			<p>&nbsp;</p>
+			
 			<h3 class="short_headline"><span>Submissions</span></h3>
 			@if ( ! $submissions->isEmpty() )
 				<table class='responsive table table-striped table-bordered'>

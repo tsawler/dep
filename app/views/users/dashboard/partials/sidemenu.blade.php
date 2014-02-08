@@ -58,10 +58,15 @@
 							</a>
 						</li>
 					</ul>
-						@if((Auth::check()) && (Auth::user()->access_level == 3))
-						<p>&nbsp;</p>
+					
+					<p>&nbsp;</p>
+					
+					@if((Auth::check()) && (Auth::user()->access_level == 3))
+					
+						@if (Auth::user()->roles->contains(4))
 						<h5 class="short_headline"><span>Admin Menu</span></h5>
 						<ul class="navigation">
+							
 							<li>
 								<a href="/admin/allusers">
 								@if (Request::path() == "admin/allusers")
@@ -87,7 +92,8 @@
 							</li>
 						</ul>
 						@endif
-					</ul>
+					@endif
+					
 				</aside>
 				<!--close aside widget-->
 		</section>

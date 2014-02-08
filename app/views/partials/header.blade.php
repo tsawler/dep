@@ -52,7 +52,7 @@
 											href="{{ $dd->url }}">{{ $dd->menu_text }}</a></li>
 									@else
 										<li><a class='ddmitem' data-ddmitem-id="{{ $dd->id }}" data-mitem-id="{{ $item->id }}"
-											href="{{ $dd->targetPage->slug }}">{{ $dd->menu_text }}</a></li>
+											href="/{{ $dd->targetPage->slug }}">{{ $dd->menu_text }}</a></li>
 									@endif
 								@else
 									@if ($dd->page_id == 0)
@@ -60,7 +60,7 @@
 											href="{{ $dd->url }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
 									@else
 										<li><a class="ddmitem" data-ddmitem-id="{{ $dd->id }}" data-mitem-id="{{ $item->id }}"
-											href="{{ $dd->targetPage->slug }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
+											href="/{{ $dd->targetPage->slug }}"><em class='text-warning'>{{ $dd->menu_text }}</em></a></li>
 									@endif
 								@endif
 							@endforeach

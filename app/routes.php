@@ -58,7 +58,8 @@ Route::controller('/menu', 'MenuController');
 /**
  * Admin Routes
  */
-Route::get('/admin/edituser/{userid}','AdminController@showAdminUser');
+Route::get('/admin/edituser/{userid}','AdminController@showUser');
+Route::post('/admin/edituser/{userid}','AdminController@saveUser');
 Route::get('/admin/adminusers','AdminController@getAdminUsers');
 Route::get('/admin/allusers','AdminController@getAllUsers');
 Route::post('/admin/allusers','AdminController@postAllUsers');

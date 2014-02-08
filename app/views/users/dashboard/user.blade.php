@@ -9,13 +9,14 @@ Password Change: The Dog-Eared Press
 	<div class="row-fluid sidebar-right">
 
 		<div class="span9 primary-column"> 
+		
 			<h3 class="short_headline" style="text-transform: none;"><span>User: {{ $user->first_name }} {{ $user->last_name }}</span></h3>
 		    
 		    
 		    {{ Form::model($user, array(
 										'class' => 'form-horizontal', 
 										'name' => 'bookform', 'id' => 'bookform',
-										'url' => array('admin/editadminuser', $user->id )
+										'url' => array('admin/edituser', $user->id )
 										) 
 						   )
 			}}

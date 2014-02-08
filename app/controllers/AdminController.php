@@ -12,13 +12,33 @@ class AdminController extends BaseController {
 
 	protected $layout = "layout";
 	
-	public function showAdminUser(){
+	public function showUser(){
 		if (Auth::user()->access_level == 3)
 		{
 			$user_id = Request::segment(3);
 			$user = User::find($user_id);
 			$this->layout->content = View::make('users.dashboard.user')
 				->with('user',$user);
+		}
+		else
+		{
+			$this->layout->content = View::make('users.dashboard.dashboard');
+		}
+	}
+	
+	public function saveUser(){
+		if (Auth::user()->access_level == 3)
+		{
+			$user_id = Request::segment(3);
+			$user = User::find($user_id);
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->access_level = Input::get('access_level');
+			$user->user_active = Input::get('user_active');
+			$user->save();
+			return Redirect::to('admin/edituser/'.$user_id)
+				->with('message', 'Changes saved.');
 		}
 		else
 		{

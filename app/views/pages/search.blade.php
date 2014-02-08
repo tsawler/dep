@@ -23,7 +23,7 @@ Search: The Dog-Eared Press
 
 	
 	{{ Form::close() }}
-	
+	<h4>Results:</h4>
 	<dl>
 	@foreach ($results as $result)
 		<dt><a href="{{ $result->target }}">{{ $result->the_title }}</a></dt>

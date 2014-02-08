@@ -47,4 +47,25 @@ class SearchController extends BaseController {
 			->with('searchterm',$searchterm)
 			->with('results',$results);
 	}
+	
+	/**
+	 * Perform search only for blog
+	 *
+	 * @return mixed
+	 */
+	public function performBlogSearch(){
+		
+		$searchterm = Input::get('searchterm');
+		
+		$results = DB::select("select id as the_id, `title` as the_title, "
+								. "concat(substring(strip_tags(content),1,500),'...') as the_content, "
+								. "concat('/blog/',slug) as target " 
+								. "from fbf_blog_posts WHERE MATCH (title,content) AGAINST (?)"
+								, array($searchterm));
+								
+								
+		return View::make('pages.search')
+			->with('searchterm',$searchterm)
+			->with('results',$results);
+	}
 }

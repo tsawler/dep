@@ -178,7 +178,8 @@
 </div>
 <!-- close #page--> 
 
-@if((Auth::check()) && (Auth::user()->access_level == 3) && ((Auth::user()->roles->contains(1)) || (Auth::user()->roles->contains(2))))
+@if((Auth::check()) 
+	&& (Auth::user()->access_level == 3))
 <input type="hidden" name="old" id="old">
 <input type="hidden" name="oldtitle" id="oldtitle">
 @include('partials/modals')
@@ -190,8 +191,7 @@
 <script src="/assets/js/custom.js"></script>
 @if(Auth::check())
 @if((Auth::check()) 
-	&& (Auth::user()->access_level == 3) 
-	&& ((Auth::user()->roles->contains(1)) || (Auth::user()->roles->contains(2))) || (Auth::user()->roles->contains(3))))
+	&& (Auth::user()->access_level == 3))
 <script type="text/javascript" src="/ck/ckeditor.js"></script>
 <script type="text/javascript" src="/ck/adapters/jquery.js"></script>
 <script type="text/javascript" src="/js/jquery.form.js"></script>

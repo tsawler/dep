@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-Password Change: The Dog-Eared Press
+Admin Users: The Dog-Eared Press
 @stop
 
 @section('content')

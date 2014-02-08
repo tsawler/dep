@@ -60,9 +60,9 @@ Dashboard: The Dog-Eared Press
 			<p>&nbsp;</p>
 			<h3 class="short_headline" style="text-transform: none;"><span>Your Purchased Books</span></h3>
 			@if ( ! $purchased->isEmpty() )
-			
+				<!-- todo -->
 			@else
-			You haven't purchased any books yet.
+				You haven't purchased any books yet.
 			@endif
 		</div> <!-- /span9 primary column -->
 	

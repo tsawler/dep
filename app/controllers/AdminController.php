@@ -24,8 +24,12 @@ class AdminController extends BaseController {
 		{
 			$user_id = Request::segment(3);
 			$user = User::find($user_id);
+			$purchased = UserBook::where('user_id', '=', $user_id)->get();
+			$submissions = Submission::where('user_id', '=', $user_id)->get();
 			$this->layout->content = View::make('users.dashboard.user')
-				->with('user',$user);
+				->with('user',$user)
+				->with('submissions',$submissions)
+				->with('purchased', $purchased);
 		} else {
 			$this->layout->content = View::make('users.dashboard.dashboard');
 		}

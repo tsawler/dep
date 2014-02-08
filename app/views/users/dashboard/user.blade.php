@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-Password Change: The Dog-Eared Press
+User: The Dog-Eared Press
 @stop
 
 @section('content')
@@ -75,7 +75,7 @@ Password Change: The Dog-Eared Press
 			</div>
 		    </div>
 			
-			<hr>
+			
 			
 			<div class="control-group">
 			<div class="controls">
@@ -85,6 +85,66 @@ Password Change: The Dog-Eared Press
 			</div>
 			
 			{{ Form::close() }}
+			
+			<p>&nbsp;</p>
+			<h3 class="short_headline"><span>Submissions</span></h3>
+			@if ( ! $submissions->isEmpty() )
+				<table class='responsive table table-striped table-bordered'>
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Author/Pen name</th>
+								<th>Submitted</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+					@foreach($submissions as $submission)
+				        <tr>
+				        	<td>{{ $submission->manuscript_title }}
+				        	<td>{{ $submission->pen_name }}</td>
+				        	
+				        	<td>{{ $submission->created_at->format('l, F jS Y, g:i A e') }}
+				        	
+				        	<td>
+				        	@if ($submission->status == 1)
+				        	<span class='inqueue tt' 
+				        		  title='Your manuscript is in our review queue, and we&apos;ll be getting to it as soon as we can.'>
+				        		  Awaiting Review
+						    </span>
+						    @elseif ($submission->status == 2)
+						    <span class='inreview tt' 
+				        		  title='Your manuscript currently being reviewed by our team.'>
+				        		  In Review
+						    </span>
+						    @elseif ($submission->status == 3)
+						    <span class='accepted tt' 
+				        		  title='Your manuscript has been accepted! Congratualtions!'>
+				        		  Accepted
+						    </span>
+						    @else
+						    <span class='rejected tt' 
+				        		  title='Your manuscript has not been accepted.'>
+				        		  Not accepted
+						    </span>
+						    @endif
+				        </tr>
+				    @endforeach
+				</table>
+			@else
+				No manuscript submissions.
+			@endif
+			
+			<p>&nbsp;</p>
+			
+			<h3 class="short_headline"><span>Purchases</span></h3>
+			
+			@if ( ! $purchased->isEmpty() )
+				<!-- todo -->
+			@else
+				No purchases.
+			@endif
+			
 		</div> <!-- /span9 primary column -->
 	
 		@include('users/dashboard/partials/sidemenu')

@@ -60,7 +60,7 @@
 		<div class="row-fluid reverse-order"> 
 		<div class="span12">
 		@if(Session::has('message'))
-			<div class="alert alert-info">
+			<div class="alert alert-success">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				{{ Session::get('message') }}
 			</div>

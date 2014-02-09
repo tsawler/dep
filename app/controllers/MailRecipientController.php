@@ -10,7 +10,7 @@ class MailRecipientController extends BaseController {
 	
 	
 	/**
-	 * Show user in form
+	 * Add email address to table
 	 *
 	 * @return mixed
 	 */

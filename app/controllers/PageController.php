@@ -18,9 +18,16 @@ class PageController extends BaseController {
 	 public function editPage(){
 		if (Auth::user()->access_level == 3){
 			$page = Page::find(Input::get('page_id'));
+			$key = 'route-'.$page->slug;
+
 			$page->page_content = trim(Input::get('thedata'));
 			$page->page_title = trim(Input::get('thetitledata'));
 			$page->save();
+			if (Cache::has($key))
+			{
+				//Log::info('removed from cache');
+			    Cache::forget($key);
+			}
 			return "Page updated successfully";
 		}
 	}

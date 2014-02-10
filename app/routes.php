@@ -3,9 +3,10 @@
 /**
  * Home Page
  */
-Route::any('/','PageController@showHome');
-Route::any('/home','PageController@showHome');
-
+//Route::any('/','PageController@showHome');
+//Route::any('/home','PageController@showHome');
+Route::any('/', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showHome'));
+Route::any('/home', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showHome'));
 
 /**
  *
@@ -25,7 +26,9 @@ Route::post('/search','SearchController@performSearch');
  * Page Routes
  */
  
-Route::get('{pagename?}','PageController@showPage');
+//Route::get('{pagename?}','PageController@showPage');
+
+Route::get('{pagename?}', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showPage'));
 
 Route::post('/page/edit','PageController@editPage');
 

@@ -80,3 +80,30 @@ Route::filter('csrf', function()
 });
 
 /* View Composers */
+
+
+/*
+|--------------------------------------------------------------------------
+| Cache Filter
+|--------------------------------------------------------------------------
+|
+| Right now, only caching non-auth users for basic pages.
+|
+*/
+
+Route::filter('cache', function($route, $request, $response = null)
+{
+	if (!Auth::check()) {
+	    $key = 'route-'.Str::slug(Request::path());
+	    if(is_null($response) && Cache::has($key))
+	    {
+	        //Log::info("using cache");
+	        return Cache::get($key);
+	    }
+	    elseif(!is_null($response) && !Cache::has($key))
+	    {
+	        Cache::put($key, $response->getContent(), 30);
+	        //Log::info("putting into cache");
+	    }
+    }
+});

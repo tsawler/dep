@@ -28,9 +28,7 @@ Route::post('/search','SearchController@performSearch');
  
 //Route::get('{pagename?}','PageController@showPage');
 Route::get('{pagename?}', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showPage'));
-
 Route::post('/page/edit','PageController@editPage');
-
 Route::get('/page/create', array('before' => 'auth', function()
 {
 	return View::make('pages.createpage');
@@ -48,11 +46,8 @@ Route::controller('/ajax','AjaxController');
  * User/account routes
  */
 Route::controller('/users', 'UserController');
-
 Route::get('/verifyaccount','UsersPendingController@validateUser');
-
 Route::controller('/password', 'RemindersController');
-
 Route::controller('/submit', 'SubmitController');
 
 

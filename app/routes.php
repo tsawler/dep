@@ -49,7 +49,7 @@ Route::controller('/users', 'UserController');
 
 Route::get('/verifyaccount','UsersPendingController@validateUser');
 
-Route::controller('password', 'RemindersController');
+Route::controller('/password', 'RemindersController');
 
 Route::controller('/submit', 'SubmitController');
 

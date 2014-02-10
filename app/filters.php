@@ -97,13 +97,13 @@ Route::filter('cache', function($route, $request, $response = null)
 	    $key = 'route-'.Str::slug(Request::path());
 	    if(is_null($response) && Cache::has($key))
 	    {
-	        //Log::info("using cache");
+	        Log::info("using cache");
 	        return Cache::get($key);
 	    }
 	    elseif(!is_null($response) && !Cache::has($key))
 	    {
 	        Cache::forever($key, $response->getContent());
-	        //Log::info("putting into cache");
+	        Log::info("putting into cache");
 	    }
     }
 });

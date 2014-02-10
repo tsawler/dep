@@ -27,7 +27,6 @@ Route::post('/search','SearchController@performSearch');
  */
  
 //Route::get('{pagename?}','PageController@showPage');
-
 Route::get('{pagename?}', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showPage'));
 
 Route::post('/page/edit','PageController@editPage');

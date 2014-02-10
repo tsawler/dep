@@ -132,7 +132,7 @@ class MenuController extends BaseController {
 							$menu->save();
 						}
 					}
-					
+					Cache::flush();
 					return Redirect::to(URL::previous())
 						->with('message', 'Changes saved.');
 				}
@@ -168,7 +168,6 @@ class MenuController extends BaseController {
 					
 					if ($menuItem === null)
 					{	
-						Log::info("menu id is $menu_id");
 						$so = MenuDropdownItem::where('menu_item_id', '=', $menu_id)->max('sort_order');
 						$menuItem = new MenuDropdownItem;
 						$menuItem->menu_text = $menu_text;
@@ -196,7 +195,7 @@ class MenuController extends BaseController {
 							$menu->save();
 						}
 					}
-					
+					Cache::flush();
 					return Redirect::to(URL::previous())
 						->with('message', 'Changes saved.');
 				}
@@ -269,7 +268,7 @@ class MenuController extends BaseController {
 				. '</li>';
 		}
 		$theHtml .= '</ul>';
-		Log::info($theHtml);
+		//Log::info($theHtml);
 		return $theHtml;
 	}
 	

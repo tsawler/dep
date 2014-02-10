@@ -102,7 +102,7 @@ Route::filter('cache', function($route, $request, $response = null)
 	    }
 	    elseif(!is_null($response) && !Cache::has($key))
 	    {
-	        Cache::put($key, $response->getContent(), 30);
+	        Cache::forever($key, $response->getContent());
 	        //Log::info("putting into cache");
 	    }
     }

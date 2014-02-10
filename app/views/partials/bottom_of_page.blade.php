@@ -51,7 +51,7 @@
 								{{ Form::submit('Sign up', array('class' => 'btn btn-primary')); }}
 							</div>
 							<!--close input-append-->
-						{{ Form::close() }
+						{{ Form::close() }}
 					</section>
 					<!--close section-->
 

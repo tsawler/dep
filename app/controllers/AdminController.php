@@ -62,7 +62,7 @@ class AdminController extends BaseController {
 	
 	
 	/**
-	 * Save a user's rolse
+	 * Save a user's roles
 	 *
 	 * @return mixed
 	 */
@@ -170,6 +170,12 @@ class AdminController extends BaseController {
 		}
 	}
 	
+	
+	/**
+	 * Function to test for start of string
+	 *
+	 * @return mixed
+	 */
 	private function startsWith($haystack, $needle)
 	{
 	    return $needle === "" || strpos($haystack, $needle) === 0;

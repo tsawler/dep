@@ -23,6 +23,17 @@ Route::post('/search','SearchController@performSearch');
 
 
 /**
+ * Blog Routes
+ */
+Route::controller('/post', 'BlogController');
+Route::post('/searchblog','SearchController@performBlogSearch');
+
+Route::get('/blog/{year?}/{month?}', 'PostsController@index')->where(array('year' => '\d{4}', 'month' => '\d{2}'));
+Route::get('/blog/{slug}', 'PostsController@view');
+Route::get('/blog.rss', 'PostsController@rss');
+
+
+/**
  * Page Routes
  */
  
@@ -50,12 +61,6 @@ Route::get('/verifyaccount','UsersPendingController@validateUser');
 Route::controller('/password', 'RemindersController');
 Route::controller('/submit', 'SubmitController');
 
-
-/**
- * Blog Routes
- */
-Route::controller('/post', 'BlogController');
-Route::post('/searchblog','SearchController@performBlogSearch');
 
 
 /**

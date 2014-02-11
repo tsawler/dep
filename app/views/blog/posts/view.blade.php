@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-	Blog: {{ Config::get('laravel-blog::index_page_title') }}
+	Blog: {{ $post->title }}
 @endsection
 
 @section('meta_description')

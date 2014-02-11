@@ -6,8 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"fitztrev/laravel-html-minify": "dev-master",
-		"fbf/laravel-blog": "dev-master",
-		"pda/pheanstalk": "dev-master"
+		"pda/pheanstalk": "dev-master",
+		"thujohn/rss": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

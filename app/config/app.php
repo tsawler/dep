@@ -107,7 +107,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
-		'Fbf\LaravelBlog\LaravelBlogServiceProvider',
+		'Thujohn\Rss\RssServiceProvider',
 
 	),
 
@@ -174,6 +174,13 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		'Rss' 			  => 'Thujohn\Rss\RssFacade',
 	),
+	
+	'rss_title' => 'Dog-Eared Press',
+	
+	'rss_description' => 'An independent publisher of Fantasy eBooks',
+	
+	
 
 );

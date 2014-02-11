@@ -3,7 +3,7 @@
 class BlogController extends BaseController {
 
 	public function __construct() {
-		$this->beforeFilter('csrf', array('on'=>'post'));
+		$this->beforeFilter('csrf', array('on'=>'blog_posts'));
 		$this->beforeFilter('auth', array('only'=>array('postSave')));
 		$this->beforeFilter('auth', array('only'=>array('postDelete')));
 		$this->beforeFilter('auth', array('only'=>array('postEdit')));
@@ -82,7 +82,7 @@ class BlogController extends BaseController {
 			$validator = Validator::make(
 				Input::all(),
 				array(
-					'title' => 'required|min:2|unique:fbf_blog_posts',
+					'title' => 'required|min:2|unique:blog_posts',
 					'published_date' => 'required',
 					'content' => 'required|min:2')
 			);

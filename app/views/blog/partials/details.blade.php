@@ -10,20 +10,7 @@
 			</div>
 
 			{{ Form::open(array('url' => '/post/edit',  'name' => 'savetitledata', 'id' => 'savetitledata')) }}
-				<!--
-				<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
-					<!--
-					<div class="pull-left">
-						<a href="#!" style='text-decoration: none;'><i class="icon-trash" onclick="deletePost()"></i></a>
-					</div>
-					<div class='pull-right'>
-						<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
-						<a href='#!' onclick='saveChanges()'
-							style='text-decoration: none;'><i class="icon-save" onclick="savePostChanges()"></i></a>
-					</div>
-				</div>
-				<div style="clear: both; margin-bottom: 5px;"></div>
-				-->
+
 				<div id="approved" class="admin-hidden pull-right">
 				<select name="status" id="status">
 					<option value="DRAFT"
@@ -65,7 +52,7 @@
 		@if(Auth::check())
 		@if(Auth::user()->access_level == 3)
 			<div class="byline" id="postdate"><i class="icon-time"></i>
-				{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
+				{{ date('Y-m-d', strtotime($post->published_date)) }}
 			</div>
 			<div class='admin-hidden'>
 				<!-- <input  id='datetimepicker'
@@ -81,14 +68,14 @@
 			</div>
 		@else
 			<div class="byline"><i class="icon-time"></i>
-				{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
+				{{ date('Y-m-d', strtotime($post->published_date)) }}
 			</div>
 		@endif
 		@endif
 
 		@if(!Auth::check())
 			<div class="byline"><i class="icon-time"></i>
-			{{ date(Config::get('laravel-blog::published_date_format'), strtotime($post->published_date)) }}
+			{{ date('Y-m-d', strtotime($post->published_date)) }}
 			</div>
 		@endif
 
@@ -129,12 +116,11 @@
 		@endif
 
 
-		@if (Config::get('laravel-blog::show_share_partial_on_view'))
-			@include('blog.partials.share')
-		@endif
+		@include('blog.partials.share')
+
 		<br><br>
 
-		@if (Config::get('laravel-blog::show_adjacent_posts_on_view') && ($newer || $older))
+		@if ($newer || $older)
 			<ul class="pager">
 				@if ($newer)
 					<li><a href="{{ $newer->getUrl() }}">&larr; Previous</a></li>
@@ -145,11 +131,11 @@
 				@endif
 			</ul>
 			<ul class="pager">
-				<li><a href="{{ action('Fbf\LaravelBlog\PostsController@index') }}">{{ trans('laravel-blog::messages.details.back_link_text') }}</a></li>
+				<li><a href="{{ action('PostsController@index') }}">Index</a></li>
 			</ul>
 		@else
 			<ul class="pager">
-				<li><a href="{{ action('Fbf\LaravelBlog\PostsController@index') }}">{{ trans('laravel-blog::messages.details.back_link_text') }}</a></li>
+				<li><a href="{{ action('PostsController@index') }}">Index</a></li>
 			</ul>
 		@endif
 

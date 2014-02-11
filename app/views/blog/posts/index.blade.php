@@ -1,16 +1,6 @@
 @extends('layout')
 
-@section('browser-title')
-	Blog: {{ Config::get('laravel-blog::index_page_title') }}
-@endsection
 
-@section('meta_description')
-	{{ Config::get('laravel-blog::index_page_meta_description') }}
-@endsection
-
-@section('meta_keywords')
-	{{ Config::get('laravel-blog::index_page_meta_keywords') }}
-@endsection
 
 @section('hero-unit')
 <div class="hero-unit">

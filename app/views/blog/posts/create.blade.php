@@ -1,16 +1,11 @@
 @extends('layout')
 
 @section('browser-title')
-	Blog: {{ Config::get('laravel-blog::index_page_title') }}
+	Blog: Create Post
 @endsection
 
-@section('meta_description')
-	
-@endsection
 
-@section('meta_keywords')
-	
-@endsection
+
 
 @section('content')
 	<div class="row-fluid sidebar-right"> 
@@ -27,7 +22,6 @@
 					{{ Form::text('searchterm', null, array('id' => 'search-box', 'placeholder' => 'type and hit enter')); }}
 				{{ Form::close() }}
 			</aside>
-			@include('blog.partials.archives')
 			
 		</section>
 	</div>

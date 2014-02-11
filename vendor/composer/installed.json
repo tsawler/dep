@@ -412,12 +412,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/phpseclib/phpseclib.git",
-            "reference": "f4dbcb1b7844c41b9bdd915e82f3d6c7d5a09d5e"
+            "reference": "a7106a737ee937281878bbe53c181fb5aefc1f8d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/f4dbcb1b7844c41b9bdd915e82f3d6c7d5a09d5e",
-            "reference": "f4dbcb1b7844c41b9bdd915e82f3d6c7d5a09d5e",
+            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/a7106a737ee937281878bbe53c181fb5aefc1f8d",
+            "reference": "a7106a737ee937281878bbe53c181fb5aefc1f8d",
             "shasum": ""
         },
         "require": {
@@ -431,7 +431,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
             "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 4.3.3."
         },
-        "time": "2014-02-03 15:56:36",
+        "time": "2014-02-11 00:00:44",
         "type": "library",
         "extra": {
             "branch-alias": {

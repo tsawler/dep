@@ -4,7 +4,7 @@ class PageController extends BaseController {
 
 	public function __construct() {
 		$this->beforeFilter('csrf', array('on'=>'post'));
-		$this->beforeFilter('auth', array('only'=>array('postDashboard')));
+		$this->beforeFilter('auth', array('only'=>array('editPage')));
 	}
 
 	protected $layout = "layout";
@@ -16,7 +16,7 @@ class PageController extends BaseController {
 	 * @return text
 	 */
 	 public function editPage(){
-		if (Auth::user()->access_level == 3){
+		if ((Auth::user()->access_level == 3) && (Auth::user()->roles->contains(1))) {
 			$page = Page::find(Input::get('page_id'));
 			$key = 'route-'.$page->slug;
 
@@ -25,7 +25,6 @@ class PageController extends BaseController {
 			$page->save();
 			if (Cache::has($key))
 			{
-				//Log::info('removed from cache');
 			    Cache::forget($key);
 			}
 			return "Page updated successfully";

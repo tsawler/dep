@@ -23,7 +23,7 @@ The Dog-Eared Press
 <div class="container">
 
 @if(Auth::check())
-@if(Auth::user()->access_level ==3)
+@if((Auth::user()->access_level == 3) && (Auth::user()->roles->contains(1)))
 	<div id="editmsg" class='alert alert-success hidden'>
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<span id="theeditmsg"></span>

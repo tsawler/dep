@@ -14,7 +14,7 @@
 <div class="container">
 	
 @if(Auth::check())
-@if(Auth::user()->access_level == 3)
+@if((Auth::user()->access_level == 3) && (Auth::user()->roles->contains(1)))
 	<div id="editmsg" class='alert alert-success hidden'>
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	<span id="theeditmsg">&nbsp;</span>
@@ -36,7 +36,6 @@
 		<a class="btn btn-primary" href="#!" onclick="saveEditedPage()">Save</a>
 		<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
 		&nbsp;&nbsp;&nbsp;
-		<!-- <a class="btn btn-danger" href="#!" onclick="deletePaget()">Delete</a> -->
 	</article>
 	<input type="hidden" name="thedata" id="thedata">
 	{{ Form::close() }}

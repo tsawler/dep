@@ -23,8 +23,9 @@ Search: The Dog-Eared Press
 
 	
 	{{ Form::close() }}
-	<h4>Results:</h4>
+
 	<dl>
+	@if (isset($results))
 	@if ($results)
 		@foreach ($results as $result)
 			<dt><a href="{{ $result->target }}">{{ $result->the_title }}</a></dt>
@@ -34,7 +35,7 @@ Search: The Dog-Eared Press
 	<dt>No results</dt>
 	<dd>Your search for {{ $searchterm }} did not return any results.</dd>
 	@endif
-
+	@endif
 	</dl>
 <p>&nbsp;</p>	
 

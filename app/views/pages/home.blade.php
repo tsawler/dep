@@ -43,6 +43,7 @@ The Dog-Eared Press
 	</article>
 	<input type="hidden" name="page_id" value="<?php echo $page_id;?>">
 	<input type="hidden" name="thedata" id="thedata">
+	<input type="hidden" name="thetitledata" value="{{ $page_title }}">
 	{{ Form::close() }}
 	
 @endif

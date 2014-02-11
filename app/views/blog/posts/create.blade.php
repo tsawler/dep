@@ -4,9 +4,6 @@
 	Blog: Create Post
 @endsection
 
-
-
-
 @section('content')
 	<div class="row-fluid sidebar-right"> 
 		<div class="span9 blog-summary primary-column"> 

@@ -25,10 +25,16 @@ Search: The Dog-Eared Press
 	{{ Form::close() }}
 	<h4>Results:</h4>
 	<dl>
-	@foreach ($results as $result)
-		<dt><a href="{{ $result->target }}">{{ $result->the_title }}</a></dt>
-		<dd>{{ str_ireplace($searchterm,"<span style='background: yellow'>".$searchterm."</span>",$result->the_content) }} </dd>
-	@endforeach
+	@if ($results)
+		@foreach ($results as $result)
+			<dt><a href="{{ $result->target }}">{{ $result->the_title }}</a></dt>
+			<dd>{{ str_ireplace($searchterm,"<span style='background: yellow'>".$searchterm."</span>",$result->the_content) }} </dd>
+		@endforeach
+	@else
+	<dt>No results</dt>
+	<dd>Your search for {{ $searchterm }} did not return any results.</dd>
+	@endif
+
 	</dl>
 <p>&nbsp;</p>	
 

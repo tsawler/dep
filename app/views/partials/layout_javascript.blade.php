@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/js/contextmenu/jquery.contextMenu.js"></script>
 <script type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
 <script type="text/javascript" src="/js/jquery.sortable.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/3.3.0/bootbox.min.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
 
@@ -284,8 +285,8 @@ function addDDMenuItem(x){
 	$("#dd_parent_menu_item_id").val(x);
 }
 
-function deleteMenuItem() {
-	var r=confirm("Are you sure you want to delete this item?");
+function deleteMenuItem(){
+	var r = bootbox.confirm("Are you sure you want to delete this item?");
 	if (r==true)
 	{
 		$("#deleteid").val($("#menu_item_id").val())
@@ -294,7 +295,7 @@ function deleteMenuItem() {
 }
 
 function deleteDDMenuItem(){
-	var r=confirm("Are you sure you want to delete this item?");
+	var r=bootbox.confirm("Are you sure you want to delete this item?");
 	if (r==true)
 	{
 		$("#dddeleteid").val($("#ddmenu_item_id").val());

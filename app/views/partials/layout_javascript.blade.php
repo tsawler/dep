@@ -44,7 +44,7 @@ function makePageEditable(item){
 		});
 		
 	} else {
-		alert("No editable content on this page!");
+		bootbox.alert("No editable content on this page!");
 	}
 }
 
@@ -100,7 +100,7 @@ function turnOffEditing(item) {
 }
 
 function stub() {
-	alert("This functionality is not yet implemented!");
+	bootbox.alert("This functionality is not yet implemented!");
 }
 
 
@@ -170,7 +170,6 @@ function getDDSortableList(x){
 		            a[$(el).data('id')] = $(el).index() + 1;
 		        });
 		        sorteda = JSON.stringify(a);
-		        //alert(sorteda);
 		        $("#ddoutput").val(sorteda);
 			});
 			
@@ -248,7 +247,6 @@ function getSortableList(){
 		            a[$(el).data('id')] = $(el).index() + 1;
 		        });
 		        sorteda = JSON.stringify(a);
-		        //alert(sorteda);
 		        $("#output").val(sorteda);
 			});
 			

@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="/assets/css/header-1.css" type="text/css"/>
 <link rel="stylesheet" href="/assets/css/lemmon-slider.css" type="text/css" media="screen" />
+<link href="/css/jquery.pnotify.default.css" media="all" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/assets/css/custom.css" type="text/css" media="screen" />
 @if(Auth::check())
 @if(Auth::user()->access_level == 3)
@@ -50,8 +51,6 @@
 <div id="page">
 
 	@yield('hero-unit')
-	
-	@include('partials/messages')
 
 	<div class="container clearfix" id="main-content"> 
 	@yield('content')
@@ -73,6 +72,9 @@
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 <script src="/assets/js/custom.js"></script>
 @include('partials/layout_javascript')
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/3.3.0/bootbox.min.js"></script>
+<script type="text/javascript" src="/js/jquery.pnotify.min.js"></script>
 @yield('bottom-js')
+@include('partials/messages')
 </body>
 </html>

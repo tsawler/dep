@@ -44,7 +44,7 @@ Route::get('/page/create', array('before' => 'auth', function()
 {
 	return View::make('pages.createpage');
 }));
-
+Route::post('/page/savepage','PageController@savePage');
 
 /**
  *

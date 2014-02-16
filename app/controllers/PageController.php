@@ -30,6 +30,34 @@ class PageController extends BaseController {
 			return "Page updated successfully";
 		}
 	}
+	
+	/**
+	 * Save page 
+	 *
+	 * @return mixed
+	 */
+	 public function savePage(){
+		if (Auth::user()->access_level == 3){
+			$validator = Validator::make(Input::all(), Page::$rules);
+			if ($validator->passes()) {
+				$page = new Page;
+				$page->page_name = trim(Input::get('page_name'));
+				$page->page_title = trim(Input::get('page_name'));
+				$page->active = Input::get('active');
+				$page->page_content = trim(Input::get('page_content'));
+				$page->meta = Input::get('meta_description');
+				$page->meta_tags = Input::get('meta_keywords');
+				$page->slug = urlencode(trim(Input::get('page_name')));
+				$page->save();
+				return Redirect::to('/'.trim(Input::get('page_name')));
+			} else {
+				return Redirect::to('page/create')
+					->with('error', 'Error! Changes not saved!')
+					->withErrors($validator)
+					->withInput();
+			}
+		}
+	}
 
 
 	/**
@@ -72,8 +100,9 @@ class PageController extends BaseController {
 
 		$slug = Request::segment(1);
 		$page_title = "Not active";
-		$page_content = "The page you have requested is not active.";
+		$page_content = "Either the page you have requested is not active, or it does not exist.";
 		$meta = "";
+		$meta_tags = "";
 		$active = 0;
 		$page_id = 0;
 		
@@ -83,20 +112,25 @@ class PageController extends BaseController {
 		foreach ($results as $result)
 		{
 			$active = $result->active;
-			if ($active > 0){
+			if (($active > 0) || 
+					((Auth::check()) && (Auth::user()->access_level == 3))) {
 				$page_title = $result->page_title;
 				$page_content = $result->page_content;
 				$meta = $result->meta;
 				$page_id = $result->id;
+				$meta_keywords = $result->meta_tags;
 			}
 		}
 		
+		if ($active == 0){
+			Session::flash('status', 'This page is not active!');
+		}
 		return View::make('pages.defaultpage')
 			->with('page_title', $page_title)
 			->with('page_content', $page_content)
 			->with('meta', $meta)
+			->with('meta_tags',$meta_tags)
+			->with('active',$active)
 			->with('page_id', $page_id);
 	}
-
-
 }

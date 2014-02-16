@@ -3,6 +3,11 @@
 class Page extends Eloquent {
 
 	protected $guarded = array('*');
+	
+	public static $rules = array(
+	   'page_title'=>'min:2|unique:pages',
+	   'page_name'=>'unique:pages'
+	);
 
 	/**
 	 * The database table used by the model.

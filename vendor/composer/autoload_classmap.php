@@ -12,6 +12,7 @@ return array(
     'AddFulltextToBlog' => $baseDir . '/app/database/migrations/2014_02_07_203155_add_fulltext_to_blog.php',
     'AddFulltextToPage' => $baseDir . '/app/database/migrations/2014_02_07_180049_add_fulltext_to_page.php',
     'AddLastNameToUsers' => $baseDir . '/app/database/migrations/2014_01_22_163310_add_last_name_to_users.php',
+    'AddMetaTagsToPages' => $baseDir . '/app/database/migrations/2014_02_15_203947_add_meta_tags_to_pages.php',
     'AddMetaToPages' => $baseDir . '/app/database/migrations/2014_01_21_155212_add_meta_to_pages.php',
     'AddPageIdToMenuDropdownItems' => $baseDir . '/app/database/migrations/2014_02_05_204130_add_page_id_to_menu_dropdown_items.php',
     'AddPageIdToMenuItem' => $baseDir . '/app/database/migrations/2014_02_05_180224_add_page_id_to_menu_item.php',

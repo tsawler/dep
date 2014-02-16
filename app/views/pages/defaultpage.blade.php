@@ -24,7 +24,11 @@
 	<form action="/savepagetitle" method="post" id="savetitledata" name="savetitledata">
 	<h3 class="short_headline" style="text-transform: none;">
 	<article style='width: 100%'>
+	@if ($active == 1)
 	<span id="editablecontenttitle">{{ $page_title }}</span>
+	@else
+	<span id="editablecontenttitle">{{ $page_title }}</span> <small>[ Inactive ]</small>
+	@endif
 	</article>
 	</h3>
 	<input type="hidden" name="page_id" value="{{ $page_id }}">

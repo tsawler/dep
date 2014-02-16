@@ -23,19 +23,13 @@
 	</div>
 	@endif
 	
-	{{ Form::open(array('url' => '',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
-
-		
-		<div id="editmsg" class='alert alert-success hidden'>
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<span id="theeditmsg">&nbsp;</span>
-		</div>
-		
+	{{ Form::open(array('url' => '/page/savepage',  'class' => 'form', 'name' => 'bookform', 'id' => 'bookform')) }}
+	
 		<div class="control-group">
-		{{ Form::label('page_title', 'Page Title', array('class' => 'control-label')); }}
+		{{ Form::label('page_name', 'Page Title', array('class' => 'control-label')); }}
 		<div class="controls">
 		<div class="input-prepend"> <span class="add-on"><i class="icon-font"></i></span>
-	    {{ Form::text('page_title', null, array('class' => 'required', 'autofocus'=>'autofocus')); }}
+	    {{ Form::text('page_name', null, array('class' => 'required', 'autofocus'=>'autofocus')); }}
 	    </div>
 	    </div>
 	    </div>
@@ -46,8 +40,8 @@
 		<div class="input-prepend"> <span class="add-on"><i class="icon-check-sign"></i></span>
 	    {{ Form::select('active', array(
 	    	'0' => 'Inactive',
-	    	'1' => 'Published'
-	    	)); 
+	    	'1' => 'Active'
+	    	),1); 
 		}}
 	    </div>
 	    </div>

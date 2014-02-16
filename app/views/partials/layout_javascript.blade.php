@@ -8,12 +8,16 @@
 <script type="text/javascript" src="/js/contextmenu/jquery.contextMenu.js"></script>
 <script type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
 <script type="text/javascript" src="/js/jquery.sortable.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/3.3.0/bootbox.min.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
 
 function showResponse(responseText, statusText, xhr, $form)  {
-	$("#editmsg").removeClass("hidden");
+	x = $("#theeditmsg").html();
+	$.pnotify({
+	    icon: false,
+	    type: 'success',
+	    text: x
+	});
 }
 
 var editor;

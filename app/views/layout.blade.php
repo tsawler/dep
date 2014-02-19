@@ -12,6 +12,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="google-site-verification" content="Rh8eceAC4Iqu2nl3ere_7CXhwumQ6wXJwBL8ztUdcFs" />
 @yield('meta')
 
 <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css"/>

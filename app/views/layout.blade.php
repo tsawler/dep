@@ -34,7 +34,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 
 <!--[if gt IE 8]><!-->
-<script asynyc src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/jquery-1.9.1.min.js"><\/script>')</script>
 <!--<![endif]-->
 <!--[if lte IE 8]>

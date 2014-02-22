@@ -31,6 +31,6 @@
 	<ul class="social">
 		<li><a class="socicon small rss" href="/blog.rss" data-placement="bottom" title="Subscribe to our RSS feed"></a></li>
 		<li><a class="socicon small facebook" href="#" data-placement="bottom" title="Follow us on Facebook"></a></li>
-		<li><a class="socicon small twitterbird" href="#" data-placement="bottom" title="Follow us on Twitter"></a></li>
+		<li><a class="socicon small twitterbird" href="https://twitter.com/dogearedpress" data-placement="bottom" title="Follow us on Twitter"></a></li>
 	</ul>
 </section>

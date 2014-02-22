@@ -97,7 +97,7 @@
 				@if(Auth::check())
 				@if(Auth::user()->access_level == 3)
 					@if (Auth::user()->roles->contains(3))
-						<li><a href="javascript:void(0)" onclick="addMenuItem()">[Add item]</a></li>
+						<li><a href="javascript:void(0)" onclick="addMenuItem()">[+]</a></li>
 					@endif
 					
 					@if ((Auth::user()->roles->contains(1)) || (Auth::user()->roles->contains(2)))

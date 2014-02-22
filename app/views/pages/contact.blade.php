@@ -74,7 +74,10 @@ Contact Us: The Dog-Eared Press
 							<textarea class="span10 required" name="message" id="message" rows="3"></textarea>
 						</div>
 						<div class="control-group">
-						<img src="{{ $builder->inline() }}" />
+						<label for="captcha">
+						<img src="{{ $builder->inline() }}" /><br>
+						Enter the characters you see above</label>
+						<input type="text" class="span10 required" name="captcha" id="captcha" />
 						</div>
 						<button type="submit" class="btn btn-primary btn-large">Send</button>
 					</fieldset>
@@ -93,6 +96,7 @@ Contact Us: The Dog-Eared Press
 @section('bottom-js')
 <script>
 $(document).ready(function () {	
+	jQuery.validator.messages.required = "";
 	$("#bookform").validate({
 		rules: {
 			password: {

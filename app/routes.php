@@ -16,6 +16,7 @@ Route::post('/joinlist','MailRecipientController@joinList');
  * Contact Us
  */
 Route::get('/contactus', 'ContactusController@getContactus');
+Route::post('/contactus', 'ContactusController@postContactus');
 
 
 /**

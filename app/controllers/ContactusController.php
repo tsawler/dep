@@ -1,4 +1,5 @@
 <?php
+use Gregwar\Captcha\CaptchaBuilder;
 
 class ContactusController extends BaseController {
 
@@ -7,7 +8,10 @@ class ContactusController extends BaseController {
 	}
 	
 	public function getContactus(){
-		return View::make('pages.contact');
+		$builder = new CaptchaBuilder;
+		$builder->setDistortion(false);
+		$builder->build();
+		return View::make('pages.contact')->with('builder',$builder);
 	}
 
 }

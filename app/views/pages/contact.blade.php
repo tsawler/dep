@@ -1,5 +1,6 @@
 @extends('layout')
 
+
 @section('browser-title')
 Contact Us: The Dog-Eared Press
 @stop
@@ -15,7 +16,7 @@ Contact Us: The Dog-Eared Press
 	
 
 	<h3 class="short_headline" style="text-transform: none;"><span id="editablecontenttitle">Contact the Dog-Eared Press</span></h3>
-<div class="row-fluid reverse-order contact-page">
+		<div class="row-fluid reverse-order contact-page">
 			<p class="clearfix"> You can contact us through email, phone, or by using the form below. Since we are in the early
 			stages of development right now, you'll probably have better luck using email or the form than the phone. If you call,
 			we will call you back, but it might take a day or two.  </p>
@@ -71,6 +72,9 @@ Contact Us: The Dog-Eared Press
 						<div class="control-group">
 							<label for="message">Your Message</label>
 							<textarea class="span10 required" name="message" id="message" rows="3"></textarea>
+						</div>
+						<div class="control-group">
+						<img src="{{ $builder->inline() }}" />
 						</div>
 						<button type="submit" class="btn btn-primary btn-large">Send</button>
 					</fieldset>

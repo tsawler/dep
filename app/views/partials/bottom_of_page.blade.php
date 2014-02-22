@@ -40,7 +40,6 @@
 				</div>
 				<!-- close .span4 --> 
 				
-				<!--section containing blog posts-->
 				<div class="span4">
 					<section>
 						<h4>Stay Updated</h4>
@@ -62,7 +61,6 @@
 		</div>
 		<!-- close footer .container--> 
 		
-		<!--change this to your stuff-->
 		<section class="footerCredits">
 			<div class="container">
 				<ul class="clearfix">

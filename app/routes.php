@@ -5,14 +5,17 @@
  */
 Route::any('/','PageController@showHome');
 Route::any('/home','PageController@showHome');
-//Route::any('/', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showHome'));
-//Route::any('/home', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showHome'));
 
 /**
  *
  * Mailing list routes
  */
 Route::post('/joinlist','MailRecipientController@joinList');
+
+/**
+ * Contact Us
+ */
+Route::get('/contactus', 'ContactusController@getContactus');
 
 
 /**

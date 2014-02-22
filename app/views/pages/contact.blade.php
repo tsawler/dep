@@ -34,7 +34,7 @@ Contact Us: The Dog-Eared Press
 					<p>Sign up for our newsletter. We won't share your email address.</p>
 					{{ Form::open(array('url' => '/joinlist', 'class' => 'form-horizontal', 'method' => 'post')) }}
 						<div class="input-append row-fluid">
-							{{ Form::text('email', null, array('id' => 'span6', 'placeholder' => 'you@example.com')); }}
+							{{ Form::text('email', null, array('id' => 'span10 required email', 'placeholder' => 'you@example.com')); }}
 							{{ Form::submit('Sign up', array('class' => 'btn btn-primary')); }}
 						</div>
 						<!--close input-append-->
@@ -63,7 +63,7 @@ Contact Us: The Dog-Eared Press
 						</div>
 						<div class="control-group">
 							{{ Form::label('phone', 'Phone Number'); }}
-							{{ Form::text('phone', null, array('class' => 'span10')); }}
+							{{ Form::text('phone', null, array('class' => 'span10'	)); }}
 						</div>
 						<div class="control-group">
 							{{ Form::label('email', 'Email Address'); }}

@@ -40,7 +40,7 @@
 <!--[if lte IE 8]>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <![endif]-->
-<script async src="/assets/js/modernizr.js"></script>
+<script src="/assets/js/modernizr.js"></script>
 @yield('js')
 </head>
 <body class="index">
@@ -68,12 +68,12 @@
 @include('partials/modals')
 @endif
 
-<script async src="/assets/js/bootstrap.min.js"></script>
-<script async src="/assets/js/lemmon-slider.min.js"></script>
-<script async src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
-<script async src="/assets/js/custom.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/lemmon-slider.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+<script src="/assets/js/custom.js"></script>
 @include('partials/layout_javascript')
-<script async type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/3.3.0/bootbox.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/3.3.0/bootbox.min.js"></script>
 <script type="text/javascript" src="/js/jquery.pnotify.min.js"></script>
 @yield('bottom-js')
 @include('partials/messages')

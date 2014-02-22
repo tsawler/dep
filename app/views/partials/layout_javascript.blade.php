@@ -10,16 +10,6 @@
 <script async type="text/javascript" src="/js/jquery.sortable.min.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
-
-function showResponse(responseText, statusText, xhr, $form)  {
-	x = $("#theeditmsg").html();
-	$.pnotify({
-	    icon: false,
-	    type: 'success',
-	    text: x
-	});
-}
-
 var editor;
 
 function makePageEditable(item){

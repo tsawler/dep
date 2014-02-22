@@ -74,7 +74,7 @@
 <script async src="/assets/js/custom.js"></script>
 @include('partials/layout_javascript')
 <script async type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/3.3.0/bootbox.min.js"></script>
-<script async type="text/javascript" src="/js/jquery.pnotify.min.js"></script>
+<script type="text/javascript" src="/js/jquery.pnotify.min.js"></script>
 @yield('bottom-js')
 @include('partials/messages')
 </body>

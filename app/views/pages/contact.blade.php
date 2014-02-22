@@ -58,23 +58,22 @@ Contact Us: The Dog-Eared Press
 									'method' => 'post')) }}
 					<fieldset>
 						<div class="control-group">
-							<label for="name">Your Name</label>
-							<input type="text" class="span10 required" name="name" id="name" />
+							{{ Form::label('name', 'Your Name'); }}
+							{{ Form::text('name', null, array('class' => 'span10 required')); }}
 						</div>
 						<div class="control-group">
-							<label for="phone">Phone</label>
-							<input type="text" class="span10" name="phone" id="phone" />
+							{{ Form::label('phone', 'Phone Number'); }}
+							{{ Form::text('phone', null, array('class' => 'span10')); }}
 						</div>
 						<div class="control-group">
-							<label for="email">Email Address</label>
-							<input type="email" class="span10 required email" name="email" id="email" />
+							{{ Form::label('email', 'Email Address'); }}
+							{{ Form::text('email', null, array('class' => 'span10', 'placeholder' => 'you@example.com')); }}
 						</div>
 						<div class="control-group">
-							<label for="message">Your Message</label>
-							<textarea class="span10 required" name="message" id="message" rows="3"></textarea>
+							{{ Form::label('message', 'Your Message'); }}
+							{{ Form::textarea('message', null, array('class' => 'span10 required')); }}
 						</div>
 						<div class="control-group">
-						<label for="captcha">
 						<img src="{{ $builder->inline() }}" /><br>
 						Enter the characters you see above</label>
 						<input type="text" class="span10 required" name="captcha" id="captcha" />

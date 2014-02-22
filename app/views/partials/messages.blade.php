@@ -6,7 +6,9 @@
 		$.pnotify({
 	        icon: false,
 	        type: 'success',
-	        text: x
+	        text: x,
+	        nonblock: true,
+			nonblock_opacity: .2
 	    });
 		</script>
 	@endif
@@ -16,7 +18,9 @@
 		$.pnotify({
 	        type: 'error',
 	        icon: false,
-	        text: x
+	        text: x,
+	        nonblock: true,
+			nonblock_opacity: .2
 	    });
 		</script>
 	@endif
@@ -26,7 +30,9 @@
 		$.pnotify({
 	        icon: false,
 	        type: 'Info',
-	        text: x
+	        text: x,
+	        nonblock: true,
+			nonblock_opacity: .2
 	    });
 		</script>
 	@endif

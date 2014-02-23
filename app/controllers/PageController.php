@@ -123,14 +123,14 @@ class PageController extends BaseController {
 		}
 		
 		if ($active == 0){
-			Session::flash('status', 'This page is not active!');
-		}
-		return View::make('pages.defaultpage')
-			->with('page_title', $page_title)
-			->with('page_content', $page_content)
-			->with('meta', $meta)
-			->with('meta_tags',$meta_tags)
-			->with('active',$active)
-			->with('page_id', $page_id);
+			App::abort(404);
+		} else {}
+			return View::make('pages.defaultpage')
+				->with('page_title', $page_title)
+				->with('page_content', $page_content)
+				->with('meta', $meta)
+				->with('meta_tags',$meta_tags)
+				->with('active',$active)
+				->with('page_id', $page_id);
 	}
 }

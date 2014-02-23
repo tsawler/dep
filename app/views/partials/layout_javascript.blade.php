@@ -56,6 +56,17 @@ function saveChanges(){
      }
 }
 
+function showResponse(responseText, statusText, xhr, $form)  {
+	x = $("#theeditmsg").html();
+	$.pnotify({
+        icon: false,
+        type: 'success',
+        text: x,
+        nonblock: true,
+		nonblock_opacity: .2
+    });
+}
+
 function saveEditedPage(){
 	// get the changed data;
     var data = $('#editablecontenttitle').html();

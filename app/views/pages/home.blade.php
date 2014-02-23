@@ -32,7 +32,7 @@ The Dog-Eared Press
 	<div class="admin-hidden" id="savebar" style='margin-bottom: 5px;'>
 		<div class='pull-right'>
 			<a href='#!' style='text-decoration: none;'><i class="icon-remove-sign" onclick="turnOffEditing()"></i></a>&nbsp;
-			<a href='#!' onclick='saveChanges()' style='text-decoration: none;'><i class="icon-save" onclick="saveChanges()"></i></a>
+			<a href='#!' style='text-decoration: none;'><i class="icon-save" onclick="saveChanges()"></i></a>
 		</div>
 	</div>
 	<div style="clear: both; margin-bottom: 5px;"></div>
@@ -42,8 +42,9 @@ The Dog-Eared Press
 	{{ $page_content }}
 	</article>
 	<article class="admin-hidden">
-		<a class="btn btn-primary" href="#!" onclick="saveEditedPage()">Save</a>
-		<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
+		<br>
+		<a class="btn btn-primary" onclick="saveChanges()()">Save</a>
+		<a class="btn btn-info" onclick="turnOffEditing()">Cancel</a>
 		&nbsp;&nbsp;&nbsp;
 	</article>
 	<input type="hidden" name="page_id" value="<?php echo $page_id;?>">

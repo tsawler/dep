@@ -31,7 +31,7 @@
 						<h4>Follow Us</h4>
 						<ul class="social">
 							<li><a class="socicon rss" href="/blog.rss" title="RSS"></a></li>
-							<li><a class="socicon facebook" href="#" title="Facebook"></a></li>
+							<li><a class="socicon facebook" href="https://www.facebook.com/dogearedpress" title="Facebook"></a></li>
 							<li><a class="socicon twitterbird" href="https://twitter.com/dogearedpress" title="Twitter"></a></li>
 						</ul>
 					</section>	

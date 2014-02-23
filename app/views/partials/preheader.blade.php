@@ -30,7 +30,7 @@
 	<div class="phone"><a href="tel:15064742804" class="tele">+1.506.474.2804</a></div>
 	<ul class="social">
 		<li><a class="socicon small rss" href="/blog.rss" data-placement="bottom" title="Subscribe to our RSS feed"></a></li>
-		<li><a class="socicon small facebook" href="#" data-placement="bottom" title="Follow us on Facebook"></a></li>
+		<li><a class="socicon small facebook" href="https://www.facebook.com/dogearedpress" data-placement="bottom" title="Follow us on Facebook"></a></li>
 		<li><a class="socicon small twitterbird" href="https://twitter.com/dogearedpress" data-placement="bottom" title="Follow us on Twitter"></a></li>
 	</ul>
 </section>

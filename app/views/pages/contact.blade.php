@@ -52,32 +52,49 @@ Contact Us: The Dog-Eared Press
 			
 			<div class="span7">
 				{{ Form::open(array('url' => '/contactus', 
-									'class' => 'form-horizontal', 
+									'class' => 'form', 
 									'name' => 'bookform', 
 									'id' => 'bookform',
 									'method' => 'post')) }}
 					<fieldset>
+						
 						<div class="control-group">
-							{{ Form::label('name', 'Your Name'); }}
-							{{ Form::text('name', null, array('class' => 'span10 required')); }}
+						{{ Form::label('name', 'Your name', array('class' => 'control-label')); }}
+						<div class="controls">
+						<div class="input-prepend"> <span class="add-on"><strong>A</strong></span>
+						{{ Form::text('name', null, array('class'=>'input-xlarge required')); }}
+						<span class='help-inline'></span>
 						</div>
-						<div class="control-group">
-							{{ Form::label('phone', 'Phone Number'); }}
-							{{ Form::text('phone', null, array('class' => 'span10'	)); }}
 						</div>
-						<div class="control-group">
-							{{ Form::label('email', 'Email Address'); }}
-							{{ Form::text('email', null, array('class' => 'span10', 'placeholder' => 'you@example.com')); }}
 						</div>
+						
 						<div class="control-group">
-							{{ Form::label('message', 'Your Message'); }}
-							{{ Form::textarea('message', null, array('class' => 'span10 required')); }}
+						{{ Form::label('email', 'Email Address', array('class' => 'control-label')); }}
+						<div class="controls">
+						<div class="input-prepend"> <span class="add-on"><i class="socicon email"></i></span>
+						{{ Form::email('email', null, array('class'=>'input-xlarge required email')); }}
+						<span class='help-inline'></span>
 						</div>
+						</div>
+						</div>
+						
 						<div class="control-group">
-						<img src="{{ $builder->inline() }}" /><br>
+						{{ Form::label('message', 'Message', array('class' => 'control-label')); }}
+						<div class="controls">
+						{{ Form::textarea('message', null, array('rows'=>'3','class'=>'input-xxlarge required')); }}
+						<span class='help-inline'></span>
+						</div>
+						</div>
+
+						
+						<div class="control-group">
+						<label><img src="{{ $builder->inline() }}" /><br>
 						Enter the characters you see above</label>
+						<div class="input-prepend"> <span class="add-on"><i class="icon-lock"></i></span>
 						<input type="text" class="span10 required" name="captcha" id="captcha" />
 						</div>
+						</div>
+						
 						<button type="submit" class="btn btn-primary btn-large">Send</button>
 					</fieldset>
 				{{ Form::close() }}

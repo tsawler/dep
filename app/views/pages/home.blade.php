@@ -41,6 +41,11 @@ The Dog-Eared Press
 		<article id="editablecontent" style='width: 100%'>
 	{{ $page_content }}
 	</article>
+	<article class="admin-hidden">
+		<a class="btn btn-primary" href="#!" onclick="saveEditedPage()">Save</a>
+		<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
+		&nbsp;&nbsp;&nbsp;
+	</article>
 	<input type="hidden" name="page_id" value="<?php echo $page_id;?>">
 	<input type="hidden" name="thedata" id="thedata">
 	<input type="hidden" name="thetitledata" value="{{ $page_title }}">

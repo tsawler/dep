@@ -52,6 +52,7 @@ function saveChanges(){
         var options = { target: '#theeditmsg', success: showResponse };
         $("#savedata").unbind('submit').ajaxSubmit(options);
         $("#old").val('');
+        turnOffEditing();
         return false;
      }
 }
@@ -81,10 +82,11 @@ function saveEditedPage(){
     $("#savetitledata").unbind('submit').ajaxSubmit(options);
     $("#oldtitle").val('');
     $("#old").val('');
+    turnOffEditing();
     return false;
 }
 
-function turnOffEditing(item) {
+function turnOffEditing() {
 	for (name in CKEDITOR.instances) {
     	CKEDITOR.instances[name].destroy()
 	}

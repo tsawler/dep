@@ -3,11 +3,11 @@
 	&& (Auth::user()->access_level == 3))
 <script type="text/javascript" src="/ck/ckeditor.js"></script>
 <script type="text/javascript" src="/ck/adapters/jquery.js"></script>
-<script async type="text/javascript" src="/js/jquery.form.js"></script>
-<script async type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
-<script async type="text/javascript" src="/js/contextmenu/jquery.contextMenu.js"></script>
-<script async type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
-<script async type="text/javascript" src="/js/jquery.sortable.min.js"></script>
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/js/contextmenu/jquery.contextMenu.js"></script>
+<script type="text/javascript" src="/js/contextmenu/jquery.ui.position.js"></script>
+<script type="text/javascript" src="/js/jquery.sortable.min.js"></script>
 <script>
 CKEDITOR.disableAutoInline = true;
 var editor;
@@ -119,7 +119,7 @@ $(function(){
         callback: function(key, options) {
            // get the id of the menu item
            var id = $(this).data('ddmitem-id');
-           var mid = $(this).data('mitem-id')
+           var mid = $(this).data('mitem-id');
            // call ajax to get menu item details;
            getDataForDDMenuItem(id, mid);
            $('#ddmenuItemModal').modal();

@@ -24,9 +24,6 @@ Contact Us: The Dog-Eared Press
 			<div class="span5">
 
 				<p><strong>The Dog-Eared Press</strong><br>
-					PO Box 1234<br>
-					Fredericton, New Brunswick<br>
-					Canada E3B 1B1<br>
 					<strong>phone:</strong> <a href="tel:8135551234" class="tele">506.474.2704</a><br>
 					<strong>email:</strong> <a href="mailto:query@dogearedpress.ca">query@dogearedpress.ca</a> </p>
 				<h3 class="short_headline margin-top"><span>Stay in Touch</span></h3>

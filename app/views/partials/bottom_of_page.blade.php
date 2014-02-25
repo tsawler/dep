@@ -7,10 +7,8 @@
 				<div class="span4">
 					<section>
 						<h4>Contact Us</h4>
-						<p>The Dog-Eared Press<br>
-							PO Box 1234<br>
-							Fredericton NB Canada<br>
-							E3B 1B1<br>
+						<p>
+							<strong>The Dog-Eared Press</strong><br>
 							<strong>phone:</strong> <a href="tel:5064742804" class="tele">506.474.2804</a><br>
 							<strong>email:</strong> <a href="mailto:info@dogearedpress.ca">info@dogearedpress.ca</a> </p>
 					</section>

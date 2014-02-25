@@ -34,11 +34,11 @@
 <link rel="shortcut icon" href="favicon.ico" />
 
 <!--[if gt IE 8]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/jquery-1.9.1.min.js"><\/script>')</script>
 <!--<![endif]-->
 <!--[if lte IE 8]>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <![endif]-->
 <script src="/assets/js/modernizr.js"></script>
 @yield('js')

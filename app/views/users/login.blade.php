@@ -5,7 +5,7 @@ Log in to your account: The Dog-Eared Press
 @stop
 
 @section('meta')
-<meta name="description" content="Submit a manuscript to the Dog-Eared Press, an independent publisher of fantasy eBooks." />
+<meta name="description" content="Log in to your account at the Dog-eared Press, an independent publisher of Fantasy and Science Fiction eBooks.." />
 @stop
 
 

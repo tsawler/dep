@@ -5,7 +5,7 @@ The Dog-Eared Press
 @stop
 
 @section('meta')
-<meta name="description" content="The Dog-eared Press is an independent publisher of Fantasy and Science Fiction eBooks.." />
+<meta name="description" content="The Dog-eared Press is an independent publisher of Fantasy and Science Fiction eBooks." />
 @stop
 
 @section('hero-unit')

@@ -13,7 +13,7 @@ The Process: The Dog-Eared Press
 
 <div class="container">
 	<h3 class="short_headline" style="text-transform: none;"><span>The Process</span></h3>
-    <div id="rootwizard">
+    <div id="rootwizard" class="hidden">
     	<div class="navbar text-center">
 			<div class="navbar-inner" 
 				style='width: 70%;margin: 0 auto; border: 0; outline: none; background: transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;'>
@@ -109,7 +109,8 @@ The Process: The Dog-Eared Press
 @section('bottom-js')
 <script>
     $(document).ready(function() {
-    $('#rootwizard').bootstrapWizard({'nextSelector': '.button-next', 'previousSelector': '.button-previous'});
+    	$('#rootwizard').bootstrapWizard({'nextSelector': '.button-next', 'previousSelector': '.button-previous'});
+    	$("#rootwizard").removeClass("hidden");
     });
 </script>
 @stop

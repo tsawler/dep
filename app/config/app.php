@@ -27,6 +27,9 @@ return array(
 	*/
 
 	'url' => 'http://www.dogearedpress.ca',
+	/*'url' => 'http://dep.local:8000',*/
+	
+	'secureurl' => 'https://dogearedpress.ca',
 
 	/*
 	|--------------------------------------------------------------------------

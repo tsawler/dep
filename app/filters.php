@@ -13,7 +13,24 @@
 
 App::before(function($request)
 {
-	//
+	$protected = array(	
+						'users/login',
+						'users/signin',
+						'users/register',
+						'users/create'
+						);
+	
+	$where = Request::path();
+	if( ! Request::secure()) {
+		if (in_array($where, $protected)){
+			return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+		}
+	} else {
+		if (!(in_array($where, $protected))){
+			return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+		}
+	}
+	
 });
 
 
@@ -113,16 +130,19 @@ Route::filter('cache', function($route, $request, $response = null)
 Route::filter('ssl', function($route, $request, $response = null){
 	
 	$protected = array(	
-						'/users/login',
-						'/users/signin',
-						'/users/register',
-						'/users/create'
+						'users/login',
+						'users/signin',
+						'users/register',
+						'users/create'
 						);
 	$where = Request::path();
 	Log::info('checking ' . $where);
 	if (in_array($where, $protected)){
+		Log::info('in array');
 		if( ! Request::secure()) {
-			return Redirect::secure(Request::getRequestUri());
+			//return Redirect::secure(Request::getRequestUri());
+			return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+			//Log::info('would redirect to '.Config::get('app.secureurl') . Request::getRequestUri());
 		}
 	}
 });

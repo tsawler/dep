@@ -32,7 +32,7 @@ The Process: The Dog-Eared Press
 		</div>
     <div class="tab-content">
     <div class="tab-pane" id="tab1">
-    <h2>Step One</h2>
+    <h3>Step One</h3>
     <p>First, review our <a href="/guidelines">submission guidelines</a> to see what kinds of manuscripts we are interested in. Think carefully
     about the kind of manuscript you have, and if it is a good fit with the kinds of stories that interest us. If, for example, you
     have written a paranormal romance, there are many other publishers out there who are probably a better fit. If, however, you have

@@ -16,6 +16,7 @@ App::before(function($request)
 	$protected = array(	
 						'users/login',
 						'users/signin',
+						'/users/tfa',
 						'users/register',
 						'users/create',
 						'users/logout',

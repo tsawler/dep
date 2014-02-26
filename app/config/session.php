@@ -122,7 +122,7 @@ return array(
 	|
 	*/
 
-	'domain' => '*.dogearedpress.ca',
+	'domain' => 'dogearedpress.ca',
 
 	/*
 	|--------------------------------------------------------------------------

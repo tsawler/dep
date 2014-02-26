@@ -17,7 +17,16 @@ App::before(function($request)
 						'users/login',
 						'users/signin',
 						'users/register',
-						'users/create'
+						'users/create',
+						'users/logout',
+						'users/dashboard',
+						'users/account',
+						'users/author',
+						'users/password',
+						'users/security',
+						'password/remind',
+						'password/reset'
+						
 						);
 	
 	$where = Request::path();
@@ -123,26 +132,4 @@ Route::filter('cache', function($route, $request, $response = null)
 	        Log::info("putting into cache");
 	    }
     }
-});
-
-
-
-Route::filter('ssl', function($route, $request, $response = null){
-	
-	$protected = array(	
-						'users/login',
-						'users/signin',
-						'users/register',
-						'users/create'
-						);
-	$where = Request::path();
-	Log::info('checking ' . $where);
-	if (in_array($where, $protected)){
-		Log::info('in array');
-		if( ! Request::secure()) {
-			//return Redirect::secure(Request::getRequestUri());
-			return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
-			//Log::info('would redirect to '.Config::get('app.secureurl') . Request::getRequestUri());
-		}
-	}
 });

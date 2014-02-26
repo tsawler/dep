@@ -64,7 +64,7 @@ The Process: The Dog-Eared Press
     <div class="tab-pane" id="tab4">
     <h3>Step Four</h3>
     <p>Once we have a clean, agreed upon version of your manuscript, we go into the editorial process. You will be assigned an 
-    editor, who will work with you improving the quality of your manuscript. It will be checked for typographical, grammatical, 
+    editor, who will work with you to improve the quality of your manuscript. It will be checked for typographical, grammatical, 
     and stylistic problems, and we'll work together to make your document as professional, well-written and enjoyable to 
     read as it can be. <strong>This will take a few months</strong>, but we'll never let your manuscript languish in someone's "to do" file.</p>
     </div>

@@ -36,11 +36,11 @@ App::before(function($request)
 		if (in_array($where, $protected)){
 			return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
 		}
-	} else {
+	} /* else {
 		if (!(in_array($where, $protected))){
 			return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 		}
-	}
+	}*/
 	
 });
 

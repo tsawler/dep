@@ -7,6 +7,14 @@ Route::any('/','PageController@showHome');
 Route::any('/home','PageController@showHome');
 
 /**
+ * Process
+ */
+Route::get('/process', function()
+{
+    return View::make('pages.process');
+});
+
+/**
  *
  * Mailing list routes
  */
@@ -60,6 +68,7 @@ Route::controller('/ajax','AjaxController');
 /**
  * User/account routes
  */
+//Route::controller('/users', array('before' => 'ssl',  'uses' => 'UserController'));
 Route::controller('/users', 'UserController');
 Route::get('/verifyaccount','UsersPendingController@validateUser');
 Route::controller('/password', 'RemindersController');

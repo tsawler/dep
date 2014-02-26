@@ -70,6 +70,7 @@
 
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/lemmon-slider.min.js"></script>
+<script src="/js/jquery.bootstrap.wizard.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 <script src="/assets/js/custom.js"></script>
 @include('partials/layout_javascript')

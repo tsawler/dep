@@ -88,3 +88,12 @@ li.sortable-placeholder {
 	border: 1px dashed #CCC;
 	background: none;
 }
+.nav-pills {
+	border: 0; 
+	outline: none; 
+	background: transparent; 
+	text-align: center;
+	-webkit-box-shadow: none; 
+	-moz-box-shadow: none; 
+	box-shadow: none;
+}

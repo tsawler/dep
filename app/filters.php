@@ -107,3 +107,22 @@ Route::filter('cache', function($route, $request, $response = null)
 	    }
     }
 });
+
+
+
+Route::filter('ssl', function($route, $request, $response = null){
+	
+	$protected = array(	
+						'/users/login',
+						'/users/signin',
+						'/users/register',
+						'/users/create'
+						);
+	$where = Request::path();
+	Log::info('checking ' . $where);
+	if (in_array($where, $protected)){
+		if( ! Request::secure()) {
+			return Redirect::secure(Request::getRequestUri());
+		}
+	}
+});

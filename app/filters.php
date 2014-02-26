@@ -17,6 +17,7 @@ App::before(function($request)
 						'users/login',
 						'users/signin',
 						'users/tfa',
+						'users/checktfa',
 						'users/register',
 						'users/create',
 						'users/logout',

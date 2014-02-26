@@ -13,7 +13,7 @@
 
 App::before(function($request)
 {
-	/*$protected = array(	
+	$protected = array(	
 						'users/login',
 						'users/signin',
 						'users/register',
@@ -29,7 +29,7 @@ App::before(function($request)
 		if (!(in_array($where, $protected))){
 			return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 		}
-	}*/
+	}
 	
 });
 

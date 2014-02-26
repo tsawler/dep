@@ -129,7 +129,7 @@ class PageController extends BaseController {
 				->with('page_title', $page_title)
 				->with('page_content', $page_content)
 				->with('meta', $meta)
-				->with('meta_tags',$meta_tags)
+				->with('meta_tags',$meta_keywords)
 				->with('active',$active)
 				->with('page_id', $page_id);
 	}

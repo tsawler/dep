@@ -17,37 +17,10 @@ Contact Us: The Dog-Eared Press
 
 	<h3 class="short_headline" style="text-transform: none;"><span id="editablecontenttitle">Contact the Dog-Eared Press</span></h3>
 		<div class="row-fluid reverse-order contact-page">
-			<p class="clearfix"> You can contact us through email, phone, or by using the form below. Since we are in the early
-			stages of development right now, you'll probably have better luck using email or the form than the phone. If you call,
-			we will call you back, but it might take a day or two.  </p>
-			<hr />
-			<div class="span5">
 
-				<p><strong>The Dog-Eared Press</strong><br>
-					<strong>phone:</strong> <a href="tel:8135551234" class="tele">506.474.2704</a><br>
-					<strong>email:</strong> <a href="mailto:query@dogearedpress.ca">query@dogearedpress.ca</a> </p>
-				<h3 class="short_headline margin-top"><span>Stay in Touch</span></h3>
-				<section>
-					<p>Sign up for our newsletter. We won't share your email address.</p>
-					{{ Form::open(array('url' => '/joinlist', 'class' => 'form-horizontal', 'method' => 'post')) }}
-						<div class="input-append row-fluid">
-							{{ Form::text('email', null, array('id' => 'span10 required email', 'placeholder' => 'you@example.com')); }}
-							{{ Form::submit('Sign up', array('class' => 'btn btn-primary')); }}
-						</div>
-						<!--close input-append-->
-					{{ Form::close() }}
-				</section>
-				<!--close input-append-->
-				<h3 class="short_headline margin-top"><span>Follow Us</span></h3>
-				<ul class="social">
-					<li><a class="socicon rss" href="/blog.rss" title="RSS"></a></li>
-					<li><a class="socicon facebook" href="https://www.facebook.com/dogearedpress" title="Facebook"></a></li>
-					<li><a class="socicon twitterbird" href="https://twitter.com/dogearedpress" title="Twitter"></a></li>
-				</ul>
-			</div>
-			<!--close span5 -->
 			
-			<div class="span7">
+			
+			<div class="span12">
 				{{ Form::open(array('url' => '/contactus', 
 									'class' => 'form', 
 									'name' => 'bookform', 

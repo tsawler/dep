@@ -5,7 +5,8 @@
 @stop
 
 @section('meta')
-<meta name="description" content="{{ $meta }}" />
+<meta name="description" content="{{ $meta }}">
+<meta name="keywords" content="{{ $meta_tags }}">
 @stop
 
 

@@ -46,17 +46,15 @@ Route::get('/blog.rss', 'PostsController@rss');
 
 
 /**
- * Page Routes
+ * User/account routes
  */
- 
-Route::get('{pagename?}','PageController@showPage');
-//Route::get('{pagename?}', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showPage'));
-Route::post('/page/edit','PageController@editPage');
-Route::get('/page/create', array('before' => 'auth', function()
-{
-	return View::make('pages.createpage');
-}));
-Route::post('/page/savepage','PageController@savePage');
+//Route::controller('/users', array('before' => 'ssl',  'uses' => 'UserController'));
+Route::controller('/users', 'UserController');
+Route::get('/verifyaccount','UsersPendingController@validateUser');
+Route::controller('/password', 'RemindersController');
+Route::controller('/submit', 'SubmitController');
+
+
 
 /**
  *
@@ -65,14 +63,7 @@ Route::post('/page/savepage','PageController@savePage');
 Route::controller('/ajax','AjaxController');
 
 
-/**
- * User/account routes
- */
-//Route::controller('/users', array('before' => 'ssl',  'uses' => 'UserController'));
-Route::controller('/users', 'UserController');
-Route::get('/verifyaccount','UsersPendingController@validateUser');
-Route::controller('/password', 'RemindersController');
-Route::controller('/submit', 'SubmitController');
+
 
 
 
@@ -90,3 +81,16 @@ Route::get('/admin/adminusers','AdminController@getAdminUsers');
 Route::get('/admin/allusers','AdminController@getAllUsers');
 Route::post('/admin/allusers','AdminController@postAllUsers');
 Route::post('/admin/edituserroles/{userid}','AdminController@saveUserRoles');
+
+/**
+ * Page Routes
+ */
+ 
+Route::get('{pagename?}','PageController@showPage');
+//Route::get('{pagename?}', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showPage'));
+Route::post('/page/edit','PageController@editPage');
+Route::get('/page/create', array('before' => 'auth', function()
+{
+	return View::make('pages.createpage');
+}));
+Route::post('/page/savepage','PageController@savePage');

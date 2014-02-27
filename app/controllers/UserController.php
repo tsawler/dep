@@ -199,9 +199,7 @@ class UserController extends BaseController {
 	 */
 	public function getAuthor() {
 		$publisher = new PublisherInfo;
-		$user_id = Auth::user()->id;
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
-
 		$this->layout->content = View::make('users.dashboard.publisher')
 			->with('publisher', $publisher);
 	}
@@ -233,6 +231,7 @@ class UserController extends BaseController {
 				$publisher->address = Input::get('address');
 				$publisher->city = Input::get('city');
 				$publisher->province = Input::get('province');
+				Log::info('set province to ' . Input::get('province'));
 				$publisher->province_other = Input::get('province_other');
 				$publisher->country = Input::get('country');
 				$publisher->zip = Input::get('zip');

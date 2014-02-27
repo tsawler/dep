@@ -14,15 +14,15 @@ Dashboard: Author Account Details: The Dog-Eared Press
 			<h3 class="short_headline" style="text-transform: none;"><span>Author's Account Details</span></h3>
 			
 			@if($publisher != null)
-			{{ Form::model($publisher, array(
-										'class' => 'form-horizontal', 
-										'name' => 'bookform', 'id' => 'bookform',
-										'url' => array('users/author', $publisher->id )
-										) 
-						   )
-			}}
+				{{ Form::model($publisher, array(
+											'class' => 'form-horizontal', 
+											'name' => 'bookform', 'id' => 'bookform',
+											'url' => array('users/author', $publisher->id )
+											) 
+							   )
+				}}
 			@else
-			{{ Form::open(array('url' => 'users/author', 'class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
+				{{ Form::open(array('url' => 'users/author', 'class' => 'form-horizontal', 'name' => 'bookform', 'id' => 'bookform')) }}
 			@endif
 			
 			<p>This information is only required if you are publishing with us,
@@ -127,8 +127,7 @@ Dashboard: Author Account Details: The Dog-Eared Press
 				'WV' => 'West Virginia',
 				'WI' => 'Wisconsin',
 				'WY' => 'Wyoming'
-				),
-				$publisher->province); 
+				)); 
 			}}
 			<span class='help-inline'></span>
 			</div>
@@ -394,8 +393,7 @@ Dashboard: Author Account Details: The Dog-Eared Press
 				'ye' => 'Yemen',
 				'zm' => 'Zambia',
 				'zw' => 'Zimbabwe'
-				),
-				$publisher->country);
+				));
 			}}
 			<span class='help-inline'></span>
 			</div>

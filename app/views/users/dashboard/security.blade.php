@@ -38,7 +38,7 @@ Security: The Dog-Eared Press
 			{{ Form::model($user, array(
 										'class' => 'form-horizontal', 
 										'name' => 'bookform', 'id' => 'bookform',
-										'url' => array('users/security', $user->id )
+										'url' => array('users/security' )
 										) 
 						   )
 			}}
@@ -85,6 +85,7 @@ Security: The Dog-Eared Press
 			    </div>
 			    </div>
 			    {{ Form::hidden('newsecret', null, array('id'=>'newsecret')) }}
+			    {{ Form::hidden('userid', Auth::user()->id) }}
 		    {{ Form::close() }}
 			
 			{{ Form::open(array('url' => 'users/testcode', 'name' => 'testCodeForm', 'id' => 'testCodeForm')) }}

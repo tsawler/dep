@@ -43,6 +43,15 @@ Frequently Asked Questions: The Dog-Eared Press
 					<!--close s-wrap-->
 					
 					<li class="s-wrap">
+						<h4 class="trigger"><a href="#">How much will I make if I publish with you? <i class="icon-plus-sign"></i></a></h4>
+						<div class="s-content">
+							<p><strong>Answer:</strong></p>
+						</div>
+						<!--close s-content--> 
+					</li>
+					<!--close s-wrap-->
+					
+					<li class="s-wrap">
 						<h4 class="trigger"><a href="#">Well, eBooks are great, but what about print? <i class="icon-plus-sign"></i></a></h4>
 						<div class="s-content">
 							<p><strong>Answer:</strong> </p>

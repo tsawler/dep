@@ -8,7 +8,7 @@
 			
 				@if((Auth::check()) && (Auth::user()->access_level == 3) && (Auth::user()->roles->contains(3)))
 
-					@foreach((MenuItem::where('menu_id','=','1')->orderBy('sort_order')->remember(1440)->get()) as $item)
+					@foreach((MenuItem::where('menu_id','=','1')->orderBy('sort_order')->remember(525949)->get()) as $item)
 						@if ($item->has_children == 0)
 							@if ($item->active == 1)
 								@if ($item->page_id == 0)
@@ -69,7 +69,7 @@
 						@endif
 					@endforeach
 				@else
-					@foreach((MenuItem::where('menu_id','=','1')->where('active','=','1')->orderBy('sort_order')->remember(1440)->get()) as $item)
+					@foreach((MenuItem::where('menu_id','=','1')->where('active','=','1')->orderBy('sort_order')->remember(525949)->get()) as $item)
 						@if ($item->has_children == 0)
 							@if ($item->page_id == 0)
 								<li><a href='{{ $item->url }}'>{{ $item->menu_text }}</a></li>

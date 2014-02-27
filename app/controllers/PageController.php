@@ -70,7 +70,7 @@ class PageController extends BaseController {
 		$meta = "";
 
 		//$results = DB::select('select * from pages where slug = ?', array("home"));
-		$results = DB::table('pages')->where('slug','=','home')->remember(1440)->get();
+		$results = DB::table('pages')->where('slug','=','home')->remember(525949)->get();
 		foreach ($results as $result)
 		{
 		    $page_title = $result->page_title;
@@ -103,7 +103,7 @@ class PageController extends BaseController {
 		$page_id = 0;
 		
 		//$results = DB::select('select * from pages where slug = ?', array($slug))->remember(10);
-		$results = DB::table('pages')->where('slug','=',$slug)->remember(1440)->get();
+		$results = DB::table('pages')->where('slug','=',$slug)->remember(525949)->get();
 		$page_title = urldecode($page_title);
 
 		foreach ($results as $result)

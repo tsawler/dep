@@ -214,7 +214,7 @@ class UserController extends BaseController {
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
 
 
-		if ($publisher === null){
+		if ($publisher == null){
 			$publisher = new PublisherInfo;
 			$publisher->address = Input::get('address');
 			$publisher->city = Input::get('city');

@@ -229,7 +229,6 @@ class UserController extends BaseController {
 			$publisher->address = Input::get('address');
 			$publisher->city = Input::get('city');
 			$publisher->province = Input::get('province');
-			Log::info('set province to ' . Input::get('province'));
 			$publisher->province_other = Input::get('province_other');
 			$publisher->country = Input::get('country');
 			$publisher->zip = Input::get('zip');

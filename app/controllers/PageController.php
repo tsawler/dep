@@ -37,7 +37,7 @@ class PageController extends BaseController {
 	 * @return mixed
 	 */
 	 public function savePage(){
-		if (Auth::user()->access_level == 3){
+		if ((Auth::user()->access_level == 3) && (Auth::user()->roles->contains(1))) {
 			$validator = Validator::make(Input::all(), Page::$rules);
 			if ($validator->passes()) {
 				$page = new Page;

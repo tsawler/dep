@@ -32,13 +32,16 @@ App::before(function($request)
 						);
 	
 	$where = Request::path();
-	if( ! Request::secure()) {
-		if (in_array($where, $protected)){
-			return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
-		}
-	} else {
-		if (!(in_array($where, $protected))){
-			return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+	$environment = App::environment();
+	if ($environment != 'local'){
+		if( ! Request::secure()) {
+			if (in_array($where, $protected)){
+				return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+			}
+		} else {
+			if (!(in_array($where, $protected))){
+				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+			}
 		}
 	}
 	

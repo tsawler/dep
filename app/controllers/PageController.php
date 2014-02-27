@@ -18,15 +18,11 @@ class PageController extends BaseController {
 	 public function editPage(){
 		if ((Auth::user()->access_level == 3) && (Auth::user()->roles->contains(1))) {
 			$page = Page::find(Input::get('page_id'));
-			$key = 'route-'.$page->slug;
 
 			$page->page_content = trim(Input::get('thedata'));
 			$page->page_title = trim(Input::get('thetitledata'));
 			$page->save();
-			if (Cache::has($key))
-			{
-			    Cache::forget($key);
-			}
+			Cache::flush();
 			return "Page updated successfully";
 		}
 	}
@@ -73,8 +69,8 @@ class PageController extends BaseController {
 		$page_id = 0;
 		$meta = "";
 
-		$results = DB::select('select * from pages where slug = ?', array("home"));
-
+		//$results = DB::select('select * from pages where slug = ?', array("home"));
+		$results = DB::table('pages')->where('slug','=','home')->remember(1440)->get();
 		foreach ($results as $result)
 		{
 		    $page_title = $result->page_title;
@@ -107,7 +103,7 @@ class PageController extends BaseController {
 		$page_id = 0;
 		
 		//$results = DB::select('select * from pages where slug = ?', array($slug))->remember(10);
-		$results = DB::table('pages')->where('slug','=',$slug)->remember(10)->get();
+		$results = DB::table('pages')->where('slug','=',$slug)->remember(1440)->get();
 		$page_title = urldecode($page_title);
 
 		foreach ($results as $result)

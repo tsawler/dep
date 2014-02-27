@@ -27,7 +27,8 @@ App::before(function($request)
 						'users/password',
 						'users/security',
 						'password/remind',
-						'password/reset'
+						'password/reset',
+						'users/testcode'
 						
 						);
 	

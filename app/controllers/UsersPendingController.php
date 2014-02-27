@@ -41,9 +41,9 @@ class UsersPendingController extends BaseController {
 			// delete pending user
 			$key = UsersPending::find($key_id);
 			$key->delete();
-			return Redirect::to('success');
+			return Redirect::to('/success');
 		} else {
-			return Redirect::to('not+found');
+			return Redirect::to('/not+found');
 		}
 	}
 }

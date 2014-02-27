@@ -26,7 +26,7 @@ class PostsController extends BaseController {
 
 		// Get the selected post
 		$viewData['post'] = $post = Post::live()
-			->where('slug', '=', urlencoce($slug))
+			->where('slug', '=', urlencode($slug))
 			->firstOrFail();
 
 		// Get the next newest and next oldest post

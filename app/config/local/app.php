@@ -6,5 +6,6 @@ return array(
 	
 	'secureurl' => 'http://localhost:8000',
 	
+	'debug' => true,
 
 );

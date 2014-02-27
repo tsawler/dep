@@ -127,7 +127,8 @@ Dashboard: Author Account Details: The Dog-Eared Press
 				'WV' => 'West Virginia',
 				'WI' => 'Wisconsin',
 				'WY' => 'Wyoming'
-				)); 
+				),
+				$publisher->province); 
 			}}
 			<span class='help-inline'></span>
 			</div>
@@ -393,7 +394,8 @@ Dashboard: Author Account Details: The Dog-Eared Press
 				'ye' => 'Yemen',
 				'zm' => 'Zambia',
 				'zw' => 'Zimbabwe'
-				));
+				),
+				$publisher->country);
 			}}
 			<span class='help-inline'></span>
 			</div>

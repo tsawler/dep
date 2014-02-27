@@ -6,6 +6,7 @@
 Route::any('/','PageController@showHome');
 Route::any('/home','PageController@showHome');
 
+
 /**
  * Process
  */
@@ -14,11 +15,22 @@ Route::get('/process', function()
     return View::make('pages.process');
 });
 
+
+/**
+ * FAQs
+ */
+Route::get('/faqs', function()
+{
+    return View::make('pages.faqs');
+});
+
+
 /**
  *
  * Mailing list routes
  */
 Route::post('/joinlist','MailRecipientController@joinList');
+
 
 /**
  * Contact Us
@@ -55,15 +67,11 @@ Route::controller('/password', 'RemindersController');
 Route::controller('/submit', 'SubmitController');
 
 
-
 /**
  *
  * Ajax routes
  */
 Route::controller('/ajax','AjaxController');
-
-
-
 
 
 
@@ -81,6 +89,7 @@ Route::get('/admin/adminusers','AdminController@getAdminUsers');
 Route::get('/admin/allusers','AdminController@getAllUsers');
 Route::post('/admin/allusers','AdminController@postAllUsers');
 Route::post('/admin/edituserroles/{userid}','AdminController@saveUserRoles');
+
 
 /**
  * Page Routes

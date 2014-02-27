@@ -106,7 +106,8 @@ class PageController extends BaseController {
 		$active = 0;
 		$page_id = 0;
 		
-		$results = DB::select('select * from pages where slug = ?', array($slug));
+		//$results = DB::select('select * from pages where slug = ?', array($slug))->remember(10);
+		$results = DB::table('pages')->where('slug','=',$slug)->remember(10)->get();
 		$page_title = urldecode($page_title);
 
 		foreach ($results as $result)

@@ -17,7 +17,7 @@ Dashboard: Author Account Details: The Dog-Eared Press
 				{{ Form::model($publisher, array(
 											'class' => 'form-horizontal', 
 											'name' => 'bookform', 'id' => 'bookform',
-											'url' => array('users/author', $publisher->id )
+											'url' => array('users/author')
 											) 
 							   )
 				}}

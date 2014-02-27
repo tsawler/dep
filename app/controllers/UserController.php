@@ -213,38 +213,32 @@ class UserController extends BaseController {
 		$publisher = new PublisherInfo;
 		$publisher = PublisherInfo::where('user_id', '=', Auth::user()->id)->first();
 
-		$validator = Validator::make(Input::all(), PublisherInfo::$rules);
 
-		if ($validator->passes()) {
-			if ($publisher === null){
-				$publisher = new PublisherInfo;
-				$publisher->address = Input::get('address');
-				$publisher->city = Input::get('city');
-				$publisher->province = Input::get('province');
-				$publisher->province_other = Input::get('province_other');
-				$publisher->country = Input::get('country');
-				$publisher->zip = Input::get('zip');
-				$publisher->phone = Input::get('phone');
-				$publisher->user_id = Auth::user()->id;
-				$publisher->save();
-			} else {
-				$publisher->address = Input::get('address');
-				$publisher->city = Input::get('city');
-				$publisher->province = Input::get('province');
-				Log::info('set province to ' . Input::get('province'));
-				$publisher->province_other = Input::get('province_other');
-				$publisher->country = Input::get('country');
-				$publisher->zip = Input::get('zip');
-				$publisher->phone = Input::get('phone');
-				$publisher->save();
-			}
-			return Redirect::to('users/dashboard')
-				->with('message', 'Changes saved.');
+		if ($publisher === null){
+			$publisher = new PublisherInfo;
+			$publisher->address = Input::get('address');
+			$publisher->city = Input::get('city');
+			$publisher->province = Input::get('province');
+			$publisher->province_other = Input::get('province_other');
+			$publisher->country = Input::get('country');
+			$publisher->zip = Input::get('zip');
+			$publisher->phone = Input::get('phone');
+			$publisher->user_id = Auth::user()->id;
+			$publisher->save();
 		} else {
-			return Redirect::to('users/author')
-				->withErrors($validator)
-				->withInput();
+			$publisher->address = Input::get('address');
+			$publisher->city = Input::get('city');
+			$publisher->province = Input::get('province');
+			Log::info('set province to ' . Input::get('province'));
+			$publisher->province_other = Input::get('province_other');
+			$publisher->country = Input::get('country');
+			$publisher->zip = Input::get('zip');
+			$publisher->phone = Input::get('phone');
+			$publisher->save();
 		}
+		return Redirect::to('users/dashboard')
+			->with('message', 'Changes saved.');
+
 	}
 
 	/**

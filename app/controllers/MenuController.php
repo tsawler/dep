@@ -222,7 +222,7 @@ class MenuController extends BaseController {
 		{
 			$menuItem = MenuItem::find(Input::get('deleteid'));
 			$menuItem->delete();
-			
+			Cache::flush();
 			return Redirect::to(URL::previous())
 					->with('message', 'Changes saved.');
 		}
@@ -268,7 +268,7 @@ class MenuController extends BaseController {
 				. '</li>';
 		}
 		$theHtml .= '</ul>';
-		//Log::info($theHtml);
+
 		return $theHtml;
 	}
 	

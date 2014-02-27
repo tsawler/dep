@@ -382,7 +382,7 @@ class UserController extends BaseController {
 				// do nothing. This is already set
 			} else {
 				$ga = new GoogleAuthenticator();
-				$secret = $ga->createSecret();
+				$secret = Input::get('newsecret');
 			}
 		}
 
@@ -402,7 +402,11 @@ class UserController extends BaseController {
 	 * @return String
 	 */
 	public function postTestcode() {
-		$tfa_secret = Auth::user()->tfa_secret;
+		if (Input::get('thesecret') != null){
+			$tfa_secret = Input::get('thesecret');
+		} else {
+			$tfa_secret = Auth::user()->tfa_secret;
+		}
 		$ga = new GoogleAuthenticator();
 		$tfa = Input::get('testval');
 		$checkResult = $ga->verifyCode($tfa_secret, $tfa, 10);
@@ -414,5 +418,20 @@ class UserController extends BaseController {
 		{
 			return "<span style='color: red'>Invalid code!</span>";
 		}
+	}
+	
+	
+	/**
+	 * Get a TFA qrcode (called via ajax)
+	 *
+	 * @return null
+	 */
+	public function getCode() {
+		$ga = new GoogleAuthenticator();
+		$secret = $ga->createSecret();
+		
+		$qrCodeUrl = $ga->getQRCodeGoogleUrl(Config::get('app.url'), $secret);
+		$html = "<img src='".$qrCodeUrl."'><span id='newsecrettext' class=''>".$secret."</span>";
+		return $html;
 	}
 }

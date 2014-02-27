@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('browser-title')
-Password Change: The Dog-Eared Press
+Security: The Dog-Eared Press
 @stop
 
 @section('content')
@@ -64,6 +64,18 @@ Password Change: The Dog-Eared Press
 			    <span id="result"></span>
 			    </div>
 			    </div>
+@else
+				<div id="qr" class="control-group hidden">
+			    <div class="controls">
+			    
+				<span id="tfaoutput"></span>
+				<br>
+				<input type="text" name="testcode" id="testcode" placeholder="enter test code">
+			    <a href="#!" onclick="testNewCode()" class="btn btn-info">Test Code</a>&nbsp;
+			    <span id="result"></span>
+			    </div>
+			    </div>
+
 @endif
 			    <hr>
 			    
@@ -72,11 +84,16 @@ Password Change: The Dog-Eared Press
 			    {{ Form::submit('Enter test code first', array('class' => 'btn btn-primary', 'disabled' => 'disabled', 'id' => 'processform')) }}
 			    </div>
 			    </div>
-			    
+			    {{ Form::hidden('newsecret', null, array('id'=>'newsecret')) }}
 		    {{ Form::close() }}
 			
 			{{ Form::open(array('url' => 'users/testcode', 'name' => 'testCodeForm', 'id' => 'testCodeForm')) }}
 		    	<input type="hidden" name="testval" id="testval">
+		    {{ Form::close() }}
+		    
+		    {{ Form::open(array('url' => 'users/testcode', 'name' => 'testNewCodeForm', 'id' => 'testNewCodeForm')) }}
+		    	<input type="hidden" name="testval" id="newtestval">
+		    	<input type="hidden" name="thesecret" id="thesecret">
 		    {{ Form::close() }}
 		    
 		</div> <!-- /span9 primary column -->
@@ -95,6 +112,14 @@ function testCode(){
     return false;
 }
 
+function testNewCode(){
+	$("#newtestval").val($("#testcode").val());
+	$("#thesecret").val($("#newsecret").val());
+	var options = { target: '#result', success: showResponse };
+    $("#testNewCodeForm").unbind('submit').ajaxSubmit(options);;
+    return false;
+}
+
 function showResponse(responseText, statusText, xhr, $form)  { 
 	if (responseText == "<span style='color: green'>Valid code!</span>")
 	{
@@ -106,9 +131,21 @@ function showResponse(responseText, statusText, xhr, $form)  {
 $("#checkTFA").change(function() {
 	var val = $("#checkTFA").val();
 	if (val == 1){
+		$("#qr").removeClass("hidden");
+		@if(Auth::user()->use_tfa == 1)
+			$("#processform").val('Enter test code first');
+			$("#processform").attr("disabled", "disabled");
+		@else
+			var loadUrl = "/users/code";
+			$("#tfaoutput").load(loadUrl, null, function(responseText){
+            	$("#newsecret").val($("#newsecrettext").html());
+			});
+		@endif
 		$("#processform").val('Enter test code first');
-		$("#processform").attr("disabled", "disabled");
+		$("#processform").attr("disabled","disabled");
 	} else {
+		$("#tfaoutput").html('');
+		$("#qr").addClass("hidden");
 		$("#processform").val('Update');
 		$("#processform").removeAttr("disabled");
 	}

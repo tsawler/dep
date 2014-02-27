@@ -388,7 +388,7 @@ class UserController extends BaseController {
 
 		// save new info
 		$user = new User;
-		$user = User::find(Auth::user()->id);
+		$user = User::find(Input::get('userid'));
 		$user->use_tfa = $use_tfa;
 		$user->tfa_secret = $secret;
 		$user->save();

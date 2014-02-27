@@ -29,7 +29,7 @@ App::before(function($request)
 						'password/remind',
 						'password/reset',
 						'users/testcode',
-						
+						'users/code',
 						);
 	
 	$where = Request::path();

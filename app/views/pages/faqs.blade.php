@@ -24,7 +24,7 @@ Frequently Asked Questions: The Dog-Eared Press
 							Many aspiring authors are taking the self-publishing route, and while this works for a very, very small number
 							of writers, most put their work out there and get lost in the crowd. In addition, a lot of self-published
 							authors are desperately in need of an editor&mdash;their work might have great potential, but stylistic, 
-							grammatical, and typographical tend to get in the way.
+							grammatical, and typographical errors tend to get in the way.
 							</p>
 						</div>
 						<!--close s-content--> 

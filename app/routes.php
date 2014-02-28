@@ -51,7 +51,6 @@ Route::post('/search','SearchController@performSearch');
  */
 Route::controller('/post', 'BlogController');
 Route::post('/searchblog','SearchController@performBlogSearch');
-
 Route::get('/blog/{year?}/{month?}', 'PostsController@index')->where(array('year' => '\d{4}', 'month' => '\d{2}'));
 Route::get('/blog/{slug}', 'PostsController@view');
 Route::get('/blog.rss', 'PostsController@rss');
@@ -74,11 +73,11 @@ Route::controller('/submit', 'SubmitController');
 Route::controller('/ajax','AjaxController');
 
 
-
 /**
  * Menu Routes
  */
 Route::controller('/menu', 'MenuController');
+
 
 /**
  * Admin Routes
@@ -94,9 +93,7 @@ Route::post('/admin/edituserroles/{userid}','AdminController@saveUserRoles');
 /**
  * Page Routes
  */
- 
 Route::get('{pagename?}','PageController@showPage');
-//Route::get('{pagename?}', array('before' => 'cache', 'after' => 'cache', 'uses' => 'PageController@showPage'));
 Route::post('/page/edit','PageController@editPage');
 Route::get('/page/create', array('before' => 'auth', function()
 {

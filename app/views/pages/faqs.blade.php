@@ -36,8 +36,8 @@ Frequently Asked Questions: The Dog-Eared Press
 						<div class="s-content">
 							<p><strong>Answer:</strong> 
 								No, this is not a vanity press, and it's not a venue for self-publishing. We will submit each and 
-								every manuscript given to us to a strict referring process. Every document we receive to us will 
-								be carefully reviewed by at least three reviewers before we decide if we want to enter into
+								every manuscript given to us to a strict refereeing process. Every document we receive will 
+								be carefully scrutinized by at least three reviewers before we decide if we want to enter into
 								an arrangement with the author. We are only interested in high quality stories, and our standards
 								are correspondingly high.
 							</p>
@@ -88,7 +88,7 @@ Frequently Asked Questions: The Dog-Eared Press
 						<div class="s-content">
 							<p><strong>Answer:</strong> 
 								Digital Rights Management, or DRM, is a complete and utter waste of time. First, your average twelve year
-								old can circumvent it in after spending roughly ten minutes searching for the tools to do so. Second, having
+								old can circumvent it after spending roughly ten minutes searching for the tools to do so. Second, having
 								a book that you have bought tied to a specific publisher or a specific device would be a lot like going into your
 								favourite bookstore and being told that you are only allowed to read the book you just bought while you 
 								are physically in that store. It makes no sense whatsoever. If someone intends to pirate a book, they are

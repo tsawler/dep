@@ -1,12 +1,12 @@
 @extends('email-layout')
 
-@section('browser-title')
-The Dog-Eared Press
+@section('title')
+Manuscript Received: The Dog-Eared Press
 @stop
 
 
 
-@section('email-content')
+@section('content')
 Dear {{ $users_name }}:<br /><br />
 <p>Thanks for submitting your manuscript entitled <em>{{ $manuscript_title }}</em>. After we have had a chance to review it, we'll be in touch.</p>
 

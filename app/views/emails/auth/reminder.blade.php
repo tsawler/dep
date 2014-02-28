@@ -1,6 +1,10 @@
 @extends('email-layout')
 
-@section('email-content')
+@section('title')
+The Dog-Eared Press
+@stop
+
+@section('content')
 		<h2>Password Reset</h2>
 		<hr>
 		<p>

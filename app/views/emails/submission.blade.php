@@ -1,11 +1,11 @@
 @extends('email-layout')
 
-@section('browser-title')
+@section('title')
 The Dog-Eared Press
 @stop
 
 
-@section('email-content')
+@section('content')
 A manuscript has been submitted.<br />
 User name: {{ $users_name }}:<br /><br />
 Manuscript: {{ $manuscript_title }}<br />

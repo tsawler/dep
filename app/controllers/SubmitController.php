@@ -74,7 +74,7 @@ class SubmitController extends BaseController {
 				);
 		
 				// use Mail::send function to send email passing the data and using the $user variable in the closure
-				Mail::after(5,'submit.manuscript_received_email', $data, function($message) use ($user) {
+				Mail::later(5,'submit.manuscript_received_email', $data, function($message) use ($user) {
 						$message->from('donotreply@dogearedpress.ca', 'Do not reply');
 						$message->to($user['email'], $user['first_name'])->subject('Your manuscript has been received');
 				});

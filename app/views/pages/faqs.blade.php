@@ -102,7 +102,12 @@ Frequently Asked Questions: The Dog-Eared Press
 					<li class="s-wrap">
 						<h4 class="trigger"><a href="#">So what makes this company different? <i class="icon-plus-sign"></i></a></h4>
 						<div class="s-content">
-							<p><strong>Answer:</strong> </p>
+							<p><strong>Answer:</strong> We don't simply ask you to upload a story, of whatever quality, and hope for
+								the best. We carefully select only those stories that we think are of excellent quality, and then we offer
+								editorial services, cover design, marketing and promotion, an advance on royalties, and a royalty stream
+								that is as good as, or better than, anything else out there. We think these are rather significant
+								differences.
+							</p>
 						</div>
 						<!--close s-content--> 
 					</li>
@@ -111,7 +116,11 @@ Frequently Asked Questions: The Dog-Eared Press
 					<li class="s-wrap">
 						<h4 class="trigger"><a href="#">I've already published with someone else, but I like your model. Can I submit my manuscript? <i class="icon-plus-sign"></i></a></h4>
 						<div class="s-content">
-							<p><strong>Answer:</strong> </p>
+							<p><strong>Answer:</strong> That depends entirely on the arrangement you have with your existing publisher.
+								If you just have your books or stories on Amazon KDP or Smashwords, then there is no problem whatsoever.
+								You control all the rights. But if you have a publishing arrangement with a traditional publisher, then
+								you might not be able to. Consult your agreement with your existing publisher.
+							</p>
 						</div>
 						<!--close s-content--> 
 					</li>

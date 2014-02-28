@@ -79,7 +79,7 @@ class SubmitController extends BaseController {
 						$message->to($user['email'], $user['first_name'])->subject('Your manuscript has been received');
 				});
 				
-				Mail::queue('emails.submission', $data, function($message)  {
+				Mail::queue('emails.submission', $data, function($message) use ($user)  {
 					$message->from('donotreply@dogearedpress.ca', 'Do not reply');
 					$message->to(Config::get('app.notify_email'), 'Editor')->subject('Manuscript submitted to DEP');
 				});

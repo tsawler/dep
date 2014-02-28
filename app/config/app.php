@@ -183,6 +183,5 @@ return array(
 	
 	'rss_description' => 'An independent publisher of Fantasy eBooks',
 	
-	
-
+	'notify_email' 		  => 'trevor.sawler@me.com',
 );

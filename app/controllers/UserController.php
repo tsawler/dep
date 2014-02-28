@@ -152,10 +152,10 @@ class UserController extends BaseController {
 			);
 
 			// use Mail::send function to send email passing the data and using the $user variable in the closure
-			Mail::send('users.welcome_email', $data, function($message) use ($user) {
-					$message->from('donotreply@dogearedpress.ca', 'Do not reply');
-					$message->to($user['email'], $user['first_name'])->subject('Welcome to the Dog-Eared Press');
-				});
+			Mail::later(5,'users.welcome_email', $data, function($message) use ($user) {
+				$message->from('donotreply@dogearedpress.ca', 'Do not reply');
+				$message->to($user['email'], $user['first_name'])->subject('Welcome to the Dog-Eared Press');
+			});
 
 			return Redirect::to('users/confirmation');
 

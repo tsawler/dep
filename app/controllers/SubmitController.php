@@ -40,7 +40,7 @@ class SubmitController extends BaseController {
 			// get the file
 			$mime_type = Input::file('manuscript')->getMimeType();
 			$file = Input::file('manuscript');
-			$destinationPath = 'manuscriptUploads/'.Auth::user()->id."/";
+			$destinationPath = base_path() . '/manuscriptUploads/'.Auth::user()->id."/";
 			$filename = str_random(10) . "_" . $file->getClientOriginalName();
 			
 			$upload_success = Input::file('manuscript')->move($destinationPath, $filename);

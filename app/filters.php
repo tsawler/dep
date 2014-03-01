@@ -31,7 +31,7 @@ App::before(function($request)
 						'users/testcode',
 						'users/code',
 						);
-	
+	Log::info(Request::server('SERVER_NAME'));
 	$where = Request::path();
 	$environment = App::environment();
 	if ($environment != 'local'){
@@ -112,30 +112,3 @@ Route::filter('csrf', function()
 });
 
 /* View Composers */
-
-
-/*
-|--------------------------------------------------------------------------
-| Cache Filter
-|--------------------------------------------------------------------------
-|
-| Right now, only caching non-auth users for basic pages.
-|
-*/
-
-Route::filter('cache', function($route, $request, $response = null)
-{
-	if (!Auth::check()) {
-	    $key = 'route-'.Str::slug(Request::path());
-	    if(is_null($response) && Cache::has($key))
-	    {
-	        Log::info("using cache");
-	        return Cache::get($key);
-	    }
-	    elseif(!is_null($response) && !Cache::has($key))
-	    {
-	        Cache::forever($key, $response->getContent());
-	        Log::info("putting into cache");
-	    }
-    }
-});

@@ -6,22 +6,21 @@ The Dog-Eared Press
 
 @section('meta')
 <meta name="description" content="The Dog-eared Press is an independent publisher of Fantasy and Science Fiction eBooks." />
-@stop
-
-@section('hero-unit')
-<div class="hero-unit center no-border no-padding-bottom">
-		<div class="container"> 
-			<h1>Welcome to the Dog-Eared Press</h1>
-		</div>
-		<!--close container--> 
-	</div>
-	<!--close hero-unit-->
+<link rel="stylesheet" href="/assets/css/boxed-slider-flexslider.css" type="text/css" media="screen" />
 @stop
 
 @section('content')
 
-<div class="container">
+<div class="hero-unit center no-border no-padding-bottom">
+	<div class="container"> 
+		<h1>Welcome to the Dog-Eared Press</h1>
+	</div>
+	<!--close container--> 
+</div>
+<!--close hero-unit-->
 
+
+<div class="container">
 @if(Auth::check())
 @if((Auth::user()->access_level == 3) && (Auth::user()->roles->contains(1)))
 	<div id="editmsg" class='alert alert-success hidden'>

@@ -43,7 +43,9 @@
 <script src="/assets/js/modernizr.js"></script>
 @yield('js')
 </head>
+@section('body-tag')
 <body class="index">
+@show
 
 @include('partials/preheader')
 @include('partials/header')
@@ -52,6 +54,8 @@
 <div id="page">
 
 	@yield('hero-unit')
+	
+	@yield('slider')
 
 	<div class="container clearfix" id="main-content"> 
 	@yield('content')

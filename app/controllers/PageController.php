@@ -45,7 +45,7 @@ class PageController extends BaseController {
 				$page->meta_tags = Input::get('meta_keywords');
 				$page->slug = urlencode(trim(Input::get('page_name')));
 				$page->save();
-				return Redirect::to('/'.trim(Input::get('page_name')));
+				return Redirect::to('/'.urlencode(trim(Input::get('page_name'))));
 			} else {
 				return Redirect::to('page/create')
 					->with('error', 'Error! Changes not saved!')

@@ -137,7 +137,7 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
 	getDDSortableList(parent_item_id);
     $.ajax({
 		type: 'GET',
-		url: "/proxy/proxy.php?url={{ Config::get('app.url') }}/menu/ddmenujson",
+		url: "/proxy/proxy.php?mode=native&url={{ Config::get('app.url') }}/menu/ddmenujson",
 		data: {id: menu_item_id},
 		dataType: 'json',
 		success: function(_data) {
@@ -213,7 +213,7 @@ function getDataForMenuItem(menu_item_id) {
 	getSortableList();
     $.ajax({
 		type: 'GET',
-		url: "/proxy/proxy.php?url={{ Config::get('app.url') }}/menu/menujson",
+		url: "/proxy/proxy.php?mode=native&url={{ Config::get('app.url') }}/menu/menujson",
 		data: {id: menu_item_id},
 		dataType: 'json',
 		success: function(_data) {

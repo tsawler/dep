@@ -139,7 +139,7 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
 		type: 'GET',
 		url: "{{ Config::get('app.url') }}/menu/ddmenujson",
 		data: {id: menu_item_id},
-		dataType: 'jsonp',
+		dataType: 'json',
 		success: function(_data) {
 			var json = $.parseJSON(JSON.stringify(_data));
 			$("#ddmenu_text").val(json.menu_text);
@@ -215,7 +215,7 @@ function getDataForMenuItem(menu_item_id) {
 		type: 'GET',
 		url: "{{ Config::get('app.url') }}/menu/menujson",
 		data: {id: menu_item_id},
-		dataType: 'jsonp',
+		dataType: 'json',
 		success: function(_data) {
 			var json = $.parseJSON(JSON.stringify(_data));
 			$("#menu_text").val(json.menu_text);

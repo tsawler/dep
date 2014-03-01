@@ -31,13 +31,23 @@ App::before(function($request)
 						'users/testcode',
 						'users/code',
 						);
-	Log::info(Request::server('SERVER_NAME'));
+	$www = false;
+	
+	if (strpos(Request::url(),'www') !== false) {
+		$www = true;
+	}
+	
 	$where = Request::path();
+	
 	$environment = App::environment();
+	
 	if ($environment != 'local'){
 		if( ! Request::secure()) {
 			if (in_array($where, $protected)){
 				return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+			}
+			if ($www == false){
+				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		} else {
 			if (!(in_array($where, $protected))){

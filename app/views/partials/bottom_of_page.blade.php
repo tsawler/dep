@@ -63,7 +63,7 @@
 			<div class="container">
 				<ul class="clearfix">
 					<li>Copyright &copy; <?php echo date("Y");?> Dog-Eared Press</li>
-					<li><a href="#">Site Map</a></li>
+					<!-- <li><a href="#">Site Map</a></li> -->
 					<li><a href="/Privacy">Privacy</a></li>
 				</ul>
 			</div>

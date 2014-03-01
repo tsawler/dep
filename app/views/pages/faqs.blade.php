@@ -47,7 +47,7 @@ Frequently Asked Questions: The Dog-Eared Press
 					<!--close s-wrap-->
 					
 					<li class="s-wrap">
-						<h4 class="trigger"><a href="#">How much is this going to cost me? <i class="icon-plus-sign"></i></a></h4>
+						<h4 class="trigger"><a href="#">Is this going to cost me anything? <i class="icon-plus-sign"></i></a></h4>
 						<div class="s-content">
 							<p><strong>Answer: </strong>
 								Not one red cent. Ever.
@@ -58,11 +58,21 @@ Frequently Asked Questions: The Dog-Eared Press
 					<!--close s-wrap-->
 					
 					<li class="s-wrap">
-						<h4 class="trigger"><a href="#">How much will I make if I publish with you? <i class="icon-plus-sign"></i></a></h4>
+						<h4 class="trigger"><a href="#">Is this going to cost me anything? <i class="icon-plus-sign"></i></a></h4>
+						<div class="s-content">
+							<p><strong>Answer: </strong>
+								Not one red cent. Ever.
+							</p>
+						</div>
+						<!--close s-content--> 
+					</li>
+					<!--close s-wrap-->
+					
+					<li class="s-wrap">
+						<h4 class="trigger"><a href="#">Do I need an agent to deal with you? <i class="icon-plus-sign"></i></a></h4>
 						<div class="s-content">
 							<p><strong>Answer:</strong>
-								The depends entirely on how many copies are sold, but we can tell you that our royalty arrangement is
-								set at 75% for the writer, and 25% for us.
+								No, you don't. Agents only exist to negotiate, and profit from, the byzantine remuneration structure set up by corporatized publishing houses. Since our royalty model is transparent, and since we're not out to take advantage of anyone, you do not need one to deal with us. Of course, if you already have one, and there is an arrangment in place where your agent has to represent you, we will (grudgingly) talk to your agent.
 							</p>
 						</div>
 						<!--close s-content--> 

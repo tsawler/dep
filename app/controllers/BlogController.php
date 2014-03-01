@@ -40,7 +40,7 @@ class BlogController extends BaseController {
 				$post->meta_description = Input::get('meta_description');
 				$post->meta_keywords = Input::get('meta_keywords');
 				$post->in_rss = 1;
-				$post->slug = trim(Input::get('title'));
+				$post->slug = urlencode(trim(Input::get('title')));
 				$post->save();
 				return Redirect::to('/blog')
 					->with('message', 'Post saved successfully');
@@ -91,7 +91,7 @@ class BlogController extends BaseController {
 			{
 				$post = Post::find(Input::get('post_id'));
 				$post->title = trim(Input::get('title'));
-				$post->slug = trim(Input::get('title'));
+				$post->slug = urlencode(trim(Input::get('title')));
 				$post->status = Input::get('status');
 				$post->published_date = Input::get('published_date'). " 00:00:01";
 				$post->content = Input::get('content');

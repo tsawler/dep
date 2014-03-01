@@ -118,10 +118,11 @@ Frequently Asked Questions: The Dog-Eared Press
 								pirate my book if it's not protected with DRM?" We can answer that one: we don't think so, and we're not just
 								guessing. Tor Books made the decision to stop protecting (crippling?) it's entire catalogue with DRM in 2012, 
 								and they saw no discernible increase in piracy over the next two years. You can 
-								<a href="http://www.tor.com/blogs/2013/04/tor-books-uk-drm-free-one-year-later">read all about it here</a>. 
-								Simply put, DRM has a negligible impact on reducing piracy, and it is little more than an irritant to the 
-								people who actually buy books. It is an exercise in futility, and we hope to see it disappear entirely 
-								in the not too distant future, as it has, at least for the most part, with digital music.
+								<a target="_blank" href="http://www.tor.com/blogs/2013/04/tor-books-uk-drm-free-one-year-later">read all 
+								about it here</a>.  Simply put, DRM has a negligible impact on reducing piracy, and it is little 
+								more than an irritant to the people who actually buy books. It is an exercise in futility, and we 
+								hope to see it disappear entirely in the not too distant future, as it has, at least for the most part, 
+								with digital music.
 							</p>
 						</div>
 						<!--close s-content--> 

@@ -45,7 +45,7 @@ class MenuController extends BaseController {
 				);
 			}
 			
-			return Response::json($theResponse);
+			return Response::json($theResponse,'Access-Control-Allow-Origin' => '*');
 		}
 	}
 	
@@ -77,7 +77,7 @@ class MenuController extends BaseController {
 				);
 			}
 				
-			return Response::json($theResponse);
+			return Response::json($theResponse,'Access-Control-Allow-Origin' => '*');
 		}
 	}
 	

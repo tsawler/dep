@@ -22,20 +22,25 @@ Frequently Asked Questions: The Dog-Eared Press
 					<h4 class="trigger">
 						<a href="#">
 							<span class='editable' id="labeldata_{{$faq->id }}">
-								{{ $faq->label }}<i class="icon-plus-sign"></i>
+								{{ $faq->label }}
+								<i class="icon-plus-sign"></i>
 							</span>
 						</a>
-						</h4>
+					</h4>
 					<div class="s-content">
-						<strong><span class='editable' id="questiondata_{{$faq->id }}">{{ $faq->question }}</span></strong>
+						<strong>
+							<span class='editable' id="questiondata_{{$faq->id }}">{{ $faq->question }}</span>
+						</strong>
 						<br>
-						<article id="answerdata_{{ $faq->id }}" class='editable'>{{ $faq->answer }}</article>
+						<article id="answerdata_{{ $faq->id }}" class='editable'>
+							{{ $faq->answer }}
+						</article>
 
 						<article class="admin-hidden">
-						<a class="btn btn-primary" href="#!" onclick="saveEditedFaq({{ $faq->id }})">Save</a>
-						<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
-						&nbsp;&nbsp;&nbsp;
-					</article>
+							<a class="btn btn-primary" href="#!" onclick="saveEditedFaq({{ $faq->id }})">Save</a>
+							<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
+							&nbsp;&nbsp;&nbsp;
+						</article>
 					</div>
 					<input type="hidden" name="faq_id" value="{{ $faq->id }}">
 					<input type="hidden" name="thelabeldata_{{ $faq->id }}" id="thelabeldata_{{ $faq->id }}">

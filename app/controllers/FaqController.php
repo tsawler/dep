@@ -13,7 +13,7 @@ class FaqController extends BaseController {
 	 */
 	public function showFaqPage()
 	{
-		$faqs = Faq::where('active', '=', '1')->orderby('id')->get();
+		$faqs = Faq::where('active', '=', '1')->orderby('id')->remember(525949)->get();
 		return View::make('pages.faqs')->with('faqs',$faqs);
 	}
 	
@@ -32,6 +32,7 @@ class FaqController extends BaseController {
 				$faq->question = trim(Input::get('thequestiondata_'.$faq_id));
 				$faq->answer = trim(Input::get('theanswerdata_'.$faq_id));
 				$faq->save();
+				Cache::flush();
 				return "FAQ updated successfully";
 		}
 	}

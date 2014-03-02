@@ -69,7 +69,7 @@ Submit a Manuscript: The Dog-Eared Press
 		<div class="control-group">
 		<div class="controls">
 		<hr>
-	    {{ Form::submit('Submit Manuscript', array('class' => 'btn btn-primary')); }}
+	    {{ Form::submit('Submit Manuscript', array('class' => 'btn btn-primary','onclick' => 'submitForm()')); }}
 	    </div>
 		</div>
 	    
@@ -83,6 +83,15 @@ Submit a Manuscript: The Dog-Eared Press
 
 @section('bottom-js')
 <script>
+function submitForm(){
+	var okay = false;
+	okay = $("#bookform").validate().form();
+	if (okay) {
+			pleaseWait();
+			//document.bookform.submit() ;
+		}
+	return false;
+}
 $(document).ready(function () {	
 	$("#bookform").validate({highlight: function(element) {
 	        $(element).closest('.control-group').addClass('error');

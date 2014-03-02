@@ -308,6 +308,14 @@ function deleteDDMenuItem(){
 	}
 }
 
+function pleaseWait(){
+	$('#pleaseWaitDialog').modal();
+}
+
+function hidePleaseWati(){
+	$('#pleaseWaitDialog').modal('hide');
+}
+
 $(document).ready(function () {
 
 	$('#ddmenuItemModal').on('hidden', function () {

@@ -5,7 +5,7 @@ class Submission extends Eloquent  {
 	public static $rules = array(
 	   'phone'=>'required',
 	   'manuscript'=>'required',
-	   'manuscript_title'=>'required|min:2'
+	   'manuscript_title'=>'required'
 	);
 	
 	protected $guarded = array('*');

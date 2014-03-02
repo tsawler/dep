@@ -27,7 +27,7 @@ Frequently Asked Questions: The Dog-Eared Press
 						</a>
 						</h4>
 					<div class="s-content">
-						<strong><span class='editable' id="questiondata_{{$faq->id }}">{{ $faq->question }}</strong>
+						<strong><span class='editable' id="questiondata_{{$faq->id }}">{{ $faq->question }}</span></strong>
 						<br>
 						<article id="answerdata_{{ $faq->id }}" class='editable'>{{ $faq->answer }}</article>
 

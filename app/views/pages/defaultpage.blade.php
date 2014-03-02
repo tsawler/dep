@@ -22,7 +22,6 @@
 	</div>
 
 	{{ Form::open(array('url' => 'page/edit', 'id' => 'savetitledata', 'name' => 'savetitledata')) }}
-	<form action="/savepagetitle" method="post" id="savetitledata" name="savetitledata">
 	<h3 class="short_headline" style="text-transform: none;">
 	<article style='width: 100%'>
 	@if ($active == 1)
@@ -34,7 +33,7 @@
 	</h3>
 	<input type="hidden" name="page_id" value="{{ $page_id }}">
 	<input type="hidden" name="thetitledata" id="thetitledata">
-	<article id="editablecontent" itemprop="description" style='width: 100%'>
+	<article class="editablecontent" itemprop="description" style='width: 100%'>
 	{{ $page_content }}
 	</article>
 	<article class="admin-hidden">

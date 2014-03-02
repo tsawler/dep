@@ -30,6 +30,8 @@ App::before(function($request)
 						'password/reset',
 						'users/testcode',
 						'users/code',
+						'submit/index',
+						'submit/create'
 						);
 	$www = false;
 	

@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="/assets/css/lemmon-slider.css" type="text/css" media="screen" />
 <link href="/css/jquery.pnotify.default.css" media="all" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/assets/css/custom.css" type="text/css" media="screen" />
+<link href="/css/social-likes_classic.css" media="all" rel="stylesheet" type="text/css" />
 @if(Auth::check())
 @if(Auth::user()->access_level == 3)
 @if (Auth::user()->roles->contains(3))
@@ -77,6 +78,7 @@
 <script src="/js/jquery.bootstrap.wizard.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
 <script src="/assets/js/custom.js"></script>
+<script src="/js/social-likes.min.js"></script>
 @include('partials/layout_javascript')
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/3.3.0/bootbox.min.js"></script>
 <script type="text/javascript" src="/js/jquery.pnotify.min.js"></script>

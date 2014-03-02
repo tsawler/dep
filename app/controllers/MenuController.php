@@ -242,6 +242,7 @@ class MenuController extends BaseController {
 	public function postDeleteddmenuitem(){
 		if (Auth::user()->access_level == 3){
 		$menuItem = MenuDropdownItem::find(Input::get('dddeleteid'));
+		Log::info('Trying to delete ' . Input::get('dddeleteid'));
 		$menuItem->delete();
 		
 		return Redirect::to(URL::previous())

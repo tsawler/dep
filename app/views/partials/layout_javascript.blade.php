@@ -137,7 +137,7 @@ function getDataForDDMenuItem(menu_item_id, parent_item_id) {
 	getDDSortableList(parent_item_id);
     $.ajax({
 		type: 'GET',
-		url: "{{ Config::get('app.url') }}/menu/ddmenujson",
+		url: "/menu/ddmenujson",
 		data: {id: menu_item_id},
 		dataType: 'json',
 		success: function(_data) {
@@ -213,7 +213,7 @@ function getDataForMenuItem(menu_item_id) {
 	getSortableList();
     $.ajax({
 		type: 'GET',
-		url: "{{ Config::get('app.url') }}/menu/menujson",
+		url: "/menu/menujson",
 		data: {id: menu_item_id},
 		dataType: 'json',
 		success: function(_data) {
@@ -291,21 +291,21 @@ function addDDMenuItem(x){
 }
 
 function deleteMenuItem(){
-	var r = bootbox.confirm("Are you sure you want to delete this item?");
-	if (r==true)
-	{
-		$("#deleteid").val($("#menu_item_id").val())
-		$("#deletemenuitemform").submit();
-	}
+	bootbox.confirm("Are you sure you want to delete this item?", function(result) {
+		if (result) {
+			$("#deleteid").val($("#menu_item_id").val())
+			$("#deletemenuitemform").submit();
+		}
+	});
 }
 
 function deleteDDMenuItem(){
-	var r=bootbox.confirm("Are you sure you want to delete this item?");
-	if (r==true)
-	{
-		$("#dddeleteid").val($("#ddmenu_item_id").val());
-		$("#deleteddmenuitemform").submit();
-	}
+	bootbox.confirm("Are you sure you want to delete this item?", function(result) {
+		if (result) {
+			$("#dddeleteid").val($("#ddmenu_item_id").val());
+			$("#deleteddmenuitemform").submit();
+		}
+	});
 }
 
 function pleaseWait(){

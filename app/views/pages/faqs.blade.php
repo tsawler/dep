@@ -27,9 +27,10 @@ Frequently Asked Questions: The Dog-Eared Press
 						</a>
 						</h4>
 					<div class="s-content">
-						<strong><span class='editable' id="questiondata_{{$faq->id }}">{{ $faq->question }}</strong><br>
-							<article id="answerdata_{{ $faq->id }}" class='editable'>{{ $faq->answer }}</article>
-						</p>
+						<strong><span class='editable' id="questiondata_{{$faq->id }}">{{ $faq->question }}</strong>
+						<br>
+						<article id="answerdata_{{ $faq->id }}" class='editable'>{{ $faq->answer }}</article>
+
 						<article class="admin-hidden">
 						<a class="btn btn-primary" href="#!" onclick="saveEditedFaq({{ $faq->id }})">Save</a>
 						<a class="btn btn-info" href="#!" onclick="turnOffEditing()">Cancel</a>
@@ -50,9 +51,9 @@ Frequently Asked Questions: The Dog-Eared Press
 		<li class="s-wrap">
 			<h4 class="trigger"><a href="#">{{ $faq->label }}<i class="icon-plus-sign"></i></a></h4>
 			<div class="s-content">
-				<p><strong>Answer:</strong><br>
-				{{ $faq->answer }}
-				</p>
+				<strong><span class='editable' id="questiondata_{{$faq->id }}">{{ $faq->question }}</strong>
+				<br>
+				<article>{{ $faq->answer }}</article>
 			</div>
 		</li>
 	@endforeach

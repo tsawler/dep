@@ -87,7 +87,9 @@ Frequently Asked Questions: The Dog-Eared Press
 								Yeah, we've thought about that a lot, and we intend to pursue print publications after we've been up
 								and running for awhile. There are a lot of ways of going about it: print on demand, printing small runs 
 								until we get a sense of market penetration, and so forth. This is on our radar, but not for the first year.
-								For our most successful titles, we fully intend to go down this road, but not for a year or so.
+								For our most successful titles, we fully intend to go down this road, but not for a year or so. One thing
+								we can tell you with certainty is that if you buy a print version of a book from us, you'll get the eBook
+								version as well, and at no extra cost.
 							</p>
 						</div>
 						<!--close s-content--> 

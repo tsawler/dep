@@ -12,7 +12,7 @@
 CKEDITOR.disableAutoInline = true;
 var editor;
 
-function makePageEditable(item){
+/*function makePageEditable(item){
 	
 	if ($('#editablecontent').length != 0) {
 		$("#postdate").addClass("hidden");
@@ -32,6 +32,44 @@ function makePageEditable(item){
     		allowedContent: true
     		}
     	var myeditor = CKEDITOR.inline( document.getElementById( 'editablecontent' ),editoroptions);
+    	
+    	CKEDITOR.on( 'instanceLoaded', function(event) {
+				editor = event.editor;
+		});
+		
+	} else {
+		bootbox.alert("No editable content on this page!");
+	}
+} */
+
+function makePageEditable(item){
+	
+	if (($(".editablecontent").length != 0) || ($('.editable').length != 0)){
+		$("#postdate").addClass("hidden");
+		$(".admin-hidden").addClass('admin-display').removeClass('admin-hidden');
+		$(item).attr("onclick","turnOffEditing(this)");
+		$(item).html("Turn off editing");
+    	$(".editablecontent").attr("contenteditable","true");
+    	$(".editablecontenttitle").attr("contenteditable","true");
+    	$(".editablecontent").addClass("outlined");
+    	$(".editablecontenttitle").addClass("outlined");
+    	$("#old").val($("#editablecontent").html());
+    	$("#oldtitle").val($("#editablecontenttitle").html());
+    	
+    	$('.editable').attr('contenteditable','true');
+    	$('.editable').addClass('outlined');
+    	
+    	var editoroptions = { 
+    		toolbar: 'MiniToolbar', 
+    		filebrowserImageBrowseUrl: "/filemgmt/browse.php?type=images",
+    		allowedContent: true
+    		}
+    	//var myeditor = CKEDITOR.inline( document.getElementsByClassName( 'editablecontent' ),editoroptions);
+    	
+    	var elements = document.getElementsByClassName( 'editablecontent' );
+		for ( var i = 0; i < elements.length; ++i ) {
+		    CKEDITOR.inline( elements[ i ], editoroptions );
+		}
     	
     	CKEDITOR.on( 'instanceLoaded', function(event) {
 				editor = event.editor;
@@ -86,7 +124,24 @@ function saveEditedPage(){
     return false;
 }
 
-function turnOffEditing() {
+function saveEditedFaq(x){
+	// get the changed data;
+    var data = $('#labeldata_'+x).html();
+    $("#thelabeldata_"+x).val(data);
+    data = $('#questiondata_'+x).html();
+    $("#thequestiondata_"+x).val(data);
+    data = $("#answerdata_"+x).html();
+    $("#theanswerdata_"+x).val(data);
+    
+    var options = { target: '#theeditmsg', success: showResponse };
+    $("#faqform_"+x).ajaxSubmit(options);
+    $("#oldtitle").val('');
+    $("#old").val('');
+    turnOffEditing();
+    return false;
+}
+
+/*function turnOffEditing() {
 	for (name in CKEDITOR.instances) {
     	CKEDITOR.instances[name].destroy()
 	}
@@ -103,6 +158,28 @@ function turnOffEditing() {
 	}
 	if ($('#old').val() != ''){
 		$("#editablecontent").html($("#old").val());
+	}
+}*/
+
+function turnOffEditing(item) {
+	for (name in CKEDITOR.instances) {
+    	CKEDITOR.instances[name].destroy()
+	}
+	$(".admin-display").addClass('admin-hidden').removeClass('admin-display');
+	$("#postdate").removeClass("hidden");
+	$(".menu-item").attr("onclick","makePageEditable(this)");
+	$(".menu-item").html("Edit content");
+	$(".editablecontent").attr("contenteditable","false");
+	$(".editablecontenttitle").attr("contenteditable","false");
+	$(".editablecontenttitle").removeClass("outlined");
+	$(".editablecontent").removeClass("outlined");
+	$('.editable').attr('contenteditable','false');
+    $('.editable').removeClass('outlined');
+	if ($('#oldtitle').val() != ''){
+		$("#editablecontenttitle").html($("#oldtitle").val());
+	}
+	if ($('#old').val() != ''){
+		$(".editablecontent").html($("#old").val());
 	}
 }
 

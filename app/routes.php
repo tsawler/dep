@@ -19,11 +19,15 @@ Route::get('/process', function()
 /**
  * FAQs
  */
-Route::get('/faqs', function()
+/*Route::get('/faqs', function()
 {
     return View::make('pages.faqs');
-});
-
+}); */
+/**
+ * FAQs
+ */
+Route::get('/faq','FaqController@showFaqPage');
+Route::any('/faq/edit', 'FaqController@editFaq');
 
 /**
  *

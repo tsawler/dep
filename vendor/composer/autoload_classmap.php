@@ -49,6 +49,7 @@ return array(
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'ContactusController' => $baseDir . '/app/controllers/ContactusController.php',
     'CreateBooks' => $baseDir . '/app/database/migrations/2014_01_23_230434_create_books.php',
+    'CreateFaqTable' => $baseDir . '/app/database/migrations/2014_03_02_221621_create_faq_table.php',
     'CreateMailReceipients' => $baseDir . '/app/database/migrations/2014_02_08_233236_create_mail_receipients.php',
     'CreateMakeAuthorsTable' => $baseDir . '/app/database/migrations/2014_01_23_033237_create_make_authors_table.php',
     'CreateMakeBooksTable' => $baseDir . '/app/database/migrations/2014_01_23_032659_create_make_books_table.php',

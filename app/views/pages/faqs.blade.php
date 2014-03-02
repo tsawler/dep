@@ -73,7 +73,11 @@ Frequently Asked Questions: The Dog-Eared Press
 						<h4 class="trigger"><a href="#">Do I need an agent to deal with you? <i class="icon-plus-sign"></i></a></h4>
 						<div class="s-content">
 							<p><strong>Answer:</strong>
-								No, you don't. Agents only exist to negotiate, and profit from, the byzantine remuneration structure set up by corporatized publishing houses. Since our royalty model is transparent, and since we're not out to take advantage of anyone, you do not need one to deal with us. Of course, if you already have one, and there is an arrangement in place where your agent has to represent you, we will (grudgingly) talk to your agent.
+								No, you don't. Agents only exist to negotiate, and profit from, the byzantine remuneration 
+								structure set up by corporatized publishing houses. Since our royalty model is transparent, 
+								and since we're not out to take advantage of anyone, you do not need one to deal with us. 
+								Of course, if you already have one, and there is an arrangement in place where your agent 
+								has to represent you, we will (grudgingly) talk to your agent.
 							</p>
 						</div>
 						<!--close s-content--> 

@@ -48,7 +48,8 @@ Dashboard: The Dog-Eared Press
 						    <span class='rejected tt' 
 				        		  title='Your manuscript has not been accepted.'>
 				        		  Not accepted
-						    </span>
+							</span>
+							<a style='text-decoration: none;' href="#!" onclick='deleteItem({{ $submission->id }})'><i class="icon-trash"></i></a>
 						    @endif
 				        </tr>
 				    @endforeach
@@ -76,5 +77,12 @@ Dashboard: The Dog-Eared Press
 $(document).ready(function () {	
 	$('.tt').tooltip();
 });
+function deleteItem(x){
+	bootbox.confirm("Are you sure you want to delete this item?", function(result) {
+		if (result) {
+			location.href='/users/deletemanuscript?id='+x;
+		}
+	});
+}
 </script>
 @stop

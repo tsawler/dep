@@ -426,4 +426,18 @@ class UserController extends BaseController {
 		$html = "<img src='".$qrCodeUrl."'><span id='newsecrettext' class=''>".$secret."</span>";
 		return $html;
 	}
+	
+	
+	/**
+	 * delete rejected manuscript
+	 *
+	 * @return null
+	 */
+	public function getDeletemanuscript(){
+		$id = Input::get('id');
+		$sub = Submission::where('user_id','=',Auth::user()->id)->where('id','=',$id);
+		$sub->delete();
+		return Redirect::to(URL::previous())
+				->with('message', 'Item successfully deleted.');
+	}
 }

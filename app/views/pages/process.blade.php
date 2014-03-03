@@ -42,7 +42,7 @@ The Process: The Dog-Eared Press
     <h3>Step Two</h3>
     <p>You'll need to create an account with us. All we want is your name, email address and a password. Don't worry&mdash;we'll protect
     your email, and never share it with anyone else. So <a href="/users/register">create an account</a> on our system, 
-    <a href="/users/login">log in</a>, and then <a href="/submit/index">submit a manuscript</a>.</p>
+    <a href="/users/login">log in</a>, and then <a href="/users/submit">submit a manuscript</a>.</p>
     </div>
     <div class="tab-pane" id="tab3">
     <h3>Step Three</h3>

@@ -512,7 +512,7 @@ class UserController extends BaseController {
 					$message->to(Config::get('app.notify_email'), 'Editor')->subject('Manuscript submitted to DEP');
 				});
 				
-				return Redirect::to('users/dashboard')->with('message', 'Thanks! Your manuscript has been submitted.');
+				return Redirect::to('users/dashboard')->with('message', 'Your manuscript has been submitted!');
 				
 			} else {
 				return Redirect::to('users/submit')->with('error', 'There was an error with your submission!');

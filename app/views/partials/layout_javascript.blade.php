@@ -12,36 +12,6 @@
 CKEDITOR.disableAutoInline = true;
 var editor;
 
-/*function makePageEditable(item){
-	
-	if ($('#editablecontent').length != 0) {
-		$("#postdate").addClass("hidden");
-		$(".admin-hidden").addClass('admin-display').removeClass('admin-hidden');
-		$(item).attr("onclick","turnOffEditing(this)");
-		$(item).html("Turn off editing");
-    	$("#editablecontent").attr("contenteditable","true");
-    	$("#editablecontenttitle").attr("contenteditable","true");
-    	$("#editablecontent").addClass("outlined");
-    	$("#editablecontenttitle").addClass("outlined");
-    	$("#old").val($("#editablecontent").html());
-    	$("#oldtitle").val($("#editablecontenttitle").html());
-    	
-    	var editoroptions = { 
-    		toolbar: 'MiniToolbar', 
-    		filebrowserImageBrowseUrl: "/filemgmt/browse.php?type=images",
-    		allowedContent: true
-    		}
-    	var myeditor = CKEDITOR.inline( document.getElementById( 'editablecontent' ),editoroptions);
-    	
-    	CKEDITOR.on( 'instanceLoaded', function(event) {
-				editor = event.editor;
-		});
-		
-	} else {
-		bootbox.alert("No editable content on this page!");
-	}
-} */
-
 function makePageEditable(item){
 	
 	if (($(".editablecontent").length != 0) || ($('.editable').length != 0)){
@@ -140,26 +110,6 @@ function saveEditedFaq(x){
     turnOffEditing();
     return false;
 }
-
-/*function turnOffEditing() {
-	for (name in CKEDITOR.instances) {
-    	CKEDITOR.instances[name].destroy()
-	}
-	$(".admin-display").addClass('admin-hidden').removeClass('admin-display');
-	$("#postdate").removeClass("hidden");
-	$(".menu-item").attr("onclick","makePageEditable(this)");
-	$(".menu-item").html("Edit content");
-	$("#editablecontent").attr("contenteditable","false");
-	$("#editablecontenttitle").attr("contenteditable","false");
-	$("#editablecontenttitle").removeClass("outlined");
-	$("#editablecontent").removeClass("outlined");
-	if ($('#oldtitle').val() != ''){
-		$("#editablecontenttitle").html($("#oldtitle").val());
-	}
-	if ($('#old').val() != ''){
-		$("#editablecontent").html($("#old").val());
-	}
-}*/
 
 function turnOffEditing(item) {
 	for (name in CKEDITOR.instances) {
@@ -449,3 +399,16 @@ $(document).ready(function () {
 </script>
 @endif
 @endif
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-48515887-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>

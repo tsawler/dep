@@ -472,6 +472,7 @@ class UserController extends BaseController {
 			$file = Input::file('manuscript');
 			$destinationPath = base_path() . '/manuscriptUploads/'.Auth::user()->id."/";
 			$filename = str_random(10) . "_" . $file->getClientOriginalName();
+			$original_filename = $file->getClientOriginalName();
 			
 			$upload_success = Input::file('manuscript')->move($destinationPath, $filename);
 			
@@ -489,6 +490,7 @@ class UserController extends BaseController {
 				$submission->mime_type = $mime_type;
 				$submission->cover_letter = Input::get('cover_letter');
 				$submission->status = 1;
+				$submission->file_name = $original_filename;
 				$submission->save();
 				
 				// send email

@@ -172,6 +172,41 @@ class AdminController extends BaseController {
 	
 	
 	/**
+	 * Show list of manuscripts
+	 *
+	 * @return mixed
+	 */
+	public function getManuscripts() {
+		if (Auth::user()->access_level == 3)
+		{
+			$manuscripts = Submission::orderby('manuscript_title')->paginate(10);
+			$this->layout->content = View::make('users.dashboard.allmanuscripts')
+				->with('manuscripts',$manuscripts)
+				->with('manuscript_title','');
+		}
+	}
+	
+	
+	/**
+	 * Show a manuscript
+	 *
+	 * @return mixed
+	 */
+	public function getShowmanuscript() {
+		if (Auth::user()->access_level == 3)
+		{
+			$id = Request::segment(3);
+			$manuscript = Submission::find($id);
+			$doc = $manuscript->manuscript;
+			$file = base_path() . '/manuscriptUploads/'.$doc;
+			$headers = array(
+              'Content-Type: '.$manuscript->mime_type,
+            );
+			return Response::download($file, $manuscript->file_name, $headers);
+		}
+	}
+	
+	/**
 	 * Function to test for start of string
 	 *
 	 * @return mixed

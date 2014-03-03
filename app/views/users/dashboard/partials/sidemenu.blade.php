@@ -73,10 +73,29 @@
 					<p>&nbsp;</p>
 					
 					@if((Auth::check()) && (Auth::user()->access_level == 3))
-					
-						@if (Auth::user()->roles->contains(4))
 						<h5 class="short_headline"><span>Admin Menu</span></h5>
 						<ul class="navigation">
+						
+						@if (Auth::user()->roles->contains(6))
+						
+							
+							<li>
+								<a href="/admin/manuscripts">
+								@if (Request::path() == "admin/manuscripts")
+									<strong>
+								@endif
+									Manuscripts
+								@if (Request::path() == "admin/manuscripts")
+									</strong>
+								@endif
+								</a>
+							</li>
+							
+						@endif
+
+					
+						@if (Auth::user()->roles->contains(4))
+
 							
 							<li>
 								<a href="/admin/allusers">

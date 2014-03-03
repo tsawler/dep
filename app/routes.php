@@ -92,6 +92,8 @@ Route::get('/admin/adminusers','AdminController@getAdminUsers');
 Route::get('/admin/allusers','AdminController@getAllUsers');
 Route::post('/admin/allusers','AdminController@postAllUsers');
 Route::post('/admin/edituserroles/{userid}','AdminController@saveUserRoles');
+Route::get('/admin/manuscripts','AdminController@getManuscripts');
+Route::get('/admin/showmanuscript/{id}', 'AdminController@getShowmanuscript');
 
 
 /**

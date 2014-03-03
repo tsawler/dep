@@ -16,6 +16,8 @@ class UserController extends BaseController {
 		$this->beforeFilter('auth', array('only'=>array('getSecurity')));
 		$this->beforeFilter('auth', array('only'=>array('postSecurity')));
 		$this->beforeFilter('auth', array('only'=>array('getAdminusers')));
+		$this->beforeFilter('auth', array('only'=>array('getSubmit')));
+		$this->beforeFilter('auth', array('only'=>array('postSubmit')));
 		//$this->beforeFilter('ssl');
 	}
 

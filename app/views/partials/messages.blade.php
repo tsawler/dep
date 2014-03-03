@@ -15,9 +15,15 @@
 	@if (Session::has('error'))
 		<script>
 		x = "{{ Session::get('error') }}";
+		@if(count($errors) > 0)
+			x += "<ul>";
+			@foreach($errors->all() as $error)
+				x += "<li>{{ $error }}</li>";
+			@endforeach
+		@endif
 		$.pnotify({
-	        type: 'error',
 	        icon: false,
+	        type: 'error',
 	        text: x,
 	        nonblock: true,
 			nonblock_opacity: .2
@@ -29,7 +35,7 @@
 		x = "{{ Session::get('status') }}";
 		$.pnotify({
 	        icon: false,
-	        type: 'Info',
+	        type: 'info',
 	        text: x,
 	        nonblock: true,
 			nonblock_opacity: .2

@@ -18,7 +18,8 @@ Contact Us: The Dog-Eared Press
 	<h3 class="short_headline" style="text-transform: none;"><span id="editablecontenttitle">Contact the Dog-Eared Press</span></h3>
 		<div class="row-fluid reverse-order contact-page">
 
-			
+			<p>If you'd like to get in touch, just fill out the form below and we'll get back to you as soon as we can. We'd love to hear
+			from you.</p>
 			
 			<div class="span12">
 				{{ Form::open(array('url' => '/contactus', 

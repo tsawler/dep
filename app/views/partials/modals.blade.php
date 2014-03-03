@@ -190,22 +190,6 @@
 	</div>
 </div>
 
-<div class="modal hide fade" id="pleaseWaitDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h3>Processing...</h3>
-			</div>
-			<div class="modal-body">
-				<div class="progress progress-striped active">
-					<div class="bar" style="width: 100%;">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <form method="post" action="/menu/deletemenuitem" name="deletemenuitemform" id="deletemenuitemform">
 	<input type="hidden" name="deleteid" id="deleteid">
 </form>

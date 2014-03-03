@@ -75,7 +75,8 @@ Submit a Manuscript: The Dog-Eared Press
 			<div class="control-group">
 			<div class="controls">
 			<hr>
-		    {{ Form::submit('Submit Manuscript', array('class' => 'btn btn-primary')); }}
+		    
+		    <button class="btn btn-primary" onclick='submitManuscript();return false;'>Submit Manuscript</button>
 		    </div>
 			</div>
 		    
@@ -85,6 +86,23 @@ Submit a Manuscript: The Dog-Eared Press
 		</div> <!-- /span9 primary column -->
 	
 		@include('users/dashboard/partials/sidemenu')
+	</div>
+</div>
+
+
+<div class="modal hide fade" id="pleaseWaitDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>Processing...</h3>
+			</div>
+			<div class="modal-body">
+				<div class="progress progress-striped active">
+					<div class="bar" style="width: 100%;">
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 @stop
@@ -105,7 +123,13 @@ $(document).ready(function () {
 	        error.insertAfter(element.parent());
 	    }
 	});
+	$('#pleaseWaitDialog').on('shown', function () {
+		document.bookform.submit();
+	});
 });
-
+function submitManuscript(){
+	$('#pleaseWaitDialog').modal();
+	return false;
+}
 </script>
 @stop

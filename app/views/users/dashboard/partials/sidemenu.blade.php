@@ -25,6 +25,17 @@
 							</a>
 						</li>
 						<li>
+							<a href="/users/submit">
+							@if (Request::path() == "users/submit")
+								<strong>
+							@endif
+								Submit a manuscript
+							@if (Request::path() == "users/submit")
+								</strong>
+							@endif
+							</a>
+						</li>
+						<li>
 							<a href="/users/author">
 							@if (Request::path() == "users/author")
 								<strong>

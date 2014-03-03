@@ -60,10 +60,20 @@ Submit a Manuscript: The Dog-Eared Press
 		<div class="control-group">
 		{{  Form::label('manuscript', 'Manuscript', array('class' => 'control-label')); }}
 		<div class="controls">
-		<span class="btn btn-default fileinput-button"> <span><i class="icon-plus icon-white"></i> Upload manuscript...</span>
+		<span class="btn btn-default fileinput-button"> <span><i class="icon-plus icon-white"></i> Choose manuscript...</span>
 		{{ Form::file('manuscript') }}
 		</span>
 		</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label" for="optionsCheckbox"></label>
+			<div class="controls">
+				<label class="checkbox">
+					<input type="checkbox" class='required' name="remember" id="remember" value="1">
+					I hereby certify that I am the copyright holder for the manuscript I am submitting
+				</label>
+			</div>
 		</div>
 		
 		<div class="control-group">

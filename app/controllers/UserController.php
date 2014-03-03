@@ -487,6 +487,7 @@ class UserController extends BaseController {
 				$submission->manuscript = Auth::user()->id."/".$filename;
 				$submission->manuscript_submitted = $content;
 				$submission->mime_type = $mime_type;
+				$submission->cover_letter = Input::get('cover_letter');
 				$submission->status = 1;
 				$submission->save();
 				

@@ -63,6 +63,14 @@ Submit a Manuscript: The Dog-Eared Press
 			</div>
 			
 			<div class="control-group">
+			{{ Form::label('cover_letter', 'Cover letter/comments', array('class' => 'control-label')); }}
+			<div class="controls">
+			{{ Form::textarea('cover_letter', null, array('rows'=>'6','class'=>'input-xxlarge required')); }}
+			<span class='help-inline'></span>
+			</div>
+			</div>
+			
+			<div class="control-group">
 				<label class="control-label" for="optionsCheckbox"></label>
 				<div class="controls">
 					<label class="checkbox">

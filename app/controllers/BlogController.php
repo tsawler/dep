@@ -42,6 +42,7 @@ class BlogController extends BaseController {
 				$post->in_rss = 1;
 				$post->slug = urlencode(trim(Input::get('title')));
 				$post->save();
+				Cache::flush();
 				return Redirect::to('/blog')
 					->with('message', 'Post saved successfully');
 			}
@@ -66,6 +67,7 @@ class BlogController extends BaseController {
 		{
 			$post = Post::find(Input::get('post_id'));
 			$post->delete();
+			Cache::flush();
 			return Redirect::to('/blog')
 				->with('message', 'Post deleted successfully');
 		}
@@ -97,6 +99,7 @@ class BlogController extends BaseController {
 				$post->content = Input::get('content');
 				$post->status = Input::get('status');
 				$post->save();
+				Cache::flush();
 				return "Post updated successfully";
 			}
 			else

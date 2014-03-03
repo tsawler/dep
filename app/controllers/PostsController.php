@@ -15,6 +15,7 @@ class PostsController extends BaseController {
 		// Get the current page's posts
 		$viewData['posts'] = $query
 			->orderBy('published_date', 'desc')
+			->remember(525949)
 			->paginate('5');
 
 		$viewData['archives'] = Post::archives();
@@ -27,6 +28,7 @@ class PostsController extends BaseController {
 		// Get the selected post
 		$viewData['post'] = $post = Post::live()
 			->where('slug', '=', urlencode($slug))
+			->remember(525949)
 			->firstOrFail();
 
 		// Get the next newest and next oldest post
@@ -35,6 +37,7 @@ class PostsController extends BaseController {
 			->where('id', '<>', $post->id)
 			->orderBy('published_date', 'asc')
 			->orderBy('id', 'asc')
+			->remember(525949)
 			->first();
 
 		$viewData['older'] = Post::live()
@@ -42,6 +45,7 @@ class PostsController extends BaseController {
 			->where('id', '<>', $post->id)
 			->orderBy('published_date', 'desc')
 			->orderBy('id', 'desc')
+			->remember(525949)
 			->first();
 
 
@@ -64,6 +68,7 @@ class PostsController extends BaseController {
 			->where('in_rss', '=', true)
 			->orderBy('published_date', 'desc')
 			->take(10)
+			->remember(525949)
 			->get();
 		foreach ($posts as $post){
 			$feed->item(array(

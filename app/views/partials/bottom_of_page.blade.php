@@ -44,7 +44,7 @@
 						<p>Sign up for our newsletter. We won't share your email address.</p>
 						{{ Form::open(array('url' => '/joinlist', 'class' => 'form-horizontal', 'method' => 'post')) }}
 							<div class="input-append row-fluid">
-								{{ Form::text('email', null, array('class' => 'span6', 'placeholder' => 'you@example.com')); }}
+								{{ Form::text('email', null, array('class' => 'span10', 'placeholder' => 'you@example.com')); }}
 								{{ Form::submit('Sign up', array('class' => 'btn btn-primary')); }}
 							</div>
 							<!--close input-append-->

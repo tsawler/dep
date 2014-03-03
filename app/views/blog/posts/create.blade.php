@@ -16,7 +16,7 @@
 			<aside class="widget">
 				<h5 class="short_headline"><span>Search Blog Posts</span></h5>
 				{{ Form::open(array('url' => '/searchblog', 'class' => 'searchform', 'method' => 'post')) }}
-					{{ Form::text('searchterm', null, array('id' => 'search-box', 'placeholder' => 'type and hit enter')); }}
+					{{ Form::text('searchterm', null, array('class' => ' span10', 'id' => 'search-box', 'placeholder' => 'type and hit enter')); }}
 				{{ Form::close() }}
 			</aside>
 			

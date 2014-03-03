@@ -423,7 +423,7 @@ class UserController extends BaseController {
 		$secret = $ga->createSecret();
 		
 		$qrCodeUrl = $ga->getQRCodeGoogleUrl(Config::get('app.url'), $secret);
-		$html = "<img src='".$qrCodeUrl."'><span id='newsecrettext' class=''>".$secret."</span>";
+		$html = "<img src='".$qrCodeUrl."'><span id='newsecrettext' style='display: none' class='hidden'>".$secret."</span>";
 		return $html;
 	}
 	

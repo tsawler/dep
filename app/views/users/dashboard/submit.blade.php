@@ -72,12 +72,12 @@ Submit a Manuscript: The Dog-Eared Press
 				</div>
 			</div>
 			
+			<hr>
+			
 			<div class="control-group">
 			<div class="controls">
-			<hr>
-		    
-		    <button class="btn btn-primary" onclick='submitManuscript();return false;'>Submit Manuscript</button>
-		    </div>
+			<button class="btn btn-primary" onclick='submitManuscript();return false;'>Submit Manuscript</button>
+			</div>
 			</div>
 		    
 			{{ Form::close() }}

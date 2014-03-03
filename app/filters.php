@@ -31,7 +31,8 @@ App::before(function($request)
 						'users/testcode',
 						'users/code',
 						'submit/index',
-						'submit/create'
+						'submit/create',
+						'users/submit',
 						);
 	$www = false;
 	

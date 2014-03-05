@@ -32,9 +32,7 @@ Manuscripts: The Dog-Eared Press
 					@endforeach
 					</tbody>
 			</table>
-			<div class="pagination">
-			{{ $manuscripts->links() }}
-			</div>
+			
 		</div> <!-- /span9 primary column -->
 	
 		@include('users/dashboard/partials/sidemenu')

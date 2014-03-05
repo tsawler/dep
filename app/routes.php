@@ -3,55 +3,69 @@
 /**
  * Home Page
  */
-Route::any('/','PageController@showHome');
-Route::any('/home','PageController@showHome');
-
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::any('/','PageController@showHome');
+	Route::any('/home','PageController@showHome');
+});
 
 /**
  * Process
  */
-Route::get('/process', function()
+Route::get('/process', array('before' => 'force.nonssl', function()
 {
     return View::make('pages.process');
-});
+}));
 
 
 /**
  * FAQs
  */
-Route::get('/faq','FaqController@showFaqPage');
-Route::any('/faq/edit', 'FaqController@editFaq');
-
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::get('/faq','FaqController@showFaqPage');
+	Route::any('/faq/edit', 'FaqController@editFaq');
+});
 
 /**
  *
  * Mailing list routes
  */
-Route::post('/joinlist','MailRecipientController@joinList');
-
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::post('/joinlist','MailRecipientController@joinList');
+});
 
 /**
  * Contact Us
  */
-Route::get('/contactus', 'ContactusController@getContactus');
-Route::post('/contactus', 'ContactusController@postContactus');
-
+Route::group(array('before' => 'force.ssl'), function()
+{
+	Route::get('/contactus', 'ContactusController@getContactus');
+	Route::post('/contactus', 'ContactusController@postContactus');
+});
 
 /**
  * Search site
  */
-Route::get('/search','SearchController@showSearchPage');
-Route::post('/search','SearchController@performSearch');
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::get('/search','SearchController@showSearchPage');
+	Route::post('/search','SearchController@performSearch');
+});
 
 
 /**
  * Blog Routes
  */
-Route::controller('/post', 'BlogController');
-Route::post('/searchblog','SearchController@performBlogSearch');
-Route::get('/blog/{year?}/{month?}', 'PostsController@index')->where(array('year' => '\d{4}', 'month' => '\d{2}'));
-Route::get('/blog/{slug}', 'PostsController@view');
-Route::get('/blog.rss', 'PostsController@rss');
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::controller('/post', 'BlogController');
+	Route::post('/searchblog','SearchController@performBlogSearch');
+	Route::get('/blog/{year?}/{month?}', 'PostsController@index')->where(array('year' => '\d{4}', 'month' => '\d{2}'));
+	Route::get('/blog/{slug}', 'PostsController@view');
+	Route::get('/blog.rss', 'PostsController@rss');
+});
 
 
 /**
@@ -71,14 +85,18 @@ Route::group(array('before' => 'force.ssl'), function()
  *
  * Ajax routes
  */
-Route::controller('/ajax','AjaxController');
-
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::controller('/ajax','AjaxController');
+});
 
 /**
  * Menu Routes
  */
-Route::controller('/menu', 'MenuController');
-
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::controller('/menu', 'MenuController');
+});
 
 /**
  * Admin Routes
@@ -97,8 +115,11 @@ Route::group(array('before' => 'force.ssl'), function()
 /**
  * Page Routes
  */
-Route::get('{pagename?}','PageController@showPage');
-Route::post('/page/edit','PageController@editPage');
+Route::group(array('before' => 'force.nonssl'), function()
+{
+	Route::get('{pagename?}','PageController@showPage');
+	Route::post('/page/edit','PageController@editPage');
+});
 Route::get('/page/create', array('before' => 'auth', function()
 {
 	return View::make('pages.createpage');

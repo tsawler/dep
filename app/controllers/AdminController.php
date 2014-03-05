@@ -20,7 +20,7 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function showUser(){
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$user_id = Request::segment(3);
 			$user = User::find($user_id);
@@ -31,7 +31,7 @@ class AdminController extends BaseController {
 				->with('submissions',$submissions)
 				->with('purchased', $purchased);
 		} else {
-			$this->layout->content = View::make('users.dashboard.dashboard');
+			return Redirect::to('users/login');
 		}
 	}
 	
@@ -42,7 +42,7 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function saveUser(){
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$user_id = Request::segment(3);
 			$user = User::find($user_id);
@@ -56,7 +56,7 @@ class AdminController extends BaseController {
 			return Redirect::to('admin/edituser/'.$user_id)
 				->with('message', 'Changes saved.');
 		} else {
-			$this->layout->content = View::make('users.dashboard.dashboard');
+			return Redirect::to('users/login');
 		}
 	}
 	
@@ -67,7 +67,7 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function saveUserRoles(){
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$user_id = Request::segment(3);
 			$user = User::find($user_id);			
@@ -84,7 +84,7 @@ class AdminController extends BaseController {
 			return Redirect::to('admin/edituser/'.$user_id)
 				->with('message', 'Changes saved.');
 		} else {
-			$this->layout->content = View::make('users.dashboard.dashboard');
+			return Redirect::to('users/login');
 		}
 	}
 	
@@ -95,19 +95,13 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function getAdminUsers() {
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$adminusers = User::where('access_level', '=', '3')->orderby('last_name')->paginate(15);
 			$this->layout->content = View::make('users.dashboard.adminusers')
 				->with('adminusers',$adminusers);
 		} else {
-			$purchased = UserBook::where('user_id', '=', Auth::user()->id)->get();
-			$submissions = Submission::where('user_id', '=', Auth::user()->id)->get();
-	
-			$this->layout->content = View::make('users.dashboard.dashboard')
-				->with('purchased',$purchased)
-				->with('submissions',$submissions)
-				->with('error','You do not have access to the requested page');
+			return Redirect::to('users/login');
 		}
 	}
 	
@@ -117,7 +111,7 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function getAllUsers() {
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$allusers = User::where('access_level', '>=', '1')->orderby('last_name')->paginate(15);
 			$this->layout->content = View::make('users.dashboard.allusers')
@@ -125,13 +119,7 @@ class AdminController extends BaseController {
 				->with('email', '')
 				->with('last_name', '');
 		} else {
-			$purchased = UserBook::where('user_id', '=', Auth::user()->id)->get();
-			$submissions = Submission::where('user_id', '=', Auth::user()->id)->get();
-	
-			$this->layout->content = View::make('users.dashboard.dashboard')
-				->with('purchased',$purchased)
-				->with('submissions',$submissions)
-				->with('error','You do not have access to the requested page');
+			return Redirect::to('users/login');
 		}
 	}
 	
@@ -143,7 +131,7 @@ class AdminController extends BaseController {
 	 */
 	public function postAllUsers() {
 	
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$allusers = DB::table('users');
 
@@ -160,13 +148,7 @@ class AdminController extends BaseController {
 				->with('last_name',Input::get('last_name'))
 				->with('email', Input::get('email'));
 		} else {
-			$purchased = UserBook::where('user_id', '=', Auth::user()->id)->get();
-			$submissions = Submission::where('user_id', '=', Auth::user()->id)->get();
-	
-			$this->layout->content = View::make('users.dashboard.dashboard')
-				->with('purchased',$purchased)
-				->with('submissions',$submissions)
-				->with('error','You do not have access to the requested page');
+			return Redirect::to('users/login');
 		}
 	}
 	
@@ -177,12 +159,14 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function getManuscripts() {
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$manuscripts = Submission::orderby('manuscript_title')->paginate(10);
 			$this->layout->content = View::make('users.dashboard.allmanuscripts')
 				->with('manuscripts',$manuscripts)
 				->with('manuscript_title','');
+		} else {
+			return Redirect::to('users/login');
 		}
 	}
 	
@@ -193,7 +177,7 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function getShowmanuscript() {
-		if (Auth::user()->access_level == 3)
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$id = Request::segment(3);
 			$manuscript = Submission::find($id);
@@ -203,6 +187,8 @@ class AdminController extends BaseController {
               'Content-Type: '.$manuscript->mime_type,
             );
 			return Response::download($file, $manuscript->file_name, $headers);
+		} else {
+			return Redirect::to('users/login');
 		}
 	}
 	

@@ -35,7 +35,7 @@ App::before(function($request)
 						'users/submit'
 						);
 	$www = false;
-	$isadmin = false;
+	$isAdmin = false;
 	
 	if (strpos(Request::url(),'www') !== false) 
 		$www = true;
@@ -43,7 +43,7 @@ App::before(function($request)
 	$where = Request::path();
 	
 	if (substr($where, 0,6) == "/admin")
-		$isadmin = true;
+		$isAdmin = true;
 	
 	$environment = App::environment();
 	

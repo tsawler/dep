@@ -161,7 +161,7 @@ class AdminController extends BaseController {
 	public function getManuscripts() {
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
-			$manuscripts = Submission::orderby('manuscript_title')->paginate(10);
+			$manuscripts = Submission::orderby('manuscript_title');
 			$this->layout->content = View::make('users.dashboard.allmanuscripts')
 				->with('manuscripts',$manuscripts)
 				->with('manuscript_title','');

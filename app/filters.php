@@ -35,12 +35,15 @@ App::before(function($request)
 						'users/submit'
 						);
 	$www = false;
+	$isadmin = false;
 	
-	if (strpos(Request::url(),'www') !== false) {
+	if (strpos(Request::url(),'www') !== false) 
 		$www = true;
-	}
 	
 	$where = Request::path();
+	
+	if (substr($where, 0,6) == "/admin")
+		$isadmin = true;
 	
 	$environment = App::environment();
 	
@@ -53,7 +56,7 @@ App::before(function($request)
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		} else {
-			if (!(in_array($where, $protected))){
+			if ((!(in_array($where, $protected))) && ($isAdmin == false)) {
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		}
@@ -138,7 +141,7 @@ Route::filter('force.ssl', function()
 {
  	if( ! Request::secure() && App::environment() !== 'local')
  	{
-	 	//return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+	 	return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
 	 }
 });
 

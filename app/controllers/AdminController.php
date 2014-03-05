@@ -210,6 +210,25 @@ class AdminController extends BaseController {
 	}
 	
 	/**
+	 * Manage a manuscript status
+	 *
+	 * @return mixed
+	 */
+	public function postManuscriptstatus() {
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
+		{
+			$id = Request::input('id');
+			$status = Request::input('status');
+			$manuscript = Submission::find($id);
+			$manuscript->status = $status;
+			$manuscript->save();
+			return Redirect::to('/admin/managems/'.$id)->with('message','Manuscript status updated');
+		} else {
+			return Redirect::to('users/login');
+		}
+	}
+	
+	/**
 	 * Function to test for start of string
 	 *
 	 * @return mixed

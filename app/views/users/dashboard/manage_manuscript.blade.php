@@ -19,6 +19,16 @@ Manage Manuscript: The Dog-Eared Press
 		    <li><strong>Date submitted</strong>: {{ date("l, F jS, Y", strtotime($manuscript->created_at)) }}
 			</ul>
 			
+			<button id="coverletter" class="btn btn-small" onclick="cl(); return false;">Show cover letter</button>
+			
+			
+			<div id="cl" class="hidden">
+			<hr>
+			{{ nl2br($manuscript->cover_letter) }}
+			</div>
+			
+			<hr>
+			
 			{{ Form::open(array(
 				'url' => 'admin/manuscriptstatus', 
 				'files' => true, 
@@ -33,10 +43,12 @@ Manage Manuscript: The Dog-Eared Press
 					'3' => 'Accepted',
 					'4' => 'Rejected'
 					),
-					$manuscript->status
+					$manuscript->status,
+					array('id' => 'status')
 				)}} <button type="submit" class="btn btn-small" onclick="updateStatus(); return false;">Update Status</button>
 				
-				<input type="hidden" name="oldstatus" value="{{ $manuscript->status }}">
+				<input type="hidden" id="oldstatus" name="oldstatus" value="{{ $manuscript->status }}">
+				<input type="hidden" name="id" value="{{ $manuscript->id }}">
 			{{ Form::close() }}
 		</div> <!-- /span9 primary column -->
 	
@@ -49,13 +61,22 @@ Manage Manuscript: The Dog-Eared Press
 <script>
 function updateStatus(){
 	if ($("#oldstatus").val() != $("#status").val()){
-		bootbox.confirm("Are you sure you want to change the status? The author will receive an email. It's probably not great way to turn a manuscript down.... ", function(result) {
+		bootbox.confirm("Are you sure you want to change the status to <strong>" + $("#status option:selected").text() + "</strong>?", function(result) {
 			if (result) {
-					//$("#bookform").submit();
+				$("#bookform").submit();
 			}
 		});
 	} else {
 		bootbox.alert("Status has not changed");
+	}
+}
+function cl(){
+	if ($("#cl").hasClass("hidden")) {
+		$("#cl").removeClass("hidden");
+		$("#coverletter").html("Hide cover letter");
+	} else {
+		$("#cl").addClass("hidden");
+		$("#coverletter").html("Show cover letter");
 	}
 }
 $(document).ready(function () {	

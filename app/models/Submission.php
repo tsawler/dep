@@ -41,5 +41,10 @@ class Submission extends Eloquent  {
     {
         return $this->belongsTo('User', 'user_id', 'id');
     }
+    
+    public function author()
+    {
+        return $this->hasOne('PublisherInfo', 'user_id', 'user_id');
+    }
 
 }

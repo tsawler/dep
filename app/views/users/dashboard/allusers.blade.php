@@ -11,18 +11,7 @@ Users: The Dog-Eared Press
 		<div class="span9 primary-column"> 
 			<h3 class="short_headline" style="text-transform: none;"><span>All Users</span></h3>
 			
-			{{ Form::open(array('url' => 'admin/allusers', 'class' => 'form-inline', 'name' => 'bookform', 'id' => 'bookform')) }}
-			
-			{{  Form::text('last_name', $last_name, array('placeholder'=>'Last name', 
-				'id' => 'last_name', 'autocomplete' => 'off'));}}
-			
-			{{ Form::email('email', $email, array('placeholder'=>'Email')); }}
-			
-			{{ Form::submit('Filter', array('class' => 'btn btn-primary')); }}
-			
-			{{ Form::close() }}
-			
-			<table class="responsive table table-striped table-bordered">
+			<table id="users" class="responsive table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th> Last name </th>
@@ -47,12 +36,21 @@ Users: The Dog-Eared Press
 					@endforeach
 					</tbody>
 			</table>
-			<div class="pagination">
-			
-			</div>
+
 		</div> <!-- /span9 primary column -->
 	
 		@include('users/dashboard/partials/sidemenu')
 	</div>
 </div>
+@stop
+
+@section('bottom-js')
+<script>
+$(document).ready(function(){
+    $('#users').dataTable({
+    	"sPaginationType": "bootstrap",
+    	"bProcessing": true,
+    	"bFilter": true});
+});	
+</script>
 @stop

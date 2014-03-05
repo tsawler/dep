@@ -113,7 +113,7 @@ class AdminController extends BaseController {
 	public function getAllUsers() {
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
-			$allusers = User::where('access_level', '>=', '1')->orderby('last_name')->paginate(15);
+			$allusers = User::where('access_level', '>=', '1')->orderby('last_name')->get();
 			$this->layout->content = View::make('users.dashboard.allusers')
 				->with('allusers',$allusers)
 				->with('email', '')
@@ -187,6 +187,23 @@ class AdminController extends BaseController {
               'Content-Type: '.$manuscript->mime_type,
             );
 			return Response::download($file, $manuscript->file_name, $headers);
+		} else {
+			return Redirect::to('users/login');
+		}
+	}
+	
+	
+	/**
+	 * Manage a manuscript
+	 *
+	 * @return mixed
+	 */
+	public function getManagems() {
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
+		{
+			$id = Request::segment(3);
+			$manuscript = Submission::find($id);
+			$this->layout->content = View::make('users.dashboard.manage_manuscript')->with('manuscript',$manuscript);
 		} else {
 			return Redirect::to('users/login');
 		}

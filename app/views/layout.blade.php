@@ -24,6 +24,7 @@
 <link href="/css/social-likes_classic.css" media="all" rel="stylesheet" type="text/css" />
 @if(Auth::check())
 @if(Auth::user()->access_level == 3)
+<link rel="stylesheet" href="/assets/datatables/css/jquery.dataTables.css" type="text/css">
 @if (Auth::user()->roles->contains(3))
 <link rel="stylesheet" href="/js/contextmenu/jquery.contextMenu.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/css/datepicker.css" type="text/css" media="screen">

@@ -36,5 +36,10 @@ class Submission extends Eloquent  {
 	{
 		return $this->pen_name;
 	}
+	
+	public function users()
+    {
+        return $this->belongsTo('User', 'user_id', 'id');
+    }
 
 }

@@ -2,6 +2,8 @@
 <script type="text/javascript" src="/js/jquery.form.js"></script>
 @if((Auth::check()) 
 	&& (Auth::user()->access_level == 3))
+<script type="text/javascript" src="/assets/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/assets/datatables/js/paging.js"></script>
 <script type="text/javascript" src="/ck/ckeditor.js"></script>
 <script type="text/javascript" src="/ck/adapters/jquery.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>

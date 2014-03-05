@@ -11,19 +11,13 @@ Manuscripts: The Dog-Eared Press
 		<div class="span9 primary-column"> 
 			<h3 class="short_headline" style="text-transform: none;"><span>Manuscripts</span></h3>
 			
-			{{ Form::open(array('url' => 'admin/allusers', 'class' => 'form-inline', 'name' => 'bookform', 'id' => 'bookform')) }}
 			
-			{{  Form::text('manuscript_title', $manuscript_title, array('placeholder'=>'Title', 
-				'id' => 'last_name', 'autocomplete' => 'off'));}}
-			
-			{{ Form::submit('Filter', array('class' => 'btn btn-primary')); }}
-			
-			{{ Form::close() }}
 			
 			<table id="mans" class="responsive table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th> Title </th>
+							<th> Author </th>
 							<th> Date </th>
 						</tr>
 					</thead>
@@ -32,7 +26,8 @@ Manuscripts: The Dog-Eared Press
 					@foreach ($manuscripts as $manuscript)
 						<tr>
 							<td><a href="/admin/showmanuscript/{{$manuscript->id }}">{{ $manuscript->manuscript_title }}</a></td>
-							<td>{{ $manuscript->created_at }}</td>
+							<td>{{ $manuscript->users->first_name }} {{ $manuscript->users->last_name }}
+							<td>{{ date("Y-m-d", strtotime($manuscript->created_at)) }}</td>
 						</tr>
 					@endforeach
 					</tbody>
@@ -49,8 +44,11 @@ Manuscripts: The Dog-Eared Press
 
 @section('bottom-js')
 <script>
-/*$(document).ready(function() {
-    $('#mans').dataTable();
-} );*/
+$(document).ready(function(){
+    $('#mans').dataTable({
+    	"sPaginationType": "bootstrap",
+    	"bProcessing": true,
+    	"bFilter": true});
+});	
 </script>
 @stop

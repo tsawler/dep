@@ -124,4 +124,39 @@ Route::filter('csrf', function()
 	}
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Force SSL Filter
+|--------------------------------------------------------------------------
+|
+| Force certain routes to be SSL only in production
+|
+*/
+
+Route::filter('force.ssl', function()
+{
+ 	if( ! Request::secure() && App::environment() !== 'local')
+ 	{
+	 	return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+	 }
+});
+
+/*
+|--------------------------------------------------------------------------
+| Force Non-SSL Filter
+|--------------------------------------------------------------------------
+|
+| Force certain routes to be non-SSL only in production
+|
+*/
+
+Route::filter('force.nonssl', function()
+{
+	if( ! Request::secure() && App::environment() !== 'local')
+ 	{
+	 	return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+	 }
+});
+
 /* View Composers */

@@ -19,15 +19,9 @@ Route::get('/process', function()
 /**
  * FAQs
  */
-/*Route::get('/faqs', function()
-{
-    return View::make('pages.faqs');
-}); */
-/**
- * FAQs
- */
 Route::get('/faq','FaqController@showFaqPage');
 Route::any('/faq/edit', 'FaqController@editFaq');
+
 
 /**
  *
@@ -63,11 +57,14 @@ Route::get('/blog.rss', 'PostsController@rss');
 /**
  * User/account routes
  */
-//Route::controller('/users', array('before' => 'ssl',  'uses' => 'UserController'));
-Route::controller('/users', 'UserController');
-Route::get('/verifyaccount','UsersPendingController@validateUser');
-Route::controller('/password', 'RemindersController');
-Route::controller('/submit', 'SubmitController');
+
+Route::group(array('before' => 'force.ssl'), function()
+{
+	Route::controller('/users', 'UserController');
+	Route::get('/verifyaccount','UsersPendingController@validateUser');
+	Route::controller('/password', 'RemindersController');
+	Route::controller('/submit', 'SubmitController');
+});
 
 
 /**
@@ -86,16 +83,15 @@ Route::controller('/menu', 'MenuController');
 /**
  * Admin Routes
  */
-Route::get('/admin/edituser/{userid}','AdminController@showUser');
-Route::post('/admin/edituser/{userid}','AdminController@saveUser');
-Route::get('/admin/adminusers','AdminController@getAdminUsers');
-Route::get('/admin/allusers','AdminController@getAllUsers');
-Route::post('/admin/allusers','AdminController@postAllUsers');
-Route::post('/admin/edituserroles/{userid}','AdminController@saveUserRoles');
-Route::get('/admin/manuscripts','AdminController@getManuscripts');
-Route::get('/admin/showmanuscript/{id}', 'AdminController@getShowmanuscript');
-Route::get('/admin/managems/{id}', 'AdminController@getManagems');
-Route::post('/admin/manuscriptstatus', 'AdminController@postManuscriptstatus');
+Route::group(array('before' => 'auth'), function()
+{
+	Route::controller('/admin', 'AdminController');
+});
+
+Route::group(array('before' => 'force.ssl'), function()
+{
+	Route::controller('/admin', 'AdminController');
+});
 
 
 /**

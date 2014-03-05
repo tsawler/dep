@@ -4,11 +4,12 @@ class AdminController extends BaseController {
 
 	public function __construct() {
 		$this->beforeFilter('csrf', array('on'=>'post'));
-		$this->beforeFilter('auth', array('only'=>array('showUser')));
+		
+		/*$this->beforeFilter('auth', array('only'=>array('showUser')));
 		$this->beforeFilter('auth', array('only'=>array('saveUser')));
 		$this->beforeFilter('auth', array('only'=>array('getAdminUsers')));
 		$this->beforeFilter('auth', array('only'=>array('getAllUsers')));
-		$this->beforeFilter('auth', array('only'=>array('postAllUsers')));
+		$this->beforeFilter('auth', array('only'=>array('postAllUsers')));*/
 	}
 
 	protected $layout = "layout";
@@ -19,7 +20,7 @@ class AdminController extends BaseController {
 	 *
 	 * @return mixed
 	 */
-	public function showUser(){
+	public function getEdituser(){
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$user_id = Request::segment(3);
@@ -41,7 +42,7 @@ class AdminController extends BaseController {
 	 *
 	 * @return mixed
 	 */
-	public function saveUser(){
+	public function postEdituser(){
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$user_id = Request::segment(3);
@@ -66,7 +67,7 @@ class AdminController extends BaseController {
 	 *
 	 * @return mixed
 	 */
-	public function saveUserRoles(){
+	public function postEdituserroles(){
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$user_id = Request::segment(3);
@@ -94,7 +95,7 @@ class AdminController extends BaseController {
 	 *
 	 * @return mixed
 	 */
-	public function getAdminUsers() {
+	public function getAdminusers() {
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$adminusers = User::where('access_level', '=', '3')->orderby('last_name')->paginate(15);
@@ -110,7 +111,7 @@ class AdminController extends BaseController {
 	 *
 	 * @return mixed
 	 */
-	public function getAllUsers() {
+	public function getAllusers() {
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$allusers = User::where('access_level', '>=', '1')->orderby('last_name')->get();

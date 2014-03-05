@@ -46,14 +46,14 @@ App::before(function($request)
 	
 	if ($environment != 'local'){
 		if( ! Request::secure()) {
-			if ((in_array($where, $protected)) || (substr($where, 0, 6) == "/admin")) {
+			if (in_array($where, $protected)) {
 				return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
 			}
 			if ($www == false){
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		} else {
-			if ((!(in_array($where, $protected)))  || (substr($where, 0, 6) != "/admin")) {
+			if (!(in_array($where, $protected))){
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		}

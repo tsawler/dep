@@ -13,51 +13,9 @@
 
 App::before(function($request)
 {
-	/* $protected = array(	
-						'users/login',
-						'users/signin',
-						'users/tfa',
-						'users/checktfa',
-						'users/register',
-						'users/create',
-						'users/logout',
-						'users/dashboard',
-						'users/account',
-						'users/author',
-						'users/password',
-						'users/security',
-						'password/remind',
-						'password/reset',
-						'users/testcode',
-						'users/code',
-						'submit/index',
-						'submit/create',
-						'users/submit'
-						);
-	$www = false;
-	
-	if (strpos(Request::url(),'www') !== false) 
-		$www = true;
-	
-	$where = Request::path();
-	
-	$environment = App::environment();
-	
-	if ($environment != 'local'){
-		if( ! Request::secure()) {
-			if (in_array($where, $protected)) {
-				return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
-			}
-			if ($www == false){
-				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
-			}
-		} else {
-			if (!(in_array($where, $protected))) {
-				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
-			}
-		}
-	} */
-	
+	// this is just to ensure that all non-ssl traffic goes to www.dogearedpress.ca
+	// and all ssl traffic goes to https://dogearedpress.ca	
+	// this is just because of google pagespeed service not having our cert
 	$www = false;
 	
 	if (strpos(Request::url(),'www') !== false) 

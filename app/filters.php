@@ -13,7 +13,7 @@
 
 App::before(function($request)
 {
-	$protected = array(	
+	/* $protected = array(	
 						'users/login',
 						'users/signin',
 						'users/tfa',
@@ -35,15 +35,11 @@ App::before(function($request)
 						'users/submit'
 						);
 	$www = false;
-	$isAdmin = false;
 	
 	if (strpos(Request::url(),'www') !== false) 
 		$www = true;
 	
 	$where = Request::path();
-	
-	if (substr($where, 0,6) == "/admin")
-		$isAdmin = true;
 	
 	$environment = App::environment();
 	
@@ -56,7 +52,22 @@ App::before(function($request)
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		} else {
-			if ((!(in_array($where, $protected))) && ($isAdmin == false)) {
+			if (!(in_array($where, $protected))) {
+				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+			}
+		}
+	} */
+	
+	$www = false;
+	
+	if (strpos(Request::url(),'www') !== false) 
+		$www = true;
+	
+	$environment = App::environment();
+	
+	if ($environment != 'local'){
+		if( ! Request::secure()) {
+			if ($www == false){
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		}
@@ -141,7 +152,7 @@ Route::filter('force.ssl', function()
 {
  	if( ! Request::secure() && App::environment() !== 'local')
  	{
-	 	//return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+	 	return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
 	 }
 });
 
@@ -158,7 +169,7 @@ Route::filter('force.nonssl', function()
 {
 	if( Request::secure() && App::environment() !== 'local')
  	{
-	 	//return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+	 	return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 	 }
 });
 

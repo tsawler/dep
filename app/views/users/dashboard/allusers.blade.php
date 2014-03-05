@@ -50,6 +50,7 @@ $(document).ready(function(){
     $('#users').dataTable({
     	"sPaginationType": "bootstrap",
     	"bProcessing": true,
+    	"bStateSave": true,
     	"bFilter": true});
 });	
 </script>

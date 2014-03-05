@@ -48,6 +48,7 @@ $(document).ready(function(){
     $('#mans').dataTable({
     	"sPaginationType": "bootstrap",
     	"bProcessing": true,
+    	"bStateSave": true,
     	"bFilter": true});
 });	
 </script>

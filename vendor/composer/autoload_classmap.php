@@ -1520,6 +1520,8 @@ return array(
     'Symfony\\Component\\Translation\\Translator' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Translator.php',
     'Symfony\\Component\\Translation\\TranslatorInterface' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/TranslatorInterface.php',
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
+    'System_SSH_Agent' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH_Agent.php',
+    'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH_Agent.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'Thujohn\\Rss\\Rss' => $vendorDir . '/thujohn/rss/src/Thujohn/Rss/Rss.php',
     'Thujohn\\Rss\\RssFacade' => $vendorDir . '/thujohn/rss/src/Thujohn/Rss/RssFacade.php',

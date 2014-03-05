@@ -20,7 +20,7 @@ Manuscripts: The Dog-Eared Press
 			
 			{{ Form::close() }}
 			
-			<table class="responsive table table-striped table-bordered">
+			<table id="mans" class="responsive table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th> Title </th>
@@ -45,4 +45,12 @@ Manuscripts: The Dog-Eared Press
 		@include('users/dashboard/partials/sidemenu')
 	</div>
 </div>
+@stop
+
+@section('bottom-js')
+<script>
+$(document).ready(function() {
+    $('#mans').dataTable();
+} );
+</script>
 @stop

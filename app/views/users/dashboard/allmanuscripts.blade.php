@@ -28,7 +28,7 @@ Manuscripts: The Dog-Eared Press
 						<tr>
 							<td><a href="/admin/managems/{{ $manuscript->id }}">{{ $manuscript->manuscript_title }}</a></td>
 							<td>{{ $manuscript->users->first_name }} {{ $manuscript->users->last_name }}
-							<td>{{ date("Y-m-d", strtotime($manuscript->created_at)) }}</td>
+							<td>{{ date("F jS Y", strtotime($manuscript->created_at)) }}</td>
 							
 						</tr>
 					@endforeach

@@ -119,9 +119,12 @@ Route::group(array('before' => 'force.nonssl'), function()
 {
 	Route::get('{pagename?}','PageController@showPage');
 	Route::post('/page/edit','PageController@editPage');
+	Route::post('/page/savepage','PageController@savePage');
+	Route::get('/page/create', array('before' => 'auth', function()
+	{
+		return View::make('pages.createpage');
+	}));
 });
-Route::get('/page/create', array('before' => 'auth', function()
-{
-	return View::make('pages.createpage');
-}));
-Route::post('/page/savepage','PageController@savePage');
+
+
+

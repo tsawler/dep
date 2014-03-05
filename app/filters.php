@@ -141,7 +141,7 @@ Route::filter('force.ssl', function()
 {
  	if( ! Request::secure() && App::environment() !== 'local')
  	{
-	 	return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
+	 	//return Redirect::to(Config::get('app.secureurl') . Request::getRequestUri());
 	 }
 });
 
@@ -158,7 +158,7 @@ Route::filter('force.nonssl', function()
 {
 	if( Request::secure() && App::environment() !== 'local')
  	{
-	 	return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+	 	//return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 	 }
 });
 

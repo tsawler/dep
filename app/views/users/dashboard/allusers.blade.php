@@ -43,12 +43,6 @@ $(document).ready(function(){
     	"bFilter": true,
     	"sAjaxSource": '/admin/allusersajax'
     });
-     /*$('#users').dataTable({
-    	"sPaginationType": "bootstrap",
-    	"bProcessing": true,
-    	"bStateSave": true,
-    	"bFilter": true
-    });*/
 });	
 </script>
 @stop

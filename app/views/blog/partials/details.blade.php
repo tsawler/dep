@@ -29,9 +29,9 @@
 				<div style="clear: both; margin-bottom: 5px;"></div>
 
 					<h3 class="entry-title">
-						<span id="editablecontenttitle" style='width: 100%'>
+						<article id="editablecontenttitle" style='width: 100%'>
 							{{ $post->title }}
-							</span>
+							</article>
 					</h3>
 				<input type="hidden" name="post_id" value="{{ $post->id }}">
 				<input type="hidden" name="title" id="title">
@@ -92,7 +92,7 @@
 
 		@if(Auth::check())
 		@if(Auth::user()->access_level ==3)
-			<article id="editablecontent" style='width: 100%'>
+			<article id="editablecontent" class="editablecontent" style='width: 100%'>
 				{{ $post->content }}
 			</article>
 			<hr>

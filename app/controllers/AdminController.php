@@ -118,8 +118,8 @@ class AdminController extends BaseController {
 	 *
 	 * @return mixed
 	 */
-	public function getDeletepage(){
-		if (Auth::user()->access_level == 3)
+	public function getDeletepage() {
+		if (Auth::user()->access_level == 3) {
 			$page_id = Request::segment(3);
 			$page = Page::find($page_id);
 			$page->delete();

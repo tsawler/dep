@@ -106,7 +106,7 @@
 					<ul>
 						@if (Auth::user()->roles->contains(1))
 							<li><a class='menu-item' href="javascript:void(0)" onclick="makePageEditable(this)">Edit content</a></li>
-							<li><a class='' href="/page/create">New page</a></li>
+							<li><a class='' href="/admin/addpage">New page</a></li>
 						@endif
 						@if (Auth::user()->roles->contains(2))
 							<li><a class='' href="/post/create" >New blog post</a></li>

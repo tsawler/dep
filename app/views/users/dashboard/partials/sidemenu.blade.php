@@ -76,6 +76,34 @@
 						<h5 class="short_headline"><span>Admin Menu</span></h5>
 						<ul class="navigation">
 						
+						@if (Auth::user()->roles->contains(1))
+						
+							<li>
+								<a href="/admin/addpage">
+								@if (Request::path() == "admin/addpage")
+									<strong>
+								@endif
+									Add Page
+								@if (Request::path() == "admin/addpage")
+									</strong>
+								@endif
+								</a>
+							</li>
+							
+							<li>
+								<a href="/admin/allpages">
+								@if (Request::path() == "admin/allpages")
+									<strong>
+								@endif
+									Manage Pages
+								@if (Request::path() == "admin/allpages")
+									</strong>
+								@endif
+								</a>
+							</li>
+							
+						@endif
+						
 						@if (Auth::user()->roles->contains(6))
 						
 							

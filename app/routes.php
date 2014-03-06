@@ -106,6 +106,11 @@ Route::group(array('before' => 'auth', 'before' => 'ssl'), function()
 	Route::controller('/admin', 'AdminController');
 });
 
+Route::group(array('before' => 'force.ssl'), function()
+{
+	Route::controller('/admin', 'AdminController');
+});
+
 
 /**
  * Page Routes

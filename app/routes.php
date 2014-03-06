@@ -101,12 +101,7 @@ Route::group(array('before' => 'force.nonssl'), function()
 /**
  * Admin Routes
  */
-Route::group(array('before' => 'auth'), function()
-{
-	Route::controller('/admin', 'AdminController');
-});
-
-Route::group(array('before' => 'force.ssl'), function()
+Route::group(array('before' => 'auth', 'before' => 'ssl'), function()
 {
 	Route::controller('/admin', 'AdminController');
 });

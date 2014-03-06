@@ -281,35 +281,6 @@ class AdminController extends BaseController {
 	
 	
 	/**
-	 * Show filtered list of all users
-	 *
-	 * @return mixed
-	 */
-	public function postAllUsers() {
-	
-		if ((Auth::check()) && (Auth::user()->access_level == 3))
-		{
-			$allusers = DB::table('users');
-
-			if(strlen(Input::get('last_name')) > 0)
-				$allusers->where('last_name','like', Input::get('last_name') . "%");
-
-			if(Input::get('email'))
-				$allusers->where('email','like', Input::get('email'));
-			
-			$allusers = $allusers->paginate(15);
-			
-			$this->layout->content = View::make('users.dashboard.allusers')
-				->with('allusers',$allusers)
-				->with('last_name',Input::get('last_name'))
-				->with('email', Input::get('email'));
-		} else {
-			return Redirect::to('users/login');
-		}
-	}
-	
-	
-	/**
 	 * Show list of manuscripts
 	 *
 	 * @return mixed
@@ -394,7 +365,9 @@ class AdminController extends BaseController {
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$users = DB::table('users')
-                     ->select(DB::raw('last_name, first_name, email, case when user_active = 1 then \'Active\' else \'Inactive\' end as status'))
+                     ->select(DB::raw("id, last_name, first_name, email, case when user_active = 1 "
+                     	. "then '<span style=\"color: green;\">Active</span>' "
+                     	. "else '<span style=\"color: red;\">Inactive</span>' end as status"))
                      ->where('access_level', '>=', 1)
                      ->orderBy('last_name')
                      ->get();

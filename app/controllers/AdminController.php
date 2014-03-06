@@ -119,10 +119,12 @@ class AdminController extends BaseController {
 	 * @return mixed
 	 */
 	public function getDeletepage(){
-		$page_id = Request::segment(3);
-		$page = Page::find($page_id);
-		$page->delete();
-		return Redirect::to('admin/allpages')->with('message','Page deleted successfully.');
+		if (Auth::user()->access_level == 3)
+			$page_id = Request::segment(3);
+			$page = Page::find($page_id);
+			$page->delete();
+			return Redirect::to('admin/allpages')->with('message','Page deleted successfully.');
+		}
 	}
 	
 	

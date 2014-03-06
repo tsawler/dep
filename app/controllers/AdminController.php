@@ -273,11 +273,7 @@ class AdminController extends BaseController {
 	public function getAllusers() {
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
-			$allusers = User::where('access_level', '>=', '1')->orderby('last_name')->get();
 			$this->layout->content = View::make('users.dashboard.allusers');
-				//->with('allusers',$allusers)
-				//->with('email', '')
-				//->with('last_name', '');
 		} else {
 			return Redirect::to('users/login');
 		}

@@ -447,6 +447,7 @@ return array(
     'LoginController' => $baseDir . '/app/controllers/LoginController.php',
     'MailRecipient' => $baseDir . '/app/models/MailRecipient.php',
     'MailRecipientController' => $baseDir . '/app/controllers/MailRecipientController.php',
+    'MakeStatusTable' => $baseDir . '/app/database/migrations/2014_03_06_122357_make_status_table.php',
     'Math_BigInteger' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Math/BigInteger.php',
     'MenuController' => $baseDir . '/app/controllers/MenuController.php',
     'MenuDropdownItem' => $baseDir . '/app/models/MenuDropdownItem.php',

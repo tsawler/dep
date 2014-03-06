@@ -149,28 +149,7 @@ User: The Dog-Eared Press
 				        	
 				        	<td>{{ $submission->created_at->format('l, F jS Y, g:i A e') }}
 				        	
-				        	<td>
-				        	@if ($submission->status == 1)
-				        	<span class='inqueue tt' 
-				        		  title='Your manuscript is in our review queue, and we&apos;ll be getting to it as soon as we can.'>
-				        		  Awaiting Review
-						    </span>
-						    @elseif ($submission->status == 2)
-						    <span class='inreview tt' 
-				        		  title='Your manuscript currently being reviewed by our team.'>
-				        		  In Review
-						    </span>
-						    @elseif ($submission->status == 3)
-						    <span class='accepted tt' 
-				        		  title='Your manuscript has been accepted! Congratualtions!'>
-				        		  Accepted
-						    </span>
-						    @else
-						    <span class='rejected tt' 
-				        		  title='Your manuscript has not been accepted.'>
-				        		  Not accepted
-						    </span>
-						    @endif
+				        	<td>{{ $submission->statuses->status_name }}</td>
 				        </tr>
 				    @endforeach
 				</table>

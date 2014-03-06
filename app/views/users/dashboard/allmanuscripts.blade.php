@@ -19,7 +19,7 @@ Manuscripts: The Dog-Eared Press
 							<th> Title </th>
 							<th> Author </th>
 							<th> Date </th>
-							
+							<th> Status </th>
 						</tr>
 					</thead>
 					
@@ -27,8 +27,9 @@ Manuscripts: The Dog-Eared Press
 					@foreach ($manuscripts as $manuscript)
 						<tr>
 							<td><a href="/admin/managems/{{ $manuscript->id }}">{{ $manuscript->manuscript_title }}</a></td>
-							<td>{{ $manuscript->users->first_name }} {{ $manuscript->users->last_name }}
-							<td>{{ date("F jS Y", strtotime($manuscript->created_at)) }}</td>
+							<td>{{ $manuscript->users->last_name }}
+							<td>{{ date("j M Y", strtotime($manuscript->created_at)) }}</td>
+							<td>{{ $manuscript->statuses->status_name }}</td>
 							
 						</tr>
 					@endforeach

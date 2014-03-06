@@ -12,14 +12,15 @@ Manage Manuscript: The Dog-Eared Press
 			<h3 class="short_headline" style="text-transform: none;"><span>Manuscript: {{ $manuscript->manuscript_title }}</span></h3>
 			
 			<ul>
-			<li><strong>Manuscript Title</strong>: {{ $manuscript->manuscript_title }} [ <a href="/admin/showmanuscript/{{$manuscript->id }}">Download</a> ]
+			<li><strong>Manuscript Title</strong>: {{ $manuscript->manuscript_title }}
 			<li><strong>Author</strong>: <a href="/admin/edituser/{{ $manuscript->user_id }}">{{ $manuscript->users->first_name }} {{ $manuscript->users->last_name }}</a></li>
 			<li><strong>Pen name</strong>: {{ $manuscript->pen_name }}</li>
 		    <li><strong>Email</strong>: <a href="mailto:{{ $manuscript->users->email }}">{{ $manuscript->users->email }}</a></li>
 		    <li><strong>Date submitted</strong>: {{ date("l, F jS, Y", strtotime($manuscript->created_at)) }}
 			</ul>
 			
-			<button id="coverletter" class="btn btn-small" onclick="cl(); return false;">Show cover letter</button>
+			<a class="btn" href="/admin/showmanuscript/{{$manuscript->id }}">Download Manuscript</a> 
+			<a href="javascript:void()" id="coverletter" class="btn" onclick="cl(); return false;">Show cover letter</a>
 			
 			
 			<div id="cl" class="hidden">
@@ -40,8 +41,9 @@ Manage Manuscript: The Dog-Eared Press
 				{{ Form::select('status', array(
 					'1' => 'In Queue',
 					'2' => 'In Review',
-					'3' => 'Accepted',
-					'4' => 'Rejected'
+					'3' => 'Conditionally Accepted',
+					'4' => 'Accepted',
+					'5' => 'Rejected'
 					),
 					$manuscript->status,
 					array('id' => 'status')

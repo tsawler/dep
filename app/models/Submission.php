@@ -46,5 +46,10 @@ class Submission extends Eloquent  {
     {
         return $this->hasOne('PublisherInfo', 'user_id', 'user_id');
     }
+    
+     public function statuses()
+    {
+        return $this->hasOne('Status','id','status');
+    }
 
 }

@@ -22,18 +22,7 @@ Users: The Dog-Eared Press
 					</thead>
 					
 					<tbody>
-					@foreach ($allusers as $user)
-						<tr>
-							<td><a href="/admin/edituser/{{$user->id }}">{{ $user->last_name }}</a></td>
-							<td>{{ $user->first_name }}</td>
-							<td>{{ $user->email }}</td>
-							@if($user->user_active == 1)
-							<td><span style="color: green;">Active</span></td>
-							@else
-							<td><span style="color: red;">Inactive</span></td>
-							@endif
-						</tr>
-					@endforeach
+					
 					</tbody>
 			</table>
 
@@ -51,7 +40,15 @@ $(document).ready(function(){
     	"sPaginationType": "bootstrap",
     	"bProcessing": true,
     	"bStateSave": true,
-    	"bFilter": true});
+    	"bFilter": true,
+    	"sAjaxSource": '/admin/allusersajax'
+    });
+     /*$('#users').dataTable({
+    	"sPaginationType": "bootstrap",
+    	"bProcessing": true,
+    	"bStateSave": true,
+    	"bFilter": true
+    });*/
 });	
 </script>
 @stop

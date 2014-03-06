@@ -4,12 +4,6 @@ class AdminController extends BaseController {
 
 	public function __construct() {
 		$this->beforeFilter('csrf', array('on'=>'post'));
-		
-		/*$this->beforeFilter('auth', array('only'=>array('showUser')));
-		$this->beforeFilter('auth', array('only'=>array('saveUser')));
-		$this->beforeFilter('auth', array('only'=>array('getAdminUsers')));
-		$this->beforeFilter('auth', array('only'=>array('getAllUsers')));
-		$this->beforeFilter('auth', array('only'=>array('postAllUsers')));*/
 	}
 
 	protected $layout = "layout";
@@ -115,10 +109,10 @@ class AdminController extends BaseController {
 		if ((Auth::check()) && (Auth::user()->access_level == 3))
 		{
 			$allusers = User::where('access_level', '>=', '1')->orderby('last_name')->get();
-			$this->layout->content = View::make('users.dashboard.allusers')
-				->with('allusers',$allusers)
-				->with('email', '')
-				->with('last_name', '');
+			$this->layout->content = View::make('users.dashboard.allusers');
+				//->with('allusers',$allusers)
+				//->with('email', '')
+				//->with('last_name', '');
 		} else {
 			return Redirect::to('users/login');
 		}
@@ -224,6 +218,56 @@ class AdminController extends BaseController {
 			$manuscript->status = $status;
 			$manuscript->save();
 			return Redirect::to('/admin/managems/'.$id)->with('message','Manuscript status updated');
+		} else {
+			return Redirect::to('users/login');
+		}
+	}
+	
+	
+	/**
+	 * Get list of users as json response
+	 *
+	 * @return json
+	 */
+	public function getAllusersajax() {
+		if ((Auth::check()) && (Auth::user()->access_level == 3))
+		{
+			$users = DB::table('users')
+                     ->select(DB::raw('last_name, first_name, email, case when user_active = 1 then \'Active\' else \'Inactive\' end as status'))
+                     ->where('access_level', '>=', 1)
+                     ->orderBy('last_name')
+                     ->get();
+                     
+            $eArray = array();
+
+			foreach ($users as $user){
+				$eArray[] = array(
+					$user->last_name,
+					$user->first_name,
+					$user->email,
+					$user->status
+					);
+			}
+                     
+            $contents =  '{ "aaData" : [';
+			$first = true;
+			foreach ($eArray as $value){
+				if ($first == false){
+					$contents .= ",";
+				} else {
+					$first = false;
+				}
+				$contents .= json_encode($value);
+			}
+			$contents .= "] }";
+
+			$response = Response::make($contents, '200');
+			$response->header('Cache-Control', 'no-cache, must-revalidate');
+			$response->header('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT');
+            $response->header('Content-Type', 'application/json');
+			
+			return $response;
+		
 		} else {
 			return Redirect::to('users/login');
 		}

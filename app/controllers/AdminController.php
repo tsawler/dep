@@ -376,7 +376,7 @@ class AdminController extends BaseController {
 
 			foreach ($users as $user){
 				$eArray[] = array(
-					$user->last_name,
+					"<a href=/admin/edituser/".$user->id.">".$user->last_name."</a>",
 					$user->first_name,
 					$user->email,
 					$user->status

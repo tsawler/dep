@@ -316,12 +316,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/phpseclib/phpseclib.git",
-            "reference": "8b068b1df04ae1810daf073705efad790a890d8f"
+            "reference": "5dcc63ef6ca720b1617cff33b445d9b318c9ad03"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8b068b1df04ae1810daf073705efad790a890d8f",
-            "reference": "8b068b1df04ae1810daf073705efad790a890d8f",
+            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/5dcc63ef6ca720b1617cff33b445d9b318c9ad03",
+            "reference": "5dcc63ef6ca720b1617cff33b445d9b318c9ad03",
             "shasum": ""
         },
         "require": {
@@ -335,7 +335,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
             "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 4.3.3."
         },
-        "time": "2014-03-04 17:21:01",
+        "time": "2014-03-06 11:05:11",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -461,12 +461,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Seldaek/monolog.git",
-            "reference": "0ac27c8089d0ec41728d96b5aa0dcad18fb0d459"
+            "reference": "fab2a2deef59b08f8acbd26b23660e0ed32b7802"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/0ac27c8089d0ec41728d96b5aa0dcad18fb0d459",
-            "reference": "0ac27c8089d0ec41728d96b5aa0dcad18fb0d459",
+            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fab2a2deef59b08f8acbd26b23660e0ed32b7802",
+            "reference": "fab2a2deef59b08f8acbd26b23660e0ed32b7802",
             "shasum": ""
         },
         "require": {
@@ -488,9 +488,10 @@
             "ext-mongo": "Allow sending log messages to a MongoDB server",
             "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
             "raven/raven": "Allow sending log messages to a Sentry server",
+            "rollbar/rollbar": "Allow sending log messages to Rollbar",
             "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
         },
-        "time": "2014-02-26 12:30:17",
+        "time": "2014-03-08 16:45:09",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1026,61 +1027,6 @@
             "uri",
             "url"
         ]
-    },
-    {
-        "name": "symfony/css-selector",
-        "version": "2.4.x-dev",
-        "version_normalized": "2.4.9999999.9999999-dev",
-        "target-dir": "Symfony/Component/CssSelector",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/CssSelector.git",
-            "reference": "ed1d61b2e23a0fd5dba0b20651258c4633d3e3a7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/CssSelector/zipball/ed1d61b2e23a0fd5dba0b20651258c4633d3e3a7",
-            "reference": "ed1d61b2e23a0fd5dba0b20651258c4633d3e3a7",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "time": "2014-02-11 13:52:09",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\CssSelector\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com",
-                "homepage": "http://fabien.potencier.org",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Jean-François Simon",
-                "email": "jeanfrancois.simon@sensiolabs.com"
-            }
-        ],
-        "description": "Symfony CssSelector Component",
-        "homepage": "http://symfony.com"
     },
     {
         "name": "fitztrev/laravel-html-minify",
@@ -1686,18 +1632,73 @@
         "homepage": "http://symfony.com"
     },
     {
+        "name": "symfony/css-selector",
+        "version": "2.4.x-dev",
+        "version_normalized": "2.4.9999999.9999999-dev",
+        "target-dir": "Symfony/Component/CssSelector",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/CssSelector.git",
+            "reference": "76ce933792a3b4fcb8ea9b017081327c2dc3c65b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/CssSelector/zipball/76ce933792a3b4fcb8ea9b017081327c2dc3c65b",
+            "reference": "76ce933792a3b4fcb8ea9b017081327c2dc3c65b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2014-03-01 17:35:04",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\CssSelector\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Jean-François Simon",
+                "email": "jeanfrancois.simon@sensiolabs.com"
+            }
+        ],
+        "description": "Symfony CssSelector Component",
+        "homepage": "http://symfony.com"
+    },
+    {
         "name": "laravel/framework",
         "version": "4.1.x-dev",
         "version_normalized": "4.1.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "f857ae31da8ff0ab0ff218252d9ce009b78c1c6c"
+            "reference": "85428c311b38cf91d6a80a22712a65643920fed4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/f857ae31da8ff0ab0ff218252d9ce009b78c1c6c",
-            "reference": "f857ae31da8ff0ab0ff218252d9ce009b78c1c6c",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/85428c311b38cf91d6a80a22712a65643920fed4",
+            "reference": "85428c311b38cf91d6a80a22712a65643920fed4",
             "shasum": ""
         },
         "require": {
@@ -1760,12 +1761,12 @@
             "iron-io/iron_mq": "1.5.*",
             "mockery/mockery": "0.9.*",
             "pda/pheanstalk": "2.1.*",
-            "phpunit/phpunit": "3.7.*"
+            "phpunit/phpunit": "4.0.*"
         },
         "suggest": {
             "doctrine/dbal": "Allow renaming columns and dropping SQLite columns."
         },
-        "time": "2014-03-04 02:06:48",
+        "time": "2014-03-09 03:15:08",
         "type": "library",
         "extra": {
             "branch-alias": {

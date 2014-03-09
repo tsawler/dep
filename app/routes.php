@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Home Page
  */
@@ -8,6 +7,7 @@ Route::group(array('before' => 'force.nonssl'), function()
 	Route::any('/','PageController@showHome');
 	Route::any('/home','PageController@showHome');
 });
+
 
 /**
  * Process
@@ -27,6 +27,7 @@ Route::group(array('before' => 'force.nonssl'), function()
 	Route::any('/faq/edit', 'FaqController@editFaq');
 });
 
+
 /**
  *
  * Mailing list routes
@@ -36,6 +37,7 @@ Route::group(array('before' => 'force.nonssl'), function()
 	Route::post('/joinlist','MailRecipientController@joinList');
 });
 
+
 /**
  * Contact Us
  */
@@ -44,6 +46,7 @@ Route::group(array('before' => 'force.ssl'), function()
 	Route::get('/contactus', 'ContactusController@getContactus');
 	Route::post('/contactus', 'ContactusController@postContactus');
 });
+
 
 /**
  * Search site
@@ -90,6 +93,7 @@ Route::group(array('before' => 'force.nonssl'), function()
 	Route::controller('/ajax','AjaxController');
 });
 
+
 /**
  * Menu Routes
  */
@@ -98,6 +102,7 @@ Route::group(array('before' => 'force.nonssl'), function()
 	Route::controller('/menu', 'MenuController');
 });
 
+
 /**
  * Admin Routes
  */
@@ -105,8 +110,6 @@ Route::group(array('before' => 'auth|force.ssl'), function()
 {
 	Route::controller('/admin', 'AdminController');
 });
-
-
 
 
 /**
@@ -122,6 +125,3 @@ Route::group(array('before' => 'force.nonssl'), function()
 		return View::make('pages.createpage');
 	}));
 });
-
-
-

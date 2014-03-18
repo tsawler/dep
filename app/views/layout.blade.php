@@ -33,7 +33,12 @@
 @endif
 @yield('css')
 
-<link rel="shortcut icon" href="favicon.ico" />
+<!-- Favicons -->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/ico/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/ico/apple-touch-icon-72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/ico/apple-touch-icon-114.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/ico/apple-touch-icon-144.png">
 
 <!--[if gt IE 8]><!-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

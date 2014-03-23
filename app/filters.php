@@ -18,7 +18,7 @@ App::before(function($request)
 	// this is just because of google pagespeed service not having our cert
 	$www = false;
 	
-	if (strpos(Request::url(),'www') !== false) 
+	/*if (strpos(Request::url(),'www') !== false) 
 		$www = true;
 	
 	$environment = App::environment();
@@ -29,7 +29,7 @@ App::before(function($request)
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
 			}
 		}
-	}
+	}*/
 	
 });
 

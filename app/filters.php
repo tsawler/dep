@@ -26,7 +26,14 @@ App::before(function($request)
 	if ($environment != 'local'){
 		if( ! Request::secure()) {
 			if ($www == false){
+				Log::info("Redirecting to " . Config::get('app.url') . Request::getRequestUri());
 				return Redirect::to(Config::get('app.url') . Request::getRequestUri());
+			}
+		}
+	} else {
+		if( ! Request::secure()) {
+			if ($www == false){
+				Log::info("would redirect to " . Config::get('app.url') . Request::getRequestUri());
 			}
 		}
 	}

@@ -16,7 +16,7 @@ App::before(function($request)
 	// this is just to ensure that all non-ssl traffic goes to www.dogearedpress.ca
 	// and all ssl traffic goes to https://dogearedpress.ca	
 	// this is just because of google pagespeed service not having our cert
-	$www = false;
+	/*$www = false;
 	
 	if (strpos(Request::url(),'www') !== false) 
 		$www = true;
@@ -36,7 +36,7 @@ App::before(function($request)
 				Log::info("would redirect to " . Config::get('app.url') . Request::getRequestUri());
 			}
 		}
-	}
+	}*/
 	
 });
 

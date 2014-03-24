@@ -332,12 +332,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9948ff88c494345384da83ea083db3455f6fb831"
+                "reference": "70d94d57d76fac29f6e2f7136cb42a442059f83e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9948ff88c494345384da83ea083db3455f6fb831",
-                "reference": "9948ff88c494345384da83ea083db3455f6fb831",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/70d94d57d76fac29f6e2f7136cb42a442059f83e",
+                "reference": "70d94d57d76fac29f6e2f7136cb42a442059f83e",
                 "shasum": ""
             },
             "require": {
@@ -441,7 +441,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-03-21 03:18:46"
+            "time": "2014-03-24 04:09:48"
         },
         {
             "name": "monolog/monolog",
@@ -449,12 +449,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "db7e2aa311869aaf3c2cc76237b2beff05322629"
+                "reference": "98b2d0ba0a9a8f6d0e3b8fda31ce0fb227208fbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/db7e2aa311869aaf3c2cc76237b2beff05322629",
-                "reference": "db7e2aa311869aaf3c2cc76237b2beff05322629",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/98b2d0ba0a9a8f6d0e3b8fda31ce0fb227208fbd",
+                "reference": "98b2d0ba0a9a8f6d0e3b8fda31ce0fb227208fbd",
                 "shasum": ""
             },
             "require": {
@@ -482,7 +482,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.x-dev"
+                    "dev-master": "1.8.x-dev"
                 }
             },
             "autoload": {
@@ -509,7 +509,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-03-14 09:32:58"
+            "time": "2014-03-24 11:36:34"
         },
         {
             "name": "nesbot/carbon",

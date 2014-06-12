@@ -114,7 +114,7 @@ class Request extends SymfonyRequest {
 	{
 		$segments = explode('/', $this->path());
 
-		return array_values(array_filter($segments));
+		return array_values(array_filter($segments, function($v) { return $v != ''; }));
 	}
 
 	/**
@@ -195,7 +195,7 @@ class Request extends SymfonyRequest {
 	}
 
 	/**
-	 * Detremine if the given input key is an empty string for "has".
+	 * Determine if the given input key is an empty string for "has".
 	 *
 	 * @param  string  $key
 	 * @return bool
@@ -527,7 +527,7 @@ class Request extends SymfonyRequest {
 	{
 		if ($request instanceof static) return $request;
 
-		return with($self = new static)->duplicate(
+		return with(new static)->duplicate(
 
 			$request->query->all(), $request->request->all(), $request->attributes->all(),
 
